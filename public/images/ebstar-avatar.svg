@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2E86DE"/>
+      <stop offset="100%" stop-color="#1A6BBF"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#1A1A2E" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <circle cx="200" cy="200" r="190" fill="url(#avatarGrad)" filter="url(#shadow)"/>
+  <circle cx="200" cy="200" r="175" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.3"/>
+  <!-- Stylized E -->
+  <text x="200" y="235" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="160" font-weight="bold" fill="#FFFFFF" letter-spacing="-4">E</text>
+  <!-- Subtle decorative ring -->
+  <circle cx="200" cy="200" r="160" fill="none" stroke="#EAF4FC" stroke-width="1" stroke-opacity="0.2"/>
+</svg>

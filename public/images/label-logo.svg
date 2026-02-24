@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#FFFFFF"/>
+  <!-- Outer geometric frame -->
+  <rect x="60" y="60" width="280" height="280" rx="4" fill="none" stroke="#1A1A2E" stroke-width="2"/>
+  <!-- Inner geometric frame -->
+  <rect x="80" y="80" width="240" height="240" rx="2" fill="none" stroke="#1A1A2E" stroke-width="0.5" opacity="0.4"/>
+  <!-- Corner accents -->
+  <line x1="60" y1="60" x2="80" y2="80" stroke="#1A1A2E" stroke-width="0.5" opacity="0.4"/>
+  <line x1="340" y1="60" x2="320" y2="80" stroke="#1A1A2E" stroke-width="0.5" opacity="0.4"/>
+  <line x1="60" y1="340" x2="80" y2="320" stroke="#1A1A2E" stroke-width="0.5" opacity="0.4"/>
+  <line x1="340" y1="340" x2="320" y2="320" stroke="#1A1A2E" stroke-width="0.5" opacity="0.4"/>
+  <!-- Main text -->
+  <text x="200" y="195" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="bold" fill="#1A1A2E" letter-spacing="6">ESOTERIC</text>
+  <!-- Special characters overlay -->
+  <text x="200" y="195" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="bold" fill="#1A1A2E" letter-spacing="6">ES&#216;T&#203;RIC</text>
+  <!-- Subtitle -->
+  <text x="200" y="230" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#1A1A2E" fill-opacity="0.6" letter-spacing="8">ONES</text>
+  <!-- Thin decorative line -->
+  <line x1="140" y1="210" x2="260" y2="210" stroke="#1A1A2E" stroke-width="0.5" opacity="0.3"/>
+</svg>

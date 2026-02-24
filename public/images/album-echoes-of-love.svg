@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="echoGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B3A6B"/>
+      <stop offset="60%" stop-color="#162040"/>
+      <stop offset="100%" stop-color="#1A1A2E"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="500" fill="url(#echoGrad)"/>
+  <!-- Echo rings -->
+  <circle cx="250" cy="200" r="60" fill="none" stroke="#FFFFFF" stroke-width="0.8" opacity="0.15"/>
+  <circle cx="250" cy="200" r="90" fill="none" stroke="#FFFFFF" stroke-width="0.6" opacity="0.1"/>
+  <circle cx="250" cy="200" r="120" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.07"/>
+  <circle cx="250" cy="200" r="150" fill="none" stroke="#FFFFFF" stroke-width="0.3" opacity="0.05"/>
+  <!-- Small center dot -->
+  <circle cx="250" cy="200" r="4" fill="#2E86DE" opacity="0.8"/>
+  <!-- Title -->
+  <text x="250" y="350" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFFFFF" letter-spacing="8">ECHOES OF</text>
+  <text x="250" y="390" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFFFFF" letter-spacing="8">LOVE I</text>
+  <!-- Artist -->
+  <text x="250" y="465" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#FFFFFF" fill-opacity="0.4" letter-spacing="4">EBSTAR</text>
+</svg>
