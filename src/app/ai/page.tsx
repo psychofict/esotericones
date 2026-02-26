@@ -46,8 +46,12 @@ export default function AIPage() {
   return (
     <main className="min-h-screen bg-white text-[#1A1A2E]">
       {/* Hero */}
-      <section className="relative overflow-hidden py-28 px-6 text-center bg-[#EAF4FC]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/10 via-[#F39C12]/5 to-transparent" />
+      <section className="relative overflow-hidden py-28 px-6 text-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#EAF4FC]/92" />
         <div className="absolute top-20 left-[10%] w-32 h-32 rounded-full bg-[#2E86DE]/10 blur-3xl" />
         <div className="absolute bottom-20 right-[10%] w-40 h-40 rounded-full bg-[#F39C12]/10 blur-3xl" />
 

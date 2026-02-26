@@ -2,8 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { blogPosts } from "@/data/artist";
+
+const tagImages: Record<string, string> = {
+  Releases: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80",
+  "Behind the Scenes": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
+  Ambassadorships: "https://images.unsplash.com/photo-1540575467063-ba8db27f82e5?w=640&q=80",
+  Updates: "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=640&q=80",
+};
 
 const tags = ["All", "Releases", "Behind the Scenes", "Ambassadorships", "Updates"];
 
@@ -26,7 +34,11 @@ export default function BlogPage() {
     <main className="min-h-screen bg-[#1A1A2E] text-[#F8FBFF]">
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/15 via-transparent to-transparent" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1485579149621-3123dd979885?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#1A1A2E]/82" />
         <motion.div
           className="relative z-10"
           initial={{ opacity: 0, y: 30 }}
@@ -89,24 +101,17 @@ export default function BlogPage() {
                 variants={cardVariant}
                 whileHover={{ y: -6 }}
               >
-                {/* Image Placeholder */}
-                <div
-                  className={`h-48 bg-gradient-to-br ${post.gradient} relative flex items-center justify-center`}
-                >
-                  <svg
-                    className="w-12 h-12 text-white/20"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                    />
-                  </svg>
-                  <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium bg-black/30 text-white/80 backdrop-blur-sm">
+                {/* Card Image */}
+                <div className="h-48 relative overflow-hidden">
+                  <Image
+                    src={tagImages[post.tag] || tagImages.Updates}
+                    alt={post.tag}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient} opacity-60`} />
+                  <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium bg-black/30 text-white/80 backdrop-blur-sm z-10">
                     {post.tag}
                   </span>
                 </div>

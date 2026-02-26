@@ -6,12 +6,17 @@ import { ShoppingBag } from "lucide-react";
 
 export default function MerchPage() {
   return (
-    <main className="min-h-screen bg-white text-[#1A1A2E] flex items-center justify-center relative overflow-hidden">
+    <main className="min-h-screen text-[#1A1A2E] flex items-center justify-center relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80')" }}
+      />
+      <div className="absolute inset-0 bg-white/88" />
       <div className="absolute top-16 left-[10%] w-36 h-36 rounded-full bg-[#F39C12]/8 blur-2xl" />
       <div className="absolute bottom-20 right-[12%] w-44 h-44 rounded-full bg-[#2E86DE]/8 blur-2xl" />
 
       <motion.div
-        className="text-center px-6 max-w-lg"
+        className="text-center px-6 max-w-lg relative z-10"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

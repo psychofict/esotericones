@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { socials } from "@/data/artist";
@@ -292,7 +293,11 @@ export default function ContactPage() {
     <main className="min-h-screen bg-[#1A1A2E] text-[#F8FBFF]">
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F39C12]/10 via-transparent to-transparent" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#1A1A2E]/82" />
         <motion.div
           className="relative z-10"
           initial={{ opacity: 0, y: 30 }}
@@ -415,12 +420,24 @@ export default function ContactPage() {
             </div>
 
             {/* Location */}
-            <div className="rounded-2xl border border-[#2E86DE]/20 bg-white/5 backdrop-blur-md p-6">
-              <h3 className="font-semibold mb-3 text-[#F39C12]">Based In</h3>
-              <p className="text-sm text-[#EAF4FC]/60">Seoul, South Korea</p>
-              <p className="text-xs text-[#EAF4FC]/40 mt-1">
-                Available worldwide
-              </p>
+            <div className="rounded-2xl border border-[#2E86DE]/20 bg-white/5 backdrop-blur-md overflow-hidden">
+              <div className="relative h-32">
+                <Image
+                  src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=640&q=80"
+                  alt="Seoul skyline"
+                  fill
+                  className="object-cover"
+                  sizes="320px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 to-transparent" />
+              </div>
+              <div className="p-6 -mt-2 relative z-10">
+                <h3 className="font-semibold mb-3 text-[#F39C12]">Based In</h3>
+                <p className="text-sm text-[#EAF4FC]/60">Seoul, South Korea</p>
+                <p className="text-xs text-[#EAF4FC]/40 mt-1">
+                  Available worldwide
+                </p>
+              </div>
             </div>
           </motion.aside>
         </div>

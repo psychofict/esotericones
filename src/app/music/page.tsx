@@ -102,8 +102,13 @@ export default function MusicPage() {
       ))}
 
       {/* Page Header */}
-      <section className="bg-[#EAF4FC] py-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="relative py-20 px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#EAF4FC]/90" />
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

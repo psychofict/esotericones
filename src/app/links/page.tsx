@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { socials } from "@/data/artist";
 
@@ -98,8 +99,13 @@ const buttonVariant = {
 
 export default function LinksPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#2E86DE]/30 via-[#1A1A2E] to-[#1A1A2E] flex items-start justify-center px-4 py-12">
-      <div className="w-full max-w-md">
+    <main className="min-h-screen relative flex items-start justify-center px-4 py-12">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80')" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/30 via-[#1A1A2E]/90 to-[#1A1A2E]/95" />
+      <div className="w-full max-w-md relative z-10">
         {/* Avatar + Name */}
         <motion.div
           className="text-center mb-10"
@@ -107,8 +113,14 @@ export default function LinksPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-28 h-28 mx-auto mb-5 rounded-full bg-gradient-to-br from-[#2E86DE] to-[#F39C12] flex items-center justify-center text-4xl font-bold text-white shadow-lg shadow-[#2E86DE]/30">
-            E
+          <div className="w-28 h-28 mx-auto mb-5 rounded-full overflow-hidden shadow-lg shadow-[#2E86DE]/30 ring-4 ring-white/20">
+            <Image
+              src="/images/ebstar-hero.jpg"
+              alt="Ebstar"
+              width={112}
+              height={112}
+              className="w-full h-full object-cover"
+            />
           </div>
           <h1 className="text-3xl font-bold text-[#F8FBFF] tracking-tight">
             EBSTAR

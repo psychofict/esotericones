@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Music, Cpu, Globe, Disc } from "lucide-react";
 import { artist, timeline, unifiedBio } from "@/data/artist";
@@ -70,8 +71,13 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-[#EAF4FC] py-24 px-6">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="relative bg-[#EAF4FC] py-24 px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#EAF4FC]/85" />
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -143,31 +149,49 @@ export default function AboutPage() {
 
       {/* Bio Section */}
       <section className="pb-20 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto"
-        >
-          <h2 className="text-3xl font-bold text-[#1A1A2E] mb-8">
-            The Story
-          </h2>
-          <div className="space-y-6">
-            {bioParagraphs.map((paragraph, index) => (
-              <motion.p
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-[#1A1A2E]/80 text-lg leading-relaxed"
-              >
-                {paragraph}
-              </motion.p>
-            ))}
-          </div>
-        </motion.div>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_380px] gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl font-bold text-[#1A1A2E] mb-8">
+              The Story
+            </h2>
+            <div className="space-y-6">
+              {bioParagraphs.map((paragraph, index) => (
+                <motion.p
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="text-[#1A1A2E]/80 text-lg leading-relaxed"
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden md:block"
+          >
+            <div className="sticky top-24 rounded-2xl overflow-hidden shadow-lg aspect-[3/4]">
+              <Image
+                src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=760&q=80"
+                alt="Seoul cityscape"
+                fill
+                className="object-cover"
+                sizes="380px"
+              />
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Genre Tags */}
@@ -202,8 +226,13 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="bg-[#EAF4FC]/50 py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative py-20 px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#EAF4FC]/92" />
+        <div className="relative z-10 max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}

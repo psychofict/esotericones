@@ -120,8 +120,12 @@ export default function AmbassadorshipsPage() {
   return (
     <main className="min-h-screen bg-white text-[#1A1A2E]">
       {/* Hero */}
-      <section className="relative overflow-hidden py-28 px-6 text-center bg-[#EAF4FC]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F39C12]/10 via-transparent to-transparent" />
+      <section className="relative overflow-hidden py-28 px-6 text-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#EAF4FC]/90" />
         <div className="animate-float absolute top-[20%] left-[8%] h-48 w-48 rounded-full bg-[#F39C12] opacity-[0.07]" />
         <div className="animate-float-slow absolute bottom-[15%] right-[10%] h-64 w-64 rounded-full bg-[#2E86DE] opacity-[0.07]" />
 
@@ -384,20 +388,15 @@ export default function AmbassadorshipsPage() {
                   whileHover={{ scale: 1.03 }}
                 >
                   <Wrapper {...linkProps} className={article.url ? "block" : ""}>
-                    <div className="h-32 bg-gradient-to-br from-[#EAF4FC] to-[#2E86DE]/10 flex items-center justify-center">
-                      <svg
-                        className="w-10 h-10 text-[#2E86DE]/20"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                          d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                        />
-                      </svg>
+                    <div className="h-32 relative overflow-hidden">
+                      <Image
+                        src="https://images.unsplash.com/photo-1504711434473-57c8cd4e5de7?w=640&q=80"
+                        alt="Press coverage"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#EAF4FC]/60 to-[#2E86DE]/20" />
                     </div>
                     <div className="p-6">
                       <p className="text-xs text-[#F39C12] font-medium mb-2">
@@ -424,8 +423,13 @@ export default function AmbassadorshipsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#EAF4FC] py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
+      <section className="relative py-20 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1540575467063-ba8db27f82e5?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#EAF4FC]/88" />
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <motion.h2
             className="text-3xl md:text-5xl font-bold mb-4"
             initial="hidden"

@@ -27,6 +27,13 @@ const iconMap = {
   disc: Disc,
 } as const;
 
+const roleCardImages: Record<string, string> = {
+  "Music Producer": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
+  "AI Engineer": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=640&q=80",
+  "Brand Influencer": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=640&q=80",
+  "Record Label": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80",
+};
+
 const stats = [
   { value: "5M+", label: "Total Streams" },
   { value: "150K+", label: "Followers" },
@@ -166,12 +173,24 @@ export default function HomePage() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="group relative rounded-2xl bg-white shadow-md hover:shadow-xl transition-shadow overflow-hidden"
                 >
+                  {/* Subtle background texture */}
+                  {roleCardImages[card.title] && (
+                    <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500">
+                      <Image
+                        src={roleCardImages[card.title]}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    </div>
+                  )}
                   {/* Color accent bar */}
                   <div
-                    className="h-1.5 w-full"
+                    className="h-1.5 w-full relative z-10"
                     style={{ backgroundColor: card.color }}
                   />
-                  <div className="p-6">
+                  <div className="p-6 relative z-10">
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                       style={{ backgroundColor: `${card.color}15` }}
@@ -299,16 +318,24 @@ export default function HomePage() {
             variants={stagger}
           >
             {[
-              { label: "Record Label", href: "/label", gradient: "from-[#1B5E8A] to-[#1A1A2E]" },
-              { label: "Blog", href: "/blog", gradient: "from-[#F39C12] to-[#2E86DE]" },
-              { label: "AI Research", href: "/ai", gradient: "from-[#2E86DE] to-[#1B5E8A]" },
+              { label: "Record Label", href: "/label", gradient: "from-[#1B5E8A] to-[#1A1A2E]", image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80" },
+              { label: "Blog", href: "/blog", gradient: "from-[#F39C12] to-[#2E86DE]", image: "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=640&q=80" },
+              { label: "AI Research", href: "/ai", gradient: "from-[#2E86DE] to-[#1B5E8A]", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=640&q=80" },
             ].map((item) => (
               <motion.div key={item.label} variants={fadeUp} transition={{ duration: 0.6 }}>
                 <Link
                   href={item.href}
-                  className={`block rounded-2xl bg-gradient-to-br ${item.gradient} p-6 text-center text-white font-semibold text-lg shadow-md hover:shadow-xl transition-shadow`}
+                  className="block rounded-2xl relative overflow-hidden p-6 text-center text-white font-semibold text-lg shadow-md hover:shadow-xl transition-shadow"
                 >
-                  {item.label} &rarr;
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-85`} />
+                  <span className="relative z-10">{item.label} &rarr;</span>
                 </Link>
               </motion.div>
             ))}
@@ -317,8 +344,13 @@ export default function HomePage() {
       </section>
 
       {/* ─── Stats Bar ─── */}
-      <section className="bg-[#EAF4FC] py-16">
-        <div className="mx-auto max-w-5xl px-6">
+      <section className="relative py-16 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505236858219-8130802e8cf8?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#EAF4FC]/92" />
+        <div className="relative z-10 mx-auto max-w-5xl px-6">
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
             initial="hidden"
@@ -397,8 +429,13 @@ export default function HomePage() {
       </section>
 
       {/* ─── CTA Section ─── */}
-      <section className="bg-[#2E86DE] py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
+      <section className="relative py-20 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505236858219-8130802e8cf8?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#2E86DE]/90" />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <motion.h2
             className="text-3xl md:text-5xl font-bold text-white mb-4"
             initial="hidden"

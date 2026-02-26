@@ -243,13 +243,18 @@ export default function LabelPage() {
       {/* About the Label */}
       <motion.section
         id="about"
-        className="bg-[#F8FBFF] py-20 px-6 scroll-mt-20"
+        className="relative py-20 px-6 scroll-mt-20 overflow-hidden"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        <div className="max-w-4xl mx-auto text-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-[#F8FBFF]/93" />
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-[#F39C12]">
             About the Label
           </h2>
