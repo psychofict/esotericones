@@ -136,7 +136,7 @@ export default function MusicPage() {
       </section>
 
       {/* Filter Buttons */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
+      <section id="discography" className="max-w-6xl mx-auto px-6 py-10 scroll-mt-20">
         <div className="flex flex-wrap gap-3 justify-center mb-12">
           {filterButtons.map((btn) => (
             <button
@@ -317,7 +317,7 @@ export default function MusicPage() {
       </AnimatePresence>
 
       {/* Singles Section — Cover Art Grid */}
-      <section className="bg-[#EAF4FC]/50 py-16 px-6">
+      <section id="singles" className="bg-[#EAF4FC]/50 py-16 px-6 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
@@ -453,7 +453,7 @@ export default function MusicPage() {
       </AnimatePresence>
 
       {/* Top Tracks Section */}
-      <section className="py-16 px-6">
+      <section id="top-tracks" className="py-16 px-6 scroll-mt-20">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}

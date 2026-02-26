@@ -440,7 +440,16 @@ export function isNavGroup(entry: NavEntry): entry is NavGroup {
 }
 
 export const navEntries: NavEntry[] = [
-  { kind: "standalone", name: "Music", href: "/music" },
+  {
+    kind: "group",
+    label: "Music",
+    children: [
+      { name: "Overview", href: "/music" },
+      { name: "Discography", href: "/music#discography" },
+      { name: "Singles", href: "/music#singles" },
+      { name: "Top Tracks", href: "/music#top-tracks" },
+    ],
+  },
   {
     kind: "group",
     label: "Record Label",
@@ -466,10 +475,10 @@ export const navEntries: NavEntry[] = [
       { name: "Blog", href: "/blog" },
     ],
   },
-  { kind: "standalone", name: "About", href: "/about" },
-  { kind: "standalone", name: "Contact", href: "/contact" },
   { kind: "standalone", name: "Merch", href: "/merch" },
   { kind: "standalone", name: "Tour", href: "/tour" },
+  { kind: "standalone", name: "About", href: "/about" },
+  { kind: "standalone", name: "Contact", href: "/contact" },
 ];
 
 export const navLinks = navEntries.flatMap((entry) =>
