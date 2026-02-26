@@ -470,10 +470,7 @@ export const navEntries: NavEntry[] = [
   {
     kind: "group",
     label: "Brand Influencer",
-    children: [
-      { name: "Partnerships & Events", href: "/ambassadorships" },
-      { name: "Blog", href: "/blog" },
-    ],
+    children: [{ name: "Partnerships & Events", href: "/ambassadorships" }],
   },
   { kind: "standalone", name: "Merch", href: "/merch" },
   { kind: "standalone", name: "Tour", href: "/tour" },

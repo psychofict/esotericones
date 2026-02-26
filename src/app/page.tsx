@@ -29,7 +29,7 @@ const iconMap = {
 
 const roleCardImages: Record<string, string> = {
   "Music Producer": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
-  "AI Engineer": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=640&q=80",
+  "AI Engineer": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=640&q=80",
   "Brand Influencer": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=640&q=80",
   "Record Label": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80",
 };
@@ -52,14 +52,21 @@ export default function HomePage() {
   return (
     <main>
       {/* ─── Hero Section ─── */}
-      <section className="hero-gradient relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="animate-float absolute top-[15%] left-[10%] h-64 w-64 rounded-full bg-[#2E86DE] opacity-10" />
-        <div className="animate-float-slow absolute bottom-[20%] right-[10%] h-80 w-80 rounded-full bg-[#F39C12] opacity-10" />
-        <div className="animate-float-slow absolute top-[40%] right-[25%] h-40 w-40 rounded-full bg-[#2E86DE] opacity-[0.07]" />
-        <div className="animate-float absolute bottom-[35%] left-[20%] h-48 w-48 rounded-full bg-[#F39C12] opacity-[0.06]" />
+      <section
+        className="relative min-h-screen flex items-end justify-center overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/ebstar-hero.jpg')" }}
+      >
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 via-[#1A1A2E]/30 to-transparent" />
+
+        {/* Decorative floating circles */}
+        <div className="animate-float absolute top-[15%] left-[10%] h-64 w-64 rounded-full bg-[#2E86DE] opacity-[0.06]" />
+        <div className="animate-float-slow absolute bottom-[20%] right-[10%] h-80 w-80 rounded-full bg-[#F39C12] opacity-[0.06]" />
+        <div className="animate-float-slow absolute top-[40%] right-[25%] h-40 w-40 rounded-full bg-[#2E86DE] opacity-[0.04]" />
+        <div className="animate-float absolute bottom-[35%] left-[20%] h-48 w-48 rounded-full bg-[#F39C12] opacity-[0.04]" />
 
         <motion.div
-          className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 px-6 max-w-6xl mx-auto"
+          className="relative z-10 text-center px-6 pb-20 max-w-4xl mx-auto"
           initial="hidden"
           animate="visible"
           variants={{
@@ -67,69 +74,48 @@ export default function HomePage() {
             visible: { transition: { staggerChildren: 0.2 } },
           }}
         >
-          {/* Hero Image */}
-          <motion.div
-            className="flex-shrink-0"
+          <motion.h1
+            className="text-7xl md:text-9xl font-bold tracking-tight text-white"
             variants={fadeUp}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="w-56 h-56 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl ring-4 ring-white/50">
-              <Image
-                src="/images/ebstar-hero.jpg"
-                alt="Ebstar"
-                width={590}
-                height={404}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </div>
+            EBSTAR
+          </motion.h1>
+
+          <motion.p
+            className="mt-4 text-lg md:text-2xl text-white/80 font-medium"
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            From Bulawayo to Seoul
+          </motion.p>
+
+          <motion.p
+            className="mt-3 text-sm md:text-base text-white/60 tracking-widest uppercase"
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Music &nbsp;|&nbsp; AI Research &nbsp;|&nbsp; Brand Influencer &nbsp;|&nbsp; Record Label
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <a
+              href="#roles"
+              className="rounded-full bg-[#2E86DE] px-8 py-3 text-white font-semibold shadow-lg hover:bg-[#1B5E8A] transition-colors"
+            >
+              Explore My Work
+            </a>
+            <Link
+              href="/contact"
+              className="rounded-full border-2 border-white px-8 py-3 text-white font-semibold hover:bg-white hover:text-[#1A1A2E] transition-colors"
+            >
+              Get in Touch
+            </Link>
           </motion.div>
-
-          {/* Hero Text */}
-          <div className="text-center md:text-left">
-            <motion.h1
-              className="text-7xl md:text-9xl font-bold tracking-tight text-[#1A1A2E]"
-              variants={fadeUp}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              EBSTAR
-            </motion.h1>
-
-            <motion.p
-              className="mt-4 text-lg md:text-2xl text-[#1A1A2E]/70 font-medium"
-              variants={fadeUp}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              From Bulawayo to Seoul
-            </motion.p>
-
-            <motion.p
-              className="mt-3 text-sm md:text-base text-[#1A1A2E]/50 tracking-widest uppercase"
-              variants={fadeUp}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              Music &nbsp;|&nbsp; AI Research &nbsp;|&nbsp; Brand Influencer &nbsp;|&nbsp; Record Label
-            </motion.p>
-
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4"
-              variants={fadeUp}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <a
-                href="#roles"
-                className="rounded-full bg-[#2E86DE] px-8 py-3 text-white font-semibold shadow-lg hover:bg-[#1B5E8A] transition-colors"
-              >
-                Explore My Work
-              </a>
-              <Link
-                href="/contact"
-                className="rounded-full border-2 border-[#1A1A2E] px-8 py-3 text-[#1A1A2E] font-semibold hover:bg-[#1A1A2E] hover:text-white transition-colors"
-              >
-                Get in Touch
-              </Link>
-            </motion.div>
-          </div>
         </motion.div>
       </section>
 
