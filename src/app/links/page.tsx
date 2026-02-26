@@ -104,7 +104,7 @@ export default function LinksPage() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/30 via-[#1A1A2E]/90 to-[#1A1A2E]/95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/20 via-[#1A1A2E]/70 to-[#1A1A2E]/80" />
       <div className="w-full max-w-md relative z-10">
         {/* Avatar + Name */}
         <motion.div

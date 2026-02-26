@@ -73,7 +73,7 @@ export default function HomePage() {
             variants={fadeUp}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-2xl ring-4 ring-white/50">
+            <div className="w-56 h-56 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl ring-4 ring-white/50">
               <Image
                 src="/images/ebstar-hero.jpg"
                 alt="Ebstar"
@@ -175,7 +175,7 @@ export default function HomePage() {
                 >
                   {/* Subtle background texture */}
                   {roleCardImages[card.title] && (
-                    <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500">
+                    <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-500">
                       <Image
                         src={roleCardImages[card.title]}
                         alt=""
@@ -334,7 +334,7 @@ export default function HomePage() {
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 33vw"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-85`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-70`} />
                   <span className="relative z-10">{item.label} &rarr;</span>
                 </Link>
               </motion.div>
@@ -349,7 +349,7 @@ export default function HomePage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505236858219-8130802e8cf8?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#EAF4FC]/92" />
+        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
@@ -434,7 +434,7 @@ export default function HomePage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505236858219-8130802e8cf8?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#2E86DE]/90" />
+        <div className="absolute inset-0 bg-[#2E86DE]/75" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <motion.h2
             className="text-3xl md:text-5xl font-bold text-white mb-4"

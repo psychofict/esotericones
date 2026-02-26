@@ -253,7 +253,7 @@ export default function LabelPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#F8FBFF]/93" />
+        <div className="absolute inset-0 bg-[#F8FBFF]/65" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-[#F39C12]">
             About the Label

@@ -11,7 +11,7 @@ export default function MerchPage() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80')" }}
       />
-      <div className="absolute inset-0 bg-white/88" />
+      <div className="absolute inset-0 bg-white/65" />
       <div className="absolute top-16 left-[10%] w-36 h-36 rounded-full bg-[#F39C12]/8 blur-2xl" />
       <div className="absolute bottom-20 right-[12%] w-44 h-44 rounded-full bg-[#2E86DE]/8 blur-2xl" />
 

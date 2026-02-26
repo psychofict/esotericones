@@ -76,7 +76,7 @@ export default function AboutPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#EAF4FC]/85" />
+        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
@@ -231,7 +231,7 @@ export default function AboutPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#EAF4FC]/92" />
+        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
         <div className="relative z-10 max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}

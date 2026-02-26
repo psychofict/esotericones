@@ -125,7 +125,7 @@ export default function AmbassadorshipsPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#EAF4FC]/90" />
+        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
         <div className="animate-float absolute top-[20%] left-[8%] h-48 w-48 rounded-full bg-[#F39C12] opacity-[0.07]" />
         <div className="animate-float-slow absolute bottom-[15%] right-[10%] h-64 w-64 rounded-full bg-[#2E86DE] opacity-[0.07]" />
 
@@ -396,7 +396,7 @@ export default function AmbassadorshipsPage() {
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#EAF4FC]/60 to-[#2E86DE]/20" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#EAF4FC]/40 to-[#2E86DE]/10" />
                     </div>
                     <div className="p-6">
                       <p className="text-xs text-[#F39C12] font-medium mb-2">
@@ -428,7 +428,7 @@ export default function AmbassadorshipsPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1540575467063-ba8db27f82e5?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#EAF4FC]/88" />
+        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <motion.h2
             className="text-3xl md:text-5xl font-bold mb-4"

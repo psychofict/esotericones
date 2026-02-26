@@ -107,7 +107,7 @@ export default function MusicPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#EAF4FC]/90" />
+        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}

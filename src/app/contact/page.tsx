@@ -297,7 +297,7 @@ export default function ContactPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#1A1A2E]/82" />
+        <div className="absolute inset-0 bg-[#1A1A2E]/65" />
         <motion.div
           className="relative z-10"
           initial={{ opacity: 0, y: 30 }}

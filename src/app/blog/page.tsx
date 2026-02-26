@@ -38,7 +38,7 @@ export default function BlogPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1485579149621-3123dd979885?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#1A1A2E]/82" />
+        <div className="absolute inset-0 bg-[#1A1A2E]/65" />
         <motion.div
           className="relative z-10"
           initial={{ opacity: 0, y: 30 }}
@@ -110,7 +110,7 @@ export default function BlogPage() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient} opacity-60`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient} opacity-40`} />
                   <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium bg-black/30 text-white/80 backdrop-blur-sm z-10">
                     {post.tag}
                   </span>
