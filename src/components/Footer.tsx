@@ -38,8 +38,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#1B5E8A]">
-              From Bulawayo to Seoul — record producer, AI/ML engineer,
-              brand influencer, and founder of The ES&Oslash;T&Euml;RIC Ones.
+              AI by profession, music by obsession, travel by instinct —
+              record producer, AI/ML engineer, brand influencer, and founder of The ES&Oslash;T&Euml;RIC Ones.
             </p>
           </div>
 

@@ -17,8 +17,6 @@ export function getPersonSchema() {
       "https://en.wikipedia.org/wiki/Ebstar",
     ],
     jobTitle: ["Music Producer", "AI Research Engineer", "Brand Influencer"],
-    birthDate: "2001-11-29",
-    birthPlace: { "@type": "Place", name: "Bulawayo, Zimbabwe" },
     nationality: "Zimbabwean",
   };
 }

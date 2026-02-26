@@ -87,7 +87,7 @@ export default function HomePage() {
             variants={fadeUp}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            From Bulawayo to Seoul
+            AI by Profession, Music by Obsession, Travel by Instinct
           </motion.p>
 
           <motion.p
@@ -140,7 +140,7 @@ export default function HomePage() {
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            From Bulawayo to Seoul — producing music, engineering AI, building brands, and running a record label.
+            AI by profession, music by obsession, travel by instinct — producing music, engineering AI, building brands, and running a record label.
           </motion.p>
 
           <motion.div

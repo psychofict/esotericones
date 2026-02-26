@@ -8,7 +8,7 @@ export const artist = {
   labelFounded: 2023,
   contact: "contact@ebstar.co",
   tagline: "Producer. Engineer. Influencer. Bridging Worlds.",
-  bio: `Ebenezer "Ebstar" Tarubinga is a South Korea-based Zimbabwean musician, producer, brand influencer, record label owner, A.I. engineer, and socialite. Born in Bulawayo, Zimbabwe on November 29, 2001, Ebstar made his international debut in 2020 at only 19 years of age.
+  bio: `Ebenezer "Ebstar" Tarubinga is a South Korea-based Zimbabwean musician, producer, brand influencer, record label owner, A.I. engineer, and socialite. Ebstar made his international debut in 2020 at only 19 years of age.
 
 Known for his piano house and dance-pop productions, Ebstar's tracks have garnered over 5 million streams. His signature production style emphasizes melody across a wide variety of electronic genres — from Deep House and Progressive House to Future Bass, Amapiano, Pop, Big Room, and Hip-Hop.
 
@@ -116,7 +116,6 @@ export const topTracks = [
 ];
 
 export const timeline = [
-  { year: 2001, event: "Born in Bulawayo, Zimbabwe" },
   { year: 2020, event: "International debut at age 19" },
   { year: 2022, event: 'Debut album "Life Is Beautiful" / #290 SkioMusic chart / Moved to South Korea / Started AI at GliT' },
   { year: 2023, event: "Founded The ESØTËRIC Ones / Multiple government ambassadorships / Started MSc AI at Korea University" },
