@@ -6,7 +6,7 @@ export const artist = {
   basedIn: "Seoul, South Korea",
   label: "The ESØTËRIC Ones",
   labelFounded: 2023,
-  contact: "ebstarmusic@gmail.com",
+  contact: "contact@ebstar.co",
   tagline: "Producer. Engineer. Influencer. Bridging Worlds.",
   bio: `Ebenezer "Ebstar" Tarubinga is a South Korea-based Zimbabwean musician, producer, brand influencer, record label owner, A.I. engineer, and socialite. Born in Bulawayo, Zimbabwe on November 29, 2001, Ebstar made his international debut in 2020 at only 19 years of age.
 

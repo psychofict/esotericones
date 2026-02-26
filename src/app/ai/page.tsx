@@ -472,7 +472,7 @@ export default function AIPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="mailto:ebstarmusic@gmail.com"
+                href="mailto:contact@ebstar.co"
                 className="px-8 py-3 rounded-full bg-[#2E86DE] text-white font-semibold hover:bg-[#1B5E8A] transition-colors"
               >
                 Get in Touch

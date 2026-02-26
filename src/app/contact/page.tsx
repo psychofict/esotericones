@@ -372,10 +372,10 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-[#2E86DE]/20 bg-white/5 backdrop-blur-md p-6">
               <h3 className="font-semibold mb-3 text-[#F39C12]">Email</h3>
               <a
-                href="mailto:ebstarmusic@gmail.com"
+                href="mailto:contact@ebstar.co"
                 className="text-[#EAF4FC]/80 hover:text-[#2E86DE] transition-colors text-sm break-all"
               >
-                ebstarmusic@gmail.com
+                contact@ebstar.co
               </a>
             </div>
 

@@ -34,8 +34,8 @@ export async function POST(req: NextRequest) {
 
     // Send notification to artist
     await resend.emails.send({
-      from: "EBSTAR Website <noreply@ebstar.com>",
-      to: "ebstarmusic@gmail.com",
+      from: "EBSTAR Website <noreply@ebstar.co>",
+      to: "contact@ebstar.co",
       subject,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
 
     // Send auto-reply confirmation to sender
     await resend.emails.send({
-      from: "EBSTAR <noreply@ebstar.com>",
+      from: "EBSTAR <noreply@ebstar.co>",
       to: email,
       subject: "Thank you for reaching out! — EBSTAR",
       html: `

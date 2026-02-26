@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
     // Send welcome email
     await resend.emails.send({
-      from: "EBSTAR <noreply@ebstar.com>",
+      from: "EBSTAR <noreply@ebstar.co>",
       to: email,
       subject: "Welcome to the ESOTERIC circle",
       html: `
@@ -44,8 +44,8 @@ export async function POST(req: NextRequest) {
 
     // Notify artist of new subscriber
     await resend.emails.send({
-      from: "EBSTAR Website <noreply@ebstar.com>",
-      to: "ebstarmusic@gmail.com",
+      from: "EBSTAR Website <noreply@ebstar.co>",
+      to: "contact@ebstar.co",
       subject: "New newsletter subscriber!",
       html: `<p>New subscriber: <strong>${email}</strong></p>`,
     });
