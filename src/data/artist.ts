@@ -106,12 +106,12 @@ export const singles = [
 ];
 
 export const topTracks = [
-  { title: "After The Storm, You'll See The Sun", streams: "254,155", source: "Life Is Beautiful", spotifyUrl: "https://open.spotify.com/track/4cOFMdMOFCqm0lLODnFCAa", albumId: "3ZHNSXWQZJ31leN1hYl4Un" },
-  { title: "Seoul Love", streams: "188,000", source: "Life Is Beautiful", spotifyUrl: "https://open.spotify.com/track/6RFx3ikAz2dUMr3xMpjKEH", albumId: "3ZHNSXWQZJ31leN1hYl4Un" },
-  { title: "I Could Be The One For You", streams: "67,459", source: "Life Is Beautiful", spotifyUrl: "https://open.spotify.com/track/2KAlW3JIgSj3GFOS6TaMYy", albumId: "3ZHNSXWQZJ31leN1hYl4Un" },
-  { title: "COMING BACK FOR MORE", streams: "51,305", source: "Single", spotifyUrl: "https://open.spotify.com/track/6pAOzMC5F8QGXB0bUmBYsN", albumId: "26kkRdv0k9ueKLRdFV0G5C" },
-  { title: "But....I DONT TRUST YOU", streams: "38,237", source: "ECHOES OF LOVE I", spotifyUrl: "https://open.spotify.com/track/3hVwELNOFMhZ1FRRgq0xvt", albumId: "6lJzDeHVkGbsLAYG5SohwR" },
-  { title: "The Breakup Anthem", streams: "28,306", source: "ECHOES OF LOVE I", spotifyUrl: "https://open.spotify.com/track/5vEDDR8S5VhGFBG7kDzOxj", albumId: "6lJzDeHVkGbsLAYG5SohwR" },
+  { title: "After The Storm, You'll See The Sun", streams: "254,155", source: "With Love, Ebstar :)", spotifyUrl: "https://open.spotify.com/track/1o1Aqx9YlgfWkn0xuEhTLJ", albumId: "75iwN0MtpZoBmneKAUZiUF" },
+  { title: "Seoul Love", streams: "188,000", source: "ECHOES OF LOVE I (Deluxe Version)", spotifyUrl: "https://open.spotify.com/track/4O4NYJVGHNGKAIuiUHavlP", albumId: "6lJzDeHVkGbsLAYG5SohwR" },
+  { title: "I Could Be The One For You", streams: "67,459", source: "With Love, Ebstar :)", spotifyUrl: "https://open.spotify.com/track/3ch9w1LevBCtSezl61CFYt", albumId: "75iwN0MtpZoBmneKAUZiUF" },
+  { title: "COMING BACK FOR MORE", streams: "51,305", source: "Single", spotifyUrl: "https://open.spotify.com/track/7HCJa4MeuAT14CsX6BxulP", albumId: "26kkRdv0k9ueKLRdFV0G5C" },
+  { title: "But....I DONT TRUST YOU", streams: "38,237", source: "ECHOES OF LOVE I (Deluxe Version)", spotifyUrl: "https://open.spotify.com/track/2K4A72FxmLGgMUBat3qkji", albumId: "6lJzDeHVkGbsLAYG5SohwR" },
+  { title: "The Breakup Anthem", streams: "28,306", source: "ECHOES OF LOVE I (Deluxe Version)", spotifyUrl: "https://open.spotify.com/track/2EpIKv03Cc0Irmw0atbkl6", albumId: "6lJzDeHVkGbsLAYG5SohwR" },
 ];
 
 export const timeline = [
