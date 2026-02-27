@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ambassadorships, brandPartnerships, eventAppearances } from "@/data/artist";
+import { macroInfluencer, brandPartnerships, eventAppearances } from "@/data/artist";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -41,15 +41,15 @@ const pressItems = [
   },
 ];
 
-// Group ambassadorships by year
-const grouped = ambassadorships.reduce(
+// Group macro influencer roles by year
+const grouped = macroInfluencer.reduce(
   (acc, item) => {
     const key = item.year;
     if (!acc[key]) acc[key] = [];
     acc[key].push(item);
     return acc;
   },
-  {} as Record<string, typeof ambassadorships>
+  {} as Record<string, typeof macroInfluencer>
 );
 
 const sortedYears = Object.keys(grouped).sort((a, b) => {
@@ -114,7 +114,7 @@ const eventTypeColors: Record<string, string> = {
   Travel: "bg-[#27AE60]/10 text-[#27AE60]",
 };
 
-export default function AmbassadorshipsPage() {
+export default function MacroInfluencerPage() {
   let globalIndex = 0;
 
   return (
@@ -141,7 +141,7 @@ export default function AmbassadorshipsPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Brand Influencer
+            Macro Influencer
           </motion.p>
           <motion.h1
             className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
@@ -177,7 +177,7 @@ export default function AmbassadorshipsPage() {
               { value: "150K+", label: "Followers" },
               { value: "10M+", label: "Social Views" },
               { value: "50+", label: "Brand Partners" },
-              { value: `${ambassadorships.length}+`, label: "Gov. Appointments" },
+              { value: `${macroInfluencer.length}+`, label: "Gov. Appointments" },
             ].map((stat) => (
               <motion.div key={stat.label} variants={fadeUp}>
                 <p className="text-4xl md:text-5xl font-bold text-[#F39C12]">{stat.value}</p>
@@ -447,7 +447,7 @@ export default function AmbassadorshipsPage() {
             variants={fadeUp}
           >
             Open to brand partnerships, event appearances, campaign collaborations,
-            and ambassador opportunities.
+            and macro influencer opportunities.
           </motion.p>
           <motion.a
             href="/contact"

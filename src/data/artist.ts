@@ -117,12 +117,12 @@ export const topTracks = [
 export const timeline = [
   { year: 2020, event: "International debut at age 19" },
   { year: 2022, event: 'Debut album "Life Is Beautiful" / #290 SkioMusic chart / Moved to South Korea / Started AI at GliT' },
-  { year: 2023, event: "Founded The ESØTËRIC Ones / Multiple government ambassadorships / Started MSc AI at Korea University" },
+  { year: 2023, event: "Founded The ESØTËRIC Ones / Multiple government appointments / Started MSc AI at Korea University" },
   { year: 2024, event: "Released ECHOES OF LOVE I & Maknaebe / Forbes BLK Member / Met Zimbabwean President at Korea-Africa Summit / Published CW-BASS research" },
   { year: 2025, event: "GINCON Committee Member (National Assembly) / MSc completed / AI Research Engineer at Gractor" },
 ];
 
-export const ambassadorships = [
+export const macroInfluencer = [
   { year: "2025", org: "Seoul Tourism Organisation", role: "Global SeoulMates" },
   { year: "2025", org: "South Korea National Assembly", role: "GINCON Committee Member" },
   { year: "2025", org: "Gumi City", role: "Invited Influencer" },
@@ -138,17 +138,17 @@ export const ambassadorships = [
   { year: "2024", org: "Korea-Africa Summit", role: "Meeting with Zimbabwean President" },
   { year: "2023", org: "Seoul Tourism Organisation", role: "Global SeoulMates" },
   { year: "2023", org: "Gyeonggi Provincial Government", role: "Oh My Gyeonggi Supporter" },
-  { year: "2023", org: "KOFICE / Ministry of Culture, Sports and Tourism", role: "Outlookie Cultural Ambassador" },
+  { year: "2023", org: "KOFICE / Ministry of Culture, Sports and Tourism", role: "Outlookie Cultural Macro Influencer" },
   { year: "2023", org: "Korea Ministry of Foreign Affairs", role: "Korea Allimi" },
   { year: "2023", org: "Busan Metropolitan Government", role: "Busan English-City Activist" },
   { year: "2023", org: "Ministry of Foreign Affairs / Busan Metropolitan Govt", role: "Busan National Diplomacy Supporter" },
   { year: "2023", org: "Busan Metropolitan Government", role: "Busan World Expo Supporter" },
-  { year: "2023", org: "UNESCO Korea / KOCIS", role: "UNESCO Dangjin Juldarigi Festival Ambassador" },
+  { year: "2023", org: "UNESCO Korea / KOCIS", role: "UNESCO Dangjin Juldarigi Festival Macro Influencer" },
   { year: "2023", org: "Hello World Korea", role: "Glocal Crew Mate" },
-  { year: "2023", org: "Jeonnam Provincial Government", role: "Jeonnam Provincial Ambassador" },
-  { year: "2023", org: "Geumsan County", role: "Geumsan Insam Festival Ambassador" },
+  { year: "2023", org: "Jeonnam Provincial Government", role: "Jeonnam Provincial Macro Influencer" },
+  { year: "2023", org: "Geumsan County", role: "Geumsan Insam Festival Macro Influencer" },
   { year: "2023", org: "DDP Seoul", role: "DDP Seoul Light — Special Press Guest" },
-  { year: "2023", org: "Jeonju City", role: "Jeonju Tourism Seminar Ambassador" },
+  { year: "2023", org: "Jeonju City", role: "Jeonju Tourism Seminar Macro Influencer" },
 ];
 
 export const brandPartnerships = [
@@ -209,13 +209,13 @@ export const blogPosts = [
     excerpt:
       "A milestone in cultural diplomacy — Ebstar has been appointed as a GINCON Committee Member in South Korea's National Assembly, representing foreign voices in policy discussions.",
     date: "2025-03-10",
-    tag: "Ambassadorships",
+    tag: "Macro Influencer",
     gradient: "from-[#2E86DE] to-[#1B5E8A]",
     readTime: "4 min read",
     content: [
       "In a historic appointment, Ebstar has been named a GINCON Committee Member within South Korea's National Assembly. This role places him at the intersection of cultural exchange, policy, and international relations — a space where music and diplomacy meet.",
       "GINCON (Global INfluencer CONnection) is a committee focused on leveraging the influence of global content creators and cultural figures to strengthen South Korea's international relationships. As a committee member, Ebstar will contribute to discussions on cultural policy, foreign resident experiences, and soft power initiatives.",
-      "This appointment builds on years of ambassadorial work. Since moving to South Korea in 2022, Ebstar has served as a Global SeoulMate for the Seoul Tourism Organisation, a Korea Allimi for the Ministry of Foreign Affairs, and has held multiple provincial government ambassador roles.",
+      "This appointment builds on years of influencer work. Since moving to South Korea in 2022, Ebstar has served as a Global SeoulMate for the Seoul Tourism Organisation, a Korea Allimi for the Ministry of Foreign Affairs, and has held multiple provincial government roles.",
       "\"This is bigger than me,\" Ebstar shared. \"It's about every African, every foreigner who has made South Korea their home and wants their voice heard. I'm honored to be in a position where I can bridge these worlds not just through music, but through meaningful policy conversations.\"",
       "The appointment was formally announced at the National Assembly in Seoul and represents one of the first instances of a Zimbabwean national serving in an advisory capacity within South Korea's legislative body.",
     ],
@@ -468,7 +468,7 @@ export const navEntries: NavEntry[] = [
   {
     kind: "group",
     label: "Brand Influencer",
-    children: [{ name: "Partnerships & Events", href: "/ambassadorships" }],
+    children: [{ name: "Partnerships & Events", href: "/macro-influencer" }],
   },
   { kind: "standalone", name: "Merch", href: "/merch" },
   { kind: "standalone", name: "Tour", href: "/tour" },
@@ -506,7 +506,7 @@ export const roleCards = [
     subtitle: "50+ Brands",
     description:
       "150K+ followers, 50+ brand partnerships, and VIP appearances at Korea Blockchain Week, Fashion Week, and more.",
-    href: "/ambassadorships",
+    href: "/macro-influencer",
     color: "#F39C12",
     icon: "globe" as const,
   },
