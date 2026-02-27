@@ -16,7 +16,7 @@ export function getPersonSchema() {
       "https://www.imdb.com/name/nm14467036/",
       "https://en.wikipedia.org/wiki/Ebstar",
     ],
-    jobTitle: ["Music Producer", "AI Research Engineer", "Brand Influencer"],
+    jobTitle: ["Music Producer", "AI Research Engineer", "Macro Influencer"],
     nationality: "Zimbabwean",
   };
 }

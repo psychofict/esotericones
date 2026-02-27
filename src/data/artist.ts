@@ -467,7 +467,7 @@ export const navEntries: NavEntry[] = [
   },
   {
     kind: "group",
-    label: "Brand Influencer",
+    label: "Macro Influencer",
     children: [{ name: "Partnerships & Events", href: "/macro-influencer" }],
   },
   { kind: "standalone", name: "Merch", href: "/merch" },
@@ -502,7 +502,7 @@ export const roleCards = [
     icon: "cpu" as const,
   },
   {
-    title: "Brand Influencer",
+    title: "Macro Influencer",
     subtitle: "50+ Brands",
     description:
       "150K+ followers, 50+ brand partnerships, and VIP appearances at Korea Blockchain Week, Fashion Week, and more.",
@@ -539,7 +539,7 @@ As a producer, Ebstar has garnered over 5 million streams with his signature pia
         "MSc AI from Korea University. Published CW-BASS (IJCNN 2025) and FARCLUSS. Specializing in computer vision and semantic segmentation.",
     },
     {
-      title: "Brand Influencer",
+      title: "Macro Influencer",
       icon: "globe" as const,
       summary:
         "150K+ followers, 10M+ views. 50+ brand partnerships with Jetpac, Mobifren, and Korean government bodies. VIP at Blockchain Week, Fashion Week, and more.",

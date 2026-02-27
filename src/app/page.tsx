@@ -30,7 +30,7 @@ const iconMap = {
 const roleCardImages: Record<string, string> = {
   "Music Producer": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
   "AI/ML Engineer": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=640&q=80",
-  "Brand Influencer": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=640&q=80",
+  "Macro Influencer": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=640&q=80",
   "Record Label": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80",
 };
 
@@ -95,7 +95,7 @@ export default function HomePage() {
             variants={fadeUp}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Music &nbsp;|&nbsp; AI Research &nbsp;|&nbsp; Brand Influencer &nbsp;|&nbsp; Record Label
+            Music &nbsp;|&nbsp; AI Research &nbsp;|&nbsp; Macro Influencer &nbsp;|&nbsp; Record Label
           </motion.p>
 
           <motion.div

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
-import { socials, navLinks } from "@/data/artist";
+import { socials } from "@/data/artist";
 import { useFormSubmit } from "@/lib/useFormSubmit";
 
 export default function Footer() {
@@ -49,7 +49,14 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-3">
-              {navLinks.map((link) => (
+              {[
+                { name: "Music", href: "/music" },
+                { name: "AI/ML Engineer", href: "/ai" },
+                { name: "Macro Influencer", href: "/macro-influencer" },
+                { name: "Record Label", href: "/label" },
+                { name: "About", href: "/about" },
+                { name: "Contact", href: "/contact" },
+              ].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -59,14 +66,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/links"
-                  className="text-sm text-[#1B5E8A] transition-colors hover:text-[#2E86DE]"
-                >
-                  All Links
-                </Link>
-              </li>
             </ul>
           </div>
 
