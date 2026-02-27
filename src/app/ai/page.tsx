@@ -30,6 +30,14 @@ const stagger = {
   },
 };
 
+const projectCategoryImages: Record<string, string> = {
+  "Computer Vision": "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=640&q=80",
+  "Generative Models": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=640&q=80",
+  "Reinforcement Learning": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=640&q=80",
+  "Medical Imaging": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=640&q=80",
+  "LLMs": "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=640&q=80",
+};
+
 const projectCategories = ["All", ...Array.from(new Set(aiProfile.projects.map((p) => p.category)))];
 
 export default function AIPage() {
@@ -76,7 +84,7 @@ export default function AIPage() {
             custom={1}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
           >
-            AI <span className="text-[#2E86DE]">Engineer</span>
+            AI/ML <span className="text-[#2E86DE]">Engineer</span>
           </motion.h1>
           <motion.p
             variants={fadeUp}
@@ -247,21 +255,35 @@ export default function AIPage() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-2xl border border-gray-200 bg-white shadow-sm p-6 hover:border-[#F39C12]/40 hover:shadow-md transition-all hover:-translate-y-1"
+                className="group rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden hover:border-[#F39C12]/40 hover:shadow-md transition-all hover:-translate-y-1"
                 custom={i}
                 initial="hidden"
                 animate="visible"
                 variants={fadeUp}
               >
-                <span className="inline-block px-3 py-1 rounded-full text-[10px] font-medium bg-[#2E86DE]/10 text-[#2E86DE] mb-4">
-                  {project.category}
-                </span>
-                <h3 className="font-semibold leading-snug mb-3 group-hover:text-[#2E86DE] transition-colors">
-                  {project.title}
-                </h3>
-                <span className="text-sm text-[#2E86DE] group-hover:text-[#F39C12] transition-colors">
-                  View Project &rarr;
-                </span>
+                {projectCategoryImages[project.category] && (
+                  <div className="relative h-36 overflow-hidden">
+                    <Image
+                      src={projectCategoryImages[project.category]}
+                      alt={project.category}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full text-[10px] font-medium bg-white/90 text-[#2E86DE]">
+                      {project.category}
+                    </span>
+                  </div>
+                )}
+                <div className="p-6">
+                  <h3 className="font-semibold leading-snug mb-3 group-hover:text-[#2E86DE] transition-colors">
+                    {project.title}
+                  </h3>
+                  <span className="text-sm text-[#2E86DE] group-hover:text-[#F39C12] transition-colors">
+                    View Project &rarr;
+                  </span>
+                </div>
               </motion.a>
             ))}
           </motion.div>
