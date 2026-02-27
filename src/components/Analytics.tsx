@@ -4,6 +4,7 @@ import Script from "next/script";
 
 export default function Analytics() {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  const naverAnalyticsId = process.env.NEXT_PUBLIC_NAVER_ANALYTICS_ID;
 
   return (
     <>
@@ -17,7 +18,7 @@ export default function Analytics() {
         />
       )}
 
-      {/* Google Analytics 4 - optional */}
+      {/* Google Analytics 4 */}
       {process.env.NEXT_PUBLIC_GA_ID && (
         <>
           <Script
@@ -33,6 +34,23 @@ export default function Analytics() {
             `}
           </Script>
         </>
+      )}
+
+      {/* Naver Analytics */}
+      {naverAnalyticsId && (
+        <Script id="naver-analytics" strategy="afterInteractive">
+          {`
+            if(!wcs_add) var wcs_add = {};
+            wcs_add["wa"] = "${naverAnalyticsId}";
+            if(window.wcs) wcs_do();
+          `}
+        </Script>
+      )}
+      {naverAnalyticsId && (
+        <Script
+          src="https://wcs.naver.net/wcslog.js"
+          strategy="afterInteractive"
+        />
       )}
     </>
   );

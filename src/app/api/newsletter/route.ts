@@ -1,13 +1,50 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// Simple in-memory rate limiter
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimit.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { email } = await req.json();
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
+    }
+
+    // Basic email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
 
     // Send welcome email
@@ -35,7 +72,7 @@ export async function POST(req: NextRequest) {
           </div>
           <div style="background: #EAF4FC; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
             <p style="color: #999; font-size: 12px; margin: 0;">
-              © 2025 The ESOTERIC Ones. All rights reserved.
+              &copy; ${new Date().getFullYear()} The ESOTERIC Ones. All rights reserved.
             </p>
           </div>
         </div>
@@ -47,7 +84,7 @@ export async function POST(req: NextRequest) {
       from: "EBSTAR Website <noreply@ebstar.co>",
       to: "contact@ebstar.co",
       subject: "New newsletter subscriber!",
-      html: `<p>New subscriber: <strong>${email}</strong></p>`,
+      html: `<p>New subscriber: <strong>${escapeHtml(email)}</strong></p>`,
     });
 
     return NextResponse.json({ success: true });

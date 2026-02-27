@@ -134,7 +134,7 @@ export default function ArtistProfilePage() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-[#1A1A2E]">
+    <main id="main-content" className="min-h-screen bg-white text-[#1A1A2E]">
       {/* Back Link */}
       <div className="max-w-4xl mx-auto px-6 pt-8">
         <Link

@@ -94,7 +94,7 @@ export function InstagramFeed() {
 
   return (
     <div ref={containerRef}>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 max-w-lg mx-auto">
         {featuredPosts.map((shortcode) => (
           <div key={shortcode} className="relative min-h-[400px]">
             {!loaded[shortcode] && (

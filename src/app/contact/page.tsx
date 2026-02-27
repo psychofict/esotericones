@@ -46,32 +46,32 @@ function BookingForm() {
     <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Name</label>
-          <input name="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name" />
+          <label htmlFor="name" className={labelClass}>Name</label>
+          <input id="name" name="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name" />
         </div>
         <div>
-          <label className={labelClass}>Email</label>
-          <input name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
-        </div>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label className={labelClass}>Event Type</label>
-          <input name="eventType" value={form.eventType} onChange={onChange} className={inputClass} placeholder="Festival, Club, Private, etc." />
-        </div>
-        <div>
-          <label className={labelClass}>Date</label>
-          <input name="date" type="date" value={form.date} onChange={onChange} className={inputClass} />
+          <label htmlFor="email" className={labelClass}>Email</label>
+          <input id="email" name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
         </div>
       </div>
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Location</label>
-          <input name="location" value={form.location} onChange={onChange} className={inputClass} placeholder="City, Venue" />
+          <label htmlFor="eventType" className={labelClass}>Event Type</label>
+          <input id="eventType" name="eventType" value={form.eventType} onChange={onChange} className={inputClass} placeholder="Festival, Club, Private, etc." />
         </div>
         <div>
-          <label className={labelClass}>Budget Range</label>
-          <select name="budget" value={form.budget} onChange={onChange} className={inputClass}>
+          <label htmlFor="date" className={labelClass}>Date</label>
+          <input id="date" name="date" type="date" value={form.date} onChange={onChange} className={inputClass} />
+        </div>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="location" className={labelClass}>Location</label>
+          <input id="location" name="location" value={form.location} onChange={onChange} className={inputClass} placeholder="City, Venue" />
+        </div>
+        <div>
+          <label htmlFor="budget" className={labelClass}>Budget Range</label>
+          <select id="budget" name="budget" value={form.budget} onChange={onChange} className={inputClass}>
             <option value="">Select budget range</option>
             <option value="under-1k">Under $1,000</option>
             <option value="1k-5k">$1,000 - $5,000</option>
@@ -82,8 +82,8 @@ function BookingForm() {
         </div>
       </div>
       <div>
-        <label className={labelClass}>Message</label>
-        <textarea name="message" value={form.message} onChange={onChange} rows={4} className={`${inputClass} resize-none`} placeholder="Tell us about your event..." />
+        <label htmlFor="message" className={labelClass}>Message</label>
+        <textarea id="message" name="message" value={form.message} onChange={onChange} rows={4} className={`${inputClass} resize-none`} placeholder="Tell us about your event..." />
       </div>
       <button type="submit" disabled={loading} className={btnBase}>
         {loading && <Loader2 className="w-4 h-4 animate-spin" />}
@@ -108,21 +108,21 @@ function PressForm() {
     <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Outlet Name</label>
-          <input name="outlet" value={form.outlet} onChange={onChange} required className={inputClass} placeholder="Publication / Media outlet" />
+          <label htmlFor="outlet" className={labelClass}>Outlet Name</label>
+          <input id="outlet" name="outlet" value={form.outlet} onChange={onChange} required className={inputClass} placeholder="Publication / Media outlet" />
         </div>
         <div>
-          <label className={labelClass}>Email</label>
-          <input name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@outlet.com" />
+          <label htmlFor="email" className={labelClass}>Email</label>
+          <input id="email" name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@outlet.com" />
         </div>
       </div>
       <div>
-        <label className={labelClass}>Deadline</label>
-        <input name="deadline" type="date" value={form.deadline} onChange={onChange} className={inputClass} />
+        <label htmlFor="deadline" className={labelClass}>Deadline</label>
+        <input id="deadline" name="deadline" type="date" value={form.deadline} onChange={onChange} className={inputClass} />
       </div>
       <div>
-        <label className={labelClass}>Topic</label>
-        <textarea name="topic" value={form.topic} onChange={onChange} rows={4} required className={`${inputClass} resize-none`} placeholder="What would you like to cover?" />
+        <label htmlFor="topic" className={labelClass}>Topic</label>
+        <textarea id="topic" name="topic" value={form.topic} onChange={onChange} rows={4} required className={`${inputClass} resize-none`} placeholder="What would you like to cover?" />
       </div>
       <button type="submit" disabled={loading} className={btnBase}>
         {loading && <Loader2 className="w-4 h-4 animate-spin" />}
@@ -147,25 +147,25 @@ function CollaborationsForm() {
     <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Artist / Brand Name</label>
-          <input name="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name or brand" />
+          <label htmlFor="name" className={labelClass}>Artist / Brand Name</label>
+          <input id="name" name="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name or brand" />
         </div>
         <div>
-          <label className={labelClass}>Email</label>
-          <input name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
+          <label htmlFor="email" className={labelClass}>Email</label>
+          <input id="email" name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
         </div>
       </div>
       <div>
-        <label className={labelClass}>Collaboration Type</label>
-        <input name="collabType" value={form.collabType} onChange={onChange} className={inputClass} placeholder="Music, Brand Deal, Content, etc." />
+        <label htmlFor="collabType" className={labelClass}>Collaboration Type</label>
+        <input id="collabType" name="collabType" value={form.collabType} onChange={onChange} className={inputClass} placeholder="Music, Brand Deal, Content, etc." />
       </div>
       <div>
-        <label className={labelClass}>Links</label>
-        <input name="links" value={form.links} onChange={onChange} className={inputClass} placeholder="Website, social media, portfolio, etc." />
+        <label htmlFor="links" className={labelClass}>Links</label>
+        <input id="links" name="links" value={form.links} onChange={onChange} className={inputClass} placeholder="Website, social media, portfolio, etc." />
       </div>
       <div>
-        <label className={labelClass}>Message</label>
-        <textarea name="message" value={form.message} onChange={onChange} rows={4} className={`${inputClass} resize-none`} placeholder="Tell us about the collaboration..." />
+        <label htmlFor="message" className={labelClass}>Message</label>
+        <textarea id="message" name="message" value={form.message} onChange={onChange} rows={4} className={`${inputClass} resize-none`} placeholder="Tell us about the collaboration..." />
       </div>
       <button type="submit" disabled={loading} className={btnBase}>
         {loading && <Loader2 className="w-4 h-4 animate-spin" />}
@@ -190,25 +190,25 @@ function LabelSubmissionsForm() {
     <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Artist Name</label>
-          <input name="artistName" value={form.artistName} onChange={onChange} required className={inputClass} placeholder="Your artist / stage name" />
+          <label htmlFor="artistName" className={labelClass}>Artist Name</label>
+          <input id="artistName" name="artistName" value={form.artistName} onChange={onChange} required className={inputClass} placeholder="Your artist / stage name" />
         </div>
         <div>
-          <label className={labelClass}>Email</label>
-          <input name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
+          <label htmlFor="email" className={labelClass}>Email</label>
+          <input id="email" name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
         </div>
       </div>
       <div>
-        <label className={labelClass}>Genre</label>
-        <input name="genre" value={form.genre} onChange={onChange} required className={inputClass} placeholder="e.g. Piano House, Amapiano" />
+        <label htmlFor="genre" className={labelClass}>Genre</label>
+        <input id="genre" name="genre" value={form.genre} onChange={onChange} required className={inputClass} placeholder="e.g. Piano House, Amapiano" />
       </div>
       <div>
-        <label className={labelClass}>Links to Music</label>
-        <input name="musicLinks" value={form.musicLinks} onChange={onChange} required className={inputClass} placeholder="Spotify, SoundCloud, Google Drive, etc." />
+        <label htmlFor="musicLinks" className={labelClass}>Links to Music</label>
+        <input id="musicLinks" name="musicLinks" value={form.musicLinks} onChange={onChange} required className={inputClass} placeholder="Spotify, SoundCloud, Google Drive, etc." />
       </div>
       <div>
-        <label className={labelClass}>Message</label>
-        <textarea name="message" value={form.message} onChange={onChange} rows={4} className={`${inputClass} resize-none`} placeholder="Tell us about yourself and your music..." />
+        <label htmlFor="message" className={labelClass}>Message</label>
+        <textarea id="message" name="message" value={form.message} onChange={onChange} rows={4} className={`${inputClass} resize-none`} placeholder="Tell us about yourself and your music..." />
       </div>
       <button type="submit" disabled={loading} className={btnBase}>
         {loading && <Loader2 className="w-4 h-4 animate-spin" />}
@@ -233,17 +233,17 @@ function GeneralForm() {
     <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Name</label>
-          <input name="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name" />
+          <label htmlFor="name" className={labelClass}>Name</label>
+          <input id="name" name="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name" />
         </div>
         <div>
-          <label className={labelClass}>Email</label>
-          <input name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
+          <label htmlFor="email" className={labelClass}>Email</label>
+          <input id="email" name="email" type="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@example.com" />
         </div>
       </div>
       <div>
-        <label className={labelClass}>Message</label>
-        <textarea name="message" value={form.message} onChange={onChange} rows={5} required className={`${inputClass} resize-none`} placeholder="What's on your mind?" />
+        <label htmlFor="message" className={labelClass}>Message</label>
+        <textarea id="message" name="message" value={form.message} onChange={onChange} rows={5} required className={`${inputClass} resize-none`} placeholder="What's on your mind?" />
       </div>
       <button type="submit" disabled={loading} className={btnBase}>
         {loading && <Loader2 className="w-4 h-4 animate-spin" />}
@@ -290,7 +290,7 @@ export default function ContactPage() {
   const ActiveForm = formComponents[activeTab];
 
   return (
-    <main className="min-h-screen bg-[#1A1A2E] text-[#F8FBFF]">
+    <main id="main-content" className="min-h-screen bg-[#1A1A2E] text-[#F8FBFF]">
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center">
         <div

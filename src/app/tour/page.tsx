@@ -47,7 +47,7 @@ export default function TourPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-white text-[#1A1A2E]">
+    <main id="main-content" className="min-h-screen bg-white text-[#1A1A2E]">
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center bg-[#EAF4FC]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/10 via-transparent to-transparent" />

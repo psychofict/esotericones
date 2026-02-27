@@ -50,7 +50,7 @@ const featuredHighlight = {
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="main-content">
       {/* ─── Hero Section ─── */}
       <section
         className="relative min-h-screen flex items-end justify-center overflow-hidden bg-cover bg-center"
