@@ -1,8 +1,7 @@
 export const artist = {
   name: "Ebstar",
   realName: "Ebenezer Tarubinga",
-  dob: "November 29, 2001",
-  from: "Bulawayo, Zimbabwe",
+  from: "Zimbabwe",
   basedIn: "Seoul, South Korea",
   label: "The ESØTËRIC Ones",
   labelFounded: 2023,
