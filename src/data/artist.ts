@@ -6,14 +6,16 @@ export const artist = {
   label: "The ESØTËRIC Ones",
   labelFounded: 2023,
   contact: "contact@ebstar.co",
-  tagline: "Producer. Engineer. Influencer. Bridging Worlds.",
-  bio: `Ebenezer "Ebstar" Tarubinga is a South Korea-based Zimbabwean musician, producer, brand influencer, record label owner, A.I. engineer, and socialite. Ebstar made his international debut in 2021.
+  tagline: "AI by Profession. Music by Obsession. Travel by Instinct.",
+  bio: `Ebstar is a Seoul-based music producer, AI/ML engineer, macro influencer, and record label founder. Since his international debut in 2021, he has built a career that refuses to fit into a single lane.
 
-Known for his piano house and dance-pop productions, Ebstar's tracks have garnered over 5 million streams. His signature production style emphasizes melody across a wide variety of electronic genres — from Deep House and Progressive House to Future Bass, Amapiano, Pop, Big Room, and Hip-Hop.
+His productions — spanning piano house, dance-pop, Amapiano, and everything in between — have surpassed 5 million streams. Within a year of picking up production, he ranked #290 on SkioMusic's World Producer Chart. By 2023, he had launched his own label, The ESØTËRIC Ones, home to 15+ artists across 6 countries.
 
-Within a year of his self-taught music production career, he was ranked the 290th best producer on SkioMusic's World Producer's Chart in 2022. In 2023, Ebstar established his own record label, "The ESØTËRIC Ones," where he and a close circle of collaborators release impactful music.
+On the academic side, Ebstar holds an MSc in Artificial Intelligence from Korea University, where he published research in computer vision at top-tier venues including IJCNN and Neural Networks. He now works as an AI Research Engineer building production CV/ML systems for smart city infrastructure.
 
-Beyond music, Ebstar is one of South Korea's most prominent foreign influencers, with over 150,000 Instagram followers and 10 million+ views. He has completed over 50 brand collaborations, working with the Korean government, Seoul Tourism Organisation, Korea's Ministry of Foreign Affairs, Ministry of Culture, and multiple provincial governments. In 2025, he was appointed a GINCON Committee member in South Korea's National Assembly.`,
+Off-screen, he is one of South Korea's most visible foreign public figures — 150K+ Instagram followers, 10M+ views, 50+ brand partnerships, and government appointments ranging from the Seoul Tourism Organisation to GINCON Committee Member in South Korea's National Assembly. Forbes BLK inductee. Met the Zimbabwean President at the Korea-Africa Summit.
+
+Not bad for someone who does all four at once.`,
   genres: [
     "Piano House", "Dance-Pop", "Deep House", "Progressive House",
     "Future Bass", "Amapiano", "Pop", "Big Room", "Hip-Hop"
@@ -522,9 +524,9 @@ export const roleCards = [
 ];
 
 export const unifiedBio = {
-  intro: `Ebenezer "Ebstar" Tarubinga is a multi-disciplinary professional based in Seoul, South Korea. He works at the intersection of music production, artificial intelligence research, brand influencing, and independent music entrepreneurship.
+  intro: `Ebstar is a Seoul-based creative and technologist operating across four lanes: music production, AI research, macro influencing, and independent label ownership.
 
-As a producer, Ebstar has garnered over 5 million streams with his signature piano house and dance-pop sound. As an AI research engineer, he holds an MSc in Artificial Intelligence from Korea University and has published research in semi-supervised semantic segmentation. As a brand influencer, he commands 150K+ Instagram followers and 10M+ views, with 50+ brand partnerships including Jetpac, Undercover Korea, and Mobifren, and VIP appearances at Korea Blockchain Week, Korea Fashion Week, and Seoul Africa Festival. And as the founder of The ESØTËRIC Ones, he leads an independent label releasing boundary-pushing music from Seoul.`,
+5M+ streams as a producer. Published AI researcher with an MSc from Korea University. One of South Korea's most recognized foreign influencers with 150K+ followers and 50+ brand partnerships. Founder of The ESØTËRIC Ones — an international label with artists spanning 6 countries. GINCON Committee Member in South Korea's National Assembly and Forbes BLK inductee.`,
   roles: [
     {
       title: "Producer",
