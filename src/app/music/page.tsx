@@ -20,15 +20,11 @@ const filterButtons: { label: string; value: FilterType }[] = [
   { label: "Remixes", value: "remix" },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
+import { fadeUp, stagger } from "@/lib/animations";
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+const containerVariants = stagger(0.1);
+
+const itemVariants = fadeUp;
 
 interface AlbumImages {
   [id: string]: {
@@ -102,18 +98,38 @@ export default function MusicPage() {
       ))}
 
       {/* Page Header */}
-      <section className="relative py-20 px-6 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80')" }}
-        />
-        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
+      <section className="relative py-28 px-6 overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
+        <div className="noise-overlay absolute inset-0" />
         <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <motion.p
+            className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            Music
+          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl font-bold text-[#1A1A2E] mb-4"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold tracking-tight text-[#1A1A2E] mb-4"
           >
             Discography
           </motion.h1>
@@ -121,7 +137,7 @@ export default function MusicPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-[#1A1A2E]/70 max-w-2xl mx-auto"
+            className="text-lg text-[#1A1A2E]/60 max-w-xl mx-auto"
           >
             Explore the full catalogue of Ebstar&apos;s music — from piano house
             anthems to genre-bending collaborations.
@@ -131,7 +147,7 @@ export default function MusicPage() {
 
       {/* Filter Buttons */}
       <section id="discography" className="max-w-6xl mx-auto px-6 py-10 scroll-mt-20">
-        <div className="flex flex-wrap gap-3 justify-center mb-12">
+        <div className="flex gap-3 justify-center mb-12 overflow-x-auto scrollbar-hide snap-x pb-2">
           {filterButtons.map((btn) => (
             <button
               key={btn.value}
@@ -164,6 +180,7 @@ export default function MusicPage() {
                 className="group cursor-pointer"
                 onClick={() => setSelectedAlbum(album.id)}
                 whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.96 }}
               >
                 <div className="aspect-square rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300 mb-3">
                   {coverImage ? (
@@ -210,18 +227,18 @@ export default function MusicPage() {
       <AnimatePresence>
         {selectedAlbumData && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 bg-black/60 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedAlbum(null)}
           >
             <motion.div
-              className="relative bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3 }}
+              className="relative bg-white rounded-t-2xl sm:rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -339,6 +356,7 @@ export default function MusicPage() {
                   className="group cursor-pointer"
                   onClick={() => setSelectedSingle(single.spotifyId)}
                   whileHover={{ y: -6 }}
+                  whileTap={{ scale: 0.96 }}
                 >
                   <div className="aspect-square rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300 mb-3">
                     {coverImage ? (
@@ -379,18 +397,18 @@ export default function MusicPage() {
       <AnimatePresence>
         {selectedSingleData && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 bg-black/60 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedSingle(null)}
           >
             <motion.div
-              className="relative bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3 }}
+              className="relative bg-white rounded-t-2xl sm:rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
               onClick={(e) => e.stopPropagation()}
             >
               <button

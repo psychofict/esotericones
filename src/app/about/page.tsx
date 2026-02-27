@@ -4,19 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Music, Cpu, Globe, Disc } from "lucide-react";
 import { artist, timeline, unifiedBio } from "@/data/artist";
+import { fadeUp, stagger } from "@/lib/animations";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
+const containerVariants = stagger(0.15);
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+const itemVariants = fadeUp;
 
 const iconMap = {
   music: Music,
@@ -71,18 +63,38 @@ export default function AboutPage() {
   return (
     <main id="main-content" className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-[#EAF4FC] py-24 px-6 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/ebstar-hero.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
+      <section className="relative bg-[#EAF4FC] py-28 px-6 overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <Image
+            src="/images/ebstar-hero.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
+        <div className="noise-overlay absolute inset-0" />
         <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <motion.p
+            className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            The Story
+          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-7xl font-bold text-[#1A1A2E] mb-4"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold tracking-tight text-[#1A1A2E] mb-4"
           >
             About{" "}
             <span className="text-[#2E86DE]">Ebstar</span>
@@ -91,7 +103,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-[#1A1A2E]/60 max-w-xl mx-auto"
+            className="text-lg text-[#1A1A2E]/60 max-w-xl mx-auto"
           >
             {artist.tagline}
           </motion.p>
@@ -105,6 +117,19 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Mobile hero image (visible below md) */}
+      <div className="md:hidden">
+        <div className="aspect-[4/3] relative">
+          <Image
+            src="/images/ebstar-hero.jpg"
+            alt="Ebstar"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+      </div>
 
       {/* Role Highlights */}
       <section className="py-20 px-6">

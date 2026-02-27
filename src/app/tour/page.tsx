@@ -51,8 +51,7 @@ export default function TourPage() {
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center bg-[#EAF4FC]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/10 via-transparent to-transparent" />
-        <div className="absolute top-16 left-[10%] w-36 h-36 rounded-full bg-[#2E86DE]/5 blur-2xl" />
-        <div className="absolute bottom-20 right-[12%] w-44 h-44 rounded-full bg-[#F39C12]/5 blur-2xl" />
+        <div className="noise-overlay absolute inset-0" />
 
         <motion.div
           className="relative z-10 max-w-3xl mx-auto"

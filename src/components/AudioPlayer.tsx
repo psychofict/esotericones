@@ -41,7 +41,7 @@ export default function AudioPlayer() {
           <div className="bg-white/95 backdrop-blur-xl border-t border-gray-200">
             <div className="max-w-6xl mx-auto px-4 h-20 flex items-center gap-4">
               {/* Track info */}
-              <div className="flex items-center gap-3 min-w-0 flex-shrink-0 w-48">
+              <div className="flex items-center gap-3 min-w-0 flex-shrink-0 w-36 sm:w-48">
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#2E86DE] to-[#1A1A2E] flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white/80" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
@@ -69,7 +69,7 @@ export default function AudioPlayer() {
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   onClick={() => setExpanded(!expanded)}
-                  className="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-[#2E86DE]"
+                  className="p-3 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-[#2E86DE]"
                   aria-label={expanded ? "Collapse player" : "Expand player"}
                 >
                   {expanded ? (
@@ -80,7 +80,7 @@ export default function AudioPlayer() {
                 </button>
                 <button
                   onClick={closePlayer}
-                  className="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-red-500"
+                  className="p-3 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-red-500"
                   aria-label="Close player"
                 >
                   <X className="w-5 h-5" />

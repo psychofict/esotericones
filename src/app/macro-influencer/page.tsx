@@ -4,25 +4,22 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { macroInfluencer, brandPartnerships, eventAppearances } from "@/data/artist";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
+import { fadeUp as fadeUpAnim, stagger as staggerFactory } from "@/lib/animations";
+
+const fadeUp = fadeUpAnim;
 
 const cardVariant = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 30, scale: 0.95, filter: "blur(4px)" },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" as const },
+    filter: "blur(0px)",
+    transition: { delay: i * 0.08, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
   }),
 };
 
-const stagger = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
+const stagger = staggerFactory(0.1);
 
 // Group macro influencer roles by year
 const grouped = macroInfluencer.reduce(
@@ -104,13 +101,23 @@ export default function MacroInfluencerPage() {
     <main id="main-content" className="min-h-screen bg-white text-[#1A1A2E]">
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/macro-influencer-hero.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
-        <div className="animate-float absolute top-[20%] left-[8%] h-48 w-48 rounded-full bg-[#F39C12] opacity-[0.07]" />
-        <div className="animate-float-slow absolute bottom-[15%] right-[10%] h-64 w-64 rounded-full bg-[#2E86DE] opacity-[0.07]" />
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <Image
+            src="/images/macro-influencer-hero.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
+        <div className="noise-overlay absolute inset-0" />
 
         <motion.div
           className="relative z-10 max-w-3xl mx-auto"

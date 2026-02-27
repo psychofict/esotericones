@@ -18,10 +18,10 @@ const tabs = [
 type TabType = (typeof tabs)[number];
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl bg-[#1A1A2E] border border-[#2E86DE]/30 text-[#F8FBFF] placeholder-[#EAF4FC]/30 focus:outline-none focus:border-[#F39C12] transition-colors";
-const labelClass = "block text-sm text-[#EAF4FC]/70 mb-2";
+  "w-full px-4 py-4 sm:py-3 rounded-xl bg-[#F8FBFF] border border-gray-200 text-[#1A1A2E] text-base placeholder-[#1A1A2E]/30 focus:outline-none focus:border-[#2E86DE] focus:ring-1 focus:ring-[#2E86DE] transition-colors";
+const labelClass = "block text-sm text-[#1A1A2E]/60 mb-2";
 const btnBase =
-  "w-full py-3 rounded-xl bg-gradient-to-r from-[#2E86DE] to-[#1B5E8A] text-white font-semibold hover:from-[#F39C12] hover:to-[#2E86DE] transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2";
+  "w-full py-3 rounded-xl bg-[#2E86DE] shadow-lg shadow-[#2E86DE]/20 text-white font-semibold hover:bg-[#2575C5] transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2";
 
 function BookingForm() {
   const [form, setForm] = useState({
@@ -290,22 +290,31 @@ export default function ContactPage() {
   const ActiveForm = formComponents[activeTab];
 
   return (
-    <main id="main-content" className="min-h-screen bg-[#1A1A2E] text-[#F8FBFF]">
+    <main id="main-content" className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden py-28 px-6 text-center">
+      <section className="relative overflow-hidden py-28 px-6 text-center bg-[#1A1A2E]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80')" }}
         />
         <div className="absolute inset-0 bg-[#1A1A2E]/65" />
+        <div className="noise-overlay absolute inset-0" />
         <motion.div
           className="relative z-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
+          <motion.p
+            className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+          >
+            Contact
+          </motion.p>
           <motion.h1
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
+            className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -313,7 +322,7 @@ export default function ContactPage() {
             Get in Touch
           </motion.h1>
           <motion.p
-            className="text-lg text-[#EAF4FC]/60"
+            className="text-lg text-white/60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -324,122 +333,124 @@ export default function ContactPage() {
       </section>
 
       {/* Content */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="grid lg:grid-cols-[1fr_320px] gap-12">
-          {/* Form Column */}
-          <div>
-            {/* Tab Selector */}
-            <motion.div
-              className="flex flex-wrap gap-2 mb-10"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
-            >
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
-                    activeTab === tab
-                      ? "bg-[#2E86DE] text-white"
-                      : "bg-white/5 text-[#EAF4FC]/60 hover:bg-white/10 hover:text-[#EAF4FC]"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </motion.div>
-
-            {/* Active Form */}
-            <AnimatePresence mode="wait">
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 pb-24 pt-12">
+          <div className="grid lg:grid-cols-[1fr_320px] gap-12">
+            {/* Form Column */}
+            <div>
+              {/* Tab Selector */}
               <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 15 }}
+                className="flex overflow-x-auto scrollbar-hide snap-x gap-2 mb-10 pb-2"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl border border-[#2E86DE]/20 bg-white/5 backdrop-blur-md p-8"
+                transition={{ delay: 0.5, duration: 0.4 }}
               >
-                <h2 className="text-xl font-semibold mb-6">{activeTab}</h2>
-                <ActiveForm />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Sidebar */}
-          <motion.aside
-            className="space-y-8"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            {/* Email */}
-            <div className="rounded-2xl border border-[#2E86DE]/20 bg-white/5 backdrop-blur-md p-6">
-              <h3 className="font-semibold mb-3 text-[#F39C12]">Email</h3>
-              <a
-                href="mailto:contact@ebstar.co"
-                className="text-[#EAF4FC]/80 hover:text-[#2E86DE] transition-colors text-sm break-all"
-              >
-                contact@ebstar.co
-              </a>
-            </div>
-
-            {/* Socials */}
-            <div className="rounded-2xl border border-[#2E86DE]/20 bg-white/5 backdrop-blur-md p-6">
-              <h3 className="font-semibold mb-4 text-[#F39C12]">
-                Social Links
-              </h3>
-              <div className="space-y-3">
-                {socials.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-[#EAF4FC]/60 hover:text-[#2E86DE] transition-colors text-sm"
+                {tabs.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer whitespace-nowrap snap-start ${
+                      activeTab === tab
+                        ? "bg-[#2E86DE] text-white shadow-lg"
+                        : "bg-[#EAF4FC] text-[#1A1A2E]/60 hover:bg-[#d6ebf8] hover:text-[#1A1A2E]"
+                    }`}
                   >
-                    {socialIcons[social.icon] || (
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                        />
-                      </svg>
-                    )}
-                    {social.name}
-                  </a>
+                    {tab}
+                  </button>
                 ))}
-              </div>
+              </motion.div>
+
+              {/* Active Form */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-3xl border border-gray-200 bg-white shadow-sm p-5 sm:p-8"
+                >
+                  <h2 className="text-xl font-semibold mb-6 text-[#1A1A2E]">{activeTab}</h2>
+                  <ActiveForm />
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            {/* Location */}
-            <div className="rounded-2xl border border-[#2E86DE]/20 bg-white/5 backdrop-blur-md overflow-hidden">
-              <div className="relative h-32">
-                <Image
-                  src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=640&q=80"
-                  alt="Seoul skyline"
-                  fill
-                  className="object-cover"
-                  sizes="320px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 to-transparent" />
+            {/* Sidebar */}
+            <motion.aside
+              className="space-y-8"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+            >
+              {/* Email */}
+              <div className="rounded-2xl border border-gray-200 bg-[#1A1A2E] p-6">
+                <h3 className="font-semibold mb-3 text-[#F39C12]">Email</h3>
+                <a
+                  href="mailto:contact@ebstar.co"
+                  className="text-white/80 hover:text-[#2E86DE] transition-colors text-sm break-all"
+                >
+                  contact@ebstar.co
+                </a>
               </div>
-              <div className="p-6 -mt-2 relative z-10">
-                <h3 className="font-semibold mb-3 text-[#F39C12]">Based In</h3>
-                <p className="text-sm text-[#EAF4FC]/60">Seoul, South Korea</p>
-                <p className="text-xs text-[#EAF4FC]/40 mt-1">
-                  Available worldwide
-                </p>
+
+              {/* Socials */}
+              <div className="rounded-2xl border border-gray-200 bg-[#1A1A2E] p-6">
+                <h3 className="font-semibold mb-4 text-[#F39C12]">
+                  Social Links
+                </h3>
+                <div className="space-y-3">
+                  {socials.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-white/60 hover:text-[#2E86DE] transition-colors text-sm"
+                    >
+                      {socialIcons[social.icon] || (
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                          />
+                        </svg>
+                      )}
+                      {social.name}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.aside>
+
+              {/* Location */}
+              <div className="rounded-2xl border border-gray-200 bg-[#1A1A2E] overflow-hidden">
+                <div className="relative h-32">
+                  <Image
+                    src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=640&q=80"
+                    alt="Seoul skyline"
+                    fill
+                    className="object-cover"
+                    sizes="320px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 to-transparent" />
+                </div>
+                <div className="p-6 -mt-2 relative z-10">
+                  <h3 className="font-semibold mb-3 text-[#F39C12]">Based In</h3>
+                  <p className="text-sm text-white/60">Seoul, South Korea</p>
+                  <p className="text-xs text-white/40 mt-1">
+                    Available worldwide
+                  </p>
+                </div>
+              </div>
+            </motion.aside>
+          </div>
         </div>
       </section>
     </main>

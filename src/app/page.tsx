@@ -2,30 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Music, Cpu, Globe, Disc } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { roleCards, albums } from "@/data/artist";
 import { InstagramFeed } from "@/components/InstagramEmbed";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const stagger = {
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const iconMap = {
-  music: Music,
-  cpu: Cpu,
-  globe: Globe,
-  disc: Disc,
-} as const;
+import SectionDivider from "@/components/SectionDivider";
+import { fadeUp, stagger } from "@/lib/animations";
 
 const roleCardImages: Record<string, string> = {
   "Record Producer": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
@@ -49,24 +32,48 @@ const featuredHighlight = {
 };
 
 export default function HomePage() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const heroContentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <main id="main-content">
       {/* ─── Hero Section ─── */}
       <section
-        className="relative min-h-screen flex items-end justify-center overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/ebstar-hero.jpg')" }}
+        ref={heroRef}
+        className="relative min-h-screen flex items-end justify-center overflow-hidden"
       >
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 via-[#1A1A2E]/30 to-transparent" />
+        {/* Parallax background image */}
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: heroImageY, scale: heroImageScale }}
+        >
+          <Image
+            src="/images/ebstar-hero.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </motion.div>
 
-        {/* Decorative floating circles */}
-        <div className="animate-float absolute top-[15%] left-[10%] h-64 w-64 rounded-full bg-[#2E86DE] opacity-[0.06]" />
-        <div className="animate-float-slow absolute bottom-[20%] right-[10%] h-80 w-80 rounded-full bg-[#F39C12] opacity-[0.06]" />
-        <div className="animate-float-slow absolute top-[40%] right-[25%] h-40 w-40 rounded-full bg-[#2E86DE] opacity-[0.04]" />
-        <div className="animate-float absolute bottom-[35%] left-[20%] h-48 w-48 rounded-full bg-[#F39C12] opacity-[0.04]" />
+        {/* Multi-layer gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] via-[#1A1A2E]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E]/30 via-transparent to-[#1A1A2E]/30" />
+
+        {/* Noise overlay */}
+        <div className="noise-overlay absolute inset-0" />
 
         <motion.div
           className="relative z-10 text-center px-6 pb-20 max-w-4xl mx-auto"
+          style={{ opacity: heroContentOpacity }}
           initial="hidden"
           animate="visible"
           variants={{
@@ -74,53 +81,86 @@ export default function HomePage() {
             visible: { transition: { staggerChildren: 0.2 } },
           }}
         >
-          <motion.h1
-            className="text-7xl md:text-9xl font-bold tracking-tight text-white"
+          {/* Pre-title */}
+          <motion.p
+            className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
             variants={fadeUp}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Seoul, South Korea
+          </motion.p>
+
+          <motion.h1
+            className="text-5xl sm:text-7xl md:text-[10rem] font-bold tracking-tight text-white leading-none"
+            variants={fadeUp}
           >
             EBSTAR
           </motion.h1>
 
           <motion.p
-            className="mt-4 text-lg md:text-2xl text-white/80 font-medium"
+            className="mt-6 text-lg md:text-2xl text-white/80 font-medium"
             variants={fadeUp}
-            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             AI by Profession. Music by Obsession. Travel by Instinct.
           </motion.p>
 
-          <motion.p
-            className="mt-3 text-sm md:text-base text-white/60 tracking-widest uppercase"
+          {/* Pill badges instead of pipe-separated list */}
+          <motion.div
+            className="mt-4 flex flex-wrap items-center justify-center gap-2"
             variants={fadeUp}
-            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Music &nbsp;|&nbsp; AI Research &nbsp;|&nbsp; Macro Influencer &nbsp;|&nbsp; Record Label
-          </motion.p>
+            {["Music", "AI Research", "Macro Influencer", "Record Label"].map((role) => (
+              <span
+                key={role}
+                className="rounded-full bg-white/10 backdrop-blur-sm border border-white/10 px-4 py-1.5 text-sm text-white/70"
+              >
+                {role}
+              </span>
+            ))}
+          </motion.div>
 
           <motion.div
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
             variants={fadeUp}
-            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <a
+            <motion.a
               href="#roles"
-              className="rounded-full bg-[#2E86DE] px-8 py-3 text-white font-semibold shadow-lg hover:bg-[#1B5E8A] transition-colors"
+              className="group w-full sm:w-auto rounded-full bg-[#2E86DE] px-8 py-4 sm:py-3 text-white font-semibold shadow-lg shadow-[#2E86DE]/30 hover:bg-[#2575C5] transition-all inline-flex items-center justify-center gap-2 btn-glow"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               Explore My Work
-            </a>
-            <Link
-              href="/contact"
-              className="rounded-full border-2 border-white px-8 py-3 text-white font-semibold hover:bg-white hover:text-[#1A1A2E] transition-colors"
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
-              Get in Touch
-            </Link>
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto rounded-full border border-white/30 px-8 py-4 sm:py-3 text-white font-semibold hover:bg-white/10 transition-colors inline-flex items-center justify-center"
+              >
+                Get in Touch
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="mt-16 flex flex-col items-center gap-2"
+            variants={fadeUp}
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown size={24} className="text-white/40" />
+            </motion.div>
           </motion.div>
         </motion.div>
       </section>
 
       {/* ─── Role Cards ─── */}
-      <section id="roles" className="bg-white py-20">
+      <section id="roles" className="bg-white section-padding">
         <div className="mx-auto max-w-6xl px-6">
           <motion.h2
             className="text-3xl md:text-5xl font-bold text-[#1A1A2E] text-center mb-4"
@@ -128,7 +168,6 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6 }}
           >
             What I Do
           </motion.h2>
@@ -138,80 +177,67 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
             AI by profession. Music by obsession. Travel by instinct — producing music, engineering AI, building brands, and running a record label.
           </motion.p>
 
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            variants={stagger}
+            variants={stagger(0.15)}
           >
-            {roleCards.map((card) => {
-              const Icon = iconMap[card.icon];
-              return (
-                <motion.div
-                  key={card.title}
-                  variants={fadeUp}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="group relative rounded-2xl bg-white shadow-md hover:shadow-xl transition-shadow overflow-hidden"
-                >
-                  {/* Subtle background texture */}
-                  {roleCardImages[card.title] && (
-                    <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-500">
-                      <Image
-                        src={roleCardImages[card.title]}
-                        alt=""
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-                    </div>
-                  )}
-                  {/* Color accent bar */}
-                  <div
-                    className="h-1.5 w-full relative z-10"
-                    style={{ backgroundColor: card.color }}
+            {roleCards.map((card) => (
+              <motion.div
+                key={card.title}
+                variants={fadeUp}
+                whileTap={{ scale: 0.98 }}
+                className="group relative h-72 md:h-80 rounded-3xl overflow-hidden cursor-pointer"
+              >
+                {/* Background image */}
+                {roleCardImages[card.title] && (
+                  <Image
+                    src={roleCardImages[card.title]}
+                    alt=""
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <div className="p-6 relative z-10">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                      style={{ backgroundColor: `${card.color}15` }}
-                    >
-                      <Icon size={24} style={{ color: card.color }} />
-                    </div>
-                    <h3 className="text-lg font-bold text-[#1A1A2E]">
-                      {card.title}
-                    </h3>
-                    <span
-                      className="inline-block mt-1 px-2.5 py-0.5 rounded-full text-xs font-semibold text-white"
-                      style={{ backgroundColor: card.color }}
-                    >
-                      {card.subtitle}
-                    </span>
-                    <p className="mt-3 text-sm text-[#1A1A2E]/60 leading-relaxed">
-                      {card.description}
-                    </p>
-                    <Link
-                      href={card.href}
-                      className="mt-4 inline-block text-sm font-semibold transition-colors hover:underline"
-                      style={{ color: card.color }}
-                    >
-                      Learn More &rarr;
-                    </Link>
-                  </div>
-                </motion.div>
-              );
-            })}
+                )}
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/90 via-[#1A1A2E]/40 to-transparent" />
+
+                {/* Content pinned at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <span
+                    className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white mb-3"
+                    style={{ backgroundColor: card.color }}
+                  >
+                    {card.subtitle}
+                  </span>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-white/70 leading-relaxed mb-3 line-clamp-2">
+                    {card.description}
+                  </p>
+                  <Link
+                    href={card.href}
+                    className="group/link inline-flex items-center gap-1 text-sm font-semibold text-white hover:text-[#F39C12] transition-colors"
+                  >
+                    Learn More
+                    <ArrowRight size={14} className="group-hover/link:translate-x-1.5 transition-transform" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* ─── Featured Highlights ─── */}
-      <section className="bg-[#F8FBFF] py-20">
+      <section className="bg-[#F8FBFF] section-padding">
         <div className="mx-auto max-w-6xl px-6">
           <motion.h2
             className="text-3xl md:text-5xl font-bold text-[#1A1A2E] text-center mb-12"
@@ -219,24 +245,22 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6 }}
           >
             Featured Highlights
           </motion.h2>
 
-          {/* Two-column: Latest Release + Latest Achievement */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            variants={stagger}
+            variants={stagger(0.15)}
           >
             {/* Latest Release */}
             <motion.div
               variants={fadeUp}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow"
+              whileTap={{ scale: 0.98 }}
+              className="rounded-2xl overflow-hidden bg-white shadow-md card-hover"
             >
               <div className="aspect-square relative">
                 <Image
@@ -268,8 +292,8 @@ export default function HomePage() {
             {/* Featured Highlight — Forbes BLK */}
             <motion.div
               variants={fadeUp}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow"
+              whileTap={{ scale: 0.98 }}
+              className="rounded-2xl overflow-hidden bg-white shadow-md card-hover"
             >
               <div className="aspect-square relative overflow-hidden">
                 <iframe
@@ -294,35 +318,31 @@ export default function HomePage() {
               </div>
             </motion.div>
           </motion.div>
-
         </div>
       </section>
 
+      <SectionDivider variant="gradient" direction="tint-to-light" />
+
       {/* ─── Stats Bar ─── */}
-      <section className="relative py-16 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505236858219-8130802e8cf8?w=1920&q=80')" }}
-        />
-        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
+      <section className="relative section-padding overflow-hidden noise-overlay">
+        <div className="absolute inset-0 bg-[#1A1A2E]" />
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            variants={stagger}
+            variants={stagger(0.15)}
           >
             {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={fadeUp}
-                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <p className="text-4xl md:text-5xl font-bold text-[#2E86DE]">
+                <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-gradient">
                   {stat.value}
                 </p>
-                <p className="mt-2 text-sm md:text-base text-[#1A1A2E]/60">
+                <p className="mt-2 text-xs md:text-sm text-white/50 uppercase tracking-widest">
                   {stat.label}
                 </p>
               </motion.div>
@@ -332,7 +352,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── Instagram Section ─── */}
-      <section className="bg-white py-20">
+      <section className="bg-white section-padding">
         <div className="mx-auto max-w-4xl px-6">
           <motion.h2
             className="text-3xl md:text-5xl font-bold text-[#1A1A2E] text-center mb-4"
@@ -340,7 +360,6 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6 }}
           >
             Follow on Instagram
           </motion.h2>
@@ -350,7 +369,6 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
             Behind the scenes, daily life in Seoul, and more
           </motion.p>
@@ -359,7 +377,6 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <InstagramFeed />
           </motion.div>
@@ -369,7 +386,6 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <a
               href="https://instagram.com/ebstarmusic"
@@ -383,31 +399,40 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider variant="gradient" direction="light-to-tint" />
+
       {/* ─── CTA Section ─── */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative section-padding overflow-hidden noise-overlay">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: "url('/images/ebstar-hero.jpg')" }}
         />
-        <div className="absolute inset-0 bg-[#1A1A2E]/80" />
+        <div className="absolute inset-0 bg-[#1A1A2E]/85" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
-          <motion.h2
-            className="text-3xl md:text-5xl font-bold text-white mb-4"
+          <motion.p
+            className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6 }}
+          >
+            Collaborate
+          </motion.p>
+          <motion.h2
+            className="text-4xl md:text-6xl font-bold text-white mb-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeUp}
           >
             Let&apos;s Build Something Together
           </motion.h2>
           <motion.p
-            className="text-white/80 text-lg mb-8 max-w-xl mx-auto"
+            className="text-white/70 text-lg mb-8 max-w-xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6, delay: 0.15 }}
           >
             Whether it&apos;s music production, AI research collaboration, brand partnerships,
             or event appearances — let&apos;s create something extraordinary across disciplines.
@@ -417,14 +442,19 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Link
-              href="/contact"
-              className="inline-block rounded-full bg-white px-10 py-4 text-[#2E86DE] font-bold text-lg shadow-lg hover:bg-[#EAF4FC] transition-colors"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-block"
             >
-              Get in Touch
-            </Link>
+              <Link
+                href="/contact"
+                className="inline-block rounded-full bg-white px-10 py-4 text-[#2E86DE] font-bold text-lg shadow-xl hover:bg-[#EAF4FC] transition-colors"
+              >
+                Get in Touch
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

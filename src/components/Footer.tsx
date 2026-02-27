@@ -19,10 +19,24 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#EAF4FC]">
+    <footer className="relative bg-[#1A1A2E]">
+      {/* Wave SVG separator */}
+      <div className="absolute top-0 left-0 right-0 -translate-y-[99%] overflow-hidden leading-[0]">
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="relative block w-[calc(100%+1.3px)] h-[60px]"
+        >
+          <path
+            d="M0,0 C300,100 900,20 1200,80 L1200,120 L0,120 Z"
+            fill="#1A1A2E"
+          />
+        </svg>
+      </div>
+
       {/* Main footer content */}
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-6 pt-16 pb-8">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand column */}
           <div>
             <Link href="/" className="flex items-center gap-2">
@@ -33,34 +47,49 @@ export default function Footer() {
                 height={36}
                 className="w-9 h-9"
               />
-              <span className="text-2xl font-bold tracking-wider text-[#1A1A2E]">
+              <span className="text-2xl font-bold tracking-wider text-white">
                 EBSTAR
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#1B5E8A]">
-              AI by profession. Music by obsession. Travel by instinct —
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/40">
+              AI by profession. Music by obsession. Travel by instinct &mdash;
               record producer, AI/ML engineer, macro influencer, and founder of The ES&Oslash;T&Euml;RIC Ones.
             </p>
+            <div className="mt-6 flex items-center gap-3">
+              {socials.slice(0, 4).map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="text-white/30 transition-colors hover:text-white"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" opacity="0.2" />
+                  </svg>
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Quick Links column */}
+          {/* Navigate column */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-[#1A1A2E]">
-              Quick Links
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#F39C12]">
+              Navigate
             </h3>
             <ul className="space-y-3">
               {[
+                { name: "Home", href: "/" },
+                { name: "About", href: "/about" },
                 { name: "Music", href: "/music" },
                 { name: "AI/ML Engineer", href: "/ai" },
-                { name: "Macro Influencer", href: "/macro-influencer" },
-                { name: "Record Label", href: "/label" },
-                { name: "About", href: "/about" },
-                { name: "Contact", href: "/contact" },
+                { name: "Tour Dates", href: "/tour" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#1B5E8A] transition-colors hover:text-[#2E86DE]"
+                    className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {link.name}
                   </Link>
@@ -71,53 +100,63 @@ export default function Footer() {
 
           {/* Connect column */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-[#1A1A2E]">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#F39C12]">
               Connect
             </h3>
-            <ul className="mb-8 space-y-3">
+            <ul className="space-y-3">
               {socials.map((social) => (
                 <li key={social.name}>
                   <a
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-[#1B5E8A] transition-colors hover:text-[#2E86DE]"
+                    className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {social.name}
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-sm text-white/50 transition-colors hover:text-white"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
+          </div>
 
-            {/* Newsletter signup */}
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#1A1A2E]">
+          {/* Newsletter column */}
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#F39C12]">
               Newsletter
             </h3>
-            <p className="mb-3 text-xs text-[#1B5E8A]">
+            <p className="mb-4 text-sm text-white/40">
               Stay updated with new releases and announcements.
             </p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => { setEmail(e.target.value); if (error) reset(); }}
                 placeholder="your@email.com"
                 required
-                className="flex-1 rounded-lg border border-[#1B5E8A]/20 bg-[#F8FBFF] px-4 py-2 text-sm text-[#1A1A2E] placeholder-[#1B5E8A]/50 outline-none focus:border-[#2E86DE] focus:ring-1 focus:ring-[#2E86DE]"
+                className="flex-1 rounded-lg bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#2E86DE] focus:ring-1 focus:ring-[#2E86DE] transition-colors"
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="rounded-lg bg-[#2E86DE] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1B5E8A] disabled:opacity-50 flex items-center gap-2"
+                className="rounded-lg bg-[#2E86DE] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#2575C5] disabled:opacity-50 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
                 {success ? "Subscribed!" : "Subscribe"}
               </button>
             </form>
             {error && (
-              <p className="mt-2 text-xs text-red-500">
+              <p className="mt-2 text-xs text-red-400">
                 {error}{" "}
-                <button onClick={reset} className="underline hover:text-red-400">
+                <button onClick={reset} className="underline hover:text-red-300">
                   Try again
                 </button>
               </p>
@@ -127,9 +166,9 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#1B5E8A]/10">
+      <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-6 py-6">
-          <p className="text-center text-xs text-[#1B5E8A]">
+          <p className="text-center text-xs text-white/30">
             &copy; {new Date().getFullYear()} The ES&Oslash;T&Euml;RIC Ones. All rights reserved.
           </p>
         </div>

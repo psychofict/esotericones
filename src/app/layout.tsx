@@ -13,6 +13,7 @@ import {
   getOrganizationSchema,
 } from "@/lib/structured-data";
 import Analytics from "@/components/Analytics";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-body",
@@ -136,6 +137,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <ScrollProgress />
         <AudioPlayerProvider>
           <Navbar />
           {children}
