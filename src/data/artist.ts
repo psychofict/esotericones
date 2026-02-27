@@ -187,60 +187,6 @@ export const eventAppearances = [
   { name: "Korea-Africa Startup Forum", year: "2025", type: "Government" },
 ];
 
-export const blogPosts = [
-  {
-    slug: "when-i-think-of-you-summer-out-now",
-    title: "New Single 'When I Think of You (Summer)' Out Now",
-    excerpt:
-      "The latest summer anthem is here. Blending piano house with warm, nostalgic melodies, this track captures the feeling of sun-soaked days and ocean breezes.",
-    date: "2025-06-15",
-    tag: "Releases",
-    gradient: "from-[#F39C12] to-[#2E86DE]",
-    readTime: "3 min read",
-    content: [
-      "The wait is over — \"When I Think of You (Summer)\" is officially out on all platforms. This track has been months in the making, born from late-night studio sessions and a deep longing for warmer days.",
-      "The production draws heavily from piano house roots, layering warm chord progressions with sun-drenched synths and a driving four-on-the-floor beat. The vocal chops weave in and out, creating a call-and-response effect that pulls you right onto the dance floor.",
-      "Sonically, this single represents a new chapter. While previous releases leaned into deeper, moodier territory, \"Summer\" embraces brightness without sacrificing the emotional depth that defines Ebstar's sound. It's a track built for golden hour — windows down, volume up.",
-      "The release is accompanied by a visualizer that captures the essence of the track: gradient sunsets, shimmering water reflections, and that unmistakable feeling of freedom that only summer can bring.",
-      "Stream it now on Spotify, Apple Music, and all major platforms. Summer is here, and so is the soundtrack.",
-    ],
-  },
-  {
-    slug: "gincon-committee-member-national-assembly",
-    title: "Appointed GINCON Committee Member in National Assembly",
-    excerpt:
-      "A milestone in cultural diplomacy — Ebstar has been appointed as a GINCON Committee Member in South Korea's National Assembly, representing foreign voices in policy discussions.",
-    date: "2025-03-10",
-    tag: "Macro Influencer",
-    gradient: "from-[#2E86DE] to-[#1B5E8A]",
-    readTime: "4 min read",
-    content: [
-      "In a historic appointment, Ebstar has been named a GINCON Committee Member within South Korea's National Assembly. This role places him at the intersection of cultural exchange, policy, and international relations — a space where music and diplomacy meet.",
-      "GINCON (Global INfluencer CONnection) is a committee focused on leveraging the influence of global content creators and cultural figures to strengthen South Korea's international relationships. As a committee member, Ebstar will contribute to discussions on cultural policy, foreign resident experiences, and soft power initiatives.",
-      "This appointment builds on years of influencer work. Since moving to South Korea in 2022, Ebstar has served as a Global SeoulMate for the Seoul Tourism Organisation, a Korea Allimi for the Ministry of Foreign Affairs, and has held multiple provincial government roles.",
-      "\"This is bigger than me,\" Ebstar shared. \"It's about every African, every foreigner who has made South Korea their home and wants their voice heard. I'm honored to be in a position where I can bridge these worlds not just through music, but through meaningful policy conversations.\"",
-      "The appointment was formally announced at the National Assembly in Seoul and represents one of the first instances of a Zimbabwean national serving in an advisory capacity within South Korea's legislative body.",
-    ],
-  },
-  {
-    slug: "studio-diary-making-of-kuzokhanya",
-    title: "Studio Diary: Making of 'KUZOKHANYA'",
-    excerpt:
-      "Go behind the scenes of the recording process for KUZOKHANYA featuring Roline. From the first beat sketch to the final master, here's how it all came together.",
-    date: "2025-02-20",
-    tag: "Behind the Scenes",
-    gradient: "from-[#1B5E8A] to-[#F39C12]",
-    readTime: "5 min read",
-    content: [
-      "KUZOKHANYA — meaning \"it will shine\" in Zulu — started as a simple piano loop at 3 AM in a Seoul studio. What began as four chords and a feeling grew into one of the most personal tracks in the Ebstar catalog.",
-      "The collaboration with Roline was serendipitous. After connecting through mutual friends in the South African music scene, a voice note exchange turned into a full studio session within weeks. Roline's vocal texture brought exactly the warmth the track needed — grounding the electronic production in something deeply human.",
-      "Production-wise, KUZOKHANYA sits at the intersection of Amapiano and piano house. The log drum patterns pay homage to South African roots while the layered synth pads and arpeggiated leads push the sound into more progressive territory. Finding that balance took over 40 different arrangement iterations.",
-      "The mixing process was equally meticulous. Every element was designed to serve the vocal — the kick drum punches through without competing, the bass sits just below the vocal register, and the high-frequency shimmer of the synths creates space rather than clutter.",
-      "The title carries deep personal significance. In a year filled with new beginnings and challenges, \"it will shine\" became a mantra. The track is both a promise and a prayer — a reminder that light finds its way through, always.",
-      "KUZOKHANYA featuring Roline is available now on all streaming platforms.",
-    ],
-  },
-];
 
 
 export const aiProfile = {
@@ -390,6 +336,7 @@ export function isNavGroup(entry: NavEntry): entry is NavGroup {
 }
 
 export const navEntries: NavEntry[] = [
+  { kind: "standalone", name: "Home", href: "/" },
   {
     kind: "group",
     label: "Music",

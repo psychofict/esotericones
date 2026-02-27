@@ -295,37 +295,6 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
 
-          {/* Quick-link cards */}
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={stagger}
-          >
-            {[
-              { label: "Record Label", href: "/label", gradient: "from-[#1B5E8A] to-[#1A1A2E]", image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80" },
-              { label: "Blog", href: "/blog", gradient: "from-[#F39C12] to-[#2E86DE]", image: "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=640&q=80" },
-              { label: "AI Research", href: "/ai", gradient: "from-[#2E86DE] to-[#1B5E8A]", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=640&q=80" },
-            ].map((item) => (
-              <motion.div key={item.label} variants={fadeUp} transition={{ duration: 0.6 }}>
-                <Link
-                  href={item.href}
-                  className="block rounded-2xl relative overflow-hidden p-6 text-center text-white font-semibold text-lg shadow-md hover:shadow-xl transition-shadow"
-                >
-                  <Image
-                    src={item.image}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-70`} />
-                  <span className="relative z-10">{item.label} &rarr;</span>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
 

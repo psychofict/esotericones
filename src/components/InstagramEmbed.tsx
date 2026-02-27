@@ -49,8 +49,6 @@ export default function InstagramEmbed({ postId, className = "" }: InstagramEmbe
 }
 
 const featuredPosts = [
-  "C8Ubeh0Btpe",
-  "C8BF9UuhulZ",
   "DEpYnb4SABe",
 ];
 
