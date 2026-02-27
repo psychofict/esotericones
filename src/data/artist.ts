@@ -302,7 +302,7 @@ export const aiProfile = {
     labUrl: "https://xai.korea.ac.kr/",
     logo: "/images/ai/korea-university.png",
   },
-  bio: "ML/CV Engineer with an MSc in AI from Korea University. 4+ years of experience in computer vision, deep learning, robotics and software engineering. Specializing in image & video segmentation, depth estimation, instance retrieval, and dense/sparse matching.",
+  bio: "AI/ML Engineer with an MSc in Artificial Intelligence from Korea University, where he conducted research under Dr. Seong-Whan Lee at the Pattern Recognition & Machine Learning Lab. With 6+ years spanning software engineering, deep learning, and computer vision, Ebstar has published at top-tier venues (IJCNN, Neural Networks), built production CV/ML pipelines for smart city systems, and led R&D across semantic segmentation, depth estimation, object detection, and dense matching. His work bridges academic research with real-world deployment — from autonomous driving perception to AIoT infrastructure.",
   links: {
     googleScholar: "https://scholar.google.com/citations?user=W818y-gAAAAJ&hl=en",
     linkedin: "https://www.linkedin.com/in/ebstar",
@@ -383,7 +383,7 @@ export const aiProfile = {
       role: "Software & AI Engineer",
       company: "GliT",
       location: "Hybrid",
-      period: "Aug 2022 – Aug 2023",
+      period: "Jan 2019 – Jan 2021",
       logo: "/images/ai/glitech.png",
       bullets: [
         "Led tech strategy and completed 10+ full-cycle projects",
