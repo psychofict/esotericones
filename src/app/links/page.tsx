@@ -90,7 +90,7 @@ const buttonVariant = {
 
 export default function LinksPage() {
   return (
-    <main className="min-h-screen relative flex items-start justify-center px-4 py-12">
+    <main id="main-content" className="min-h-screen relative flex items-start justify-center px-4 py-12">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80')" }}

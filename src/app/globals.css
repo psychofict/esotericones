@@ -8,7 +8,7 @@
   --color-sunset: #F39C12;
   --color-sky-tint: #EAF4FC;
   --color-soft-white: #F8FBFF;
-  --font-sans: var(--font-plus-jakarta);
+  --font-sans: var(--font-body);
   --font-display: var(--font-dm-sans);
 }
 

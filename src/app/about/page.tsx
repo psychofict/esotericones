@@ -69,7 +69,7 @@ export default function AboutPage() {
   const bioParagraphs = unifiedBio.intro.split("\n\n");
 
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative bg-[#EAF4FC] py-24 px-6 overflow-hidden">
         <div

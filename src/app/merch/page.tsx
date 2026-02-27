@@ -6,7 +6,7 @@ import { ShoppingBag } from "lucide-react";
 
 export default function MerchPage() {
   return (
-    <main className="min-h-screen text-[#1A1A2E] flex items-center justify-center relative overflow-hidden">
+    <main id="main-content" className="min-h-screen text-[#1A1A2E] flex items-center justify-center relative overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80')" }}

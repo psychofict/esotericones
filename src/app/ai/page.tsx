@@ -60,7 +60,7 @@ export default function AIPage() {
   const visibleProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 6);
 
   return (
-    <main className="min-h-screen bg-white text-[#1A1A2E]">
+    <main id="main-content" className="min-h-screen bg-white text-[#1A1A2E]">
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center">
         <div

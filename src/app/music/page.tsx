@@ -92,7 +92,7 @@ export default function MusicPage() {
     : null;
 
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       {/* Structured Data */}
       {albums.map((album) => (
         <JsonLd

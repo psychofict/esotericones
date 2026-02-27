@@ -36,6 +36,7 @@ export const socials = [
   { name: "Instagram", url: "https://instagram.com/ebstarmusic", icon: "instagram" },
   { name: "Facebook", url: "https://facebook.com/ebstar.simz", icon: "facebook" },
   { name: "Twitter/X", url: "https://twitter.com/psychofict", icon: "twitter" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/ebstar", icon: "linkedin" },
   { name: "IMDB", url: "https://www.imdb.com/name/nm14467036/", icon: "film" },
   { name: "Wikipedia", url: "https://en.wikipedia.org/wiki/Ebstar", icon: "book" },
 ];
@@ -66,8 +67,8 @@ export const albums = [
     title: "I Have a Crush on You (2 Year Anniversary Deluxe) [Remixes]",
     year: 2023,
     type: "ep" as const,
-    spotifyId: "75iwN0MtpZoBmneKAUZiUF",
-    spotifyUrl: "https://open.spotify.com/album/75iwN0MtpZoBmneKAUZiUF",
+    spotifyId: "0ul67kwpuIXPukQJ7SMgiR",
+    spotifyUrl: "https://open.spotify.com/album/0ul67kwpuIXPukQJ7SMgiR",
     appleMusicUrl: "https://music.apple.com/us/artist/ebstar/1518342850",
   },
   {

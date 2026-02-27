@@ -110,6 +110,10 @@ export default function Navbar() {
             className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-[#2E86DE] ${
               scrolled ? "text-[#1A1A2E]" : "text-white"
             }`}
+            aria-expanded={openDropdown === entry.label}
+            aria-haspopup="true"
+            onFocus={() => handleMouseEnter(entry.label)}
+            onBlur={handleMouseLeave}
           >
             {entry.label}
             <ChevronDown
@@ -128,12 +132,14 @@ export default function Navbar() {
                 exit={{ opacity: 0, y: 8 }}
                 transition={{ duration: 0.15 }}
                 className="absolute top-full left-0 mt-2 min-w-[180px] rounded-xl bg-white py-2 shadow-lg border border-gray-100"
+                role="menu"
               >
                 {entry.children.map((child) => (
                   <Link
                     key={child.href}
                     href={child.href}
                     className="block px-4 py-2 text-sm text-[#1A1A2E] hover:bg-[#EAF4FC] hover:text-[#2E86DE] transition-colors"
+                    role="menuitem"
                   >
                     {child.name}
                   </Link>
