@@ -242,56 +242,6 @@ export const blogPosts = [
   },
 ];
 
-export const videos = [
-  {
-    id: 1,
-    title: "But....I DONT TRUST YOU",
-    type: "Music Video" as const,
-    gradient: "from-[#2E86DE] to-[#1B5E8A]",
-    year: 2024,
-    description: "Official music video from ECHOES OF LOVE I",
-  },
-  {
-    id: 2,
-    title: "KUZOKHANYA ft. Roline",
-    type: "Music Video" as const,
-    gradient: "from-[#F39C12] to-[#2E86DE]",
-    year: 2025,
-    description: "Visual accompaniment to the Amapiano-infused single",
-  },
-  {
-    id: 3,
-    title: "Global SeoulMates — Seoul Tourism",
-    type: "Live" as const,
-    gradient: "from-[#1B5E8A] to-[#1A1A2E]",
-    year: 2024,
-    description: "Live performance at the Seoul Tourism Organisation event",
-  },
-  {
-    id: 4,
-    title: "GINCON National Assembly Ceremony",
-    type: "Live" as const,
-    gradient: "from-[#2E86DE] to-[#F39C12]",
-    year: 2025,
-    description: "Highlights from the GINCON committee appointment ceremony",
-  },
-  {
-    id: 5,
-    title: "Making of 'When I Think of You (Summer)'",
-    type: "Behind the Scenes" as const,
-    gradient: "from-[#1A1A2E] to-[#2E86DE]",
-    year: 2025,
-    description: "Studio session footage and production breakdown",
-  },
-  {
-    id: 6,
-    title: "The ESOTERIC Ones — Label Documentary",
-    type: "Behind the Scenes" as const,
-    gradient: "from-[#1B5E8A] to-[#F39C12]",
-    year: 2024,
-    description: "A look inside the independent label founded in Seoul",
-  },
-];
 
 export const aiProfile = {
   title: "ML/CV Engineer",

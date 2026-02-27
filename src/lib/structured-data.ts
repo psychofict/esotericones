@@ -4,8 +4,8 @@ export function getPersonSchema() {
     "@type": "Person",
     name: "Ebstar",
     alternateName: "Ebenezer Tarubinga",
-    url: "https://ebstar.com",
-    image: "https://ebstar.com/images/ebstar-hero.jpg",
+    url: "https://ebstar.co",
+    image: "https://ebstar.co/images/ebstar-hero.jpg",
     sameAs: [
       "https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK",
       "https://music.apple.com/us/artist/ebstar/1518342850",
@@ -26,7 +26,7 @@ export function getMusicGroupSchema() {
     "@context": "https://schema.org",
     "@type": "MusicGroup",
     name: "Ebstar",
-    url: "https://ebstar.com",
+    url: "https://ebstar.co",
     genre: ["Piano House", "Dance-Pop", "Deep House", "Progressive House", "Future Bass", "Amapiano", "Pop", "Big Room", "Hip-Hop"],
     sameAs: [
       "https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK",
@@ -56,7 +56,7 @@ export function getWebsiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "EBSTAR",
-    url: "https://ebstar.com",
+    url: "https://ebstar.co",
     description: "Official website of Ebstar — South Korea-based Zimbabwean music producer, AI research engineer, brand influencer, and record label founder.",
     author: { "@type": "Person", name: "Ebstar" },
   };

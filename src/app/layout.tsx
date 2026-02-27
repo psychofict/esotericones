@@ -22,16 +22,16 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ebstar.com"),
-  title: "EBSTAR — Producer. Engineer. Influencer. Bridging Worlds.",
+  metadataBase: new URL("https://ebstar.co"),
+  title: "EBSTAR — AI by Profession. Music by Obsession. Travel by Instinct.",
   description:
-    "Ebstar is a South Korea-based Zimbabwean music producer, AI research engineer, brand influencer, and record label founder. 5M+ streams, published ML researcher, and 50+ brand partnerships bridging worlds.",
+    "Ebstar is a Seoul-based music producer, AI/ML engineer, macro influencer, and record label founder. 5M+ streams, published AI researcher, and 50+ brand partnerships.",
   keywords: [
     "Ebstar",
     "Ebenezer Tarubinga",
     "piano house",
     "dance-pop",
-    "Zimbabwean musician",
+    "African musician",
     "South Korea music",
     "music producer",
     "amapiano",
@@ -41,17 +41,28 @@ export const metadata: Metadata = {
     "AI engineer",
     "machine learning",
     "computer vision",
-    "brand influencer",
+    "macro influencer",
     "brand partnerships",
     "travel influencer",
+    "Korea University AI",
+    "GINCON",
   ],
   openGraph: {
-    title: "EBSTAR — Producer. Engineer. Influencer. Bridging Worlds.",
+    title: "EBSTAR — AI by Profession. Music by Obsession. Travel by Instinct.",
     description:
-      "Ebstar is a South Korea-based Zimbabwean music producer, AI research engineer, brand influencer, and record label founder. 5M+ streams, published ML researcher, and 50+ brand partnerships bridging worlds.",
+      "Ebstar is a Seoul-based music producer, AI/ML engineer, macro influencer, and record label founder. 5M+ streams, published AI researcher, and 50+ brand partnerships.",
     siteName: "EBSTAR",
+    url: "https://ebstar.co",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/images/ebstar-hero.jpg",
+        width: 590,
+        height: 404,
+        alt: "Ebstar — Music Producer, AI/ML Engineer, Macro Influencer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
