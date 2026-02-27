@@ -127,18 +127,18 @@ export default function Navbar() {
           <AnimatePresence>
             {openDropdown === entry.label && (
               <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 8, scale: 0.96 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-full left-0 mt-2 min-w-[180px] rounded-xl bg-white py-2 shadow-lg border border-gray-100"
+                className="absolute top-full left-0 mt-2 min-w-[200px] rounded-2xl bg-white/90 backdrop-blur-xl py-2 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.15)] border border-gray-100/50"
                 role="menu"
               >
                 {entry.children.map((child) => (
                   <Link
                     key={child.href}
                     href={child.href}
-                    className="block px-4 py-2 text-sm text-[#1A1A2E] hover:bg-[#EAF4FC] hover:text-[#2E86DE] transition-colors"
+                    className="block px-4 py-2.5 text-sm text-[#1A1A2E] hover:bg-[#EAF4FC] hover:text-[#2E86DE] transition-colors rounded-lg mx-1"
                     role="menuitem"
                   >
                     {child.name}
@@ -165,18 +165,24 @@ export default function Navbar() {
     );
   };
 
-  const renderMobileEntry = (entry: NavGroup | NavStandalone) => {
+  const renderMobileEntry = (entry: NavGroup | NavStandalone, index: number) => {
     if (isNavGroup(entry)) {
       const isOpen = mobileAccordion === entry.label;
       return (
-        <li key={entry.label} className="w-full text-center">
+        <motion.li
+          key={entry.label}
+          className="w-full text-center"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.06, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
           <button
             onClick={() => toggleMobileAccordion(entry.label)}
-            className="flex items-center justify-center gap-2 w-full text-2xl font-semibold text-[#1A1A2E] transition-colors hover:text-[#2E86DE]"
+            className="flex items-center justify-center gap-2 w-full text-4xl font-bold text-[#1A1A2E] transition-colors hover:text-[#2E86DE] min-h-[48px]"
           >
             {entry.label}
             <ChevronDown
-              size={20}
+              size={24}
               className={`transition-transform duration-200 ${
                 isOpen ? "rotate-180" : ""
               }`}
@@ -197,7 +203,7 @@ export default function Navbar() {
                       <Link
                         href={child.href}
                         onClick={() => setMobileOpen(false)}
-                        className="text-lg text-[#1A1A2E]/70 hover:text-[#2E86DE] transition-colors"
+                        className="text-lg text-[#1A1A2E]/70 hover:text-[#2E86DE] transition-colors min-h-[48px] inline-flex items-center"
                       >
                         {child.name}
                       </Link>
@@ -207,20 +213,25 @@ export default function Navbar() {
               </motion.div>
             )}
           </AnimatePresence>
-        </li>
+        </motion.li>
       );
     }
 
     return (
-      <li key={entry.href}>
+      <motion.li
+        key={entry.href}
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.06, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
         <Link
           href={entry.href}
           onClick={() => setMobileOpen(false)}
-          className="text-2xl font-semibold text-[#1A1A2E] transition-colors hover:text-[#2E86DE]"
+          className="text-4xl font-bold text-[#1A1A2E] transition-colors hover:text-[#2E86DE] min-h-[48px] inline-flex items-center"
         >
           {entry.name}
         </Link>
-      </li>
+      </motion.li>
     );
   };
 
@@ -229,8 +240,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white shadow-md"
-            : "bg-transparent"
+            ? "bg-white/80 backdrop-blur-xl border-b border-black/5"
+            : "bg-gradient-to-b from-black/20 to-transparent"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -241,7 +252,7 @@ export default function Navbar() {
               alt="Ebstar"
               width={36}
               height={36}
-              className="w-9 h-9"
+              className={`w-9 h-9 transition-all duration-300 ${scrolled ? "brightness-0" : ""}`}
             />
             <span
               className={`font-[var(--font-display)] text-2xl font-bold tracking-wider transition-colors ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
@@ -273,7 +284,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden transition-colors ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
+            className={`md:hidden p-2 transition-colors ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
@@ -286,17 +297,20 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            initial={{ clipPath: "circle(0% at calc(100% - 2rem) 2rem)" }}
+            animate={{ clipPath: "circle(150% at calc(100% - 2rem) 2rem)" }}
+            exit={{ clipPath: "circle(0% at calc(100% - 2rem) 2rem)" }}
+            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white"
           >
-            <ul className="flex flex-col items-center gap-8">
-              {navEntries.map(renderMobileEntry)}
+            <ul className="flex flex-col items-center gap-6">
+              {navEntries.map((entry, index) => renderMobileEntry(entry, index))}
             </ul>
 
-            <div className="mt-10 flex items-center gap-5">
+            {/* Gradient divider */}
+            <div className="mt-10 mb-6 w-24 h-px bg-gradient-to-r from-transparent via-[#2E86DE]/30 to-transparent" />
+
+            <div className="flex items-center gap-4">
               {socialIcons.map((social) => (
                 <a
                   key={social.name}
@@ -304,7 +318,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="text-[#1A1A2E] transition-colors hover:text-[#2E86DE]"
+                  className="w-11 h-11 rounded-full bg-[#EAF4FC] flex items-center justify-center text-[#1A1A2E] transition-colors hover:text-[#2E86DE] hover:bg-[#2E86DE]/10"
                 >
                   {social.icon}
                 </a>

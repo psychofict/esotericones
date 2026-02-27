@@ -13,22 +13,19 @@ const skillIconMap = {
   layers: Layers,
 } as const;
 
+import { stagger as staggerFactory } from "@/lib/animations";
+
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as const },
+    filter: "blur(0px)",
+    transition: { delay: i * 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
   }),
 };
 
-const stagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
+const stagger = staggerFactory(0.1);
 
 const projectImages: Record<string, string> = {
   "Dual-Embedding Guided Backdoor Attack on Multimodal Contrastive Learning": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=640&q=80",
@@ -63,11 +60,23 @@ export default function AIPage() {
     <main id="main-content" className="min-h-screen bg-white text-[#1A1A2E]">
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/ai-hero.jpg')" }}
-        />
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <Image
+            src="/images/ai-hero.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-[#0a0a1a]/75" />
+        <div className="noise-overlay absolute inset-0" />
 
         <motion.div
           className="relative z-10 max-w-3xl mx-auto"

@@ -10,24 +10,21 @@ import { useFormSubmit } from "@/lib/useFormSubmit";
 import FormFeedback from "@/components/FormFeedback";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 
+import { fadeUp as fadeUpBase, stagger as staggerFactory } from "@/lib/animations";
+
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.6, ease: "easeOut" as const },
+    filter: "blur(0px)",
+    transition: { delay: i * 0.12, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
   }),
 };
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
-};
+const stagger = staggerFactory(0.05);
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+const itemVariants = fadeUpBase;
 
 const roster = [
   "CJ Melzy",
@@ -166,10 +163,7 @@ export default function LabelPage() {
       {/* Hero */}
       <section className="relative overflow-hidden py-28 px-6 text-center bg-[#EAF4FC]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#2E86DE]/10 via-transparent to-transparent" />
-        {/* Floating decorative circles */}
-        <div className="absolute top-12 left-[10%] w-32 h-32 rounded-full bg-[#2E86DE]/5 blur-2xl" />
-        <div className="absolute bottom-16 right-[15%] w-40 h-40 rounded-full bg-[#F39C12]/5 blur-2xl" />
-        <div className="absolute top-1/2 left-[60%] w-24 h-24 rounded-full bg-[#2E86DE]/8 blur-xl" />
+        <div className="noise-overlay absolute inset-0" />
         <motion.div
           className="relative z-10 max-w-3xl mx-auto"
           initial="hidden"
