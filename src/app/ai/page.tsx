@@ -49,7 +49,7 @@ export default function AIPage() {
       <section className="relative overflow-hidden py-28 px-6 text-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80')" }}
+          style={{ backgroundImage: "url('/images/ai-hero.jpg')" }}
         />
         <div className="absolute inset-0 bg-[#EAF4FC]/65" />
         <div className="absolute top-20 left-[10%] w-32 h-32 rounded-full bg-[#2E86DE]/10 blur-3xl" />
