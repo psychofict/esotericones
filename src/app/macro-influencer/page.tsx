@@ -123,7 +123,7 @@ export default function MacroInfluencerPage() {
       <section className="relative overflow-hidden py-28 px-6 text-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=80')" }}
+          style={{ backgroundImage: "url('/images/macro-influencer-hero.jpg')" }}
         />
         <div className="absolute inset-0 bg-[#EAF4FC]/65" />
         <div className="animate-float absolute top-[20%] left-[8%] h-48 w-48 rounded-full bg-[#F39C12] opacity-[0.07]" />
