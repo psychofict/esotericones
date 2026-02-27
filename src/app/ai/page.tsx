@@ -30,12 +30,20 @@ const stagger = {
   },
 };
 
-const projectCategoryImages: Record<string, string> = {
-  "Computer Vision": "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=640&q=80",
-  "Generative Models": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=640&q=80",
-  "Reinforcement Learning": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=640&q=80",
-  "Medical Imaging": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=640&q=80",
-  "LLMs": "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=640&q=80",
+const projectImages: Record<string, string> = {
+  "Dual-Embedding Guided Backdoor Attack on Multimodal Contrastive Learning": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=640&q=80",
+  "Semantic-Aware Multi-Label Adversarial Attacks": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=640&q=80",
+  "Self-Training for Semi-Supervised Semantic Segmentation": "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=640&q=80",
+  "Scalable Urban Dynamic Scenes (NeRF)": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=640&q=80",
+  "Speech Emotion Recognition": "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=640&q=80",
+  "Autoregressive Text-to-Image Generation (Parti)": "https://images.unsplash.com/photo-1547954575-855750c57bd3?w=640&q=80",
+  "Controllable Text-to-Image Generation (ControlGAN)": "https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=640&q=80",
+  "Diffusion Based Text-to-Image Generation (Imagen)": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=640&q=80",
+  "Aligning SAM to Open Context via Reinforcement Learning": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=640&q=80",
+  "Tool-Augmented Reward Modeling (Themis)": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=640&q=80",
+  "ASD Classification with Multi-Site fMRI Data": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=640&q=80",
+  "Mutual Correction Framework for Semi-Supervised Medical Image Segmentation": "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=640&q=80",
+  "Why Does the Effective Context Length of LLMs Fall Short?": "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=640&q=80",
 };
 
 const projectCategories = ["All", ...Array.from(new Set(aiProfile.projects.map((p) => p.category)))];
@@ -259,11 +267,11 @@ export default function AIPage() {
                 animate="visible"
                 variants={fadeUp}
               >
-                {projectCategoryImages[project.category] && (
+                {projectImages[project.title] && (
                   <div className="relative h-36 overflow-hidden">
                     <Image
-                      src={projectCategoryImages[project.category]}
-                      alt={project.category}
+                      src={projectImages[project.title]}
+                      alt={project.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

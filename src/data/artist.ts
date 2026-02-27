@@ -302,7 +302,7 @@ export const aiProfile = {
     labUrl: "https://xai.korea.ac.kr/",
     logo: "/images/ai/korea-university.png",
   },
-  bio: "AI/ML Engineer with an MSc in Artificial Intelligence from Korea University, where he conducted research under Dr. Seong-Whan Lee at the Pattern Recognition & Machine Learning Lab. With 6+ years spanning software engineering, deep learning, and computer vision, Ebstar has published at top-tier venues (IJCNN, Neural Networks), built production CV/ML pipelines for smart city systems, and led R&D across semantic segmentation, depth estimation, object detection, and dense matching. His work bridges academic research with real-world deployment — from autonomous driving perception to AIoT infrastructure.",
+  bio: "AI/ML Engineer with an MSc in Artificial Intelligence from Korea University, where he conducted research under Dr. Seong-Whan Lee at the Pattern Recognition & Machine Learning Lab. With 4+ years spanning software engineering, deep learning, and computer vision, Ebstar has published at top-tier venues (IJCNN, Neural Networks), built production CV/ML pipelines for smart city systems, and led R&D across semantic segmentation, depth estimation, object detection, and dense matching. His work bridges academic research with real-world deployment — from autonomous driving perception to AIoT infrastructure.",
   links: {
     googleScholar: "https://scholar.google.com/citations?user=W818y-gAAAAJ&hl=en",
     linkedin: "https://www.linkedin.com/in/ebstar",
