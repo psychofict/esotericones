@@ -157,8 +157,10 @@ export default function MacroInfluencerPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            One of South Korea&apos;s most recognized foreign brand influencers — collaborating with
+            One of South Korea&apos;s most recognized foreign macro influencers and socialites — collaborating with
             global brands, headlining major events, and advising at the highest levels of government.
+            A dynamic African public figure who thrives in the spotlight, radiating charisma and
+            transforming every gathering into a memorable celebration.
           </motion.p>
         </motion.div>
       </section>
