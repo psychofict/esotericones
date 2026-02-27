@@ -28,10 +28,10 @@ const iconMap = {
 } as const;
 
 const roleCardImages: Record<string, string> = {
-  "Music Producer": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
+  "Record Producer": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
   "AI/ML Engineer": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=640&q=80",
   "Macro Influencer": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=640&q=80",
-  "Record Label": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80",
+  "Record Label Founder": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80",
 };
 
 const stats = [
@@ -87,7 +87,7 @@ export default function HomePage() {
             variants={fadeUp}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            AI by Profession, Music by Obsession, Travel by Instinct
+            AI by Profession. Music by Obsession. Travel by Instinct.
           </motion.p>
 
           <motion.p
@@ -140,7 +140,7 @@ export default function HomePage() {
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            AI by profession, music by obsession, travel by instinct — producing music, engineering AI, building brands, and running a record label.
+            AI by profession. Music by obsession. Travel by instinct — producing music, engineering AI, building brands, and running a record label.
           </motion.p>
 
           <motion.div
@@ -418,9 +418,9 @@ export default function HomePage() {
       <section className="relative py-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505236858219-8130802e8cf8?w=1920&q=80')" }}
+          style={{ backgroundImage: "url('/images/ebstar-hero.jpg')" }}
         />
-        <div className="absolute inset-0 bg-[#2E86DE]/75" />
+        <div className="absolute inset-0 bg-[#1A1A2E]/80" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <motion.h2
             className="text-3xl md:text-5xl font-bold text-white mb-4"

@@ -5,7 +5,7 @@ export function getPersonSchema() {
     name: "Ebstar",
     alternateName: "Ebenezer Tarubinga",
     url: "https://ebstar.com",
-    image: "https://ebstar.com/images/ebstar-avatar.svg",
+    image: "https://ebstar.com/images/ebstar-hero.jpg",
     sameAs: [
       "https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK",
       "https://music.apple.com/us/artist/ebstar/1518342850",

@@ -472,7 +472,6 @@ export const navEntries: NavEntry[] = [
     label: "Macro Influencer",
     children: [{ name: "Partnerships & Events", href: "/macro-influencer" }],
   },
-  { kind: "standalone", name: "Merch", href: "/merch" },
   { kind: "standalone", name: "Tour", href: "/tour" },
   { kind: "standalone", name: "About", href: "/about" },
   { kind: "standalone", name: "Contact", href: "/contact" },
@@ -532,7 +531,7 @@ export const unifiedBio = {
       title: "Producer",
       icon: "music" as const,
       summary:
-        "5M+ streams across piano house, dance-pop, Amapiano, and more. Five albums released and #290 on SkioMusic's World Producer Chart.",
+        "5M+ streams across piano house, dance-pop, Amapiano, and more. 3 albums, 2 EPs, and #290 on SkioMusic's World Producer Chart.",
     },
     {
       title: "AI Research Engineer",

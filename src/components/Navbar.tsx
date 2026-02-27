@@ -108,7 +108,7 @@ export default function Navbar() {
         >
           <button
             className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-[#2E86DE] ${
-              scrolled ? "text-[#1A1A2E]" : "text-[#1A1A2E]"
+              scrolled ? "text-[#1A1A2E]" : "text-white"
             }`}
           >
             {entry.label}
@@ -150,7 +150,7 @@ export default function Navbar() {
         <Link
           href={entry.href}
           className={`text-sm font-medium transition-colors hover:text-[#2E86DE] ${
-            scrolled ? "text-[#1A1A2E]" : "text-[#1A1A2E]"
+            scrolled ? "text-[#1A1A2E]" : "text-white"
           }`}
         >
           {entry.name}
@@ -238,8 +238,7 @@ export default function Navbar() {
               className="w-9 h-9"
             />
             <span
-              className="font-[var(--font-display)] text-2xl font-bold tracking-wider"
-              style={{ color: "#1A1A2E" }}
+              className={`font-[var(--font-display)] text-2xl font-bold tracking-wider transition-colors ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
             >
               EBSTAR
             </span>
@@ -259,7 +258,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="text-[#1A1A2E] transition-colors hover:text-[#2E86DE]"
+                className={`transition-colors hover:text-[#2E86DE] ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
               >
                 {social.icon}
               </a>
@@ -268,7 +267,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-[#1A1A2E]"
+            className={`md:hidden transition-colors ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
