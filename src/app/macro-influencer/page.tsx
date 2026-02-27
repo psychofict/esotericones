@@ -33,12 +33,6 @@ const pressItems = [
       "South Korea's leading wire service interviews Ebstar as part of their 'Our Africa' series, exploring his journey as a Zimbabwean musician, brand influencer, and record label founder based in Seoul.",
     url: "https://www.yna.co.kr/view/AKR20251002123900898?section=ubuntu/continent/our-africa",
   },
-  {
-    outlet: "More coverage",
-    title: "Coming Soon",
-    date: "",
-    excerpt: "Additional press features and interviews will be added here.",
-  },
 ];
 
 // Group macro influencer roles by year

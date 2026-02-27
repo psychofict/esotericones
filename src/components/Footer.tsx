@@ -38,8 +38,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#1B5E8A]">
-              AI by profession, music by obsession, travel by instinct —
-              record producer, AI/ML engineer, brand influencer, and founder of The ES&Oslash;T&Euml;RIC Ones.
+              AI by profession. Music by obsession. Travel by instinct —
+              record producer, AI/ML engineer, macro influencer, and founder of The ES&Oslash;T&Euml;RIC Ones.
             </p>
           </div>
 
@@ -130,7 +130,7 @@ export default function Footer() {
       <div className="border-t border-[#1B5E8A]/10">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-6 py-6">
           <p className="text-center text-xs text-[#1B5E8A]">
-            &copy; 2025 The ES&Oslash;T&Euml;RIC Ones. All rights reserved.
+            &copy; {new Date().getFullYear()} The ES&Oslash;T&Euml;RIC Ones. All rights reserved.
           </p>
         </div>
       </div>
