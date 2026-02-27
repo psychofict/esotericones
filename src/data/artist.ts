@@ -109,9 +109,9 @@ export const topTracks = [
   { title: "After The Storm, You'll See The Sun", streams: "254,155", source: "Life Is Beautiful", spotifyUrl: "https://open.spotify.com/track/4cOFMdMOFCqm0lLODnFCAa", albumId: "3ZHNSXWQZJ31leN1hYl4Un" },
   { title: "Seoul Love", streams: "188,000", source: "Life Is Beautiful", spotifyUrl: "https://open.spotify.com/track/6RFx3ikAz2dUMr3xMpjKEH", albumId: "3ZHNSXWQZJ31leN1hYl4Un" },
   { title: "I Could Be The One For You", streams: "67,459", source: "Life Is Beautiful", spotifyUrl: "https://open.spotify.com/track/2KAlW3JIgSj3GFOS6TaMYy", albumId: "3ZHNSXWQZJ31leN1hYl4Un" },
-  { title: "COMING BACK FOR MORE", streams: "51,305", source: "Single", spotifyUrl: "https://open.spotify.com/track/6pAOzMC5F8QGXB0bUmBYsN", albumId: "6pAOzMC5F8QGXB0bUmBYsN" },
-  { title: "But....I DONT TRUST YOU", streams: "38,237", source: "ECHOES OF LOVE I", spotifyUrl: "https://open.spotify.com/track/3hVwELNOFMhZ1FRRgq0xvt", albumId: "7ik4PNMFkfMOqbHINK5lD5" },
-  { title: "The Breakup Anthem", streams: "28,306", source: "ECHOES OF LOVE I", spotifyUrl: "https://open.spotify.com/track/5vEDDR8S5VhGFBG7kDzOxj", albumId: "7ik4PNMFkfMOqbHINK5lD5" },
+  { title: "COMING BACK FOR MORE", streams: "51,305", source: "Single", spotifyUrl: "https://open.spotify.com/track/6pAOzMC5F8QGXB0bUmBYsN", albumId: "26kkRdv0k9ueKLRdFV0G5C" },
+  { title: "But....I DONT TRUST YOU", streams: "38,237", source: "ECHOES OF LOVE I", spotifyUrl: "https://open.spotify.com/track/3hVwELNOFMhZ1FRRgq0xvt", albumId: "6lJzDeHVkGbsLAYG5SohwR" },
+  { title: "The Breakup Anthem", streams: "28,306", source: "ECHOES OF LOVE I", spotifyUrl: "https://open.spotify.com/track/5vEDDR8S5VhGFBG7kDzOxj", albumId: "6lJzDeHVkGbsLAYG5SohwR" },
 ];
 
 export const timeline = [
