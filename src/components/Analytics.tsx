@@ -38,19 +38,21 @@ export default function Analytics() {
 
       {/* Naver Analytics */}
       {naverAnalyticsId && (
+        <Script
+          src="//wcs.pstatic.net/wcslog.js"
+          strategy="afterInteractive"
+        />
+      )}
+      {naverAnalyticsId && (
         <Script id="naver-analytics" strategy="afterInteractive">
           {`
             if(!wcs_add) var wcs_add = {};
             wcs_add["wa"] = "${naverAnalyticsId}";
-            if(window.wcs) wcs_do();
+            if(window.wcs) {
+              wcs_do();
+            }
           `}
         </Script>
-      )}
-      {naverAnalyticsId && (
-        <Script
-          src="https://wcs.naver.net/wcslog.js"
-          strategy="afterInteractive"
-        />
       )}
     </>
   );
