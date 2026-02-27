@@ -59,9 +59,7 @@ export default function AIPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/ai-hero.jpg')" }}
         />
-        <div className="absolute inset-0 bg-[#EAF4FC]/65" />
-        <div className="absolute top-20 left-[10%] w-32 h-32 rounded-full bg-[#2E86DE]/10 blur-3xl" />
-        <div className="absolute bottom-20 right-[10%] w-40 h-40 rounded-full bg-[#F39C12]/10 blur-3xl" />
+        <div className="absolute inset-0 bg-[#0a0a1a]/75" />
 
         <motion.div
           className="relative z-10 max-w-3xl mx-auto"
@@ -72,7 +70,7 @@ export default function AIPage() {
           <motion.div
             variants={fadeUp}
             custom={0}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2E86DE]/10 border border-[#2E86DE]/20 text-[#2E86DE] text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2E86DE]/20 border border-[#2E86DE]/30 text-[#5BA8F0] text-sm font-medium mb-6"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -82,14 +80,14 @@ export default function AIPage() {
           <motion.h1
             variants={fadeUp}
             custom={1}
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
+            className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-white"
           >
             AI/ML <span className="text-[#2E86DE]">Engineer</span>
           </motion.h1>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="text-lg text-[#1A1A2E]/60 max-w-2xl mx-auto mb-8"
+            className="text-base md:text-lg text-white/70 max-w-2xl mx-auto mb-8 leading-relaxed"
           >
             {aiProfile.bio}
           </motion.p>
@@ -109,13 +107,13 @@ export default function AIPage() {
               </svg>
               Download CV
             </a>
-            <a href={aiProfile.links.googleScholar} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#2E86DE]/30 text-[#1A1A2E]/70 font-medium hover:bg-[#2E86DE]/10 transition-colors">
+            <a href={aiProfile.links.googleScholar} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/80 font-medium hover:bg-white/10 transition-colors">
               Google Scholar
             </a>
-            <a href={aiProfile.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#2E86DE]/30 text-[#1A1A2E]/70 font-medium hover:bg-[#2E86DE]/10 transition-colors">
+            <a href={aiProfile.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/80 font-medium hover:bg-white/10 transition-colors">
               GitHub
             </a>
-            <a href={aiProfile.links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#2E86DE]/30 text-[#1A1A2E]/70 font-medium hover:bg-[#2E86DE]/10 transition-colors">
+            <a href={aiProfile.links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/80 font-medium hover:bg-white/10 transition-colors">
               LinkedIn
             </a>
           </motion.div>
