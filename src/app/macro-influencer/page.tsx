@@ -24,17 +24,6 @@ const stagger = {
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
-const pressItems = [
-  {
-    outlet: "Yonhap News Agency (연합뉴스)",
-    title: "Our Africa: Ebstar — Zimbabwean Artist & Influencer in South Korea",
-    date: "2025",
-    excerpt:
-      "South Korea's leading wire service interviews Ebstar as part of their 'Our Africa' series, exploring his journey as a Zimbabwean musician, brand influencer, and record label founder based in Seoul.",
-    url: "https://www.yna.co.kr/view/AKR20251002123900898?section=ubuntu/continent/our-africa",
-  },
-];
-
 // Group macro influencer roles by year
 const grouped = macroInfluencer.reduce(
   (acc, item) => {
@@ -352,69 +341,6 @@ export default function MacroInfluencerPage() {
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* Press Coverage */}
-      <section className="bg-white py-20">
-        <div className="max-w-5xl mx-auto px-6">
-          <motion.h2
-            className="text-3xl md:text-5xl font-bold mb-12 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            In the Press
-          </motion.h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {pressItems.map((article, i) => {
-              const Wrapper = article.url ? "a" : "div";
-              const linkProps = article.url
-                ? { href: article.url, target: "_blank" as const, rel: "noopener noreferrer" }
-                : {};
-              return (
-                <motion.div
-                  key={article.title}
-                  className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden hover:border-[#F39C12]/40 hover:shadow-md transition-all"
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={cardVariant}
-                  whileHover={{ scale: 1.03 }}
-                >
-                  <Wrapper {...linkProps} className={article.url ? "block" : ""}>
-                    <div className="h-32 relative overflow-hidden">
-                      <Image
-                        src="https://images.unsplash.com/photo-1504711434473-57c8cd4e5de7?w=640&q=80"
-                        alt="Press coverage"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#EAF4FC]/40 to-[#2E86DE]/10" />
-                    </div>
-                    <div className="p-6">
-                      <p className="text-xs text-[#F39C12] font-medium mb-2">
-                        {article.outlet} &middot; {article.date}
-                      </p>
-                      <h3 className="font-semibold leading-snug mb-2">
-                        {article.title}
-                      </h3>
-                      <p className="text-sm text-[#1A1A2E]/50 leading-relaxed">
-                        {article.excerpt}
-                      </p>
-                      {article.url && (
-                        <p className="text-xs text-[#2E86DE] font-medium mt-3">
-                          Read article &rarr;
-                        </p>
-                      )}
-                    </div>
-                  </Wrapper>
-                </motion.div>
-              );
-            })}
-          </div>
         </div>
       </section>
 

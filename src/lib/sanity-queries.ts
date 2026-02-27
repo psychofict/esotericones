@@ -51,22 +51,6 @@ export async function getSingles() {
   );
 }
 
-export async function getBlogPosts(limit?: number) {
-  const limitClause = limit ? `[0...${limit}]` : "";
-  return client.fetch(
-    `*[_type == "blogPost"] | order(publishDate desc) ${limitClause} {
-      _id,
-      title,
-      slug,
-      publishDate,
-      excerpt,
-      body,
-      coverImage,
-      tags,
-      author
-    }`
-  );
-}
 
 export async function getVideos() {
   return client.fetch(
