@@ -86,9 +86,9 @@ export async function getVideos() {
   );
 }
 
-export async function getAmbassadorships() {
+export async function getMacroInfluencer() {
   return client.fetch(
-    `*[_type == "ambassadorship"] | order(year desc) {
+    `*[_type == "macroInfluencer"] | order(year desc) {
       _id,
       organization,
       role,

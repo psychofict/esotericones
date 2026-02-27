@@ -45,7 +45,7 @@ const latestAlbum = albums[albums.length - 1];
 const featuredHighlight = {
   title: "Forbes BLK Member & Korea-Africa Summit",
   excerpt: "Inducted into Forbes BLK in 2024 and met the Zimbabwean President at the Korea-Africa Summit — bridging worlds at the highest level.",
-  href: "/ambassadorships",
+  href: "/macro-influencer",
 };
 
 export default function HomePage() {

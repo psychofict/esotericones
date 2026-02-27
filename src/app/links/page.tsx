@@ -126,7 +126,7 @@ export default function LinksPage() {
             EBSTAR
           </h1>
           <p className="text-sm text-[#EAF4FC]/50 mt-2">
-            Producer &middot; Ambassador &middot; Bridging Worlds
+            Producer &middot; Macro Influencer &middot; Bridging Worlds
           </p>
         </motion.div>
 

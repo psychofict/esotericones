@@ -1,8 +1,8 @@
 import { defineType, defineField } from "sanity";
 
 export default defineType({
-  name: "ambassadorship",
-  title: "Ambassadorship",
+  name: "macroInfluencer",
+  title: "Macro Influencer",
   type: "document",
   fields: [
     defineField({

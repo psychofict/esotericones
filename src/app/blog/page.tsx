@@ -9,11 +9,11 @@ import { blogPosts } from "@/data/artist";
 const tagImages: Record<string, string> = {
   Releases: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=640&q=80",
   "Behind the Scenes": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=640&q=80",
-  Ambassadorships: "https://images.unsplash.com/photo-1540575467063-ba8db27f82e5?w=640&q=80",
+  "Macro Influencer": "https://images.unsplash.com/photo-1540575467063-ba8db27f82e5?w=640&q=80",
   Updates: "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=640&q=80",
 };
 
-const tags = ["All", "Releases", "Behind the Scenes", "Ambassadorships", "Updates"];
+const tags = ["All", "Releases", "Behind the Scenes", "Macro Influencer", "Updates"];
 
 const cardVariant = {
   hidden: { opacity: 0, y: 30 },
