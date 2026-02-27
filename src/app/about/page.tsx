@@ -74,7 +74,7 @@ export default function AboutPage() {
       <section className="relative bg-[#EAF4FC] py-24 px-6 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=80')" }}
+          style={{ backgroundImage: "url('/images/ebstar-hero.jpg')" }}
         />
         <div className="absolute inset-0 bg-[#EAF4FC]/65" />
         <div className="relative z-10 max-w-6xl mx-auto text-center">
@@ -183,8 +183,8 @@ export default function AboutPage() {
           >
             <div className="sticky top-24 rounded-2xl overflow-hidden shadow-lg aspect-[3/4]">
               <Image
-                src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=760&q=80"
-                alt="Seoul cityscape"
+                src="/images/ebstar-hero.jpg"
+                alt="Ebstar"
                 fill
                 className="object-cover"
                 sizes="380px"
