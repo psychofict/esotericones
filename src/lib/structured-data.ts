@@ -114,6 +114,55 @@ export function getWebsiteSchema() {
   };
 }
 
+export function getSiteNavigationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Site Navigation",
+    itemListElement: [
+      { "@type": "SiteNavigationElement", position: 1, name: "Music", url: "https://ebstar.co/music" },
+      { "@type": "SiteNavigationElement", position: 2, name: "Record Label", url: "https://ebstar.co/label" },
+      { "@type": "SiteNavigationElement", position: 3, name: "AI/ML Engineer", url: "https://ebstar.co/ai" },
+      { "@type": "SiteNavigationElement", position: 4, name: "Macro Influencer", url: "https://ebstar.co/macro-influencer" },
+      { "@type": "SiteNavigationElement", position: 5, name: "About", url: "https://ebstar.co/about" },
+      { "@type": "SiteNavigationElement", position: 6, name: "Tour", url: "https://ebstar.co/tour" },
+      { "@type": "SiteNavigationElement", position: 7, name: "Contact", url: "https://ebstar.co/contact" },
+    ],
+  };
+}
+
+export function getMusicRecordingSchema(track: {
+  title: string;
+  source: string;
+  spotifyUrl: string;
+  streams?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MusicRecording",
+    name: track.title,
+    url: track.spotifyUrl,
+    inAlbum: {
+      "@type": "MusicAlbum",
+      name: track.source,
+    },
+    byArtist: {
+      "@type": "MusicGroup",
+      name: "Ebstar",
+      url: "https://ebstar.co",
+    },
+    ...(track.streams
+      ? {
+          interactionStatistic: {
+            "@type": "InteractionCounter",
+            interactionType: { "@type": "ListenAction" },
+            userInteractionCount: track.streams.replace(/,/g, ""),
+          },
+        }
+      : {}),
+  };
+}
+
 export function getBreadcrumbSchema(
   items: { name: string; url: string }[]
 ) {

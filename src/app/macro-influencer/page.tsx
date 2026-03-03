@@ -76,12 +76,14 @@ function OrgLogo({ name, size = 40 }: { name: string; size?: number }) {
   if (!logo) return null;
   return (
     <div className="flex items-center justify-center flex-shrink-0" style={{ width: size, height: size }}>
-      {logo.endsWith(".svg") ? (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img src={logo} alt={name} className="max-w-full max-h-full object-contain" />
-      ) : (
-        <Image src={logo} alt={name} width={size} height={size} className="max-w-full max-h-full object-contain" />
-      )}
+      <Image
+        src={logo}
+        alt={name}
+        width={size}
+        height={size}
+        className="max-w-full max-h-full object-contain"
+        unoptimized={logo.endsWith(".svg")}
+      />
     </div>
   );
 }
@@ -215,22 +217,14 @@ export default function MacroInfluencerPage() {
               >
                 {brand.logo && (
                   <div className="w-12 h-12 mb-3 flex items-center justify-center">
-                    {brand.logo.endsWith(".svg") ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        src={brand.logo}
-                        alt={brand.name}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    ) : (
-                      <Image
-                        src={brand.logo}
-                        alt={brand.name}
-                        width={48}
-                        height={48}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    )}
+                    <Image
+                      src={brand.logo}
+                      alt={brand.name}
+                      width={48}
+                      height={48}
+                      className="max-w-full max-h-full object-contain"
+                      unoptimized={brand.logo.endsWith(".svg")}
+                    />
                   </div>
                 )}
                 <p className="font-semibold text-[#1A1A2E]">{brand.name}</p>

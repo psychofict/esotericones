@@ -3,12 +3,12 @@ import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Contact Ebstar — Bookings, Collaborations & Press",
+  title: "Contact — Bookings, Collaborations & Press",
   description:
     "Get in touch with Ebstar for music collaborations, brand partnerships, event appearances, press inquiries, or label submissions.",
   alternates: { canonical: "https://ebstar.co/contact" },
   openGraph: {
-    title: "Contact Ebstar — Bookings, Collaborations & Press",
+    title: "Contact — Bookings, Collaborations & Press | EBSTAR",
     description:
       "Get in touch with Ebstar for music collaborations, brand partnerships, event appearances, press inquiries, or label submissions.",
     url: "https://ebstar.co/contact",

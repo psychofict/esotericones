@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { albums, singles, topTracks } from "@/data/artist";
 import { useAudioPlayer } from "@/components/AudioPlayerContext";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 import JsonLd from "@/components/JsonLd";
-import { getMusicAlbumSchema } from "@/lib/structured-data";
+import { getMusicAlbumSchema, getMusicRecordingSchema } from "@/lib/structured-data";
 
 type FilterType = "all" | "album" | "ep" | "single" | "remix";
 
@@ -94,6 +95,17 @@ export default function MusicPage() {
         <JsonLd
           key={`jsonld-${album.id}`}
           data={getMusicAlbumSchema({ title: album.title, year: album.year, tracks: album.tracks })}
+        />
+      ))}
+      {topTracks.map((track) => (
+        <JsonLd
+          key={`jsonld-track-${track.title}`}
+          data={getMusicRecordingSchema({
+            title: track.title,
+            source: track.source,
+            spotifyUrl: track.spotifyUrl,
+            streams: track.streams,
+          })}
         />
       ))}
 
@@ -545,6 +557,26 @@ export default function MusicPage() {
                 </motion.a>
               );
             })}
+          </motion.div>
+          <motion.div
+            className="mt-12 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <p className="text-[#1A1A2E]/40 text-sm mb-3">
+              Discover more from our roster of {18} artists
+            </p>
+            <Link
+              href="/label"
+              className="inline-flex items-center gap-2 text-[#2E86DE] hover:text-[#F39C12] font-medium transition-colors"
+            >
+              Explore The ES&Oslash;T&Euml;RIC Ones
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
           </motion.div>
         </div>
       </section>

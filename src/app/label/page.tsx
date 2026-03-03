@@ -4,31 +4,22 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowRight } from "lucide-react";
 import { artist, labelGenres, labelReleases } from "@/data/artist";
 import { useFormSubmit } from "@/lib/useFormSubmit";
 import FormFeedback from "@/components/FormFeedback";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
+import SectionDivider from "@/components/SectionDivider";
 
-import { fadeUp as fadeUpBase, stagger as staggerFactory } from "@/lib/animations";
+import { fadeUp, stagger } from "@/lib/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { delay: i * 0.12, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  }),
-};
-
-const stagger = staggerFactory(0.05);
-
-const itemVariants = fadeUpBase;
+const containerVariants = stagger(0.15);
+const genreStagger = stagger(0.05);
+const itemVariants = fadeUp;
 
 const roster = [
   "CJ Melzy",
-  "ESØTËRIX",
+  "ES\u00D8T\u00CBRIX",
   "Ebstar",
   "KARLOST",
   "Loxion TXI",
@@ -70,12 +61,13 @@ function ArtistCard({ name, data }: { name: string; data?: ArtistData }) {
   const card = (
     <motion.div
       variants={itemVariants}
-      className={`rounded-2xl p-5 text-center transition-all hover:shadow-md ${
+      className={`card-hover rounded-2xl p-5 text-center ${
         isFounder
           ? "bg-gradient-to-br from-[#2E86DE] to-[#F39C12] text-white shadow-md"
           : "bg-white border border-gray-200 shadow-sm hover:border-[#F39C12]/40"
       } ${spotifyId ? "cursor-pointer" : ""}`}
-      whileHover={{ y: -4 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
     >
       <div
         className={`w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden flex items-center justify-center text-xl font-bold ${
@@ -168,13 +160,10 @@ export default function LabelPage() {
           className="relative z-10 max-w-3xl mx-auto"
           initial="hidden"
           animate="visible"
-          variants={{
-            visible: { transition: { staggerChildren: 0.15 } },
-          }}
+          variants={containerVariants}
         >
           <motion.div
-            variants={fadeUp}
-            custom={0}
+            variants={itemVariants}
             className="mx-auto mb-8 w-44 h-44 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg"
           >
             <Image
@@ -186,29 +175,25 @@ export default function LabelPage() {
             />
           </motion.div>
           <motion.p
-            variants={fadeUp}
-            custom={1}
+            variants={itemVariants}
             className="text-[#F39C12] uppercase tracking-[0.35em] text-sm font-medium mb-4"
           >
             Independent Record Label
           </motion.p>
           <motion.h1
-            variants={fadeUp}
-            custom={2}
+            variants={itemVariants}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
           >
             The ES&Oslash;T&Euml;RIC Ones
           </motion.h1>
           <motion.p
-            variants={fadeUp}
-            custom={3}
+            variants={itemVariants}
             className="text-[#1A1A2E]/50 text-lg mb-2"
           >
             Est. {artist.labelFounded}
           </motion.p>
           <motion.p
-            variants={fadeUp}
-            custom={4}
+            variants={itemVariants}
             className="text-[#1A1A2E]/60 text-base max-w-md mx-auto"
           >
             An international collective of artists pushing boundaries from Seoul to the world.
@@ -216,28 +201,35 @@ export default function LabelPage() {
         </motion.div>
       </section>
 
-      {/* Stats Banner */}
-      <motion.section
-        className="py-16 px-6"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-          {labelStats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-4xl md:text-5xl font-bold text-[#2E86DE]">{stat.value}</p>
-              <p className="text-sm text-[#1A1A2E]/50 mt-2">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </motion.section>
+      <SectionDivider variant="wave" direction="tint-to-dark" />
+
+      {/* Stats Banner — Dark Theme */}
+      <section className="relative bg-[#1A1A2E] overflow-hidden">
+        <div className="noise-overlay absolute inset-0" />
+        <motion.div
+          className="relative z-10 section-padding px-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            {labelStats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient">{stat.value}</p>
+                <p className="text-xs text-white/50 mt-2 uppercase tracking-widest">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      <SectionDivider variant="gradient" direction="dark-to-light" />
 
       {/* About the Label */}
       <motion.section
         id="about"
-        className="relative py-20 px-6 scroll-mt-20 overflow-hidden"
+        className="relative section-padding px-6 scroll-mt-20 overflow-hidden"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -247,7 +239,8 @@ export default function LabelPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-[#F8FBFF]/65" />
+        <div className="absolute inset-0 bg-[#F8FBFF]/75" />
+        <div className="noise-overlay absolute inset-0" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-[#F39C12]">
             About the Label
@@ -269,32 +262,40 @@ export default function LabelPage() {
       {/* Our Sound / Genres */}
       <motion.section
         id="sound"
-        className="py-20 px-6 scroll-mt-20"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        className="section-padding px-6 scroll-mt-20"
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Our Sound</h2>
-          <p className="text-[#1A1A2E]/50 mb-10">
+          <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-4">Our Sound</motion.h2>
+          <motion.p variants={itemVariants} className="text-[#1A1A2E]/50 mb-10">
             A genre-spanning collective rooted in electronic music
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          </motion.p>
+          <motion.div
+            variants={genreStagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3"
+          >
             {labelGenres.map((genre) => (
-              <span
+              <motion.span
                 key={genre}
+                variants={itemVariants}
                 className="px-5 py-2.5 rounded-full bg-[#EAF4FC] text-[#2E86DE] text-sm font-medium border border-[#2E86DE]/10 hover:bg-[#2E86DE] hover:text-white transition-colors"
               >
                 {genre}
-              </span>
+              </motion.span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 
+      <SectionDivider variant="wave" direction="light-to-soft" />
+
       {/* Roster */}
-      <section id="roster" className="bg-[#F8FBFF] py-20 scroll-mt-20">
+      <section id="roster" className="bg-[#F8FBFF] section-padding scroll-mt-20">
         <div className="max-w-5xl mx-auto px-6">
           <motion.h2
             className="text-3xl font-bold mb-4 text-center"
@@ -314,7 +315,7 @@ export default function LabelPage() {
           </motion.p>
           <motion.div
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-            variants={stagger}
+            variants={genreStagger}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
@@ -326,8 +327,10 @@ export default function LabelPage() {
         </div>
       </section>
 
+      <SectionDivider variant="gradient" direction="soft-to-light" />
+
       {/* Featured Releases */}
-      <section id="releases" className="py-20 px-6 scroll-mt-20">
+      <section id="releases" className="section-padding px-6 scroll-mt-20">
         <div className="max-w-5xl mx-auto">
           <motion.h2
             className="text-3xl font-bold mb-4 text-center"
@@ -354,30 +357,48 @@ export default function LabelPage() {
               />
             ))}
           </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/music"
+              className="inline-flex items-center gap-2 text-[#2E86DE] hover:text-[#F39C12] font-medium transition-colors"
+            >
+              View Full Discography
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Spotify Label Playlist */}
-      <motion.section
-        className="bg-[#F8FBFF] py-20 px-6"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center">
-            Label Playlist
-          </h2>
-          <p className="text-center text-[#1A1A2E]/50 mb-8">
-            The best of The ES&Oslash;T&Euml;RIC Ones, all in one place
-          </p>
-          <SpotifyEmbed uri="playlist/2y6gkLil8b3R6sw0rW7Ih8" type="large" />
-        </div>
-      </motion.section>
+      <SectionDivider variant="wave" direction="light-to-dark" />
+
+      {/* Spotify Label Playlist — Dark Theme */}
+      <section className="relative bg-[#1A1A2E] overflow-hidden">
+        <div className="noise-overlay absolute inset-0" />
+        <motion.div
+          className="relative z-10 section-padding px-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-2 text-center text-white">
+              Label Playlist
+            </h2>
+            <p className="text-center text-white/50 mb-8">
+              The best of The ES&Oslash;T&Euml;RIC Ones, all in one place
+            </p>
+            <SpotifyEmbed uri="playlist/2y6gkLil8b3R6sw0rW7Ih8" type="large" />
+          </div>
+        </motion.div>
+      </section>
+
+      <SectionDivider variant="gradient" direction="dark-to-light" />
 
       {/* Demo Submission */}
-      <section id="demo" className="py-20 scroll-mt-20">
+      <section id="demo" className="section-padding scroll-mt-20">
         <div className="max-w-2xl mx-auto px-6">
           <motion.h2
             className="text-3xl font-bold mb-4 text-center"
@@ -472,22 +493,26 @@ export default function LabelPage() {
                 placeholder="Tell us about yourself and your music..."
               />
             </div>
-            <button
+            <motion.button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-[#2E86DE] text-white font-semibold hover:bg-[#1B5E8A] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="btn-glow w-full py-3 rounded-xl bg-[#2E86DE] text-white font-semibold hover:bg-[#1B5E8A] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               {loading && <Loader2 className="w-4 h-4 animate-spin" />}
               Submit Demo
-            </button>
+            </motion.button>
             <FormFeedback loading={false} success={success} error={error} successMessage="Demo submitted! We'll be in touch." reset={reset} />
           </motion.form>
         </div>
       </section>
 
+      <SectionDivider variant="wave" direction="light-to-soft" />
+
       {/* Contact Info */}
       <motion.section
-        className="bg-[#F8FBFF] px-6 py-16 text-center"
+        className="bg-[#F8FBFF] px-6 section-padding text-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -524,6 +549,53 @@ export default function LabelPage() {
           </div>
         </div>
       </motion.section>
+
+      <SectionDivider variant="wave" direction="soft-to-dark" />
+
+      {/* Terminal CTA — Join Us */}
+      <section className="relative bg-[#1A1A2E] overflow-hidden">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="relative z-10 section-padding px-6 text-center">
+          <motion.div
+            className="max-w-2xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.p
+              variants={itemVariants}
+              className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
+            >
+              Join Us
+            </motion.p>
+            <motion.h2
+              variants={itemVariants}
+              className="text-3xl md:text-5xl font-bold text-white mb-6"
+            >
+              Work With The Label
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-white/50 text-lg mb-10 max-w-lg mx-auto"
+            >
+              Interested in collaborations, distribution, or joining our roster? Let&apos;s connect and create something extraordinary.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <Link href="/contact">
+                <motion.button
+                  className="btn-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-[#1A1A2E] font-semibold text-lg hover:bg-white/90 transition-colors cursor-pointer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Get in Touch
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }
