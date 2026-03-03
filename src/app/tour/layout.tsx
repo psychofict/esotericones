@@ -3,12 +3,12 @@ import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Tour — Ebstar | Upcoming Shows & Events",
+  title: "Tour — Upcoming Shows & Live Events",
   description:
     "See Ebstar live — upcoming tour dates, events, and performances in South Korea and worldwide.",
   alternates: { canonical: "https://ebstar.co/tour" },
   openGraph: {
-    title: "Tour — Ebstar | Upcoming Shows & Events",
+    title: "Tour — Upcoming Shows & Live Events | EBSTAR",
     description:
       "See Ebstar live — upcoming tour dates, events, and performances.",
     url: "https://ebstar.co/tour",

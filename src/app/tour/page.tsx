@@ -2,7 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { fadeUp, stagger } from "@/lib/animations";
+import SectionDivider from "@/components/SectionDivider";
+
+const containerVariants = stagger(0.15);
+const itemVariants = fadeUp;
 
 export default function TourPage() {
   const widgetRef = useRef<HTMLDivElement>(null);
@@ -57,49 +63,43 @@ export default function TourPage() {
           className="relative z-10 max-w-3xl mx-auto"
           initial="hidden"
           animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+          variants={containerVariants}
         >
           <motion.div
             className="mx-auto mb-6 w-20 h-20 rounded-2xl bg-white/60 flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={itemVariants}
           >
             <MapPin className="w-10 h-10 text-[#2E86DE]" />
           </motion.div>
 
           <motion.p
             className="text-[#F39C12] uppercase tracking-[0.35em] text-sm font-medium mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
+            variants={itemVariants}
           >
             Live Shows
           </motion.p>
 
           <motion.h1
             className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            variants={itemVariants}
           >
             Tour Dates
           </motion.h1>
 
           <motion.p
             className="text-[#1A1A2E]/50 text-lg max-w-md mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            variants={itemVariants}
           >
             Upcoming performances and live events
           </motion.p>
         </motion.div>
       </section>
 
+      <SectionDivider variant="wave" direction="tint-to-light" />
+
       {/* Songkick Widget */}
       <motion.section
-        className="max-w-4xl mx-auto px-6 py-20"
+        className="max-w-4xl mx-auto px-6 section-padding"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -107,6 +107,53 @@ export default function TourPage() {
       >
         <div ref={widgetRef} className="min-h-[200px]" />
       </motion.section>
+
+      <SectionDivider variant="gradient" direction="light-to-dark" />
+
+      {/* Terminal CTA — Book Now */}
+      <section className="relative bg-[#1A1A2E] overflow-hidden">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="relative z-10 section-padding px-6 text-center">
+          <motion.div
+            className="max-w-2xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.p
+              variants={itemVariants}
+              className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
+            >
+              Book Now
+            </motion.p>
+            <motion.h2
+              variants={itemVariants}
+              className="text-3xl md:text-5xl font-bold text-white mb-6"
+            >
+              Book Ebstar for Your Event
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-white/50 text-lg mb-10 max-w-lg mx-auto"
+            >
+              Available for concerts, festivals, corporate events, and private bookings worldwide.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <Link href="/contact">
+                <motion.button
+                  className="btn-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-[#1A1A2E] font-semibold text-lg hover:bg-white/90 transition-colors cursor-pointer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Get in Touch
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }

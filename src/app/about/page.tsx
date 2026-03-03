@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Music, Cpu, Globe, Disc } from "lucide-react";
+import { Music, Cpu, Globe, Disc, ArrowRight } from "lucide-react";
 import { artist, timeline, unifiedBio } from "@/data/artist";
 import { fadeUp, stagger } from "@/lib/animations";
+import SectionDivider from "@/components/SectionDivider";
 
 const containerVariants = stagger(0.15);
-
 const itemVariants = fadeUp;
 
 const iconMap = {
@@ -97,7 +98,7 @@ export default function AboutPage() {
             className="text-5xl md:text-7xl font-bold tracking-tight text-[#1A1A2E] mb-4"
           >
             About{" "}
-            <span className="text-[#2E86DE]">Ebstar</span>
+            <span className="text-gradient">Ebstar</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -131,8 +132,10 @@ export default function AboutPage() {
         </div>
       </div>
 
+      <SectionDivider variant="wave" direction="tint-to-light" />
+
       {/* Role Highlights */}
-      <section className="py-20 px-6">
+      <section className="section-padding px-6">
         <div className="max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -156,7 +159,9 @@ export default function AboutPage() {
                 <motion.div
                   key={role.title}
                   variants={itemVariants}
-                  className="flex items-start gap-4 p-6 rounded-2xl border border-gray-100 bg-white shadow-sm"
+                  className="card-hover flex items-start gap-4 p-6 rounded-2xl border border-gray-100 bg-white shadow-sm"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#EAF4FC] text-[#2E86DE] flex items-center justify-center">
                     <Icon size={24} />
@@ -226,7 +231,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-xl font-bold text-[#1A1A2E] mb-5"
+            className="text-3xl font-bold text-[#1A1A2E] mb-5"
           >
             Genres
           </motion.h3>
@@ -250,27 +255,25 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="relative py-20 px-6 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&q=80')" }}
-        />
-        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
-        <div className="relative z-10 max-w-6xl mx-auto">
+      <SectionDivider variant="wave" direction="light-to-dark" />
+
+      {/* Timeline Section — Dark Theme */}
+      <section className="relative overflow-hidden bg-[#1A1A2E]">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="relative z-10 section-padding px-6 max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-[#1A1A2E] mb-12 text-center"
+            className="text-3xl font-bold text-white mb-12 text-center"
           >
             Timeline
           </motion.h2>
 
           {/* Desktop: Horizontal Timeline */}
           <div className="hidden md:block relative">
-            <div className="absolute top-8 left-0 right-0 h-0.5 bg-[#2E86DE]/20" />
+            <div className="absolute top-8 left-0 right-0 h-0.5 bg-white/10" />
 
             <motion.div
               variants={containerVariants}
@@ -285,11 +288,11 @@ export default function AboutPage() {
                   variants={itemVariants}
                   className="flex flex-col items-center text-center"
                 >
-                  <div className="w-4 h-4 rounded-full bg-[#2E86DE] border-4 border-[#EAF4FC] shadow-sm z-10 mb-4" />
-                  <span className="text-2xl font-black text-[#2E86DE] mb-2">
+                  <div className="w-4 h-4 rounded-full bg-[#F39C12] border-4 border-[#1A1A2E] shadow-sm z-10 mb-4" />
+                  <span className="text-2xl font-black text-[#F39C12] mb-2">
                     {item.year}
                   </span>
-                  <p className="text-sm text-[#1A1A2E]/70 leading-snug">
+                  <p className="text-sm text-white/60 leading-snug">
                     {item.event}
                   </p>
                 </motion.div>
@@ -299,7 +302,7 @@ export default function AboutPage() {
 
           {/* Mobile: Vertical Timeline */}
           <div className="md:hidden relative">
-            <div className="absolute top-0 bottom-0 left-6 w-0.5 bg-[#2E86DE]/20" />
+            <div className="absolute top-0 bottom-0 left-6 w-0.5 bg-white/10" />
 
             <motion.div
               variants={containerVariants}
@@ -314,12 +317,12 @@ export default function AboutPage() {
                   variants={itemVariants}
                   className="flex items-start gap-6"
                 >
-                  <div className="w-3 h-3 rounded-full bg-[#2E86DE] border-4 border-white shadow-sm flex-shrink-0 mt-2 relative left-[2px]" />
+                  <div className="w-3 h-3 rounded-full bg-[#F39C12] border-4 border-[#1A1A2E] shadow-sm flex-shrink-0 mt-2 relative left-[2px]" />
                   <div>
-                    <span className="text-2xl font-black text-[#2E86DE] block mb-1">
+                    <span className="text-2xl font-black text-[#F39C12] block mb-1">
                       {item.year}
                     </span>
-                    <p className="text-sm text-[#1A1A2E]/70 leading-relaxed">
+                    <p className="text-sm text-white/60 leading-relaxed">
                       {item.event}
                     </p>
                   </div>
@@ -330,8 +333,10 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <SectionDivider variant="gradient" direction="dark-to-light" />
+
       {/* EPK Section */}
-      <section className="py-20 px-6">
+      <section className="section-padding px-6">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
@@ -363,16 +368,18 @@ export default function AboutPage() {
               <motion.div
                 key={card.title}
                 variants={itemVariants}
-                className="relative flex items-start gap-4 p-6 rounded-2xl border border-gray-100 bg-white opacity-60 cursor-default"
+                className="card-hover relative flex items-start gap-4 p-6 rounded-2xl border border-gray-100 bg-white shadow-sm cursor-default"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#EAF4FC] text-[#2E86DE]/50 flex items-center justify-center">
+                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#EAF4FC] text-[#2E86DE] flex items-center justify-center">
                   {card.icon}
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-[#1A1A2E] mb-1">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-[#1A1A2E]/50">
                     {card.description}
                   </p>
                 </div>
@@ -381,6 +388,53 @@ export default function AboutPage() {
                 </span>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <SectionDivider variant="wave" direction="light-to-dark" />
+
+      {/* Terminal CTA — Collaborate */}
+      <section className="relative bg-[#1A1A2E] overflow-hidden">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="relative z-10 section-padding px-6 text-center">
+          <motion.div
+            className="max-w-2xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.p
+              variants={itemVariants}
+              className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
+            >
+              Collaborate
+            </motion.p>
+            <motion.h2
+              variants={itemVariants}
+              className="text-3xl md:text-5xl font-bold text-white mb-6"
+            >
+              Let&apos;s Create Something Together
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-white/50 text-lg mb-10 max-w-lg mx-auto"
+            >
+              Open to bookings, partnerships, and creative collaborations. Let&apos;s make it happen.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <Link href="/contact">
+                <motion.button
+                  className="btn-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-[#1A1A2E] font-semibold text-lg hover:bg-white/90 transition-colors cursor-pointer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Get in Touch
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

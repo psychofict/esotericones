@@ -11,6 +11,7 @@ import {
   getMusicGroupSchema,
   getWebsiteSchema,
   getOrganizationSchema,
+  getSiteNavigationSchema,
 } from "@/lib/structured-data";
 import Analytics from "@/components/Analytics";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -29,7 +30,11 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ebstar.co"),
-  title: "EBSTAR — AI by Profession. Music by Obsession. Travel by Instinct.",
+  applicationName: "EBSTAR",
+  title: {
+    template: "%s | EBSTAR",
+    default: "EBSTAR — Music Producer, AI Engineer & Macro Influencer in Seoul",
+  },
   description:
     "Ebstar (엡스타) is a Seoul-based music producer, AI/ML engineer, macro influencer, and record label founder. 5M+ streams, published AI researcher, and 50+ brand partnerships.",
   keywords: [
@@ -60,7 +65,7 @@ export const metadata: Metadata = {
     "The Esoteric Ones",
   ],
   openGraph: {
-    title: "EBSTAR — AI by Profession. Music by Obsession. Travel by Instinct.",
+    title: "EBSTAR — Music Producer, AI Engineer & Macro Influencer in Seoul",
     description:
       "Ebstar (엡스타) is a Seoul-based music producer, AI/ML engineer, macro influencer, and record label founder. 5M+ streams, published AI researcher, and 50+ brand partnerships.",
     siteName: "EBSTAR",
@@ -111,6 +116,9 @@ export const metadata: Metadata = {
       ...(process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION
         ? { "naver-site-verification": [process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION] }
         : {}),
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { "msvalidate.01": [process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION] }
+        : {}),
     },
   },
 };
@@ -127,6 +135,7 @@ export default function RootLayout({
         <JsonLd data={getMusicGroupSchema()} />
         <JsonLd data={getWebsiteSchema()} />
         <JsonLd data={getOrganizationSchema()} />
+        <JsonLd data={getSiteNavigationSchema()} />
       </head>
       <body
         className={`${plusJakartaSans.variable} ${dmSans.variable} font-sans antialiased`}

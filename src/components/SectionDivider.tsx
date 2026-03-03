@@ -1,6 +1,6 @@
 interface SectionDividerProps {
   variant?: "wave" | "gradient" | "diagonal";
-  direction?: "light-to-dark" | "dark-to-light" | "light-to-tint" | "tint-to-light";
+  direction?: "light-to-dark" | "dark-to-light" | "light-to-tint" | "tint-to-light" | "tint-to-dark" | "dark-to-tint" | "soft-to-dark" | "dark-to-soft" | "light-to-soft" | "soft-to-light";
   className?: string;
 }
 
@@ -9,6 +9,12 @@ const colorMap = {
   "dark-to-light": { from: "#1A1A2E", to: "#ffffff" },
   "light-to-tint": { from: "#ffffff", to: "#EAF4FC" },
   "tint-to-light": { from: "#EAF4FC", to: "#ffffff" },
+  "tint-to-dark": { from: "#EAF4FC", to: "#1A1A2E" },
+  "dark-to-tint": { from: "#1A1A2E", to: "#EAF4FC" },
+  "soft-to-dark": { from: "#F8FBFF", to: "#1A1A2E" },
+  "dark-to-soft": { from: "#1A1A2E", to: "#F8FBFF" },
+  "light-to-soft": { from: "#ffffff", to: "#F8FBFF" },
+  "soft-to-light": { from: "#F8FBFF", to: "#ffffff" },
 };
 
 export default function SectionDivider({
