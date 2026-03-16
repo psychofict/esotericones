@@ -46,9 +46,15 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Missing ids parameter" }, { status: 400 });
   }
 
+  // Validate ids: max 50, alphanumeric only
+  const rawIds = ids.split(",").filter(Boolean);
+  if (rawIds.length === 0 || rawIds.length > 50 || rawIds.some((id) => !/^[a-zA-Z0-9]+$/.test(id))) {
+    return NextResponse.json({ error: "Invalid ids parameter" }, { status: 400 });
+  }
+
   // Return cached data if fresh
   if (albumCache && Date.now() < albumCache.expiry) {
-    const idList = ids.split(",");
+    const idList = rawIds;
     const allCached = idList.every((id) => id in albumCache!.data);
     if (allCached) {
       const result: Record<string, AlbumInfo> = {};
@@ -64,7 +70,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Spotify credentials not configured" }, { status: 500 });
   }
 
-  const idList = ids.split(",").filter(Boolean);
+  const idList = rawIds;
   const result: Record<string, AlbumInfo> = {};
   const headers = { Authorization: `Bearer ${token}` };
 

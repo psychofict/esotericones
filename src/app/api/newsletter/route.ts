@@ -9,13 +9,17 @@ function escapeHtml(str: string): string {
     .replace(/"/g, "&quot;");
 }
 
-// Simple in-memory rate limiter
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 3;
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+  if (rateLimit.size > 500) {
+    for (const [key, val] of rateLimit) {
+      if (now > val.resetAt) rateLimit.delete(key);
+    }
+  }
   const entry = rateLimit.get(ip);
   if (!entry || now > entry.resetAt) {
     rateLimit.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
@@ -42,36 +46,32 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    // Basic email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
 
-    // Send welcome email
     await resend.emails.send({
-      from: "EBSTAR <noreply@ebstar.co>",
+      from: "The ESOTERIC Ones <noreply@esotericones.com>",
       to: email,
-      subject: "Welcome to the ESOTERIC circle",
+      subject: "Welcome to the ESOTERIC Circle",
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: linear-gradient(135deg, #2E86DE, #1B5E8A); padding: 40px 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h1 style="color: white; margin: 0; font-size: 28px;">EBSTAR</h1>
-            <p style="color: rgba(255,255,255,0.8); margin-top: 8px;">The ESOTERIC Ones</p>
+          <div style="background: linear-gradient(135deg, #E8385D, #FF4D73); padding: 40px 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="color: white; margin: 0; font-size: 28px;">THE ESOTERIC ONES</h1>
+            <p style="color: rgba(255,255,255,0.8); margin-top: 8px;">Where Sound Meets Vision</p>
           </div>
-          <div style="padding: 30px 20px; background: #FFFFFF;">
-            <h2 style="color: #1A1A2E;">Welcome to the circle!</h2>
-            <p style="color: #555; line-height: 1.6;">
-              You'll be the first to know about new releases, behind-the-scenes content, and exclusive updates.
-            </p>
+          <div style="padding: 30px 20px; background: #0A0A0A; color: #A0A0A0;">
+            <h2 style="color: #F5F5F5;">Welcome to the circle!</h2>
+            <p>You'll be the first to know about new releases, artist spotlights, and exclusive label updates.</p>
             <div style="text-align: center; margin: 30px 0;">
               <a href="https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK"
-                 style="background: #2E86DE; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block;">
+                 style="background: #E8385D; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block;">
                 Listen on Spotify
               </a>
             </div>
           </div>
-          <div style="background: #EAF4FC; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
-            <p style="color: #999; font-size: 12px; margin: 0;">
+          <div style="background: #141414; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
+            <p style="color: #666; font-size: 12px; margin: 0;">
               &copy; ${new Date().getFullYear()} The ESOTERIC Ones. All rights reserved.
             </p>
           </div>
@@ -79,10 +79,9 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    // Notify artist of new subscriber
     await resend.emails.send({
-      from: "EBSTAR Website <noreply@ebstar.co>",
-      to: "contact@ebstar.co",
+      from: "ESOTERIC Ones Website <noreply@esotericones.com>",
+      to: "contact@esotericones.com",
       subject: "New newsletter subscriber!",
       html: `<p>New subscriber: <strong>${escapeHtml(email)}</strong></p>`,
     });

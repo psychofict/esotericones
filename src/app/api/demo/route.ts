@@ -10,8 +10,8 @@ function escapeHtml(str: string): string {
 }
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT_MAX = 5;
-const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -41,11 +41,11 @@ export async function POST(req: NextRequest) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
-    const { type, name, email, message, ...rest } = body;
+    const { artistName, email, country, genre, demoLinks, socials, bio } = body;
 
-    if (!email || !message) {
+    if (!artistName || !email || !demoLinks) {
       return NextResponse.json(
-        { error: "Email and message are required" },
+        { error: "Artist name, email, and demo links are required" },
         { status: 400 }
       );
     }
@@ -57,36 +57,31 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const subjectMap: Record<string, string> = {
-      booking: `Booking Inquiry from ${escapeHtml(name || email)}`,
-      press: `Press Inquiry from ${escapeHtml(name || email)}`,
-      licensing: `Licensing Inquiry from ${escapeHtml(name || email)}`,
-      partnerships: `Partnership Inquiry from ${escapeHtml(name || email)}`,
-      general: `General Inquiry from ${escapeHtml(name || email)}`,
-    };
-
-    const subject = subjectMap[type] || `New Inquiry from ${escapeHtml(email)}`;
-
-    const emailBody = Object.entries({ type, name, email, message, ...rest })
-      .filter(([, v]) => v)
-      .map(([k, v]) => `<strong>${escapeHtml(k.charAt(0).toUpperCase() + k.slice(1).replace(/([A-Z])/g, ' $1'))}:</strong> ${escapeHtml(String(v))}`)
+    const fields = [
+      { label: "Artist Name", value: artistName },
+      { label: "Email", value: email },
+      { label: "Country", value: country },
+      { label: "Genre", value: genre },
+      { label: "Demo Links", value: demoLinks },
+      { label: "Social Links", value: socials },
+      { label: "Bio", value: bio },
+    ]
+      .filter((f) => f.value)
+      .map((f) => `<strong>${escapeHtml(f.label)}:</strong> ${escapeHtml(String(f.value))}`)
       .join("<br><br>");
 
     await resend.emails.send({
       from: "The ESOTERIC Ones <noreply@esotericones.com>",
       to: "contact@esotericones.com",
-      subject,
+      subject: `Demo Submission from ${escapeHtml(artistName)}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #E8385D, #FF4D73); padding: 30px 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h2 style="color: white; margin: 0;">New ${escapeHtml(type || "General")} Inquiry</h2>
+            <h1 style="color: white; margin: 0; font-size: 24px;">New Demo Submission</h1>
           </div>
-          <div style="background: #141414; padding: 20px; border-radius: 0 0 8px 8px; line-height: 1.8; color: #A0A0A0;">
-            ${emailBody}
+          <div style="background: #141414; padding: 30px 20px; border-radius: 0 0 8px 8px; color: #A0A0A0; line-height: 1.8;">
+            ${fields}
           </div>
-          <p style="color: #666; font-size: 12px; margin-top: 20px;">
-            Sent from esotericones.com contact form
-          </p>
         </div>
       `,
     });
@@ -94,18 +89,16 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "The ESOTERIC Ones <noreply@esotericones.com>",
       to: email,
-      subject: "Thank you for reaching out — The ESOTERIC Ones",
+      subject: "Demo Received — The ESOTERIC Ones",
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #E8385D, #FF4D73); padding: 40px 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h1 style="color: white; margin: 0; font-size: 28px;">THE ESOTERIC ONES</h1>
+            <h1 style="color: white; margin: 0; font-size: 24px;">THE ESOTERIC ONES</h1>
           </div>
           <div style="padding: 30px 20px; background: #0A0A0A; color: #A0A0A0;">
-            <h2 style="color: #F5F5F5;">Thank you for your message!</h2>
-            <p>We've received your ${escapeHtml(type || "general")} inquiry and will get back to you as soon as possible.</p>
-            <p>In the meantime, check out our latest releases on
-              <a href="https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK" style="color: #E8385D;">Spotify</a>.
-            </p>
+            <h2 style="color: #F5F5F5;">Thanks for your submission, ${escapeHtml(artistName)}!</h2>
+            <p>We've received your demo and our A&R team will review it within 2-4 weeks. If we're interested, we'll be in touch.</p>
+            <p>In the meantime, follow us on <a href="https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK" style="color: #E8385D;">Spotify</a> to stay updated.</p>
           </div>
           <div style="background: #141414; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
             <p style="color: #666; font-size: 12px; margin: 0;">
@@ -118,9 +111,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("Demo submission error:", error);
     return NextResponse.json(
-      { error: "Failed to send email" },
+      { error: "Failed to submit demo" },
       { status: 500 }
     );
   }
