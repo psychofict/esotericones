@@ -58,7 +58,21 @@ export async function GET(request: Request) {
   }
 
   if (debug) {
-    return NextResponse.json({ token: token.substring(0, 10) + "...", tokenLength: token.length });
+    // Test the batch endpoint directly
+    const testIds = roster.slice(0, 3).map((a) => a.spotifyId).join(",");
+    const testRes = await fetch(
+      `https://api.spotify.com/v1/artists?ids=${testIds}`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const testBody = await testRes.text();
+    return NextResponse.json({
+      tokenOk: true,
+      batchUrl: `https://api.spotify.com/v1/artists?ids=${testIds}`,
+      batchStatus: testRes.status,
+      batchBody: testBody.substring(0, 500),
+      rosterCount: roster.length,
+      firstIds: roster.slice(0, 3).map((a) => ({ name: a.name, id: a.spotifyId })),
+    });
   }
 
   const roster = artists.filter((a) => a.spotifyId);
