@@ -3,7 +3,7 @@ export const label = {
   displayName: "The ES\u00D8T\u00CBRIC Ones",
   tagline: "Where Sound Meets Vision",
   description:
-    "An international independent record label founded in Seoul, South Korea. Home to 18+ artists across 6 countries, spanning piano house, Amapiano, dance-pop, hip-hop, and beyond.",
+    "An international independent record label founded in Seoul, South Korea. Home to 24+ artists across 6 countries, pushing the boundaries of piano house, Amapiano, dance-pop, hip-hop, and electronic music.",
   founded: 2023,
   founder: "Ebstar",
   founderRealName: "Ebenezer Tarubinga",
@@ -29,9 +29,9 @@ export const labelSocials = [
 ];
 
 export const labelTimeline = [
-  { year: 2023, event: "Label founded in Seoul by Ebstar. First roster of artists signed across 3 countries." },
-  { year: 2024, event: "Expanded to 15+ artists, 6 countries. Released ECHOES OF LOVE I, Maknaebe, and 10+ singles. Surpassed 2M streams." },
-  { year: 2025, event: "18+ artists on roster. 5M+ total streams. Continued expansion into Amapiano, hip-hop, and electronic music." },
+  { year: 2023, event: "Founded in Seoul by Ebstar. First wave of artists signed across 3 countries. Debut releases including Life Is Beautiful and With Love, Ebstar :) launch the catalog." },
+  { year: 2024, event: "Roster expands to 15+ artists spanning 6 countries. Landmark releases ECHOES OF LOVE I and Maknaebe drop. The label surpasses 2M streams and establishes itself in the Amapiano and piano house space." },
+  { year: 2025, event: "24+ artists on the roster. 5M+ total streams. New signings from Southern Africa and Asia. The label continues to grow across Amapiano, hip-hop, and electronic music." },
 ];
 
 export const labelGenres = [

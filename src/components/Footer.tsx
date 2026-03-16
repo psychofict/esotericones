@@ -58,7 +58,7 @@ export default function Footer() {
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#A0A0A0]">
               International independent record label founded in Seoul.
-              18+ artists across 6 countries, 5M+ streams.
+              24+ artists across 6 countries. 5M+ streams and counting.
             </p>
             <div className="mt-6 flex items-center gap-2">
               {labelSocials.map((social) => (

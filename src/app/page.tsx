@@ -7,7 +7,6 @@ import { fadeUp, stagger, scaleIn } from "@/lib/animations";
 import { label, labelStats } from "@/data/label";
 import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
-import { getRecentPosts } from "@/data/news";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 import { useSpotifyArtists } from "@/hooks/useSpotifyArtists";
 import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
@@ -22,7 +21,6 @@ const statIcons: Record<string, React.ReactNode> = {
 
 const featuredArtists = getFeaturedArtists();
 const featuredReleases = getFeaturedReleases();
-const recentPosts = getRecentPosts(3);
 
 export default function HomePage() {
   const { artists: spotifyArtists } = useSpotifyArtists();
@@ -275,65 +273,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Recent News */}
-      {recentPosts.length > 0 && (
-        <section className="section-padding bg-[#141414]">
-          <div className="mx-auto max-w-7xl px-6">
-            <motion.div
-              variants={stagger()}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.div variants={fadeUp} className="flex items-end justify-between mb-10">
-                <div>
-                  <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
-                    Latest
-                  </p>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    News & Updates
-                  </h2>
-                </div>
-                <Link
-                  href="/news"
-                  className="text-sm text-[#A0A0A0] hover:text-[#E8385D] transition-colors flex items-center gap-1"
-                >
-                  All News <ArrowRight size={14} />
-                </Link>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {recentPosts.map((post) => (
-                  <motion.div key={post.slug} variants={fadeUp}>
-                    <Link
-                      href={`/news/${post.slug}`}
-                      className="group block glass-card rounded-2xl p-6 card-hover h-full"
-                    >
-                      <span className="inline-block text-xs text-[#E8385D] uppercase tracking-wider font-medium px-2.5 py-1 rounded-full bg-[#E8385D]/10 mb-3">
-                        {post.category}
-                      </span>
-                      <h3 className="text-lg font-bold text-white group-hover:text-[#E8385D] transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="text-sm text-[#A0A0A0] mt-2 line-clamp-2">
-                        {post.excerpt}
-                      </p>
-                      <p className="text-xs text-[#666666] mt-4">
-                        {new Date(post.date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </p>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
-
       {/* Newsletter + Demo CTA */}
       <section className="section-padding bg-[#0A0A0A]">
         <div className="mx-auto max-w-7xl px-6">
@@ -385,7 +324,7 @@ export default function HomePage() {
                 Submit Your Demo
               </h2>
               <p className="text-[#A0A0A0] mb-6 relative">
-                We&apos;re always looking for fresh talent. If your sound is bold, emotional, and unapologetic, we want to hear it.
+                Think you belong on the roster? If your sound is bold, emotional, and unapologetic &mdash; we want to hear it.
               </p>
               <Link
                 href="/demos"

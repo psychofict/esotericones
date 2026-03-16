@@ -53,7 +53,7 @@ export default function ContactPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Business inquiries, licensing requests, press, or partnerships — we&apos;d love to hear from you.
+            Licensing, press, partnerships, or booking &mdash; let&apos;s talk.
           </motion.p>
         </div>
       </section>
