@@ -8,7 +8,6 @@ import { label, labelStats } from "@/data/label";
 import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
-import { useSpotifyArtists } from "@/hooks/useSpotifyArtists";
 import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import { Disc3, Users, Globe, Headphones, ArrowRight, Music } from "lucide-react";
 
@@ -23,7 +22,6 @@ const featuredArtists = getFeaturedArtists();
 const featuredReleases = getFeaturedReleases();
 
 export default function HomePage() {
-  const { artists: spotifyArtists } = useSpotifyArtists();
   const { albums: spotifyAlbums } = useSpotifyAlbums();
 
   return (
@@ -222,9 +220,7 @@ export default function HomePage() {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredArtists.map((artist) => {
-                const spotifyData = spotifyArtists[artist.name];
-                return (
+              {featuredArtists.map((artist) => (
                   <motion.div key={artist.slug} variants={fadeUp}>
                     <Link
                       href={`/artists/${artist.slug}`}
@@ -232,9 +228,9 @@ export default function HomePage() {
                     >
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-[#E8385D]/20 group-hover:ring-[#E8385D]/50 transition-all">
-                          {spotifyData?.image ? (
+                          {artist.image ? (
                             <Image
-                              src={spotifyData.image}
+                              src={artist.image}
                               alt={artist.name}
                               width={64}
                               height={64}
@@ -266,8 +262,7 @@ export default function HomePage() {
                       </div>
                     </Link>
                   </motion.div>
-                );
-              })}
+              ))}
             </div>
           </motion.div>
         </div>

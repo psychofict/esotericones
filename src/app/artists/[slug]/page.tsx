@@ -1,7 +1,6 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -12,26 +11,11 @@ import SpotifyEmbed from "@/components/SpotifyEmbed";
 import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import { Music, MapPin, Calendar, ArrowLeft, ExternalLink, Disc3 } from "lucide-react";
 
-interface SpotifyArtistDetail {
-  image: string | null;
-  followers: number;
-  genres: string[];
-}
-
 export default function ArtistPage() {
   const params = useParams();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
-  const [spotifyDetail, setSpotifyDetail] = useState<SpotifyArtistDetail | null>(null);
   const { albums: spotifyAlbums } = useSpotifyAlbums();
-
-  useEffect(() => {
-    if (!artist?.spotifyId) return;
-    fetch(`/api/spotify-artist/${artist.spotifyId}`)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d) => d && setSpotifyDetail(d))
-      .catch(() => {});
-  }, [artist?.spotifyId]);
 
   if (!artist) {
     return (
@@ -50,7 +34,7 @@ export default function ArtistPage() {
   const relatedArtists = artists
     .filter((a) => a.slug !== slug && a.genres.some((g) => artist.genres.includes(g)))
     .slice(0, 4);
-  const artistImage = spotifyDetail?.image;
+  const artistImage = artist.image;
 
   return (
     <main id="main-content" className="min-h-screen bg-[#0A0A0A]">
@@ -121,11 +105,6 @@ export default function ArtistPage() {
                 <span className="flex items-center gap-1.5 text-sm text-[#A0A0A0] bg-white/5 px-3 py-1.5 rounded-full">
                   <Calendar size={14} /> Joined {artist.joinedYear}
                 </span>
-                {spotifyDetail?.followers ? (
-                  <span className="text-sm text-[#A0A0A0] bg-white/5 px-3 py-1.5 rounded-full">
-                    {spotifyDetail.followers.toLocaleString()} followers
-                  </span>
-                ) : null}
                 {artist.genres.map((genre) => (
                   <span
                     key={genre}
@@ -264,8 +243,12 @@ export default function ArtistPage() {
                       href={`/artists/${ra.slug}`}
                       className="group block glass-card rounded-xl p-4 text-center card-hover"
                     >
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#E8385D]/20 to-[#FF4D73]/10 flex items-center justify-center mx-auto mb-2">
-                        <Music className="w-5 h-5 text-[#E8385D]" />
+                      <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-[#E8385D]/20 to-[#FF4D73]/10 flex items-center justify-center mx-auto mb-2">
+                        {ra.image ? (
+                          <Image src={ra.image} alt={ra.name} width={48} height={48} className="w-full h-full object-cover" />
+                        ) : (
+                          <Music className="w-5 h-5 text-[#E8385D]" />
+                        )}
                       </div>
                       <h3 className="text-sm font-semibold text-white group-hover:text-[#E8385D] transition-colors">
                         {ra.name}
