@@ -6,7 +6,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { releases, getAllReleaseYears, getAllReleaseGenres } from "@/data/releases";
-import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import { Disc3, Calendar, Users } from "lucide-react";
 
 const years = getAllReleaseYears();
@@ -16,8 +15,6 @@ export default function ReleasesPage() {
   const [filterType, setFilterType] = useState<string | null>(null);
   const [filterYear, setFilterYear] = useState<number | null>(null);
   const [filterGenre, setFilterGenre] = useState<string | null>(null);
-  const { albums: spotifyAlbums } = useSpotifyAlbums();
-
   const filtered = releases.filter((r) => {
     if (filterType && r.type !== filterType) return false;
     if (filterYear && r.year !== filterYear) return false;
@@ -125,9 +122,7 @@ export default function ReleasesPage() {
             animate="visible"
             key={`${filterType}-${filterYear}-${filterGenre}`}
           >
-            {filtered.map((release) => {
-              const albumArt = spotifyAlbums[release.title]?.image;
-              return (
+            {filtered.map((release) => (
                 <motion.div key={release.slug} variants={fadeUp}>
                   <Link
                     href={`/releases/${release.slug}`}
@@ -135,9 +130,9 @@ export default function ReleasesPage() {
                   >
                     {/* Artwork */}
                     <div className="aspect-square rounded-xl overflow-hidden relative mb-3 ring-1 ring-white/5 group-hover:ring-[#E8385D]/30 transition-all">
-                      {albumArt ? (
+                      {release.artwork ? (
                         <Image
-                          src={albumArt}
+                          src={release.artwork!}
                           alt={release.title}
                           width={300}
                           height={300}
@@ -164,8 +159,7 @@ export default function ReleasesPage() {
                     </p>
                   </Link>
                 </motion.div>
-              );
-            })}
+            ))}
           </motion.div>
 
           {filtered.length === 0 && (

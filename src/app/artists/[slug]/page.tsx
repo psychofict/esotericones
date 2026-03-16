@@ -8,14 +8,12 @@ import { fadeUp, stagger } from "@/lib/animations";
 import { getArtistBySlug, artists } from "@/data/artists";
 import { getReleasesByArtist } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
-import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import { Music, MapPin, Calendar, ArrowLeft, ExternalLink, Disc3 } from "lucide-react";
 
 export default function ArtistPage() {
   const params = useParams();
   const slug = params.slug as string;
   const artist = getArtistBySlug(slug);
-  const { albums: spotifyAlbums } = useSpotifyAlbums();
 
   if (!artist) {
     return (
@@ -182,18 +180,16 @@ export default function ArtistPage() {
                 Discography
               </motion.h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {artistReleases.map((release) => {
-                  const albumArt = spotifyAlbums[release.title]?.image;
-                  return (
+                {artistReleases.map((release) => (
                     <motion.div key={release.slug} variants={fadeUp}>
                       <Link
                         href={`/releases/${release.slug}`}
                         className="group flex items-center gap-4 glass-card rounded-xl p-3 card-hover"
                       >
                         <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                          {albumArt ? (
+                          {release.artwork ? (
                             <Image
-                              src={albumArt}
+                              src={release.artwork}
                               alt={release.title}
                               width={64}
                               height={64}
@@ -215,8 +211,7 @@ export default function ArtistPage() {
                         </div>
                       </Link>
                     </motion.div>
-                  );
-                })}
+                ))}
               </div>
             </motion.div>
           </div>
