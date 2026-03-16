@@ -14,7 +14,7 @@ export const label = {
 };
 
 export const labelStats = [
-  { label: "Artists", value: "18+", icon: "users" },
+  { label: "Artists", value: "24+", icon: "users" },
   { label: "Total Streams", value: "5M+", icon: "headphones" },
   { label: "Countries", value: "6", icon: "globe" },
   { label: "Releases", value: "30+", icon: "disc" },
