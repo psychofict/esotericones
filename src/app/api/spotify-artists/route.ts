@@ -57,6 +57,8 @@ export async function GET(request: Request) {
     }, { status: 500 });
   }
 
+  const roster = artists.filter((a) => a.spotifyId);
+
   if (debug) {
     // Test the batch endpoint directly
     const testIds = roster.slice(0, 3).map((a) => a.spotifyId).join(",");
@@ -74,8 +76,6 @@ export async function GET(request: Request) {
       firstIds: roster.slice(0, 3).map((a) => ({ name: a.name, id: a.spotifyId })),
     });
   }
-
-  const roster = artists.filter((a) => a.spotifyId);
   const results: Record<string, SpotifyArtistResult> = {};
 
   // Use Spotify batch endpoint — up to 50 artists per call
