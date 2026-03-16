@@ -37,25 +37,8 @@ async function getAccessToken(): Promise<string | null> {
   return data.access_token;
 }
 
-async function fetchArtistById(token: string, id: string, name: string): Promise<SpotifyArtistResult> {
-  if (!id) return { name, image: null, url: null };
-
-  const res = await fetch(
-    `https://api.spotify.com/v1/artists/${id}`,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-
-  if (!res.ok) return { name, image: null, url: null };
-
-  const data = await res.json();
-  return {
-    name: data.name || name,
-    image: data.images?.[0]?.url || null,
-    url: data.external_urls?.spotify || null,
-  };
-}
-
 export async function GET() {
+  // Return in-memory cache if valid
   if (artistCache && Date.now() < artistCache.expiry) {
     return NextResponse.json(artistCache.data, {
       headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=172800" },
@@ -70,19 +53,50 @@ export async function GET() {
   const roster = artists.filter((a) => a.spotifyId);
   const results: Record<string, SpotifyArtistResult> = {};
 
-  for (let i = 0; i < roster.length; i += 5) {
-    const batch = roster.slice(i, i + 5);
-    const batchResults = await Promise.all(
-      batch.map((a) => fetchArtistById(token, a.spotifyId, a.name))
+  // Use Spotify batch endpoint — up to 50 artists per call
+  const ids = roster.map((a) => a.spotifyId);
+  for (let i = 0; i < ids.length; i += 50) {
+    const batchIds = ids.slice(i, i + 50).join(",");
+    const res = await fetch(
+      `https://api.spotify.com/v1/artists?ids=${batchIds}`,
+      { headers: { Authorization: `Bearer ${token}` } }
     );
-    batch.forEach((a, j) => {
-      results[a.name] = batchResults[j];
-    });
+
+    if (!res.ok) continue;
+
+    const data = await res.json();
+    for (const artist of data.artists || []) {
+      if (!artist) continue;
+      // Find matching roster entry by Spotify ID
+      const rosterEntry = roster.find((a) => a.spotifyId === artist.id);
+      if (rosterEntry) {
+        results[rosterEntry.name] = {
+          name: artist.name || rosterEntry.name,
+          image: artist.images?.[0]?.url || null,
+          url: artist.external_urls?.spotify || null,
+        };
+      }
+    }
   }
 
-  artistCache = { data: results, expiry: Date.now() + CACHE_DURATION };
+  // Fill in any missing artists
+  for (const a of roster) {
+    if (!results[a.name]) {
+      results[a.name] = { name: a.name, image: null, url: null };
+    }
+  }
+
+  // Only cache if we got at least some images
+  const hasImages = Object.values(results).some((r) => r.image);
+  if (hasImages) {
+    artistCache = { data: results, expiry: Date.now() + CACHE_DURATION };
+  }
 
   return NextResponse.json(results, {
-    headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=172800" },
+    headers: {
+      "Cache-Control": hasImages
+        ? "public, s-maxage=86400, stale-while-revalidate=172800"
+        : "no-cache, no-store",
+    },
   });
 }
