@@ -9,6 +9,8 @@ import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
 import { getRecentPosts } from "@/data/news";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
+import { useSpotifyArtists } from "@/hooks/useSpotifyArtists";
+import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import { Disc3, Users, Globe, Headphones, ArrowRight, Music } from "lucide-react";
 
 const statIcons: Record<string, React.ReactNode> = {
@@ -23,6 +25,9 @@ const featuredReleases = getFeaturedReleases();
 const recentPosts = getRecentPosts(3);
 
 export default function HomePage() {
+  const { artists: spotifyArtists } = useSpotifyArtists();
+  const { albums: spotifyAlbums } = useSpotifyAlbums();
+
   return (
     <main id="main-content">
       {/* Hero Section */}
@@ -34,21 +39,26 @@ export default function HomePage() {
         {/* Decorative elements */}
         <div className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-[#E8385D]/5 blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-[10%] w-96 h-96 rounded-full bg-[#E8385D]/3 blur-3xl animate-float-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8385D]/[0.02] blur-[100px]" />
 
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
+            className="mb-10"
           >
-            <Image
-              src="/images/label-logo.svg"
-              alt="The ESOTERIC Ones"
-              width={120}
-              height={120}
-              className="mx-auto mb-8 w-24 h-24 md:w-32 md:h-32"
-              priority
-            />
+            <div className="relative mx-auto w-40 h-40 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-2xl shadow-[#E8385D]/10">
+              <Image
+                src="/images/esoteric-blk.jpg"
+                alt="The ESOTERIC Ones"
+                width={224}
+                height={224}
+                className="w-full h-full object-cover"
+                priority
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
+            </div>
           </motion.div>
 
           <motion.h1
@@ -59,7 +69,7 @@ export default function HomePage() {
             style={{ fontFamily: "var(--font-display)" }}
           >
             THE{" "}
-            <span className="text-gradient">ESOTERIC</span>
+            <span className="text-gradient">ES&#216;T&#203;RIC</span>
             {" "}ONES
           </motion.h1>
 
@@ -80,16 +90,32 @@ export default function HomePage() {
           >
             <Link
               href="/artists"
-              className="px-8 py-3.5 bg-[#E8385D] text-white rounded-full font-semibold hover:bg-[#FF4D73] transition-colors btn-glow"
+              className="px-8 py-3.5 bg-[#E8385D] text-white rounded-full font-semibold hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/25 btn-glow"
             >
               Meet Our Artists
             </Link>
             <Link
               href="/releases"
-              className="px-8 py-3.5 border border-[#2A2A2A] text-white rounded-full font-semibold hover:bg-white/5 transition-colors"
+              className="px-8 py-3.5 border border-[#2A2A2A] text-white rounded-full font-semibold hover:bg-white/5 hover:border-white/20 transition-all"
             >
               Browse Releases
             </Link>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+          >
+            <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center pt-2">
+              <motion.div
+                className="w-1.5 h-1.5 rounded-full bg-[#E8385D]"
+                animate={{ y: [0, 16, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
           </motion.div>
         </div>
       </section>
@@ -110,18 +136,37 @@ export default function HomePage() {
               <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-white mb-8">
                 {featuredReleases[0].title}
               </motion.h2>
-              <motion.div variants={fadeUp} className="max-w-2xl">
-                <SpotifyEmbed uri={featuredReleases[0].spotifyUri} theme="dark" />
-                <div className="mt-4 flex items-center gap-4">
-                  <span className="text-sm text-[#A0A0A0]">
-                    {featuredReleases[0].artistNames.join(", ")}
-                  </span>
-                  <Link
-                    href={`/releases/${featuredReleases[0].slug}`}
-                    className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors flex items-center gap-1"
-                  >
-                    View Details <ArrowRight size={14} />
-                  </Link>
+              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                {/* Album artwork */}
+                <div className="aspect-square rounded-2xl overflow-hidden relative max-w-md">
+                  {spotifyAlbums[featuredReleases[0].title]?.image ? (
+                    <Image
+                      src={spotifyAlbums[featuredReleases[0].title].image!}
+                      alt={featuredReleases[0].title}
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#E8385D]/20 via-[#141414] to-[#FF4D73]/10 flex items-center justify-center">
+                      <Disc3 className="w-24 h-24 text-[#E8385D]/30" />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
+                </div>
+                <div>
+                  <SpotifyEmbed uri={featuredReleases[0].spotifyUri} theme="dark" />
+                  <div className="mt-4 flex items-center gap-4">
+                    <span className="text-sm text-[#A0A0A0]">
+                      {featuredReleases[0].artistNames.join(", ")}
+                    </span>
+                    <Link
+                      href={`/releases/${featuredReleases[0].slug}`}
+                      className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors flex items-center gap-1"
+                    >
+                      View Details <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
@@ -179,35 +224,52 @@ export default function HomePage() {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredArtists.map((artist) => (
-                <motion.div key={artist.slug} variants={fadeUp}>
-                  <Link
-                    href={`/artists/${artist.slug}`}
-                    className="group block glass-card rounded-2xl p-6 card-hover"
-                  >
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#E8385D]/20 to-[#FF4D73]/10 flex items-center justify-center mb-4 group-hover:from-[#E8385D]/30 transition-all">
-                      <Music className="w-8 h-8 text-[#E8385D]" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#E8385D] transition-colors">
-                      {artist.name}
-                    </h3>
-                    <p className="text-sm text-[#A0A0A0] mt-1">{artist.shortBio}</p>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {artist.genres.slice(0, 2).map((genre) => (
-                        <span
-                          key={genre}
-                          className="text-xs px-2.5 py-1 rounded-full bg-white/5 text-[#666666]"
-                        >
-                          {genre}
-                        </span>
-                      ))}
-                      <span className="text-xs px-2.5 py-1 rounded-full bg-white/5 text-[#666666]">
-                        {artist.country}
-                      </span>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
+              {featuredArtists.map((artist) => {
+                const spotifyData = spotifyArtists[artist.name];
+                return (
+                  <motion.div key={artist.slug} variants={fadeUp}>
+                    <Link
+                      href={`/artists/${artist.slug}`}
+                      className="group block glass-card rounded-2xl p-6 card-hover"
+                    >
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-[#E8385D]/20 group-hover:ring-[#E8385D]/50 transition-all">
+                          {spotifyData?.image ? (
+                            <Image
+                              src={spotifyData.image}
+                              alt={artist.name}
+                              width={64}
+                              height={64}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-[#E8385D]/20 to-[#FF4D73]/10 flex items-center justify-center">
+                              <Music className="w-6 h-6 text-[#E8385D]" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="text-lg font-bold text-white group-hover:text-[#E8385D] transition-colors truncate">
+                            {artist.name}
+                          </h3>
+                          <p className="text-xs text-[#666666]">{artist.country}</p>
+                        </div>
+                      </div>
+                      <p className="text-sm text-[#A0A0A0]">{artist.shortBio}</p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        {artist.genres.slice(0, 2).map((genre) => (
+                          <span
+                            key={genre}
+                            className="text-xs px-2.5 py-1 rounded-full bg-white/5 text-[#666666]"
+                          >
+                            {genre}
+                          </span>
+                        ))}
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
@@ -247,10 +309,10 @@ export default function HomePage() {
                       href={`/news/${post.slug}`}
                       className="group block glass-card rounded-2xl p-6 card-hover h-full"
                     >
-                      <span className="text-xs text-[#E8385D] uppercase tracking-wider font-medium">
+                      <span className="inline-block text-xs text-[#E8385D] uppercase tracking-wider font-medium px-2.5 py-1 rounded-full bg-[#E8385D]/10 mb-3">
                         {post.category}
                       </span>
-                      <h3 className="text-lg font-bold text-white mt-2 group-hover:text-[#E8385D] transition-colors">
+                      <h3 className="text-lg font-bold text-white group-hover:text-[#E8385D] transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-sm text-[#A0A0A0] mt-2 line-clamp-2">
@@ -275,7 +337,7 @@ export default function HomePage() {
       {/* Newsletter + Demo CTA */}
       <section className="section-padding bg-[#0A0A0A]">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Newsletter CTA */}
             <motion.div
               className="glass-card rounded-2xl p-8 md:p-10"
@@ -300,7 +362,7 @@ export default function HomePage() {
                 />
                 <button
                   type="submit"
-                  className="rounded-lg bg-[#E8385D] px-6 py-3 text-sm font-semibold text-white hover:bg-[#FF4D73] transition-colors whitespace-nowrap"
+                  className="rounded-lg bg-[#E8385D] px-6 py-3 text-sm font-semibold text-white hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/20 whitespace-nowrap"
                 >
                   Subscribe
                 </button>
@@ -309,24 +371,25 @@ export default function HomePage() {
 
             {/* Demo CTA */}
             <motion.div
-              className="glass-card rounded-2xl p-8 md:p-10 border border-[#E8385D]/20"
+              className="glass-card rounded-2xl p-8 md:p-10 border border-[#E8385D]/20 relative overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
+              <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[#E8385D]/5 blur-3xl" />
+              <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3 relative">
                 Got Music?
               </p>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 relative">
                 Submit Your Demo
               </h2>
-              <p className="text-[#A0A0A0] mb-6">
+              <p className="text-[#A0A0A0] mb-6 relative">
                 We&apos;re always looking for fresh talent. If your sound is bold, emotional, and unapologetic, we want to hear it.
               </p>
               <Link
                 href="/demos"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#E8385D] text-white rounded-full font-semibold hover:bg-[#FF4D73] transition-colors btn-glow"
+                className="relative inline-flex items-center gap-2 px-8 py-3.5 bg-[#E8385D] text-white rounded-full font-semibold hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/25 btn-glow"
               >
                 Submit a Demo <ArrowRight size={16} />
               </Link>

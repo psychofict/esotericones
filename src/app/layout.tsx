@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/images/label-logo.svg",
+        url: "/images/esoteric-blk.jpg",
         width: 1200,
         height: 630,
         alt: "The ESOTERIC Ones — Independent Record Label",

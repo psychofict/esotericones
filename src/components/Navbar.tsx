@@ -45,41 +45,45 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5"
-            : "bg-gradient-to-b from-black/40 to-transparent"
+            ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+            : "bg-gradient-to-b from-black/60 to-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/label-logo.svg"
-              alt="The ESOTERIC Ones"
-              width={36}
-              height={36}
-              className="w-9 h-9"
-            />
-            <span className="font-[var(--font-display)] text-lg font-bold tracking-wider text-white hidden sm:block">
-              THE ESOTERIC ONES
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 overflow-hidden rounded-lg">
+              <Image
+                src="/images/esoteric-blk.jpg"
+                alt="The ESOTERIC Ones"
+                width={40}
+                height={40}
+                className="w-10 h-10 object-cover transition-transform duration-300 group-hover:scale-110"
+                priority
+              />
+            </div>
+            <span className="font-[var(--font-display)] text-base font-bold tracking-wider text-white hidden sm:block">
+              THE ES<span className="text-[#E8385D]">O</span>TERIC ONES
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <ul className="hidden items-center gap-8 lg:flex">
+          <ul className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm font-medium text-white/70 transition-colors hover:text-[#E8385D]"
+                  className="relative px-4 py-2 text-sm font-medium text-white/70 transition-colors hover:text-white group"
                 >
                   {item.name}
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#E8385D] transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="ml-2">
               <Link
                 href="/demos"
-                className="rounded-full bg-[#E8385D] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#FF4D73] btn-glow"
+                className="rounded-full bg-[#E8385D] px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-[#FF4D73] hover:shadow-lg hover:shadow-[#E8385D]/25 btn-glow"
               >
                 Submit Demo
               </Link>
@@ -87,7 +91,7 @@ export default function Navbar() {
           </ul>
 
           {/* Desktop social icons */}
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             {labelSocials.slice(0, 3).map((social) => (
               <a
                 key={social.name}
@@ -95,7 +99,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="text-white/40 transition-colors hover:text-[#E8385D]"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
               >
                 {socialIcons[social.icon]}
               </a>
@@ -123,6 +127,17 @@ export default function Navbar() {
             transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#0A0A0A]"
           >
+            {/* Logo in mobile menu */}
+            <div className="absolute top-6 left-6">
+              <Image
+                src="/images/esoteric-blk.jpg"
+                alt="The ESOTERIC Ones"
+                width={48}
+                height={48}
+                className="w-12 h-12 rounded-lg"
+              />
+            </div>
+
             <ul className="flex flex-col items-center gap-6">
               {navItems.map((item, i) => (
                 <motion.li

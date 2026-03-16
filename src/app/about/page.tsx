@@ -57,10 +57,11 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-4 mb-6">
               <Image
-                src="/images/label-logo.svg"
+                src="/images/esoteric-blk.jpg"
                 alt="The ESOTERIC Ones"
                 width={48}
                 height={48}
+                className="rounded-lg"
               />
               <h2 className="text-2xl font-bold text-white">Our Mission</h2>
             </div>
