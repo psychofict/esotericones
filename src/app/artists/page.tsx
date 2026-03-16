@@ -118,7 +118,7 @@ export default function ArtistsPage() {
                       {/* Country badge */}
                       <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-xs text-white/80">
                         <MapPin size={10} />
-                        {artist.country}
+                        {Array.isArray(artist.country) ? artist.country.join(", ") : artist.country}
                       </div>
                     </div>
                     <div className="p-4">

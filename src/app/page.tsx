@@ -252,7 +252,7 @@ export default function HomePage() {
                           <h3 className="text-lg font-bold text-white group-hover:text-[#E8385D] transition-colors truncate">
                             {artist.name}
                           </h3>
-                          <p className="text-xs text-[#666666]">{artist.country}</p>
+                          <p className="text-xs text-[#666666]">{Array.isArray(artist.country) ? artist.country.join(", ") : artist.country}</p>
                         </div>
                       </div>
                       <p className="text-sm text-[#A0A0A0]">{artist.shortBio}</p>

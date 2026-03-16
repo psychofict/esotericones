@@ -116,7 +116,7 @@ export default function ArtistPage() {
                 transition={{ delay: 0.1 }}
               >
                 <span className="flex items-center gap-1.5 text-sm text-[#A0A0A0] bg-white/5 px-3 py-1.5 rounded-full">
-                  <MapPin size={14} /> {artist.country}
+                  <MapPin size={14} /> {Array.isArray(artist.country) ? artist.country.join(", ") : artist.country}
                 </span>
                 <span className="flex items-center gap-1.5 text-sm text-[#A0A0A0] bg-white/5 px-3 py-1.5 rounded-full">
                   <Calendar size={14} /> Joined {artist.joinedYear}
