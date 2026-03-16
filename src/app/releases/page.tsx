@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { releases, getAllReleaseYears, getAllReleaseGenres } from "@/data/releases";
+import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import { Disc3, Calendar, Users } from "lucide-react";
 
 const years = getAllReleaseYears();
@@ -14,6 +16,7 @@ export default function ReleasesPage() {
   const [filterType, setFilterType] = useState<string | null>(null);
   const [filterYear, setFilterYear] = useState<number | null>(null);
   const [filterGenre, setFilterGenre] = useState<string | null>(null);
+  const { albums: spotifyAlbums } = useSpotifyAlbums();
 
   const filtered = releases.filter((r) => {
     if (filterType && r.type !== filterType) return false;
@@ -63,10 +66,10 @@ export default function ReleasesPage() {
               <button
                 key={type}
                 onClick={() => setFilterType(filterType === type ? null : type)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                   filterType === type
-                    ? "bg-[#E8385D] text-white"
-                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10"
+                    ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
+                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {type === "ep" ? "EP" : type.charAt(0).toUpperCase() + type.slice(1)}
@@ -81,10 +84,10 @@ export default function ReleasesPage() {
               <button
                 key={year}
                 onClick={() => setFilterYear(filterYear === year ? null : year)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                   filterYear === year
-                    ? "bg-[#E8385D] text-white"
-                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10"
+                    ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
+                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {year}
@@ -99,10 +102,10 @@ export default function ReleasesPage() {
               <button
                 key={genre}
                 onClick={() => setFilterGenre(filterGenre === genre ? null : genre)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                   filterGenre === genre
-                    ? "bg-[#E8385D] text-white"
-                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10"
+                    ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
+                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {genre}
@@ -116,42 +119,53 @@ export default function ReleasesPage() {
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-7xl">
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
             variants={stagger(0.05)}
             initial="hidden"
             animate="visible"
             key={`${filterType}-${filterYear}-${filterGenre}`}
           >
-            {filtered.map((release) => (
-              <motion.div key={release.slug} variants={fadeUp}>
-                <Link
-                  href={`/releases/${release.slug}`}
-                  className="group block glass-card rounded-2xl overflow-hidden card-hover h-full"
-                >
-                  {/* Artwork placeholder */}
-                  <div className="aspect-square bg-gradient-to-br from-[#E8385D]/20 via-[#141414] to-[#FF4D73]/10 flex items-center justify-center">
-                    <Disc3 className="w-16 h-16 text-[#E8385D]/40 group-hover:text-[#E8385D]/60 transition-colors" />
-                  </div>
-                  <div className="p-4">
+            {filtered.map((release) => {
+              const albumArt = spotifyAlbums[release.title]?.image;
+              return (
+                <motion.div key={release.slug} variants={fadeUp}>
+                  <Link
+                    href={`/releases/${release.slug}`}
+                    className="group block card-hover h-full"
+                  >
+                    {/* Artwork */}
+                    <div className="aspect-square rounded-xl overflow-hidden relative mb-3 ring-1 ring-white/5 group-hover:ring-[#E8385D]/30 transition-all">
+                      {albumArt ? (
+                        <Image
+                          src={albumArt}
+                          alt={release.title}
+                          width={300}
+                          height={300}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#E8385D]/20 via-[#141414] to-[#FF4D73]/10 flex items-center justify-center">
+                          <Disc3 className="w-12 h-12 text-[#E8385D]/40 group-hover:text-[#E8385D]/60 transition-colors" />
+                        </div>
+                      )}
+                      {/* Type badge */}
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-black/70 backdrop-blur-sm text-white/80">
+                        {release.type === "ep" ? "EP" : release.type}
+                      </div>
+                    </div>
                     <h3 className="text-sm font-bold text-white group-hover:text-[#E8385D] transition-colors truncate">
                       {release.title}
                     </h3>
-                    <div className="flex items-center gap-2 mt-1">
-                      <Users size={12} className="text-[#666666]" />
-                      <p className="text-xs text-[#A0A0A0] truncate">
-                        {release.artistNames.join(", ")}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 mt-1">
-                      <Calendar size={12} className="text-[#666666]" />
-                      <p className="text-xs text-[#666666]">
-                        {release.year} &middot; {release.type === "ep" ? "EP" : release.type.charAt(0).toUpperCase() + release.type.slice(1)}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                    <p className="text-xs text-[#A0A0A0] truncate mt-0.5">
+                      {release.artistNames.join(", ")}
+                    </p>
+                    <p className="text-xs text-[#666666] mt-0.5">
+                      {release.year}
+                    </p>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           {filtered.length === 0 && (

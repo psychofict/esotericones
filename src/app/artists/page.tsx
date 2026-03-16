@@ -2,15 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { artists, getAllGenres } from "@/data/artists";
+import { useSpotifyArtists } from "@/hooks/useSpotifyArtists";
 import { Music, MapPin } from "lucide-react";
 
 const allGenres = getAllGenres();
 
 export default function ArtistsPage() {
   const [activeGenre, setActiveGenre] = useState<string | null>(null);
+  const { artists: spotifyData } = useSpotifyArtists();
 
   const filtered = activeGenre
     ? artists.filter((a) => a.genres.includes(activeGenre))
@@ -53,10 +56,10 @@ export default function ArtistsPage() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setActiveGenre(null)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 !activeGenre
-                  ? "bg-[#E8385D] text-white"
-                  : "bg-white/5 text-[#A0A0A0] hover:bg-white/10"
+                  ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
+                  : "bg-white/5 text-[#A0A0A0] hover:bg-white/10 hover:text-white"
               }`}
             >
               All
@@ -65,10 +68,10 @@ export default function ArtistsPage() {
               <button
                 key={genre}
                 onClick={() => setActiveGenre(genre === activeGenre ? null : genre)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeGenre === genre
-                    ? "bg-[#E8385D] text-white"
-                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10"
+                    ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
+                    : "bg-white/5 text-[#A0A0A0] hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {genre}
@@ -88,38 +91,58 @@ export default function ArtistsPage() {
             animate="visible"
             key={activeGenre || "all"}
           >
-            {filtered.map((artist) => (
-              <motion.div key={artist.slug} variants={fadeUp}>
-                <Link
-                  href={`/artists/${artist.slug}`}
-                  className="group block glass-card rounded-2xl p-6 card-hover h-full"
-                >
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#E8385D]/20 to-[#FF4D73]/10 flex items-center justify-center mb-4 group-hover:from-[#E8385D]/30 transition-all">
-                    <Music className="w-7 h-7 text-[#E8385D]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-[#E8385D] transition-colors">
-                    {artist.name}
-                  </h3>
-                  <p className="text-sm text-[#A0A0A0] mt-1 line-clamp-2">
-                    {artist.shortBio}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {artist.genres.slice(0, 2).map((genre) => (
-                      <span
-                        key={genre}
-                        className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-[#666666]"
-                      >
-                        {genre}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-1 mt-3 text-xs text-[#666666]">
-                    <MapPin size={12} />
-                    {artist.country}
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+            {filtered.map((artist) => {
+              const spotify = spotifyData[artist.name];
+              return (
+                <motion.div key={artist.slug} variants={fadeUp}>
+                  <Link
+                    href={`/artists/${artist.slug}`}
+                    className="group block glass-card rounded-2xl overflow-hidden card-hover h-full"
+                  >
+                    {/* Artist image */}
+                    <div className="aspect-square overflow-hidden relative">
+                      {spotify?.image ? (
+                        <Image
+                          src={spotify.image}
+                          alt={artist.name}
+                          width={300}
+                          height={300}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#E8385D]/20 via-[#141414] to-[#FF4D73]/10 flex items-center justify-center">
+                          <Music className="w-16 h-16 text-[#E8385D]/40" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60" />
+                      {/* Country badge */}
+                      <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-xs text-white/80">
+                        <MapPin size={10} />
+                        {artist.country}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-lg font-bold text-white group-hover:text-[#E8385D] transition-colors">
+                        {artist.name}
+                      </h3>
+                      <p className="text-sm text-[#A0A0A0] mt-1 line-clamp-2">
+                        {artist.shortBio}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {artist.genres.slice(0, 2).map((genre) => (
+                          <span
+                            key={genre}
+                            className="text-xs px-2 py-0.5 rounded-full bg-[#E8385D]/10 text-[#E8385D]/80"
+                          >
+                            {genre}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           {filtered.length === 0 && (
