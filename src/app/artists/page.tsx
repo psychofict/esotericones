@@ -6,14 +6,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { artists, getAllGenres } from "@/data/artists";
-import { useSpotifyArtists } from "@/hooks/useSpotifyArtists";
 import { Music, MapPin } from "lucide-react";
 
 const allGenres = getAllGenres();
 
 export default function ArtistsPage() {
   const [activeGenre, setActiveGenre] = useState<string | null>(null);
-  const { artists: spotifyData } = useSpotifyArtists();
 
   const filtered = activeGenre
     ? artists.filter((a) => a.genres.includes(activeGenre))
@@ -91,9 +89,7 @@ export default function ArtistsPage() {
             animate="visible"
             key={activeGenre || "all"}
           >
-            {filtered.map((artist) => {
-              const spotify = spotifyData[artist.name];
-              return (
+            {filtered.map((artist) => (
                 <motion.div key={artist.slug} variants={fadeUp}>
                   <Link
                     href={`/artists/${artist.slug}`}
@@ -101,9 +97,9 @@ export default function ArtistsPage() {
                   >
                     {/* Artist image */}
                     <div className="aspect-square overflow-hidden relative">
-                      {spotify?.image ? (
+                      {artist.image ? (
                         <Image
-                          src={spotify.image}
+                          src={artist.image}
                           alt={artist.name}
                           width={300}
                           height={300}
@@ -141,8 +137,7 @@ export default function ArtistsPage() {
                     </div>
                   </Link>
                 </motion.div>
-              );
-            })}
+            ))}
           </motion.div>
 
           {filtered.length === 0 && (

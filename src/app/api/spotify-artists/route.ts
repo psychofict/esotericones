@@ -37,12 +37,9 @@ async function getAccessToken(): Promise<string | null> {
   return data.access_token;
 }
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const debug = searchParams.get("debug") === "1";
-
+export async function GET() {
   // Return in-memory cache if valid
-  if (artistCache && Date.now() < artistCache.expiry && !debug) {
+  if (artistCache && Date.now() < artistCache.expiry) {
     return NextResponse.json(artistCache.data, {
       headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=172800" },
     });
@@ -50,32 +47,10 @@ export async function GET(request: Request) {
 
   const token = await getAccessToken();
   if (!token) {
-    return NextResponse.json({
-      error: "Spotify credentials not configured",
-      hasClientId: !!process.env.SPOTIFY_CLIENT_ID,
-      hasClientSecret: !!process.env.SPOTIFY_CLIENT_SECRET,
-    }, { status: 500 });
+    return NextResponse.json({ error: "Spotify credentials not configured" }, { status: 500 });
   }
 
   const roster = artists.filter((a) => a.spotifyId);
-
-  if (debug) {
-    // Test the batch endpoint directly
-    const testIds = roster.slice(0, 3).map((a) => a.spotifyId).join(",");
-    const testRes = await fetch(
-      `https://api.spotify.com/v1/artists?ids=${testIds}`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    const testBody = await testRes.text();
-    return NextResponse.json({
-      tokenOk: true,
-      batchUrl: `https://api.spotify.com/v1/artists?ids=${testIds}`,
-      batchStatus: testRes.status,
-      batchBody: testBody.substring(0, 500),
-      rosterCount: roster.length,
-      firstIds: roster.slice(0, 3).map((a) => ({ name: a.name, id: a.spotifyId })),
-    });
-  }
   const results: Record<string, SpotifyArtistResult> = {};
 
   // Use Spotify batch endpoint — up to 50 artists per call
