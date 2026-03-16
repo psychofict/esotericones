@@ -37,9 +37,12 @@ async function getAccessToken(): Promise<string | null> {
   return data.access_token;
 }
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const debug = searchParams.get("debug") === "1";
+
   // Return in-memory cache if valid
-  if (artistCache && Date.now() < artistCache.expiry) {
+  if (artistCache && Date.now() < artistCache.expiry && !debug) {
     return NextResponse.json(artistCache.data, {
       headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=172800" },
     });
@@ -47,7 +50,15 @@ export async function GET() {
 
   const token = await getAccessToken();
   if (!token) {
-    return NextResponse.json({ error: "Spotify credentials not configured" }, { status: 500 });
+    return NextResponse.json({
+      error: "Spotify credentials not configured",
+      hasClientId: !!process.env.SPOTIFY_CLIENT_ID,
+      hasClientSecret: !!process.env.SPOTIFY_CLIENT_SECRET,
+    }, { status: 500 });
+  }
+
+  if (debug) {
+    return NextResponse.json({ token: token.substring(0, 10) + "...", tokenLength: token.length });
   }
 
   const roster = artists.filter((a) => a.spotifyId);
