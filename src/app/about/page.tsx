@@ -1,440 +1,206 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Music, Cpu, Globe, Disc, ArrowRight } from "lucide-react";
-import { artist, timeline, unifiedBio } from "@/data/artist";
 import { fadeUp, stagger } from "@/lib/animations";
-import SectionDivider from "@/components/SectionDivider";
+import { label, labelTimeline, labelGenres, labelStats } from "@/data/label";
+import { ArrowRight, Users, Globe, Headphones, Disc3 } from "lucide-react";
 
-const containerVariants = stagger(0.15);
-const itemVariants = fadeUp;
-
-const iconMap = {
-  music: Music,
-  cpu: Cpu,
-  globe: Globe,
-  disc: Disc,
-} as const;
-
-const epkCards = [
-  {
-    title: "Press Photos",
-    description: "High-resolution promotional images",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
-      </svg>
-    ),
-  },
-  {
-    title: "One Sheet",
-    description: "Artist biography and key facts",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Logo Assets",
-    description: "Logos and branding guidelines",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V15m0 0-2.25 1.313M3 16.5v-2.25m0 0 2.25 1.313M3 14.25l2.25-1.313m0 0L12 9.75l6.75 3.188M21 16.5v-2.25m0 0-2.25 1.313m2.25-1.313-2.25-1.313" />
-      </svg>
-    ),
-  },
-  {
-    title: "Technical Rider",
-    description: "Stage and equipment requirements",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-      </svg>
-    ),
-  },
-];
+const statIcons: Record<string, React.ReactNode> = {
+  users: <Users className="w-5 h-5" />,
+  headphones: <Headphones className="w-5 h-5" />,
+  globe: <Globe className="w-5 h-5" />,
+  disc: <Disc3 className="w-5 h-5" />,
+};
 
 export default function AboutPage() {
-  const bioParagraphs = unifiedBio.intro.split("\n\n");
-
   return (
-    <main id="main-content" className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-[#EAF4FC] py-28 px-6 overflow-hidden">
-        <motion.div
-          className="absolute inset-0"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <Image
-            src="/images/ebstar-hero.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-[#EAF4FC]/70" />
-        <div className="noise-overlay absolute inset-0" />
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
+    <main id="main-content" className="min-h-screen bg-[#0A0A0A]">
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-6">
+        <div className="mx-auto max-w-7xl">
           <motion.p
-            className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
+            className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
           >
-            The Story
+            Our Story
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: -20 }}
+            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-[#1A1A2E] mb-4"
+            transition={{ delay: 0.1 }}
           >
-            About{" "}
-            <span className="text-gradient">Ebstar</span>
+            About The Label
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-[#1A1A2E]/60 max-w-xl mx-auto"
-          >
-            {artist.tagline}
-          </motion.p>
-          <motion.div
+            className="text-lg text-[#A0A0A0] max-w-3xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-4 text-sm text-[#1A1A2E]/40"
+            transition={{ delay: 0.2 }}
           >
-            {artist.from} &middot; Based in {artist.basedIn}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Mobile hero image (visible below md) */}
-      <div className="md:hidden">
-        <div className="aspect-[4/3] relative">
-          <Image
-            src="/images/ebstar-hero.jpg"
-            alt="Ebstar"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-      </div>
-
-      <SectionDivider variant="wave" direction="tint-to-light" />
-
-      {/* Role Highlights */}
-      <section className="section-padding px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold text-[#1A1A2E] mb-10 text-center"
-          >
-            What I Do
-          </motion.h2>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          >
-            {unifiedBio.roles.map((role) => {
-              const Icon = iconMap[role.icon];
-              return (
-                <motion.div
-                  key={role.title}
-                  variants={itemVariants}
-                  className="card-hover flex items-start gap-4 p-6 rounded-2xl border border-gray-100 bg-white shadow-sm"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#EAF4FC] text-[#2E86DE] flex items-center justify-center">
-                    <Icon size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-[#1A1A2E] text-lg">{role.title}</h3>
-                    <p className="mt-1 text-sm text-[#1A1A2E]/60 leading-relaxed">{role.summary}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Bio Section */}
-      <section className="pb-20 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_380px] gap-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-[#1A1A2E] mb-8">
-              The Story
-            </h2>
-            <div className="space-y-6">
-              {bioParagraphs.map((paragraph, index) => (
-                <motion.p
-                  key={index}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="text-[#1A1A2E]/80 text-lg leading-relaxed"
-                >
-                  {paragraph}
-                </motion.p>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:block"
-          >
-            <div className="sticky top-24 rounded-2xl overflow-hidden shadow-lg aspect-[3/4]">
-              <Image
-                src="/images/ebstar-hero.jpg"
-                alt="Ebstar"
-                fill
-                className="object-cover"
-                sizes="380px"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Genre Tags */}
-      <section className="pb-16 px-6">
-        <div className="max-w-3xl mx-auto">
-          <motion.h3
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-[#1A1A2E] mb-5"
-          >
-            Genres
-          </motion.h3>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-wrap gap-3"
-          >
-            {artist.genres.map((genre) => (
-              <motion.span
-                key={genre}
-                variants={itemVariants}
-                className="px-4 py-2 rounded-full border-2 border-[#2E86DE] text-[#2E86DE] text-sm font-semibold hover:bg-[#2E86DE] hover:text-white transition-colors duration-300 cursor-default"
-              >
-                {genre}
-              </motion.span>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      <SectionDivider variant="wave" direction="light-to-dark" />
-
-      {/* Timeline Section — Dark Theme */}
-      <section className="relative overflow-hidden bg-[#1A1A2E]">
-        <div className="noise-overlay absolute inset-0" />
-        <div className="relative z-10 section-padding px-6 max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-white mb-12 text-center"
-          >
-            Timeline
-          </motion.h2>
-
-          {/* Desktop: Horizontal Timeline */}
-          <div className="hidden md:block relative">
-            <div className="absolute top-8 left-0 right-0 h-0.5 bg-white/10" />
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-6 gap-4 relative"
-            >
-              {timeline.map((item) => (
-                <motion.div
-                  key={item.year}
-                  variants={itemVariants}
-                  className="flex flex-col items-center text-center"
-                >
-                  <div className="w-4 h-4 rounded-full bg-[#F39C12] border-4 border-[#1A1A2E] shadow-sm z-10 mb-4" />
-                  <span className="text-2xl font-black text-[#F39C12] mb-2">
-                    {item.year}
-                  </span>
-                  <p className="text-sm text-white/60 leading-snug">
-                    {item.event}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Mobile: Vertical Timeline */}
-          <div className="md:hidden relative">
-            <div className="absolute top-0 bottom-0 left-6 w-0.5 bg-white/10" />
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-10 relative"
-            >
-              {timeline.map((item) => (
-                <motion.div
-                  key={item.year}
-                  variants={itemVariants}
-                  className="flex items-start gap-6"
-                >
-                  <div className="w-3 h-3 rounded-full bg-[#F39C12] border-4 border-[#1A1A2E] shadow-sm flex-shrink-0 mt-2 relative left-[2px]" />
-                  <div>
-                    <span className="text-2xl font-black text-[#F39C12] block mb-1">
-                      {item.year}
-                    </span>
-                    <p className="text-sm text-white/60 leading-relaxed">
-                      {item.event}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider variant="gradient" direction="dark-to-light" />
-
-      {/* EPK Section */}
-      <section className="section-padding px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-[#1A1A2E] mb-3"
-          >
-            Electronic Press Kit
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-[#1A1A2E]/60 mb-10"
-          >
-            Download assets for press, events, and promotions.
+            {label.displayName} is an international independent record label founded in Seoul, South Korea in {label.founded} by {label.founder} ({label.founderRealName}). We exist to give bold, genre-bending artists a platform to release music on their own terms.
           </motion.p>
+        </div>
+      </section>
 
+      {/* Mission */}
+      <section className="px-6 pb-16">
+        <div className="mx-auto max-w-7xl">
           <motion.div
-            variants={containerVariants}
+            className="glass-card rounded-2xl p-8 md:p-12 border border-[#E8385D]/10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <Image
+                src="/images/label-logo.svg"
+                alt="The ESOTERIC Ones"
+                width={48}
+                height={48}
+              />
+              <h2 className="text-2xl font-bold text-white">Our Mission</h2>
+            </div>
+            <p className="text-[#A0A0A0] leading-relaxed max-w-3xl">
+              We believe music shouldn&apos;t be confined by borders, genres, or gatekeepers. Our roster spans 6 countries — from South Africa to Sweden, Zimbabwe to South Korea — united by a shared commitment to quality, authenticity, and emotional resonance. Whether it&apos;s piano house, Amapiano, hip-hop, or electronic, if it moves people, it belongs here.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-16 bg-[#141414] border-y border-[#2A2A2A]">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            variants={stagger(0.1)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-5"
           >
-            {epkCards.map((card) => (
-              <motion.div
-                key={card.title}
-                variants={itemVariants}
-                className="card-hover relative flex items-start gap-4 p-6 rounded-2xl border border-gray-100 bg-white shadow-sm cursor-default"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#EAF4FC] text-[#2E86DE] flex items-center justify-center">
-                  {card.icon}
+            {labelStats.map((stat) => (
+              <motion.div key={stat.label} variants={fadeUp} className="text-center">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#E8385D]/10 text-[#E8385D] mb-3">
+                  {statIcons[stat.icon]}
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-[#1A1A2E] mb-1">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm text-[#1A1A2E]/50">
-                    {card.description}
-                  </p>
-                </div>
-                <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#F39C12]/10 text-[#F39C12] uppercase tracking-wider">
-                  Coming Soon
-                </span>
+                <p className="text-2xl md:text-3xl font-bold text-gradient">{stat.value}</p>
+                <p className="text-sm text-[#666666] mt-1 uppercase tracking-wider">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <SectionDivider variant="wave" direction="light-to-dark" />
-
-      {/* Terminal CTA — Collaborate */}
-      <section className="relative bg-[#1A1A2E] overflow-hidden">
-        <div className="noise-overlay absolute inset-0" />
-        <div className="relative z-10 section-padding px-6 text-center">
+      {/* Timeline */}
+      <section className="section-padding px-6">
+        <div className="mx-auto max-w-7xl">
           <motion.div
-            className="max-w-2xl mx-auto"
+            variants={stagger()}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={containerVariants}
           >
-            <motion.p
-              variants={itemVariants}
-              className="text-[#F39C12] uppercase tracking-[0.3em] text-sm font-medium mb-4"
-            >
-              Collaborate
-            </motion.p>
-            <motion.h2
-              variants={itemVariants}
-              className="text-3xl md:text-5xl font-bold text-white mb-6"
-            >
-              Let&apos;s Create Something Together
+            <motion.h2 variants={fadeUp} className="text-2xl font-bold text-white mb-10">
+              Timeline
             </motion.h2>
-            <motion.p
-              variants={itemVariants}
-              className="text-white/50 text-lg mb-10 max-w-lg mx-auto"
-            >
-              Open to bookings, partnerships, and creative collaborations. Let&apos;s make it happen.
-            </motion.p>
-            <motion.div variants={itemVariants}>
-              <Link href="/contact">
-                <motion.button
-                  className="btn-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-[#1A1A2E] font-semibold text-lg hover:bg-white/90 transition-colors cursor-pointer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+            <div className="space-y-8 relative">
+              {/* Vertical line */}
+              <div className="absolute left-[19px] top-2 bottom-2 w-px bg-[#2A2A2A]" />
+
+              {labelTimeline.map((item) => (
+                <motion.div
+                  key={item.year}
+                  variants={fadeUp}
+                  className="flex gap-6 relative"
                 >
-                  Get in Touch
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
+                  <div className="w-10 h-10 rounded-full bg-[#E8385D]/10 border-2 border-[#E8385D] flex items-center justify-center flex-shrink-0 z-10">
+                    <span className="text-xs font-bold text-[#E8385D]">{item.year}</span>
+                  </div>
+                  <div className="pt-2">
+                    <p className="text-[#A0A0A0] leading-relaxed">{item.event}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Genres */}
+      <section className="px-6 pb-16">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl font-bold text-white mb-6">Our Sound</h2>
+            <div className="flex flex-wrap gap-3">
+              {labelGenres.map((genre) => (
+                <span
+                  key={genre}
+                  className="px-5 py-2.5 rounded-full bg-white/5 text-sm text-[#A0A0A0] border border-[#2A2A2A]"
+                >
+                  {genre}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Founder Spotlight */}
+      <section className="px-6 pb-16">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            className="glass-card rounded-2xl p-8 md:p-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl font-bold text-white mb-4">The Founder</h2>
+            <p className="text-[#A0A0A0] leading-relaxed max-w-3xl mb-6">
+              <strong className="text-white">Ebstar</strong> (Ebenezer Tarubinga) is a Zimbabwean-born, Seoul-based music producer with 5M+ streams, an MSc in AI from Korea University, and a vision for what an independent label can be. He founded {label.displayName} in {label.founded} to create a home for artists who don&apos;t fit neatly into boxes.
+            </p>
+            <Link
+              href="/artists/ebstar"
+              className="inline-flex items-center gap-2 text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors"
+            >
+              View Artist Profile <ArrowRight size={14} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-7xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">Want to be part of the story?</h2>
+            <p className="text-[#A0A0A0] mb-8">
+              We&apos;re always looking for artists, collaborators, and partners.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/demos"
+                className="px-8 py-3.5 bg-[#E8385D] text-white rounded-full font-semibold hover:bg-[#FF4D73] transition-colors btn-glow"
+              >
+                Submit a Demo
               </Link>
-            </motion.div>
+              <Link
+                href="/contact"
+                className="px-8 py-3.5 border border-[#2A2A2A] text-white rounded-full font-semibold hover:bg-white/5 transition-colors"
+              >
+                Get in Touch
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #1A1A2E;
-  --color-ocean: #2E86DE;
-  --color-ocean-dark: #1B5E8A;
-  --color-sunset: #F39C12;
-  --color-sky-tint: #EAF4FC;
-  --color-soft-white: #F8FBFF;
+  --color-background: #0A0A0A;
+  --color-foreground: #F5F5F5;
+  --color-primary: #E8385D;
+  --color-primary-hover: #FF4D73;
+  --color-surface: #141414;
+  --color-surface-hover: #1C1C1C;
+  --color-border: #2A2A2A;
+  --color-muted: #666666;
+  --color-text-secondary: #A0A0A0;
   --font-sans: var(--font-body);
   --font-display: var(--font-dm-sans);
 }
@@ -22,63 +24,57 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Branded selection color */
+/* Pink selection */
 ::selection {
-  background: rgba(46, 134, 222, 0.25);
-  color: #1A1A2E;
+  background: rgba(232, 56, 93, 0.3);
+  color: #F5F5F5;
 }
 
-/* Custom scrollbar */
+/* Dark scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-sky-tint);
+  background: #0A0A0A;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-ocean);
+  background: #E8385D;
   border-radius: 4px;
 }
 
-/* Section padding — consistent vertical rhythm */
+/* Section padding */
 .section-padding {
   padding-top: clamp(4rem, 8vw, 6rem);
   padding-bottom: clamp(4rem, 8vw, 6rem);
 }
 
-/* Gradient text effect for stat numbers */
+/* Gradient text effect */
 .text-gradient {
-  background: linear-gradient(135deg, #2E86DE 0%, #F39C12 100%);
+  background: linear-gradient(135deg, #E8385D 0%, #FF4D73 50%, #E8385D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Card hover effect */
+/* Card hover */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px -12px rgba(46, 134, 222, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -12px rgba(232, 56, 93, 0.2);
+  border-color: rgba(232, 56, 93, 0.3);
 }
 
-/* Glassmorphism cards */
+/* Dark glassmorphism cards */
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(20, 20, 20, 0.8);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.glass-dark {
-  background: rgba(26, 26, 46, 0.6);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Button glow effect */
+/* Button glow */
 .btn-glow {
   position: relative;
   overflow: hidden;
@@ -90,7 +86,7 @@ body {
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.3s ease;
-  box-shadow: 0 0 20px rgba(46, 134, 222, 0.4);
+  box-shadow: 0 0 24px rgba(232, 56, 93, 0.4);
 }
 .btn-glow:hover::after {
   opacity: 1;
@@ -128,32 +124,18 @@ body {
   }
 }
 
-/* Wave divider */
-.wave-divider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-.wave-divider svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 60px;
-}
-
 /* Hero gradient animation */
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
 .hero-gradient {
-  background: linear-gradient(135deg, #EAF4FC 0%, #FFFFFF 25%, #EAF4FC 50%, #FFF5E6 75%, #EAF4FC 100%);
+  background: linear-gradient(135deg, #0A0A0A 0%, #141414 25%, #0A0A0A 50%, #1C1C1C 75%, #0A0A0A 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
 
-/* Floating clouds animation */
+/* Floating animation */
 @keyframes float {
   0%, 100% { transform: translateY(0px) translateX(0px); }
   25% { transform: translateY(-10px) translateX(5px); }
@@ -176,17 +158,11 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Glassmorphism */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+/* Pink glow effect on hover */
+@keyframes pinkGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 56, 93, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(232, 56, 93, 0.2); }
 }
-
-/* Audio player */
-.player-bar {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+.pink-glow {
+  animation: pinkGlow 3s ease-in-out infinite;
 }

@@ -19,7 +19,7 @@ export default function FormFeedback({
 }: FormFeedbackProps) {
   if (loading) {
     return (
-      <div className="flex items-center gap-3 mt-4 text-[#2E86DE]">
+      <div className="flex items-center gap-3 mt-4 text-[#E8385D]">
         <Loader2 className="w-5 h-5 animate-spin" />
         <span className="text-sm">Sending...</span>
       </div>

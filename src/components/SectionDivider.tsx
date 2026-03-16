@@ -1,25 +1,19 @@
 interface SectionDividerProps {
   variant?: "wave" | "gradient" | "diagonal";
-  direction?: "light-to-dark" | "dark-to-light" | "light-to-tint" | "tint-to-light" | "tint-to-dark" | "dark-to-tint" | "soft-to-dark" | "dark-to-soft" | "light-to-soft" | "soft-to-light";
+  direction?: "dark-to-surface" | "surface-to-dark" | "dark-to-darker" | "darker-to-dark";
   className?: string;
 }
 
 const colorMap = {
-  "light-to-dark": { from: "#ffffff", to: "#1A1A2E" },
-  "dark-to-light": { from: "#1A1A2E", to: "#ffffff" },
-  "light-to-tint": { from: "#ffffff", to: "#EAF4FC" },
-  "tint-to-light": { from: "#EAF4FC", to: "#ffffff" },
-  "tint-to-dark": { from: "#EAF4FC", to: "#1A1A2E" },
-  "dark-to-tint": { from: "#1A1A2E", to: "#EAF4FC" },
-  "soft-to-dark": { from: "#F8FBFF", to: "#1A1A2E" },
-  "dark-to-soft": { from: "#1A1A2E", to: "#F8FBFF" },
-  "light-to-soft": { from: "#ffffff", to: "#F8FBFF" },
-  "soft-to-light": { from: "#F8FBFF", to: "#ffffff" },
+  "dark-to-surface": { from: "#0A0A0A", to: "#141414" },
+  "surface-to-dark": { from: "#141414", to: "#0A0A0A" },
+  "dark-to-darker": { from: "#0A0A0A", to: "#050505" },
+  "darker-to-dark": { from: "#050505", to: "#0A0A0A" },
 };
 
 export default function SectionDivider({
   variant = "wave",
-  direction = "light-to-dark",
+  direction = "dark-to-surface",
   className = "",
 }: SectionDividerProps) {
   const { from, to } = colorMap[direction];
@@ -65,7 +59,6 @@ export default function SectionDivider({
     );
   }
 
-  // diagonal
   return (
     <div
       className={`relative w-full h-20 overflow-hidden ${className}`}

@@ -1,290 +1,110 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { navEntries, isNavGroup, socials } from "@/data/artist";
-import type { NavGroup, NavStandalone } from "@/data/artist";
+import { navItems, labelSocials } from "@/data/label";
 
-const socialIcons: { name: string; url: string; icon: React.ReactNode }[] = [
-  {
-    name: "Spotify",
-    url: socials.find((s) => s.name === "Spotify")?.url ?? "#",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-    ),
-  },
-  {
-    name: "Apple Music",
-    url: socials.find((s) => s.name === "Apple Music")?.url ?? "#",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043A5.022 5.022 0 0019.7.25C18.96.1 18.21.036 17.46.012 17.18 0 16.9 0 16.62 0H7.38c-.28 0-.56 0-.84.012C5.79.036 5.04.1 4.3.25a5.022 5.022 0 00-1.874.641C1.308 1.624.563 2.624.246 3.934a9.23 9.23 0 00-.24 2.19C0 6.404 0 6.684 0 6.964v10.07c0 .28 0 .56.006.84a9.23 9.23 0 00.24 2.19c.317 1.31 1.062 2.31 2.18 3.043A5.022 5.022 0 004.3 23.75c.74.15 1.49.214 2.24.238.28.012.56.012.84.012h9.24c.28 0 .56 0 .84-.012.75-.024 1.5-.088 2.24-.238a5.022 5.022 0 001.874-.641c1.118-.733 1.863-1.733 2.18-3.043a9.23 9.23 0 00.24-2.19c.006-.28.006-.56.006-.84V6.964c0-.28 0-.56-.006-.84zM17.7 12.226v4.584c0 .56-.12 1.096-.462 1.58a2.901 2.901 0 01-1.282 1.07c-.456.208-.942.31-1.45.31-.508 0-.994-.102-1.45-.31a2.901 2.901 0 01-1.282-1.07 2.824 2.824 0 01-.462-1.58c0-.56.12-1.096.462-1.58a2.901 2.901 0 011.282-1.07c.456-.208.942-.31 1.45-.31.322 0 .636.05.942.148V9.624l-5.85 1.302v5.884c0 .56-.12 1.096-.462 1.58a2.901 2.901 0 01-1.282 1.07c-.456.208-.942.31-1.45.31-.508 0-.994-.102-1.45-.31a2.901 2.901 0 01-1.282-1.07A2.824 2.824 0 013.7 16.81c0-.56.12-1.096.462-1.58a2.901 2.901 0 011.282-1.07c.456-.208.942-.31 1.45-.31.322 0 .636.05.942.148V8.124c0-.396.144-.746.432-.994.288-.248.636-.372 1.044-.372.096 0 .192.012.288.024l6.3 1.404c.528.12.9.504.9 1.044v2.996z"/></svg>
-    ),
-  },
-  {
-    name: "Instagram",
-    url: socials.find((s) => s.name === "Instagram")?.url ?? "#",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    ),
-  },
-  {
-    name: "Facebook",
-    url: socials.find((s) => s.name === "Facebook")?.url ?? "#",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    ),
-  },
-  {
-    name: "Twitter/X",
-    url: socials.find((s) => s.name === "Twitter/X")?.url ?? "#",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    ),
-  },
-  {
-    name: "LinkedIn",
-    url: socials.find((s) => s.name === "LinkedIn")?.url ?? "https://www.linkedin.com/in/ebstar",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    ),
-  },
-];
+const socialIcons: Record<string, React.ReactNode> = {
+  spotify: (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+  ),
+  instagram: (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  ),
+  twitter: (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  ),
+  soundcloud: (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.05-.1-.1-.1m-.899.828c-.06 0-.091.037-.104.094L0 14.479l.172 1.282c.013.06.045.094.104.094.053 0 .09-.04.104-.094l.2-1.282-.2-1.332c-.014-.057-.051-.094-.104-.094m1.8-.6c-.067 0-.12.055-.127.12l-.214 2.026.214 1.98c.007.066.06.118.127.118.064 0 .117-.052.127-.118l.241-1.98-.241-2.026c-.01-.065-.063-.12-.127-.12m.901-.48c-.073 0-.135.06-.14.135l-.185 2.506.185 2.14c.005.075.067.135.14.135.076 0 .135-.06.14-.135l.209-2.14-.209-2.506c-.005-.075-.064-.135-.14-.135m.901-.12c-.08 0-.15.066-.155.15l-.157 2.625.157 2.182c.005.083.075.149.155.149.083 0 .15-.066.155-.15l.176-2.181-.176-2.625c-.005-.084-.072-.15-.155-.15m.903.06c-.088 0-.16.072-.163.164l-.129 2.566.129 2.204c.003.09.075.161.163.161.09 0 .16-.072.164-.161l.147-2.204-.147-2.566c-.004-.092-.074-.164-.164-.164m.9-.18c-.094 0-.17.078-.176.176l-.1 2.746.1 2.22c.006.097.082.175.176.175.097 0 .172-.078.176-.175l.115-2.22-.115-2.746c-.004-.098-.079-.176-.176-.176m1.81-.21c-.003-.105-.088-.19-.194-.19-.104 0-.19.085-.193.19l-.096 2.956.096 2.231c.003.108.089.193.193.193.106 0 .191-.085.194-.193l.11-2.231-.11-2.956m.9.42c-.003-.12-.097-.21-.214-.21-.116 0-.21.09-.213.21l-.073 2.536.073 2.244c.003.12.097.21.213.21.117 0 .211-.09.214-.21l.085-2.244-.085-2.536m.9-.42c-.003-.132-.104-.236-.237-.236-.132 0-.233.104-.236.236l-.06 2.956.06 2.256c.003.135.104.239.236.239.133 0 .234-.104.237-.239l.07-2.256-.07-2.956m.903-.18c-.003-.144-.113-.256-.26-.256-.144 0-.257.112-.259.256l-.046 3.136.046 2.268c.002.147.115.259.259.259.147 0 .257-.112.26-.259l.053-2.268-.053-3.136m.9.06c-.003-.156-.12-.277-.282-.277-.16 0-.279.12-.281.277l-.033 3.076.033 2.28c.002.159.121.279.281.279.162 0 .279-.12.282-.279l.037-2.28-.037-3.076m1.693-.14c-.175 0-.318.143-.321.318l-.014 2.898.014 2.286c.003.177.146.32.321.32.175 0 .318-.143.321-.32l.017-2.286-.017-2.898c-.003-.175-.146-.318-.321-.318m.904.18c-.004-.182-.154-.322-.339-.322-.182 0-.335.14-.338.322l-.008 2.718.008 2.289c.003.184.156.324.338.324.185 0 .335-.14.339-.324l.009-2.289-.009-2.718m2.475-.337c-.348-.159-.752-.256-1.176-.256-.42 0-.823.095-1.182.264-.175.082-.223.164-.224.34l-.003 5.13c.002.181.14.33.319.345h4.33c.93 0 1.685-.755 1.685-1.687 0-.933-.755-1.687-1.685-1.687-.326 0-.63.094-.89.255-.126-.742-.786-1.306-1.578-1.306-.342 0-.66.11-.916.295"/></svg>
+  ),
+  youtube: (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+  ),
+};
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
-  const leaveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
-
-  const handleMouseEnter = useCallback((label: string) => {
-    if (leaveTimeout.current) {
-      clearTimeout(leaveTimeout.current);
-      leaveTimeout.current = null;
-    }
-    setOpenDropdown(label);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    leaveTimeout.current = setTimeout(() => {
-      setOpenDropdown(null);
-    }, 150);
-  }, []);
-
-  const toggleMobileAccordion = (label: string) => {
-    setMobileAccordion((prev) => (prev === label ? null : label));
-  };
-
-  const renderDesktopEntry = (entry: NavGroup | NavStandalone) => {
-    if (isNavGroup(entry)) {
-      return (
-        <li
-          key={entry.label}
-          className="relative"
-          onMouseEnter={() => handleMouseEnter(entry.label)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <button
-            className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-[#2E86DE] ${
-              scrolled ? "text-[#1A1A2E]" : "text-white"
-            }`}
-            aria-expanded={openDropdown === entry.label}
-            aria-haspopup="true"
-            onFocus={() => handleMouseEnter(entry.label)}
-            onBlur={handleMouseLeave}
-          >
-            {entry.label}
-            <ChevronDown
-              size={14}
-              className={`transition-transform duration-200 ${
-                openDropdown === entry.label ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-
-          <AnimatePresence>
-            {openDropdown === entry.label && (
-              <motion.div
-                initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                transition={{ duration: 0.15 }}
-                className="absolute top-full left-0 mt-2 min-w-[200px] rounded-2xl bg-white/90 backdrop-blur-xl py-2 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.15)] border border-gray-100/50"
-                role="menu"
-              >
-                {entry.children.map((child) => (
-                  <Link
-                    key={child.href}
-                    href={child.href}
-                    className="block px-4 py-2.5 text-sm text-[#1A1A2E] hover:bg-[#EAF4FC] hover:text-[#2E86DE] transition-colors rounded-lg mx-1"
-                    role="menuitem"
-                  >
-                    {child.name}
-                  </Link>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </li>
-      );
-    }
-
-    return (
-      <li key={entry.href}>
-        <Link
-          href={entry.href}
-          className={`text-sm font-medium transition-colors hover:text-[#2E86DE] ${
-            scrolled ? "text-[#1A1A2E]" : "text-white"
-          }`}
-        >
-          {entry.name}
-        </Link>
-      </li>
-    );
-  };
-
-  const renderMobileEntry = (entry: NavGroup | NavStandalone, index: number) => {
-    if (isNavGroup(entry)) {
-      const isOpen = mobileAccordion === entry.label;
-      return (
-        <motion.li
-          key={entry.label}
-          className="w-full text-center"
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.06, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <button
-            onClick={() => toggleMobileAccordion(entry.label)}
-            className="flex items-center justify-center gap-2 w-full text-4xl font-bold text-[#1A1A2E] transition-colors hover:text-[#2E86DE] min-h-[48px]"
-          >
-            {entry.label}
-            <ChevronDown
-              size={24}
-              className={`transition-transform duration-200 ${
-                isOpen ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="overflow-hidden"
-              >
-                <ul className="mt-3 space-y-3">
-                  {entry.children.map((child) => (
-                    <li key={child.href}>
-                      <Link
-                        href={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="text-lg text-[#1A1A2E]/70 hover:text-[#2E86DE] transition-colors min-h-[48px] inline-flex items-center"
-                      >
-                        {child.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.li>
-      );
-    }
-
-    return (
-      <motion.li
-        key={entry.href}
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: index * 0.06, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-      >
-        <Link
-          href={entry.href}
-          onClick={() => setMobileOpen(false)}
-          className="text-4xl font-bold text-[#1A1A2E] transition-colors hover:text-[#2E86DE] min-h-[48px] inline-flex items-center"
-        >
-          {entry.name}
-        </Link>
-      </motion.li>
-    );
-  };
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-black/5"
-            : "bg-gradient-to-b from-black/20 to-transparent"
+            ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5"
+            : "bg-gradient-to-b from-black/40 to-transparent"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/ebstar-logo-white.png"
-              alt="Ebstar"
+              src="/images/label-logo.svg"
+              alt="The ESOTERIC Ones"
               width={36}
               height={36}
-              className={`w-9 h-9 transition-all duration-300 ${scrolled ? "brightness-0" : ""}`}
+              className="w-9 h-9"
             />
-            <span
-              className={`font-[var(--font-display)] text-2xl font-bold tracking-wider transition-colors ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
-            >
-              EBSTAR
+            <span className="font-[var(--font-display)] text-lg font-bold tracking-wider text-white hidden sm:block">
+              THE ESOTERIC ONES
             </span>
           </Link>
 
-          {/* Desktop nav links */}
-          <ul className="hidden items-center gap-8 md:flex">
-            {navEntries.map(renderDesktopEntry)}
+          {/* Desktop nav */}
+          <ul className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-sm font-medium text-white/70 transition-colors hover:text-[#E8385D]"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/demos"
+                className="rounded-full bg-[#E8385D] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#FF4D73] btn-glow"
+              >
+                Submit Demo
+              </Link>
+            </li>
           </ul>
 
           {/* Desktop social icons */}
-          <div className="hidden items-center gap-3 md:flex">
-            {socialIcons.map((social) => (
+          <div className="hidden items-center gap-3 lg:flex">
+            {labelSocials.slice(0, 3).map((social) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className={`transition-colors hover:text-[#2E86DE] ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
+                className="text-white/40 transition-colors hover:text-[#E8385D]"
               >
-                {social.icon}
+                {socialIcons[social.icon]}
               </a>
             ))}
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden p-2 transition-colors ${scrolled ? "text-[#1A1A2E]" : "text-white"}`}
+            className="lg:hidden p-2 text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
@@ -301,26 +121,53 @@ export default function Navbar() {
             animate={{ clipPath: "circle(150% at calc(100% - 2rem) 2rem)" }}
             exit={{ clipPath: "circle(0% at calc(100% - 2rem) 2rem)" }}
             transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#0A0A0A]"
           >
             <ul className="flex flex-col items-center gap-6">
-              {navEntries.map((entry, index) => renderMobileEntry(entry, index))}
+              {navItems.map((item, i) => (
+                <motion.li
+                  key={item.href}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06, duration: 0.4 }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-4xl font-bold text-white transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center"
+                  >
+                    {item.name}
+                  </Link>
+                </motion.li>
+              ))}
+              <motion.li
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.06, duration: 0.4 }}
+              >
+                <Link
+                  href="/demos"
+                  onClick={() => setMobileOpen(false)}
+                  className="mt-2 inline-block rounded-full bg-[#E8385D] px-8 py-3 text-xl font-bold text-white transition-colors hover:bg-[#FF4D73]"
+                >
+                  Submit Demo
+                </Link>
+              </motion.li>
             </ul>
 
-            {/* Gradient divider */}
-            <div className="mt-10 mb-6 w-24 h-px bg-gradient-to-r from-transparent via-[#2E86DE]/30 to-transparent" />
+            <div className="mt-10 mb-6 w-24 h-px bg-gradient-to-r from-transparent via-[#E8385D]/30 to-transparent" />
 
             <div className="flex items-center gap-4">
-              {socialIcons.map((social) => (
+              {labelSocials.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-11 h-11 rounded-full bg-[#EAF4FC] flex items-center justify-center text-[#1A1A2E] transition-colors hover:text-[#2E86DE] hover:bg-[#2E86DE]/10"
+                  className="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center text-white/50 transition-colors hover:text-[#E8385D] hover:bg-[#E8385D]/10"
                 >
-                  {social.icon}
+                  {socialIcons[social.icon]}
                 </a>
               ))}
             </div>

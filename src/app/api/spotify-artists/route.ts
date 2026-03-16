@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { artists } from "@/data/artists";
 
 interface SpotifyArtistResult {
   name: string;
@@ -8,7 +9,7 @@ interface SpotifyArtistResult {
 
 let tokenCache: { token: string; expiry: number } | null = null;
 let artistCache: { data: Record<string, SpotifyArtistResult>; expiry: number } | null = null;
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
 async function getAccessToken(): Promise<string | null> {
   if (tokenCache && Date.now() < tokenCache.expiry) {
@@ -36,33 +37,25 @@ async function getAccessToken(): Promise<string | null> {
   return data.access_token;
 }
 
-async function searchArtist(token: string, name: string): Promise<SpotifyArtistResult> {
+async function fetchArtistById(token: string, id: string, name: string): Promise<SpotifyArtistResult> {
+  if (!id) return { name, image: null, url: null };
+
   const res = await fetch(
-    `https://api.spotify.com/v1/search?q=${encodeURIComponent(name)}&type=artist&limit=3`,
+    `https://api.spotify.com/v1/artists/${id}`,
     { headers: { Authorization: `Bearer ${token}` } }
   );
 
   if (!res.ok) return { name, image: null, url: null };
 
   const data = await res.json();
-  const artists = data.artists?.items;
-  if (!artists || artists.length === 0) return { name, image: null, url: null };
-
-  // Try to find exact name match first
-  const exact = artists.find(
-    (a: { name: string }) => a.name.toLowerCase() === name.toLowerCase()
-  );
-  const artist = exact || artists[0];
-
   return {
-    name: artist.name,
-    image: artist.images?.[0]?.url || null,
-    url: artist.external_urls?.spotify || null,
+    name: data.name || name,
+    image: data.images?.[0]?.url || null,
+    url: data.external_urls?.spotify || null,
   };
 }
 
 export async function GET() {
-  // Return cached data if fresh
   if (artistCache && Date.now() < artistCache.expiry) {
     return NextResponse.json(artistCache.data, {
       headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=172800" },
@@ -74,23 +67,16 @@ export async function GET() {
     return NextResponse.json({ error: "Spotify credentials not configured" }, { status: 500 });
   }
 
-  const roster = [
-    "CJ Melzy", "ESØTËRIX", "Ebstar", "KARLOST", "Loxion TXI",
-    "Makhathini", "Mfanakithi", "PieceMaker", "Postythegod", "RATSBE",
-    "Regina Ashie", "SkyDAWN", "Swedish Dance Glory", "Team G",
-    "ThatGirlVee", "Tribal Muziq", "illversemusic", "retr0",
-  ];
-
+  const roster = artists.filter((a) => a.spotifyId);
   const results: Record<string, SpotifyArtistResult> = {};
 
-  // Fetch in batches of 5 to avoid rate limits
   for (let i = 0; i < roster.length; i += 5) {
     const batch = roster.slice(i, i + 5);
     const batchResults = await Promise.all(
-      batch.map((name) => searchArtist(token, name))
+      batch.map((a) => fetchArtistById(token, a.spotifyId, a.name))
     );
-    batch.forEach((name, j) => {
-      results[name] = batchResults[j];
+    batch.forEach((a, j) => {
+      results[a.name] = batchResults[j];
     });
   }
 

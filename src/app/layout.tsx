@@ -3,14 +3,10 @@ import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { AudioPlayerProvider } from "@/components/AudioPlayerContext";
-import AudioPlayer from "@/components/AudioPlayer";
 import JsonLd from "@/components/JsonLd";
 import {
-  getPersonSchema,
-  getMusicGroupSchema,
+  getRecordLabelSchema,
   getWebsiteSchema,
-  getOrganizationSchema,
   getSiteNavigationSchema,
 } from "@/lib/structured-data";
 import Analytics from "@/components/Analytics";
@@ -29,63 +25,52 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ebstar.co"),
-  applicationName: "EBSTAR",
+  metadataBase: new URL("https://esotericones.com"),
+  applicationName: "The ESOTERIC Ones",
   title: {
-    template: "%s | EBSTAR",
-    default: "EBSTAR — Music Producer, AI Engineer & Macro Influencer in Seoul",
+    template: "%s | The ESOTERIC Ones",
+    default: "The ESOTERIC Ones — Independent Record Label",
   },
   description:
-    "Ebstar (엡스타) is a Seoul-based music producer, AI/ML engineer, macro influencer, and record label founder. 5M+ streams, published AI researcher, and 50+ brand partnerships.",
+    "The ESOTERIC Ones is an international independent record label founded in Seoul. 18+ artists, 6 countries, 5M+ streams across piano house, Amapiano, dance-pop, hip-hop, and beyond.",
   keywords: [
-    "Ebstar",
-    "엡스타",
-    "Ebenezer Tarubinga",
-    "piano house",
-    "dance-pop",
-    "African musician",
-    "South Korea music",
-    "music producer",
-    "amapiano",
-    "deep house",
-    "progressive house",
-    "future bass",
-    "AI engineer",
-    "machine learning",
-    "computer vision",
-    "macro influencer",
-    "brand partnerships",
-    "travel influencer",
-    "Korea University AI",
-    "GINCON",
-    "Seoul music producer",
-    "한국 음악 프로듀서",
-    "아프리카 뮤지션",
-    "인플루언서",
     "The Esoteric Ones",
+    "record label",
+    "independent label",
+    "piano house",
+    "Amapiano",
+    "dance-pop",
+    "Seoul music",
+    "Korean record label",
+    "electronic music",
+    "Ebstar",
+    "hip-hop label",
+    "Afrobeats",
+    "deep house",
+    "music label",
+    "indie label",
   ],
   openGraph: {
-    title: "EBSTAR — Music Producer, AI Engineer & Macro Influencer in Seoul",
+    title: "The ESOTERIC Ones — Independent Record Label",
     description:
-      "Ebstar (엡스타) is a Seoul-based music producer, AI/ML engineer, macro influencer, and record label founder. 5M+ streams, published AI researcher, and 50+ brand partnerships.",
-    siteName: "EBSTAR",
-    url: "https://ebstar.co",
+      "International independent record label founded in Seoul. 18+ artists, 6 countries, 5M+ streams.",
+    siteName: "The ESOTERIC Ones",
+    url: "https://esotericones.com",
     type: "website",
     locale: "en_US",
-    alternateLocale: "ko_KR",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/label-logo.svg",
         width: 1200,
         height: 630,
-        alt: "Ebstar — Music Producer, AI/ML Engineer, Macro Influencer",
+        alt: "The ESOTERIC Ones — Independent Record Label",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@psychofict",
-    creator: "@psychofict",
+    site: "@esotericones",
+    creator: "@esotericones",
   },
   icons: {
     icon: [
@@ -97,7 +82,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   alternates: {
-    canonical: "https://ebstar.co",
+    canonical: "https://esotericones.com",
   },
   robots: {
     index: true,
@@ -129,30 +114,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
-        <JsonLd data={getPersonSchema()} />
-        <JsonLd data={getMusicGroupSchema()} />
+        <JsonLd data={getRecordLabelSchema()} />
         <JsonLd data={getWebsiteSchema()} />
-        <JsonLd data={getOrganizationSchema()} />
         <JsonLd data={getSiteNavigationSchema()} />
       </head>
       <body
-        className={`${plusJakartaSans.variable} ${dmSans.variable} font-sans antialiased`}
+        className={`${plusJakartaSans.variable} ${dmSans.variable} font-sans antialiased bg-background text-foreground`}
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:rounded-lg focus:bg-[#2E86DE] focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
         >
           Skip to content
         </a>
         <ScrollProgress />
-        <AudioPlayerProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <AudioPlayer />
-        </AudioPlayerProvider>
+        <Navbar />
+        {children}
+        <Footer />
         <Analytics />
       </body>
     </html>
