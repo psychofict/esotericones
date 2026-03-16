@@ -8,7 +8,6 @@ import { label, labelStats } from "@/data/label";
 import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
-import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import { Disc3, Users, Globe, Headphones, ArrowRight, Music } from "lucide-react";
 
 const statIcons: Record<string, React.ReactNode> = {
@@ -22,8 +21,6 @@ const featuredArtists = getFeaturedArtists();
 const featuredReleases = getFeaturedReleases();
 
 export default function HomePage() {
-  const { albums: spotifyAlbums } = useSpotifyAlbums();
-
   return (
     <main id="main-content">
       {/* Hero Section */}
@@ -135,9 +132,9 @@ export default function HomePage() {
               <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 {/* Album artwork */}
                 <div className="aspect-square rounded-2xl overflow-hidden relative max-w-md">
-                  {spotifyAlbums[featuredReleases[0].title]?.image ? (
+                  {featuredReleases[0].artwork ? (
                     <Image
-                      src={spotifyAlbums[featuredReleases[0].title].image!}
+                      src={featuredReleases[0].artwork}
                       alt={featuredReleases[0].title}
                       width={400}
                       height={400}

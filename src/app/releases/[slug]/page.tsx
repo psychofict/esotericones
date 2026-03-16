@@ -6,7 +6,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { getReleaseBySlug } from "@/data/releases";
-import { useSpotifyAlbums } from "@/hooks/useSpotifyAlbums";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 import { ArrowLeft, Disc3, Calendar, Users, Music } from "lucide-react";
 
@@ -14,7 +13,6 @@ export default function ReleasePage() {
   const params = useParams();
   const slug = params.slug as string;
   const release = getReleaseBySlug(slug);
-  const { albums: spotifyAlbums } = useSpotifyAlbums();
 
   if (!release) {
     return (
@@ -28,8 +26,6 @@ export default function ReleasePage() {
       </main>
     );
   }
-
-  const albumArt = spotifyAlbums[release.title]?.image;
 
   return (
     <main id="main-content" className="min-h-screen bg-[#0A0A0A]">
@@ -49,9 +45,9 @@ export default function ReleasePage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              {albumArt ? (
+              {release.artwork ? (
                 <Image
-                  src={albumArt}
+                  src={release.artwork}
                   alt={release.title}
                   width={600}
                   height={600}
