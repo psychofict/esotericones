@@ -43,6 +43,7 @@ export const navItems = [
   { name: "Artists", href: "/artists" },
   { name: "Releases", href: "/releases" },
   { name: "News", href: "/news" },
-  { name: "Events", href: "/events" },
+  { name: "Tour", href: "/tour" },
+  { name: "Merch", href: "/merch" },
   { name: "About", href: "/about" },
 ];

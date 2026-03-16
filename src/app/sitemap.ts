@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/artists`, lastModified: "2026-03-16", changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/releases`, lastModified: "2026-03-16", changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/news`, lastModified: "2026-03-16", changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/tour`, lastModified: "2026-03-16", changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/merch`, lastModified: "2026-03-16", changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/events`, lastModified: "2026-03-16", changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/about`, lastModified: "2026-03-16", changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: "2026-03-16", changeFrequency: "yearly", priority: 0.6 },
