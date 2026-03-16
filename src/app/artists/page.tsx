@@ -45,7 +45,7 @@ export default function ArtistsPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            18+ artists across 6 countries. From piano house to Amapiano, hip-hop to electronic — discover the ESOTERIC sound.
+            24+ artists across 6 countries. Piano house, Amapiano, hip-hop, electronic &mdash; meet the roster behind the ESOTERIC sound.
           </motion.p>
         </div>
       </section>

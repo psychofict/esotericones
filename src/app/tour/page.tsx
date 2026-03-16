@@ -85,7 +85,7 @@ export default function TourPage() {
             className="text-lg text-[#A0A0A0] max-w-2xl"
             variants={fadeUp}
           >
-            Upcoming performances and live events from The ES&#216;T&#203;RIC Ones roster.
+            Catch The ES&#216;T&#203;RIC Ones roster live. Concerts, festivals, and DJ sets worldwide.
           </motion.p>
         </motion.div>
       </section>
@@ -123,7 +123,7 @@ export default function TourPage() {
               Book Our Artists for Your Event
             </h2>
             <p className="text-[#A0A0A0] text-lg mb-8 max-w-lg mx-auto relative">
-              Available for concerts, festivals, corporate events, and private bookings worldwide.
+              Our artists are available for concerts, festivals, corporate events, and private bookings worldwide.
             </p>
             <Link
               href="/contact"

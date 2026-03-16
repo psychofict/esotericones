@@ -41,7 +41,7 @@ export default function AboutPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            {label.displayName} is an international independent record label founded in Seoul, South Korea in {label.founded} by {label.founder} ({label.founderRealName}). We exist to give bold, genre-bending artists a platform to release music on their own terms.
+            {label.displayName} is an international independent record label founded in Seoul, South Korea in {label.founded} by {label.founder} ({label.founderRealName}). We exist to give bold, genre-defying artists a home &mdash; and a platform to release music entirely on their own terms.
           </motion.p>
         </div>
       </section>
@@ -66,7 +66,7 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold text-white">Our Mission</h2>
             </div>
             <p className="text-[#A0A0A0] leading-relaxed max-w-3xl">
-              We believe music shouldn&apos;t be confined by borders, genres, or gatekeepers. Our roster spans 6 countries — from South Africa to Sweden, Zimbabwe to South Korea — united by a shared commitment to quality, authenticity, and emotional resonance. Whether it&apos;s piano house, Amapiano, hip-hop, or electronic, if it moves people, it belongs here.
+              We believe music shouldn&apos;t be confined by borders, genres, or gatekeepers. Our roster spans 6 countries &mdash; from South Africa to Sweden, Zimbabwe to South Korea, India to China &mdash; united by a commitment to quality, authenticity, and emotional resonance. Piano house, Amapiano, hip-hop, electronic &mdash; if it moves people, it belongs here.
             </p>
           </motion.div>
         </div>
@@ -164,7 +164,7 @@ export default function AboutPage() {
           >
             <h2 className="text-2xl font-bold text-white mb-4">The Founder</h2>
             <p className="text-[#A0A0A0] leading-relaxed max-w-3xl mb-6">
-              <strong className="text-white">Ebstar</strong> (Ebenezer Tarubinga) is a Zimbabwean-born, Seoul-based music producer with 5M+ streams, an MSc in AI from Korea University, and a vision for what an independent label can be. He founded {label.displayName} in {label.founded} to create a home for artists who don&apos;t fit neatly into boxes.
+              <strong className="text-white">Ebstar</strong> (Ebenezer Tarubinga) is a Zimbabwean-born, Seoul-based DJ and music producer with 5M+ streams, an MSc in AI from Korea University, and 50+ brand collaborations under his belt. He founded {label.displayName} in {label.founded} with a clear vision: build a home for artists who don&apos;t fit neatly into boxes &mdash; and give them the platform to prove that&apos;s exactly where the best music comes from.
             </p>
             <Link
               href="/artists/ebstar"
@@ -186,7 +186,7 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl font-bold text-white mb-4">Want to be part of the story?</h2>
             <p className="text-[#A0A0A0] mb-8">
-              We&apos;re always looking for artists, collaborators, and partners.
+              We&apos;re always looking for artists, collaborators, and partners who share our vision.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

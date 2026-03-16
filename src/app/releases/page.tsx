@@ -51,7 +51,7 @@ export default function ReleasesPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Every album, EP, and single from The ESOTERIC Ones catalog.
+            Every album, EP, and single from The ES&#216;T&#203;RIC Ones &mdash; from piano house anthems to Amapiano crossovers.
           </motion.p>
         </div>
       </section>

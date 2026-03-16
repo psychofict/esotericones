@@ -69,7 +69,7 @@ export default function DemosPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            We&apos;re always listening. If your sound is bold, emotional, and unapologetic, we want to hear it.
+            We&apos;re always listening. If your sound is bold, emotional, and unapologetic &mdash; send it over.
           </motion.p>
         </div>
       </section>
@@ -91,10 +91,10 @@ export default function DemosPage() {
                 <h2 className="text-lg font-bold text-white">What We Look For</h2>
               </div>
               <ul className="space-y-3 text-sm text-[#A0A0A0]">
-                <li>High production quality — your mix matters</li>
-                <li>Originality and a distinct artistic voice</li>
-                <li>Emotional depth — music that moves people</li>
-                <li>Artists who are serious about their craft</li>
+                <li>High production quality &mdash; your mix matters.</li>
+                <li>Originality and a distinct artistic voice.</li>
+                <li>Emotional depth &mdash; music that moves people.</li>
+                <li>Artists who are serious about building a career.</li>
               </ul>
             </motion.div>
 
@@ -106,10 +106,10 @@ export default function DemosPage() {
                 <h2 className="text-lg font-bold text-white">How It Works</h2>
               </div>
               <ol className="space-y-3 text-sm text-[#A0A0A0] list-decimal list-inside">
-                <li>Fill out the form with your details and demo links</li>
-                <li>Our A&R team reviews all submissions</li>
-                <li>If we like what we hear, we&apos;ll be in touch within 2-4 weeks</li>
-                <li>We discuss release plans, distribution, and next steps</li>
+                <li>Fill out the form with your details and demo links.</li>
+                <li>Our A&R team reviews every submission.</li>
+                <li>If we like what we hear, we&apos;ll be in touch within 2&ndash;4 weeks.</li>
+                <li>We discuss release plans, distribution, and next steps.</li>
               </ol>
             </motion.div>
           </motion.div>
