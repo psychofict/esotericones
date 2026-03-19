@@ -6,6 +6,19 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navItems, labelSocials } from "@/data/label";
+import { useTranslation } from "@/i18n/useTranslation";
+import type { TranslationKeys } from "@/i18n/types";
+import LanguageToggle from "@/components/LanguageToggle";
+import ThemeToggle from "@/components/ThemeToggle";
+
+const navTranslationKeys: Record<string, keyof TranslationKeys> = {
+  Artists: "nav.artists",
+  Releases: "nav.releases",
+  News: "nav.news",
+  Tour: "nav.tour",
+  Merch: "nav.merch",
+  About: "nav.about",
+};
 
 const socialIcons: Record<string, React.ReactNode> = {
   spotify: (
@@ -28,6 +41,7 @@ const socialIcons: Record<string, React.ReactNode> = {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -45,8 +59,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
-            : "bg-gradient-to-b from-black/60 to-transparent"
+            ? "bg-background/90 backdrop-blur-xl border-b border-subtle/5 shadow-lg shadow-black/20"
+            : "bg-gradient-to-b from-background/60 to-transparent"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
@@ -62,7 +76,7 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <span className="font-[var(--font-display)] text-base font-bold tracking-wider text-white hidden sm:block">
+            <span className="font-[var(--font-display)] text-base font-bold tracking-wider text-foreground hidden sm:block">
               THE ES<span className="text-[#E8385D]">O</span>TERIC ONES
             </span>
           </Link>
@@ -73,9 +87,9 @@ export default function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="relative px-4 py-2 text-sm font-medium text-white/70 transition-colors hover:text-white group"
+                  className="relative px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground group"
                 >
-                  {item.name}
+                  {t(navTranslationKeys[item.name])}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#E8385D] transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
@@ -85,12 +99,12 @@ export default function Navbar() {
                 href="/demos"
                 className="rounded-full bg-[#E8385D] px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-[#FF4D73] hover:shadow-lg hover:shadow-[#E8385D]/25 btn-glow"
               >
-                Submit Demo
+                {t("nav.submitDemo")}
               </Link>
             </li>
           </ul>
 
-          {/* Desktop social icons */}
+          {/* Desktop social icons + language toggle */}
           <div className="hidden items-center gap-2 lg:flex">
             {labelSocials.slice(0, 3).map((social) => (
               <a
@@ -99,21 +113,27 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-white/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-foreground/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
               >
                 {socialIcons[social.icon]}
               </a>
             ))}
+            <ThemeToggle />
+            <LanguageToggle />
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="lg:hidden p-2 text-white"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          {/* Mobile: language toggle + hamburger */}
+          <div className="flex items-center gap-1 lg:hidden">
+            <ThemeToggle />
+            <LanguageToggle />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
+            >
+              {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -125,7 +145,7 @@ export default function Navbar() {
             animate={{ clipPath: "circle(150% at calc(100% - 2rem) 2rem)" }}
             exit={{ clipPath: "circle(0% at calc(100% - 2rem) 2rem)" }}
             transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#0A0A0A]"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-background"
           >
             {/* Logo in mobile menu */}
             <div className="absolute top-6 left-6">
@@ -149,9 +169,9 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-4xl font-bold text-white transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center"
+                    className="text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center"
                   >
-                    {item.name}
+                    {t(navTranslationKeys[item.name])}
                   </Link>
                 </motion.li>
               ))}
@@ -165,7 +185,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="mt-2 inline-block rounded-full bg-[#E8385D] px-8 py-3 text-xl font-bold text-white transition-colors hover:bg-[#FF4D73]"
                 >
-                  Submit Demo
+                  {t("nav.submitDemo")}
                 </Link>
               </motion.li>
             </ul>
@@ -180,7 +200,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center text-white/50 transition-colors hover:text-[#E8385D] hover:bg-[#E8385D]/10"
+                  className="w-11 h-11 rounded-full bg-subtle/5 flex items-center justify-center text-foreground/50 transition-colors hover:text-[#E8385D] hover:bg-[#E8385D]/10"
                 >
                   {socialIcons[social.icon]}
                 </a>
