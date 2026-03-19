@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import { labelSocials } from "@/data/label";
 import { useFormSubmit } from "@/lib/useFormSubmit";
+import { useTranslation } from "@/i18n/useTranslation";
 
 const socialIcons: Record<string, React.ReactNode> = {
   spotify: (
@@ -28,6 +29,7 @@ const socialIcons: Record<string, React.ReactNode> = {
 export default function Footer() {
   const [email, setEmail] = useState("");
   const { loading, success, error, submitForm, reset } = useFormSubmit("/api/newsletter");
+  const { t } = useTranslation();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#0A0A0A] border-t border-[#2A2A2A]">
+    <footer className="relative bg-background border-t border-border">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-8">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand column */}
@@ -52,13 +54,12 @@ export default function Footer() {
                   className="w-10 h-10 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
-              <span className="text-base font-bold tracking-wider text-white">
+              <span className="text-base font-bold tracking-wider text-foreground">
                 THE ES<span className="text-[#E8385D]">O</span>TERIC ONES
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#A0A0A0]">
-              International independent record label founded in Seoul.
-              24+ artists across 6 countries. 5M+ streams and counting.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-secondary">
+              {t("footer.description")}
             </p>
             <div className="mt-6 flex items-center gap-2">
               {labelSocials.map((social) => (
@@ -68,7 +69,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-white/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
+                  className="w-9 h-9 rounded-full bg-subtle/5 flex items-center justify-center text-foreground/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
                 >
                   {socialIcons[social.icon]}
                 </a>
@@ -79,20 +80,20 @@ export default function Footer() {
           {/* Navigate column */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E8385D]">
-              Navigate
+              {t("footer.navigate")}
             </h3>
             <ul className="space-y-3">
               {[
-                { name: "Home", href: "/" },
-                { name: "Artists", href: "/artists" },
-                { name: "Releases", href: "/releases" },
-                { name: "News", href: "/news" },
-                { name: "About", href: "/about" },
+                { name: t("footer.home"), href: "/" },
+                { name: t("nav.artists"), href: "/artists" },
+                { name: t("nav.releases"), href: "/releases" },
+                { name: t("nav.news"), href: "/news" },
+                { name: t("nav.about"), href: "/about" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/50 transition-colors hover:text-white"
+                    className="text-sm text-foreground/50 transition-colors hover:text-foreground"
                   >
                     {link.name}
                   </Link>
@@ -104,7 +105,7 @@ export default function Footer() {
           {/* Connect column */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E8385D]">
-              Connect
+              {t("footer.connect")}
             </h3>
             <ul className="space-y-3">
               {labelSocials.map((social) => (
@@ -113,7 +114,7 @@ export default function Footer() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/50 transition-colors hover:text-white inline-flex items-center gap-2"
+                    className="text-sm text-foreground/50 transition-colors hover:text-foreground inline-flex items-center gap-2"
                   >
                     <span className="text-[#E8385D]/60">{socialIcons[social.icon]}</span>
                     {social.name}
@@ -123,9 +124,9 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-white/50 transition-colors hover:text-white"
+                  className="text-sm text-foreground/50 transition-colors hover:text-foreground"
                 >
-                  Contact
+                  {t("footer.contact")}
                 </Link>
               </li>
               <li>
@@ -133,7 +134,7 @@ export default function Footer() {
                   href="/demos"
                   className="text-sm text-[#E8385D] transition-colors hover:text-[#FF4D73] font-medium"
                 >
-                  Submit a Demo
+                  {t("footer.submitADemo")}
                 </Link>
               </li>
             </ul>
@@ -142,10 +143,10 @@ export default function Footer() {
           {/* Newsletter column */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E8385D]">
-              Newsletter
+              {t("footer.newsletter")}
             </h3>
-            <p className="mb-4 text-sm text-[#A0A0A0]">
-              New releases, artist spotlights, and label updates.
+            <p className="mb-4 text-sm text-text-secondary">
+              {t("footer.newsletterDesc")}
             </p>
             <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
               <input
@@ -154,7 +155,7 @@ export default function Footer() {
                 onChange={(e) => { setEmail(e.target.value); if (error) reset(); }}
                 placeholder="your@email.com"
                 required
-                className="w-full rounded-lg bg-white/5 border border-[#2A2A2A] px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#E8385D] focus:ring-1 focus:ring-[#E8385D] transition-colors"
+                className="w-full rounded-lg bg-subtle/5 border border-border px-4 py-2.5 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-[#E8385D] focus:ring-1 focus:ring-[#E8385D] transition-colors"
               />
               <button
                 type="submit"
@@ -162,14 +163,14 @@ export default function Footer() {
                 className="rounded-lg bg-[#E8385D] px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-[#FF4D73] hover:shadow-lg hover:shadow-[#E8385D]/20 disabled:opacity-50 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                {success ? "Subscribed!" : "Subscribe"}
+                {success ? t("common.subscribed") : t("common.subscribe")}
               </button>
             </form>
             {error && (
               <p className="mt-2 text-xs text-red-400">
                 {error}{" "}
                 <button onClick={reset} className="underline hover:text-red-300">
-                  Try again
+                  {t("common.tryAgain")}
                 </button>
               </p>
             )}
@@ -178,17 +179,17 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#2A2A2A]">
+      <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          <p className="text-xs text-white/30">
-            &copy; {new Date().getFullYear()} The ES&Oslash;T&Euml;RIC Ones. All rights reserved.
+          <p className="text-xs text-foreground/30">
+            &copy; {new Date().getFullYear()} The ES&Oslash;T&Euml;RIC Ones. {t("footer.allRights")}
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/contact" className="text-xs text-white/30 hover:text-white/50 transition-colors">
-              Contact
+            <Link href="/contact" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors">
+              {t("footer.contact")}
             </Link>
-            <Link href="/about" className="text-xs text-white/30 hover:text-white/50 transition-colors">
-              About
+            <Link href="/about" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors">
+              {t("nav.about")}
             </Link>
           </div>
         </div>

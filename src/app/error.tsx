@@ -15,13 +15,13 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A] px-6">
+    <div className="min-h-screen flex items-center justify-center bg-background px-6">
       <div className="text-center max-w-md">
         <p className="text-[#E8385D] uppercase tracking-[0.3em] text-sm font-medium mb-4">
           Something went wrong
         </p>
-        <h1 className="text-5xl font-bold text-white mb-4">Oops</h1>
-        <p className="text-[#A0A0A0] text-lg mb-8">
+        <h1 className="text-5xl font-bold text-foreground mb-4">Oops</h1>
+        <p className="text-text-secondary text-lg mb-8">
           An unexpected error occurred. Please try again.
         </p>
         <div className="flex gap-4 justify-center">
@@ -33,7 +33,7 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="px-6 py-3 border border-[#2A2A2A] text-white rounded-full font-medium hover:bg-white/5 transition-colors"
+            className="px-6 py-3 border border-border text-foreground rounded-full font-medium hover:bg-subtle/5 transition-colors"
           >
             Go Home
           </Link>

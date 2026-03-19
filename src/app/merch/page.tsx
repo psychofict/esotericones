@@ -1,97 +1,21 @@
-"use client";
+import type { Metadata } from "next";
+import MerchPageClient from "./MerchPageClient";
 
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { ShoppingBag, ArrowRight } from "lucide-react";
+export const metadata: Metadata = {
+  title: "Merch Store",
+  description:
+    "Official The ESOTERIC Ones merchandise. Exclusive drops coming soon.",
+  openGraph: {
+    title: "Merch Store | The ESOTERIC Ones",
+    description:
+      "Official The ESOTERIC Ones merchandise coming soon.",
+    url: "https://esotericones.com/merch",
+  },
+  alternates: {
+    canonical: "https://esotericones.com/merch",
+  },
+};
 
 export default function MerchPage() {
-  return (
-    <main id="main-content" className="min-h-screen bg-[#0A0A0A] flex items-center justify-center relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 hero-gradient" />
-      <div className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-[#E8385D]/5 blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-[10%] w-48 h-48 rounded-full bg-[#E8385D]/3 blur-3xl animate-float-slow" />
-
-      <motion.div
-        className="text-center px-6 max-w-lg relative z-10"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Logo */}
-        <motion.div
-          className="mx-auto mb-8 w-24 h-24 rounded-2xl overflow-hidden shadow-2xl shadow-[#E8385D]/10"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          <Image
-            src="/images/esoteric-blk.jpg"
-            alt="The ESOTERIC Ones"
-            width={96}
-            height={96}
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        <motion.div
-          className="mx-auto mb-6 w-16 h-16 rounded-2xl bg-[#E8385D]/10 flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          <ShoppingBag className="w-8 h-8 text-[#E8385D]" />
-        </motion.div>
-
-        <motion.p
-          className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          Coming Soon
-        </motion.p>
-
-        <motion.h1
-          className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          Merch Store
-        </motion.h1>
-
-        <motion.p
-          className="text-[#A0A0A0] text-lg mb-10 leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          Official The ES&#216;T&#203;RIC Ones merchandise is on the way.
-          Stay tuned for exclusive drops.
-        </motion.p>
-
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-        >
-          <Link
-            href="/"
-            className="px-8 py-3.5 border border-[#2A2A2A] text-white rounded-full font-semibold hover:bg-white/5 hover:border-white/20 transition-all"
-          >
-            Back to Home
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#E8385D] text-white rounded-full font-semibold hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/25 btn-glow"
-          >
-            Notify Me <ArrowRight size={16} />
-          </Link>
-        </motion.div>
-      </motion.div>
-    </main>
-  );
+  return <MerchPageClient />;
 }

@@ -10,8 +10,21 @@
   --color-border: #2A2A2A;
   --color-muted: #666666;
   --color-text-secondary: #A0A0A0;
+  --color-subtle: #FFFFFF;
   --font-sans: var(--font-body);
   --font-display: var(--font-dm-sans);
+}
+
+/* Light theme overrides */
+html.light {
+  --color-background: #FFFFFF;
+  --color-foreground: #1A1A1A;
+  --color-surface: #F3F4F6;
+  --color-surface-hover: #E5E7EB;
+  --color-border: #D1D5DB;
+  --color-muted: #6B7280;
+  --color-text-secondary: #4B5563;
+  --color-subtle: #000000;
 }
 
 html {
@@ -27,15 +40,15 @@ body {
 /* Pink selection */
 ::selection {
   background: rgba(232, 56, 93, 0.3);
-  color: #F5F5F5;
+  color: var(--color-foreground);
 }
 
-/* Dark scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: var(--color-background);
 }
 ::-webkit-scrollbar-thumb {
   background: #E8385D;
@@ -66,12 +79,12 @@ body {
   border-color: rgba(232, 56, 93, 0.3);
 }
 
-/* Dark glassmorphism cards */
+/* Glassmorphism cards */
 .glass-card {
-  background: rgba(20, 20, 20, 0.8);
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-subtle) 6%, transparent);
 }
 
 /* Button glow */
@@ -130,7 +143,7 @@ body {
   50% { background-position: 100% 50%; }
 }
 .hero-gradient {
-  background: linear-gradient(135deg, #0A0A0A 0%, #141414 25%, #0A0A0A 50%, #1C1C1C 75%, #0A0A0A 100%);
+  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-surface) 25%, var(--color-background) 50%, var(--color-surface-hover) 75%, var(--color-background) 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
