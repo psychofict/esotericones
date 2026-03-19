@@ -154,7 +154,7 @@ export default function ReleasesPageClient() {
                       )}
                       {/* Type badge */}
                       <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-background/70 backdrop-blur-sm text-foreground/80">
-                        {release.type === "ep" ? "EP" : release.type}
+                        {release.type === "album" ? t("common.album") : release.type === "ep" ? t("common.ep") : t("common.single")}
                       </div>
                     </div>
                     <h3 className="text-sm font-bold text-foreground group-hover:text-[#E8385D] transition-colors truncate">

@@ -192,7 +192,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
                             {release.title}
                           </h3>
                           <p className="text-xs text-muted">
-                            {release.year} &middot; {release.type === "ep" ? "EP" : release.type.charAt(0).toUpperCase() + release.type.slice(1)}
+                            {release.year} &middot; {release.type === "album" ? t("common.album") : release.type === "ep" ? t("common.ep") : t("common.single")}
                           </p>
                         </div>
                       </Link>

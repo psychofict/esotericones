@@ -28,6 +28,8 @@ export const ko: TranslationKeys = {
   "common.album": "앨범",
   "common.ep": "EP",
   "common.single": "싱글",
+  "common.sending": "전송 중...",
+  "common.openInSpotify": "Spotify에서 열기",
 
   // Stats
   "stats.artists": "아티스트",
@@ -108,6 +110,7 @@ export const ko: TranslationKeys = {
   "release.listenOnSpotify": "Spotify에서 듣기",
   "release.tracklist": "트랙리스트",
   "release.credits": "크레딧",
+  "release.featuring": "feat.",
 
   // Contact
   "contact.getInTouch": "문의하기",
@@ -182,6 +185,8 @@ export const ko: TranslationKeys = {
 
   // News
   "news.title": "뉴스",
+  "news.backToNews": "뉴스로 돌아가기",
+  "news.moreNews": "더 많은 뉴스",
   "news.description":
     "The ES\u00D8T\u00CBRIC Ones의 아티스트 발표, 발매 분석, 비하인드 스토리. 계속 지켜봐 주세요.",
 

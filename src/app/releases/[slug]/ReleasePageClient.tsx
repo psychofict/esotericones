@@ -128,7 +128,7 @@ export default function ReleasePageClient({ release }: ReleasePageClientProps) {
                         <span className="text-sm text-foreground flex-1">
                           {track.title}
                           {track.feat && (
-                            <span className="text-text-secondary"> (feat. {track.feat})</span>
+                            <span className="text-text-secondary"> ({t("release.featuring")} {track.feat})</span>
                           )}
                         </span>
                         {track.duration && (
