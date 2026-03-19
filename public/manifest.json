@@ -2,12 +2,15 @@
   "name": "The ESOTERIC Ones",
   "short_name": "ESOTERIC Ones",
   "description": "The ESOTERIC Ones is a global record label operating across South Africa, Zimbabwe, and South Korea. 24+ artists, 6 countries, 5M+ streams.",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "lang": "en",
   "dir": "ltr",
-  "background_color": "#1A1A2E",
-  "theme_color": "#2E86DE",
+  "categories": ["music", "entertainment"],
+  "background_color": "#0A0A0A",
+  "theme_color": "#E8385D",
   "icons": [
     {
       "src": "/icon-192.png",

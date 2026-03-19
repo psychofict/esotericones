@@ -68,5 +68,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticPages, ...artistPages, ...releasePages, ...newsPages];
+  const trackPages: MetadataRoute.Sitemap = [];
+  for (const release of releases) {
+    if (release.tracklist) {
+      for (const track of release.tracklist) {
+        if (track.slug && track.lyrics) {
+          const url = `${baseUrl}/releases/${release.slug}/${track.slug}`;
+          trackPages.push({
+            url,
+            lastModified: release.date,
+            changeFrequency: "monthly" as const,
+            priority: 0.5,
+            alternates: withLanguages(url),
+          });
+        }
+      }
+    }
+  }
+
+  return [...staticPages, ...artistPages, ...releasePages, ...trackPages, ...newsPages];
 }
