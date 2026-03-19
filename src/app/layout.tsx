@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     default: "The ESOTERIC Ones — Record Label",
   },
   description:
-    "The ESOTERIC Ones is a global record label operating across South Africa, Zimbabwe, and South Korea. 24+ artists, 6 countries, 5M+ streams across piano house, Amapiano, dance-pop, hip-hop, and beyond.",
+    "The ESOTERIC Ones is a global record label operating across South Africa, Zimbabwe, and South Korea. 24+ artists, 6 countries, 5M+ streams across electronic, house, Amapiano, hip-hop, and pop.",
   keywords: [
     "The Esoteric Ones",
     "record label",
-    "piano house",
+    "house music",
     "Amapiano",
     "dance-pop",
     "South African music",

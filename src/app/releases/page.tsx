@@ -4,7 +4,7 @@ import ReleasesPageClient from "./ReleasesPageClient";
 export const metadata: Metadata = {
   title: "Releases",
   description:
-    "Every album, EP, and single from The ESOTERIC Ones — from piano house anthems to Amapiano crossovers. 30+ releases and counting.",
+    "Every album, EP, and single from The ESOTERIC Ones — from house anthems to Amapiano crossovers. 30+ releases and counting.",
   openGraph: {
     title: "Releases | The ESOTERIC Ones",
     description:

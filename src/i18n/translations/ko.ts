@@ -39,7 +39,7 @@ export const ko: TranslationKeys = {
 
   // Home
   "home.hero.description":
-    "남아프리카 공화국, 짐바브웨, 한국을 잇는 글로벌 레코드 레이블. 6개국 24명 이상의 아티스트와 함께 피아노 하우스, 아마피아노, 댄스팝, 힙합, 일렉트로닉 음악의 경계를 넓혀가고 있습니다.",
+    "남아프리카 공화국, 짐바브웨, 한국을 잇는 글로벌 레코드 레이블. 6개국 24명 이상의 아티스트와 함께 일렉트로닉, 하우스, 아마피아노, 힙합, 팝의 경계를 넓혀가고 있습니다.",
   "home.hero.meetArtists": "아티스트 만나기",
   "home.hero.browseReleases": "발매 목록 보기",
   "home.latestRelease": "최신 발매",
@@ -63,7 +63,7 @@ export const ko: TranslationKeys = {
     "{displayName}은 {founded}년 {founder} ({founderRealName})에 의해 설립된 글로벌 레코드 레이블로, 남아프리카 공화국, 짐바브웨, 한국에서 활동하고 있습니다. 장르를 초월하는 대담한 아티스트들에게 집을 제공하고, 그들 자신만의 방식으로 음악을 발표할 수 있는 플랫폼이 되고자 합니다.",
   "about.ourMission": "우리의 미션",
   "about.missionText":
-    "우리는 음악이 국경, 장르, 문지기에 의해 제한되어서는 안 된다고 믿습니다. 남아프리카부터 스웨덴, 짐바브웨부터 한국, 인도부터 중국까지 6개국에 걸쳐 있는 우리의 로스터는 품질, 진정성, 감성적 공감이라는 가치로 하나 되어 있습니다. 피아노 하우스, 아마피아노, 힙합, 일렉트로닉 \u2014 사람들을 움직이는 음악이라면 여기에 속합니다.",
+    "우리는 음악이 국경, 장르, 문지기에 의해 제한되어서는 안 된다고 믿습니다. 남아프리카부터 스웨덴, 짐바브웨부터 한국, 인도부터 중국까지 6개국에 걸쳐 있는 우리의 로스터는 품질, 진정성, 감성적 공감이라는 가치로 하나 되어 있습니다. 일렉트로닉, 하우스, 아마피아노, 힙합, 팝 \u2014 사람들을 움직이는 음악이라면 여기에 속합니다.",
   "about.timeline": "연혁",
   "about.ourSound": "우리의 사운드",
   "about.theFounder": "설립자",
@@ -80,7 +80,7 @@ export const ko: TranslationKeys = {
   "about.timeline.2023":
     "Ebstar에 의해 설립. 3개국에 걸쳐 첫 번째 아티스트 그룹 계약. Life Is Beautiful과 With Love, Ebstar :) 등 데뷔 발매로 카탈로그를 시작.",
   "about.timeline.2024":
-    "6개국 15명 이상의 아티스트로 로스터 확대. 대표 발매 ECHOES OF LOVE I과 Maknaebe 발매. 200만 스트리밍을 돌파하고 아마피아노와 피아노 하우스 씬에서 입지를 다짐.",
+    "6개국 15명 이상의 아티스트로 로스터 확대. 대표 발매 ECHOES OF LOVE I과 Maknaebe 발매. 200만 스트리밍을 돌파하고 아마피아노와 일렉트로닉 음악 씬에서 입지를 다짐.",
   "about.timeline.2025":
     "24명 이상의 아티스트 로스터. 500만+ 총 스트리밍. 남부 아프리카와 아시아에서 새로운 계약 체결. 아마피아노, 힙합, 일렉트로닉 음악 전반에서 지속 성장.",
 
@@ -88,7 +88,7 @@ export const ko: TranslationKeys = {
   "artists.ourRoster": "로스터",
   "artists.title": "아티스트",
   "artists.description":
-    "6개국 24명 이상의 아티스트. 피아노 하우스, 아마피아노, 힙합, 일렉트로닉 \u2014 ESOTERIC 사운드를 만드는 로스터를 만나보세요.",
+    "6개국 24명 이상의 아티스트. 일렉트로닉, 하우스, 아마피아노, 힙합 \u2014 ESOTERIC 사운드를 만드는 로스터를 만나보세요.",
   "artists.noResults": "이 장르의 아티스트를 찾을 수 없습니다.",
 
   // Artist detail
@@ -102,7 +102,7 @@ export const ko: TranslationKeys = {
   "releases.catalog": "카탈로그",
   "releases.title": "발매",
   "releases.description":
-    "The ES\u00D8T\u00CBRIC Ones의 모든 앨범, EP, 싱글 \u2014 피아노 하우스 앤섬부터 아마피아노 크로스오버까지.",
+    "The ES\u00D8T\u00CBRIC Ones의 모든 앨범, EP, 싱글 \u2014 하우스 앤섬부터 아마피아노 크로스오버까지.",
   "releases.noResults": "필터에 맞는 발매가 없습니다.",
 
   // Release detail
@@ -172,7 +172,7 @@ export const ko: TranslationKeys = {
   "demos.faq": "자주 묻는 질문",
   "demos.faq1q": "레이블이 받는 장르는 무엇인가요?",
   "demos.faq1a":
-    "주로 피아노 하우스, 아마피아노, 댄스팝, 힙합, R&B, 일렉트로닉 음악에 집중하고 있지만, 퀄리티가 좋다면 어떤 장르든 열려 있습니다.",
+    "주로 일렉트로닉, 하우스, 아마피아노, 힙합, 팝, R&B, 댄스 음악에 집중하고 있지만, 퀄리티가 좋다면 어떤 장르든 열려 있습니다.",
   "demos.faq2q": "답변까지 얼마나 걸리나요?",
   "demos.faq2a":
     "모든 제출물을 2-4주 내에 검토합니다. 관심이 있으면 이메일로 연락드립니다.",

@@ -39,7 +39,7 @@ export const en: TranslationKeys = {
 
   // Home
   "home.hero.description":
-    "A global record label operating across South Africa, Zimbabwe, and South Korea. Home to 24+ artists across 6 countries, pushing the boundaries of piano house, Amapiano, dance-pop, hip-hop, and electronic music.",
+    "A global record label operating across South Africa, Zimbabwe, and South Korea. Home to 24+ artists across 6 countries, pushing the boundaries of electronic, house, Amapiano, hip-hop, and pop.",
   "home.hero.meetArtists": "Meet Our Artists",
   "home.hero.browseReleases": "Browse Releases",
   "home.latestRelease": "Latest Release",
@@ -63,7 +63,7 @@ export const en: TranslationKeys = {
     "{displayName} is a global record label founded in {founded} by {founder} ({founderRealName}), operating across South Africa, Zimbabwe, and South Korea. We exist to give bold, genre-defying artists a home \u2014 and a platform to release music entirely on their own terms.",
   "about.ourMission": "Our Mission",
   "about.missionText":
-    "We believe music shouldn\u2019t be confined by borders, genres, or gatekeepers. Our roster spans 6 countries \u2014 from South Africa to Sweden, Zimbabwe to South Korea, India to China \u2014 united by a commitment to quality, authenticity, and emotional resonance. Piano house, Amapiano, hip-hop, electronic \u2014 if it moves people, it belongs here.",
+    "We believe music shouldn\u2019t be confined by borders, genres, or gatekeepers. Our roster spans 6 countries \u2014 from South Africa to Sweden, Zimbabwe to South Korea, India to China \u2014 united by a commitment to quality, authenticity, and emotional resonance. Electronic, house, Amapiano, hip-hop, pop \u2014 if it moves people, it belongs here.",
   "about.timeline": "Timeline",
   "about.ourSound": "Our Sound",
   "about.theFounder": "The Founder",
@@ -80,7 +80,7 @@ export const en: TranslationKeys = {
   "about.timeline.2023":
     "Founded by Ebstar. First wave of artists signed across 3 countries. Debut releases including Life Is Beautiful and With Love, Ebstar :) launch the catalog.",
   "about.timeline.2024":
-    "Roster expands to 15+ artists spanning 6 countries. Landmark releases ECHOES OF LOVE I and Maknaebe drop. The label surpasses 2M streams and establishes itself in the Amapiano and piano house space.",
+    "Roster expands to 15+ artists spanning 6 countries. Landmark releases ECHOES OF LOVE I and Maknaebe drop. The label surpasses 2M streams and establishes itself in the Amapiano and electronic music space.",
   "about.timeline.2025":
     "24+ artists on the roster. 5M+ total streams. New signings from Southern Africa and Asia. The label continues to grow across Amapiano, hip-hop, and electronic music.",
 
@@ -88,7 +88,7 @@ export const en: TranslationKeys = {
   "artists.ourRoster": "Our Roster",
   "artists.title": "Artists",
   "artists.description":
-    "24+ artists across 6 countries. Piano house, Amapiano, hip-hop, electronic \u2014 meet the roster behind the ESOTERIC sound.",
+    "24+ artists across 6 countries. Electronic, house, Amapiano, hip-hop \u2014 meet the roster behind the ESOTERIC sound.",
   "artists.noResults": "No artists found for this genre.",
 
   // Artist detail
@@ -102,7 +102,7 @@ export const en: TranslationKeys = {
   "releases.catalog": "Catalog",
   "releases.title": "Releases",
   "releases.description":
-    "Every album, EP, and single from The ES\u00D8T\u00CBRIC Ones \u2014 from piano house anthems to Amapiano crossovers.",
+    "Every album, EP, and single from The ES\u00D8T\u00CBRIC Ones \u2014 from house anthems to Amapiano crossovers.",
   "releases.noResults": "No releases match your filters.",
 
   // Release detail
@@ -172,7 +172,7 @@ export const en: TranslationKeys = {
   "demos.faq": "Frequently Asked Questions",
   "demos.faq1q": "What genres does the label accept?",
   "demos.faq1a":
-    "We're primarily focused on piano house, Amapiano, dance-pop, hip-hop, R&B, and electronic music \u2014 but we're open to any genre if the quality is there.",
+    "We're primarily focused on electronic, house, Amapiano, hip-hop, pop, R&B, and dance music \u2014 but we're open to any genre if the quality is there.",
   "demos.faq2q": "How long does it take to hear back?",
   "demos.faq2a":
     "We review all submissions within 2-4 weeks. If we're interested, we'll reach out via email.",

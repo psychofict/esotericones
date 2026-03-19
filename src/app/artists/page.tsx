@@ -4,7 +4,7 @@ import ArtistsPageClient from "./ArtistsPageClient";
 export const metadata: Metadata = {
   title: "Artists",
   description:
-    "Meet the 24+ artists on The ESOTERIC Ones roster. Piano house, Amapiano, hip-hop, electronic — artists from 6 countries pushing genre boundaries.",
+    "Meet the 24+ artists on The ESOTERIC Ones roster. Electronic, house, Amapiano, hip-hop — artists from 6 countries pushing genre boundaries.",
   openGraph: {
     title: "Artists | The ESOTERIC Ones",
     description:
