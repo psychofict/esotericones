@@ -69,7 +69,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-9 h-9 rounded-full bg-subtle/5 flex items-center justify-center text-foreground/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
+                  className="w-11 h-11 rounded-full bg-subtle/5 flex items-center justify-center text-foreground/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
                 >
                   {socialIcons[social.icon]}
                 </a>
@@ -180,15 +180,15 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-6 py-6 sm:flex-row sm:justify-between">
           <p className="text-xs text-foreground/30">
             &copy; {new Date().getFullYear()} The ES&Oslash;T&Euml;RIC Ones. {t("footer.allRights")}
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/contact" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors">
+            <Link href="/contact" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors py-2">
               {t("footer.contact")}
             </Link>
-            <Link href="/about" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors">
+            <Link href="/about" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors py-2">
               {t("nav.about")}
             </Link>
           </div>

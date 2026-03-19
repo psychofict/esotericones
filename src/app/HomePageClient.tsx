@@ -268,7 +268,7 @@ export default function HomePageClient() {
                           <p className="text-xs text-muted">{Array.isArray(artist.country) ? artist.country.join(", ") : artist.country}</p>
                         </div>
                       </div>
-                      <p className="text-sm text-text-secondary">{artist.shortBio}</p>
+                      <p className="text-sm text-text-secondary line-clamp-2">{artist.shortBio}</p>
                       <div className="flex flex-wrap gap-2 mt-3">
                         {artist.genres.slice(0, 2).map((genre) => (
                           <span
@@ -293,7 +293,7 @@ export default function HomePageClient() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Newsletter CTA */}
             <motion.div
-              className="glass-card rounded-2xl p-8 md:p-10"
+              className="glass-card rounded-2xl p-5 md:p-10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -329,7 +329,7 @@ export default function HomePageClient() {
 
             {/* Demo CTA */}
             <motion.div
-              className="glass-card rounded-2xl p-8 md:p-10 border border-[#E8385D]/20 relative overflow-hidden"
+              className="glass-card rounded-2xl p-5 md:p-10 border border-[#E8385D]/20 relative overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

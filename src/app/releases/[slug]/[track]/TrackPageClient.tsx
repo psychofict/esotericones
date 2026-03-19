@@ -79,7 +79,7 @@ export default function TrackPageClient({ release, track }: TrackPageClientProps
                         {t2.slug && t2.lyrics ? (
                           <Link
                             href={`/releases/${release.slug}/${t2.slug}`}
-                            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${
+                            className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-xs transition-colors ${
                               t2.slug === track.slug
                                 ? "bg-[#E8385D]/10 text-[#E8385D]"
                                 : "text-text-secondary hover:text-foreground hover:bg-subtle/5"
@@ -89,7 +89,7 @@ export default function TrackPageClient({ release, track }: TrackPageClientProps
                             <span className="truncate">{t2.title}</span>
                           </Link>
                         ) : (
-                          <div className="flex items-center gap-2 px-3 py-2 text-xs text-muted">
+                          <div className="flex items-center gap-2 px-3 py-2.5 text-xs text-muted">
                             <span className="w-5 text-right opacity-50">{t2.number}</span>
                             <span className="truncate">{t2.title}</span>
                           </div>
