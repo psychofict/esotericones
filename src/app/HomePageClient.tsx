@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,7 +11,8 @@ import type { TranslationKeys } from "@/i18n/types";
 import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
-import { Disc3, Users, Globe, Headphones, ArrowRight, Music } from "lucide-react";
+import { useFormSubmit } from "@/lib/useFormSubmit";
+import { Disc3, Users, Globe, Headphones, ArrowRight, Music, Loader2 } from "lucide-react";
 
 const statKeys: Record<string, keyof TranslationKeys> = {
   "Artists": "stats.artists",
@@ -31,6 +33,16 @@ const featuredReleases = getFeaturedReleases();
 
 export default function HomePageClient() {
   const { t } = useTranslation();
+  const [nlEmail, setNlEmail] = useState("");
+  const { loading: nlLoading, success: nlSuccess, error: nlError, submitForm: nlSubmit, reset: nlReset } = useFormSubmit("/api/newsletter");
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!nlEmail) return;
+    await nlSubmit({ email: nlEmail });
+    if (!nlError) setNlEmail("");
+  };
+
   return (
     <main id="main-content">
       {/* Hero Section */}
@@ -295,17 +307,22 @@ export default function HomePageClient() {
               <p className="text-text-secondary mb-6">
                 {t("home.joinCircleDesc")}
               </p>
-              <form className="flex flex-col sm:flex-row gap-3">
+              <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
+                  value={nlEmail}
+                  onChange={(e) => { setNlEmail(e.target.value); if (nlError) nlReset(); }}
                   placeholder="your@email.com"
+                  required
                   className="flex-1 rounded-lg bg-subtle/5 border border-border px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-[#E8385D] transition-colors"
                 />
                 <button
                   type="submit"
-                  className="rounded-lg bg-[#E8385D] px-6 py-3 text-sm font-semibold text-white hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/20 whitespace-nowrap"
+                  disabled={nlLoading}
+                  className="rounded-lg bg-[#E8385D] px-6 py-3 text-sm font-semibold text-white hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/20 whitespace-nowrap disabled:opacity-50 flex items-center justify-center gap-2"
                 >
-                  {t("common.subscribe")}
+                  {nlLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                  {nlSuccess ? t("common.subscribed") : t("common.subscribe")}
                 </button>
               </form>
             </motion.div>
