@@ -28,6 +28,8 @@ export type TranslationKeys = {
   "common.album": string;
   "common.ep": string;
   "common.single": string;
+  "common.sending": string;
+  "common.openInSpotify": string;
 
   // Stats
   "stats.artists": string;
@@ -96,6 +98,7 @@ export type TranslationKeys = {
   "release.listenOnSpotify": string;
   "release.tracklist": string;
   "release.credits": string;
+  "release.featuring": string;
 
   // Contact
   "contact.getInTouch": string;
@@ -162,6 +165,8 @@ export type TranslationKeys = {
   // News
   "news.title": string;
   "news.description": string;
+  "news.backToNews": string;
+  "news.moreNews": string;
 
   // Tour
   "tour.liveShows": string;

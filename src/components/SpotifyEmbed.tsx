@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslation } from "@/i18n/useTranslation";
 
 interface SpotifyEmbedProps {
   uri: string;
@@ -12,6 +13,7 @@ interface SpotifyEmbedProps {
 export default function SpotifyEmbed({ uri, type = "normal", theme = "dark", className = "" }: SpotifyEmbedProps) {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
+  const { t } = useTranslation();
   const height = type === "compact" ? 80 : type === "large" ? 352 : 352;
   const themeParam = theme === "dark" ? "&theme=0" : "";
 
@@ -27,7 +29,7 @@ export default function SpotifyEmbed({ uri, type = "normal", theme = "dark", cla
           rel="noopener noreferrer"
           className="text-sm text-[#1DB954] hover:underline font-medium"
         >
-          Open in Spotify
+          {t("common.openInSpotify")}
         </a>
       </div>
     );
@@ -36,7 +38,7 @@ export default function SpotifyEmbed({ uri, type = "normal", theme = "dark", cla
   return (
     <div className={`relative ${className}`} style={{ height }}>
       {!loaded && (
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#1DB954]/10 to-[#191414]/30 animate-pulse" />
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#1DB954]/10 to-surface/30 animate-pulse" />
       )}
       <iframe
         src={`https://open.spotify.com/embed/${uri}?utm_source=generator${themeParam}`}

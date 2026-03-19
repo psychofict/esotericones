@@ -28,6 +28,8 @@ export const en: TranslationKeys = {
   "common.album": "Album",
   "common.ep": "EP",
   "common.single": "Single",
+  "common.sending": "Sending...",
+  "common.openInSpotify": "Open in Spotify",
 
   // Stats
   "stats.artists": "Artists",
@@ -108,6 +110,7 @@ export const en: TranslationKeys = {
   "release.listenOnSpotify": "Listen on Spotify",
   "release.tracklist": "Tracklist",
   "release.credits": "Credits",
+  "release.featuring": "feat.",
 
   // Contact
   "contact.getInTouch": "Get in Touch",
@@ -182,6 +185,8 @@ export const en: TranslationKeys = {
 
   // News
   "news.title": "News",
+  "news.backToNews": "Back to News",
+  "news.moreNews": "More News",
   "news.description":
     "Artist announcements, release breakdowns, and behind-the-scenes stories from The ES\u00D8T\u00CBRIC Ones. Stay tuned.",
 
