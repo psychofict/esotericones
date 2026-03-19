@@ -3,7 +3,7 @@ export const label = {
   displayName: "The ES\u00D8T\u00CBRIC Ones",
   tagline: "Where Sound Meets Vision",
   description:
-    "A global record label operating across South Africa, Zimbabwe, and South Korea. Home to 24+ artists across 6 countries, pushing the boundaries of piano house, Amapiano, dance-pop, hip-hop, and electronic music.",
+    "A global record label operating across South Africa, Zimbabwe, and South Korea. Home to 24+ artists across 6 countries, pushing the boundaries of electronic, house, Amapiano, hip-hop, and pop.",
   founded: 2023,
   founder: "Ebstar",
   founderRealName: "Ebenezer Tarubinga",
@@ -30,13 +30,13 @@ export const labelSocials = [
 
 export const labelTimeline = [
   { year: 2023, event: "Founded by Ebstar. First wave of artists signed across 3 countries. Debut releases including Life Is Beautiful and With Love, Ebstar :) launch the catalog." },
-  { year: 2024, event: "Roster expands to 15+ artists spanning 6 countries. Landmark releases ECHOES OF LOVE I and Maknaebe drop. The label surpasses 2M streams and establishes itself in the Amapiano and piano house space." },
+  { year: 2024, event: "Roster expands to 15+ artists spanning 6 countries. Landmark releases ECHOES OF LOVE I and Maknaebe drop. The label surpasses 2M streams and establishes itself in the Amapiano and electronic music space." },
   { year: 2025, event: "24+ artists on the roster. 5M+ total streams. New signings from Southern Africa and Asia. The label continues to grow across Amapiano, hip-hop, and electronic music." },
 ];
 
 export const labelGenres = [
-  "Piano House", "Amapiano", "Dance-Pop", "Deep House", "Progressive House",
-  "Future Bass", "Pop", "Big Room", "Hip-Hop", "Afrobeats", "R&B", "Electronic",
+  "Electronic", "House", "Amapiano", "Hip-Hop", "Pop", "Dance-Pop", "Deep House",
+  "Progressive House", "Future Bass", "Big Room", "Afrobeats", "R&B",
 ];
 
 export const navItems = [

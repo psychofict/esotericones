@@ -116,26 +116,45 @@ export default function ReleasePageClient({ release }: ReleasePageClientProps) {
                 <motion.div variants={fadeUp} className="mt-8">
                   <h2 className="text-lg font-bold text-foreground mb-4">{t("release.tracklist")}</h2>
                   <div className="space-y-1">
-                    {release.tracklist.map((track) => (
-                      <div
-                        key={track.number}
-                        className="flex items-center gap-4 py-2.5 px-4 rounded-lg hover:bg-subtle/5 transition-colors group"
-                      >
-                        <span className="text-sm text-muted w-6 text-right group-hover:text-[#E8385D] transition-colors">
-                          {track.number}
-                        </span>
-                        <Music size={14} className="text-[#E8385D]/50 group-hover:text-[#E8385D] transition-colors" />
-                        <span className="text-sm text-foreground flex-1">
-                          {track.title}
-                          {track.feat && (
-                            <span className="text-text-secondary"> ({t("release.featuring")} {track.feat})</span>
+                    {release.tracklist.map((track) => {
+                      const hasLyrics = track.slug && track.lyrics;
+                      const inner = (
+                        <>
+                          <span className="text-sm text-muted w-6 text-right group-hover:text-[#E8385D] transition-colors">
+                            {track.number}
+                          </span>
+                          <Music size={14} className="text-[#E8385D]/50 group-hover:text-[#E8385D] transition-colors" />
+                          <span className="text-sm text-foreground flex-1">
+                            {track.title}
+                            {track.feat && (
+                              <span className="text-text-secondary"> ({t("release.featuring")} {track.feat})</span>
+                            )}
+                          </span>
+                          {hasLyrics && (
+                            <span className="text-[10px] uppercase tracking-wider text-[#E8385D]/60 font-semibold">Lyrics</span>
                           )}
-                        </span>
-                        {track.duration && (
-                          <span className="text-xs text-muted">{track.duration}</span>
-                        )}
-                      </div>
-                    ))}
+                          {track.duration && (
+                            <span className="text-xs text-muted">{track.duration}</span>
+                          )}
+                        </>
+                      );
+                      return hasLyrics ? (
+                        <Link
+                          key={track.number}
+                          href={`/releases/${release.slug}/${track.slug}`}
+                          className="flex items-center gap-4 py-2.5 px-4 rounded-lg hover:bg-subtle/5 transition-colors group"
+                        >
+                          {inner}
+                        </Link>
+                      ) : (
+                        <div
+                          key={track.number}
+                          className="flex items-center gap-4 py-2.5 px-4 rounded-lg hover:bg-subtle/5 transition-colors group"
+                        >
+                          {inner}
+                        </div>
+                      );
+                    })}
                   </div>
                 </motion.div>
               )}

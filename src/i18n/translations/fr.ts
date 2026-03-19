@@ -39,7 +39,7 @@ export const fr: TranslationKeys = {
 
   // Home
   "home.hero.description":
-    "Un label ind\u00E9pendant op\u00E9rant entre l'Afrique du Sud, le Zimbabwe et la Cor\u00E9e du Sud. Plus de 24 artistes dans 6 pays, repoussant les limites du piano house, de l'Amapiano, de la dance-pop, du hip-hop et de la musique \u00E9lectronique.",
+    "Un label ind\u00E9pendant op\u00E9rant entre l'Afrique du Sud, le Zimbabwe et la Cor\u00E9e du Sud. Plus de 24 artistes dans 6 pays, repoussant les limites de l'\u00E9lectronique, de la house, de l'Amapiano, du hip-hop et de la pop.",
   "home.hero.meetArtists": "Nos artistes",
   "home.hero.browseReleases": "Parcourir les sorties",
   "home.latestRelease": "Derni\u00E8re sortie",
@@ -63,7 +63,7 @@ export const fr: TranslationKeys = {
     "{displayName} est un label ind\u00E9pendant fond\u00E9 en {founded} par {founder} ({founderRealName}), op\u00E9rant entre l'Afrique du Sud, le Zimbabwe et la Cor\u00E9e du Sud. Nous existons pour offrir un foyer aux artistes audacieux qui d\u00E9fient les genres \u2014 et une plateforme pour publier leur musique selon leurs propres r\u00E8gles.",
   "about.ourMission": "Notre mission",
   "about.missionText":
-    "Nous croyons que la musique ne devrait pas \u00EAtre confin\u00E9e par les fronti\u00E8res, les genres ou les gardiens. Notre roster couvre 6 pays \u2014 de l'Afrique du Sud \u00E0 la Su\u00E8de, du Zimbabwe \u00E0 la Cor\u00E9e du Sud, de l'Inde \u00E0 la Chine \u2014 unis par un engagement envers la qualit\u00E9, l'authenticit\u00E9 et la r\u00E9sonance \u00E9motionnelle. Piano house, Amapiano, hip-hop, \u00E9lectronique \u2014 si \u00E7a touche les gens, \u00E7a a sa place ici.",
+    "Nous croyons que la musique ne devrait pas \u00EAtre confin\u00E9e par les fronti\u00E8res, les genres ou les gardiens. Notre roster couvre 6 pays \u2014 de l'Afrique du Sud \u00E0 la Su\u00E8de, du Zimbabwe \u00E0 la Cor\u00E9e du Sud, de l'Inde \u00E0 la Chine \u2014 unis par un engagement envers la qualit\u00E9, l'authenticit\u00E9 et la r\u00E9sonance \u00E9motionnelle. \u00C9lectronique, house, Amapiano, hip-hop, pop \u2014 si \u00E7a touche les gens, \u00E7a a sa place ici.",
   "about.timeline": "Chronologie",
   "about.ourSound": "Notre son",
   "about.theFounder": "Le fondateur",
@@ -80,7 +80,7 @@ export const fr: TranslationKeys = {
   "about.timeline.2023":
     "Fond\u00E9 par Ebstar. Premi\u00E8re vague d'artistes sign\u00E9s dans 3 pays. Les premi\u00E8res sorties dont Life Is Beautiful et With Love, Ebstar :) lancent le catalogue.",
   "about.timeline.2024":
-    "Le roster s'\u00E9tend \u00E0 plus de 15 artistes dans 6 pays. Les sorties phares ECHOES OF LOVE I et Maknaebe sont publi\u00E9es. Le label d\u00E9passe les 2M de streams et s'\u00E9tablit dans l'espace Amapiano et piano house.",
+    "Le roster s'\u00E9tend \u00E0 plus de 15 artistes dans 6 pays. Les sorties phares ECHOES OF LOVE I et Maknaebe sont publi\u00E9es. Le label d\u00E9passe les 2M de streams et s'\u00E9tablit dans l'espace Amapiano et musique \u00E9lectronique.",
   "about.timeline.2025":
     "Plus de 24 artistes au roster. 5M+ de streams totaux. Nouvelles signatures d'Afrique australe et d'Asie. Le label continue de cro\u00EEtre dans l'Amapiano, le hip-hop et la musique \u00E9lectronique.",
 
@@ -88,7 +88,7 @@ export const fr: TranslationKeys = {
   "artists.ourRoster": "Notre roster",
   "artists.title": "Artistes",
   "artists.description":
-    "Plus de 24 artistes dans 6 pays. Piano house, Amapiano, hip-hop, \u00E9lectronique \u2014 d\u00E9couvrez le roster derri\u00E8re le son ESOTERIC.",
+    "Plus de 24 artistes dans 6 pays. \u00C9lectronique, house, Amapiano, hip-hop \u2014 d\u00E9couvrez le roster derri\u00E8re le son ESOTERIC.",
   "artists.noResults": "Aucun artiste trouv\u00E9 pour ce genre.",
 
   // Artist detail
@@ -102,7 +102,7 @@ export const fr: TranslationKeys = {
   "releases.catalog": "Catalogue",
   "releases.title": "Sorties",
   "releases.description":
-    "Tous les albums, EP et singles de The ES\u00D8T\u00CBRIC Ones \u2014 des hymnes piano house aux crossovers Amapiano.",
+    "Tous les albums, EP et singles de The ES\u00D8T\u00CBRIC Ones \u2014 des hymnes house aux crossovers Amapiano.",
   "releases.noResults": "Aucune sortie ne correspond \u00E0 vos filtres.",
 
   // Release detail
@@ -179,7 +179,7 @@ export const fr: TranslationKeys = {
   "demos.faq": "Questions fr\u00E9quentes",
   "demos.faq1q": "Quels genres le label accepte-t-il ?",
   "demos.faq1a":
-    "Nous nous concentrons principalement sur le piano house, l'Amapiano, la dance-pop, le hip-hop, le R&B et la musique \u00E9lectronique \u2014 mais nous sommes ouverts \u00E0 tout genre si la qualit\u00E9 est au rendez-vous.",
+    "Nous nous concentrons principalement sur l'\u00E9lectronique, la house, l'Amapiano, le hip-hop, la pop, le R&B et la dance music \u2014 mais nous sommes ouverts \u00E0 tout genre si la qualit\u00E9 est au rendez-vous.",
   "demos.faq2q": "Combien de temps faut-il pour avoir une r\u00E9ponse ?",
   "demos.faq2a":
     "Nous examinons toutes les soumissions en 2 \u00E0 4 semaines. Si nous sommes int\u00E9ress\u00E9s, nous vous contactons par email.",

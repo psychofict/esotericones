@@ -30,7 +30,7 @@ export function getRecordLabelSchema() {
       url: `${BASE_URL}/artists/ebstar`,
     },
     description:
-      "Global record label founded by Ebstar, operating across South Africa, Zimbabwe, and South Korea. 24+ artists from 6 countries, 5M+ streams across piano house, Amapiano, dance-pop, hip-hop, and electronic music.",
+      "Global record label founded by Ebstar, operating across South Africa, Zimbabwe, and South Korea. 24+ artists from 6 countries, 5M+ streams across electronic, house, Amapiano, hip-hop, and pop.",
     knowsLanguage: ["en", "ko", "fr"],
     contactPoint: {
       "@type": "ContactPoint",
