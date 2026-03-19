@@ -72,7 +72,7 @@ export default function ReleasesPageClient() {
               <button
                 key={type}
                 onClick={() => setFilterType(filterType === type ? null : type)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   filterType === type
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -90,7 +90,7 @@ export default function ReleasesPageClient() {
               <button
                 key={year}
                 onClick={() => setFilterYear(filterYear === year ? null : year)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   filterYear === year
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -108,7 +108,7 @@ export default function ReleasesPageClient() {
               <button
                 key={genre}
                 onClick={() => setFilterGenre(filterGenre === genre ? null : genre)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   filterGenre === genre
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -153,7 +153,7 @@ export default function ReleasesPageClient() {
                         </div>
                       )}
                       {/* Type badge */}
-                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-background/70 backdrop-blur-sm text-foreground/80">
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-xs font-semibold uppercase tracking-wider bg-background/70 backdrop-blur-sm text-foreground/80">
                         {release.type === "album" ? t("common.album") : release.type === "ep" ? t("common.ep") : t("common.single")}
                       </div>
                     </div>

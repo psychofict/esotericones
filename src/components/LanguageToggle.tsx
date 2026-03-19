@@ -32,7 +32,7 @@ export default function LanguageToggle({ className = "" }: { className?: string 
     <div ref={ref} className={`relative ${className}`}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-sm text-foreground/60 hover:text-foreground hover:bg-subtle/5 transition-all"
+        className="flex items-center gap-1.5 px-3 py-2.5 min-h-[44px] rounded-full text-sm text-foreground/60 hover:text-foreground hover:bg-subtle/5 transition-all"
         aria-label="Change language"
       >
         <Globe size={16} />

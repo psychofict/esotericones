@@ -97,7 +97,7 @@ export default function TourPageClient() {
         <div className="mx-auto max-w-4xl">
           <motion.div
             ref={widgetRef}
-            className="min-h-[200px] glass-card rounded-2xl p-6 md:p-8"
+            className="min-h-[200px] glass-card rounded-2xl p-4 md:p-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -110,7 +110,7 @@ export default function TourPageClient() {
       <section className="section-padding px-6">
         <div className="mx-auto max-w-7xl">
           <motion.div
-            className="glass-card rounded-2xl p-8 md:p-12 border border-[#E8385D]/20 text-center relative overflow-hidden"
+            className="glass-card rounded-2xl p-5 md:p-12 border border-[#E8385D]/20 text-center relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

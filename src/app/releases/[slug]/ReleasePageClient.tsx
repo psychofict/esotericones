@@ -131,7 +131,7 @@ export default function ReleasePageClient({ release }: ReleasePageClientProps) {
                             )}
                           </span>
                           {hasLyrics && (
-                            <span className="text-[10px] uppercase tracking-wider text-[#E8385D]/60 font-semibold">Lyrics</span>
+                            <span className="text-xs uppercase tracking-wider text-[#E8385D]/60 font-semibold">Lyrics</span>
                           )}
                           {track.duration && (
                             <span className="text-xs text-muted">{track.duration}</span>

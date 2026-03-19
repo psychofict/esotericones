@@ -66,7 +66,7 @@ export default function AboutPageClient() {
       <section className="px-6 pb-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
-            className="glass-card rounded-2xl p-8 md:p-12 border border-[#E8385D]/10"
+            className="glass-card rounded-2xl p-5 md:p-12 border border-[#E8385D]/10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
