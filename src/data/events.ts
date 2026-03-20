@@ -9,6 +9,7 @@ export interface LabelEvent {
   ticketUrl?: string;
   status: "upcoming" | "past";
   description?: string;
+  image?: string;
 }
 
 export const labelEvents: LabelEvent[] = [
@@ -44,6 +45,7 @@ export const labelEvents: LabelEvent[] = [
     artists: ["Ebstar"],
     status: "past",
     description: "Ebstar performed a DJ set at the annual Seoul Africa Festival.",
+    image: "/images/gallery/festival-night.jpg",
   },
   {
     slug: "korea-blockchain-week-2024",
@@ -55,6 +57,7 @@ export const labelEvents: LabelEvent[] = [
     artists: ["Ebstar"],
     status: "past",
     description: "VIP appearance and networking event at Korea Blockchain Week.",
+    image: "/images/gallery/tripadvisor-seoul-event.jpg",
   },
 ];
 

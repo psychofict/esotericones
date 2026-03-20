@@ -287,6 +287,99 @@ export default function HomePageClient() {
         </div>
       </section>
 
+      {/* Gallery Highlights */}
+      <section className="section-padding bg-background">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            variants={stagger()}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div variants={fadeUp} className="flex items-end justify-between mb-10">
+              <div>
+                <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
+                  Behind the Scenes
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                  Life at the Label
+                </h2>
+              </div>
+              <Link
+                href="/about"
+                className="text-sm text-text-secondary hover:text-[#E8385D] transition-colors flex items-center gap-1"
+              >
+                {t("common.viewAll")} <ArrowRight size={14} />
+              </Link>
+            </motion.div>
+            <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { src: "/images/gallery/festival-night.jpg", alt: "Festival performance", span: "col-span-2 row-span-2" },
+                { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Forum", span: "" },
+                { src: "/images/gallery/cherry-blossoms.jpg", alt: "Cherry blossoms in Seoul", span: "" },
+                { src: "/images/gallery/seaside-laughing.jpg", alt: "On tour", span: "" },
+                { src: "/images/gallery/abu-dhabi-desert.jpg", alt: "Abu Dhabi desert", span: "" },
+              ].map((photo) => (
+                <div
+                  key={photo.src}
+                  className={`${photo.span} aspect-square rounded-xl overflow-hidden relative group`}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    width={photo.span ? 600 : 300}
+                    height={photo.span ? 600 : 300}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section className="py-12 bg-surface border-y border-border">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted mb-8">
+              Featured In &amp; Partnered With
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-8 items-center">
+              {[
+                { src: "/images/brands/forbes-blk.png", alt: "Forbes BLK" },
+                { src: "/images/brands/seoul-tourism.svg", alt: "Seoul Tourism" },
+                { src: "/images/brands/korea-blockchain-week.svg", alt: "Korea Blockchain Week" },
+                { src: "/images/brands/seoul-fashion-week.png", alt: "Seoul Fashion Week" },
+                { src: "/images/brands/unesco-korea.png", alt: "UNESCO Korea" },
+                { src: "/images/brands/korea-africa-summit.jpg", alt: "Korea-Africa Summit" },
+                { src: "/images/brands/korea-mofa.svg", alt: "Ministry of Foreign Affairs" },
+                { src: "/images/brands/seoul-africa-festival.svg", alt: "Seoul Africa Festival" },
+                { src: "/images/brands/korea-mcst.svg", alt: "Ministry of Culture" },
+                { src: "/images/brands/korea-national-assembly.png", alt: "National Assembly of Korea" },
+                { src: "/images/brands/undercover-korea.png", alt: "Undercover Korea" },
+                { src: "/images/brands/mobifren.png", alt: "Mobifren" },
+              ].map((brand) => (
+                <div key={brand.alt} className="flex items-center justify-center p-2">
+                  <Image
+                    src={brand.src}
+                    alt={brand.alt}
+                    width={100}
+                    height={50}
+                    className="w-full h-auto max-h-10 object-contain opacity-40 hover:opacity-80 transition-opacity"
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Newsletter + Demo CTA */}
       <section className="section-padding bg-background">
         <div className="mx-auto max-w-7xl px-6">

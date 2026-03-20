@@ -19,6 +19,7 @@ export const newsPosts: NewsPost[] = [
 <p>Stream it now on all major platforms.</p>`,
     date: "2025-01-15",
     category: "release",
+    image: "/images/releases/kuzokhanya.jpg",
     tags: ["Ebstar", "Roline", "Piano House", "New Release"],
   },
   {
@@ -29,6 +30,7 @@ export const newsPosts: NewsPost[] = [
 <p>With its infectious piano house production and emotionally charged vocals, this track is a testament to the evolving sound of The ESOTERIC Ones.</p>`,
     date: "2025-01-10",
     category: "release",
+    image: "/images/releases/ready-to-be-loved.jpg",
     tags: ["Ebstar", "Dance-Pop", "New Release"],
   },
   {
@@ -40,6 +42,7 @@ export const newsPosts: NewsPost[] = [
 <p>This is just the beginning. More music, more artists, more boundaries to break.</p>`,
     date: "2025-02-01",
     category: "label",
+    image: "/images/news/million-streams.jpg",
     tags: ["Milestone", "5M Streams", "Label News"],
   },
   {
@@ -50,6 +53,7 @@ export const newsPosts: NewsPost[] = [
 <p>Spanning hip-hop, R&B, Amapiano, and electronic music, Maknaebe is a testament to the creative chemistry between two of the label's most prolific artists.</p>`,
     date: "2024-06-01",
     category: "release",
+    image: "/images/news/maknaebe-album.jpg",
     tags: ["Ebstar", "RATSBE", "Album", "Hip-Hop"],
   },
   {
@@ -60,7 +64,30 @@ export const newsPosts: NewsPost[] = [
 <p>Featuring standout tracks like <em>Seoul Love</em> and <em>But....I DONT TRUST YOU</em>, this project has already garnered hundreds of thousands of streams.</p>`,
     date: "2024-03-01",
     category: "release",
+    image: "/images/news/echoes-of-love-release.jpg",
     tags: ["Ebstar", "Album", "Piano House", "Dance-Pop"],
+  },
+  {
+    slug: "seoul-festa-performance",
+    title: "Ebstar Performs at Seoul Festa 2024",
+    excerpt: "A landmark performance at one of Seoul's biggest cultural festivals.",
+    content: `<p><strong>Ebstar</strong> took the stage at <strong>Seoul Festa 2024</strong>, delivering an electrifying set that showcased the best of The ESOTERIC Ones' sound to an international audience.</p>
+<p>The performance featured tracks from Echoes of Love and Maknaebe, bridging South African and Korean musical traditions on one of Seoul's biggest stages.</p>`,
+    date: "2024-09-21",
+    category: "event",
+    image: "/images/news/seoul-festa.jpg",
+    tags: ["Ebstar", "Seoul", "Live Performance", "Festival"],
+  },
+  {
+    slug: "forbes-blk-feature",
+    title: "Ebstar Featured in Forbes BLK",
+    excerpt: "Label founder Ebstar recognized by Forbes BLK for his contributions to global music.",
+    content: `<p>Label founder <strong>Ebstar</strong> has been featured in <strong>Forbes BLK</strong>, highlighting his journey from Zimbabwe to Seoul and his work building The ESOTERIC Ones into a global independent label.</p>
+<p>The feature covers his vision of bridging African and Asian music scenes, the label's rapid growth, and what's next for the collective.</p>`,
+    date: "2024-11-15",
+    category: "label",
+    image: "/images/news/forbes-blk.jpg",
+    tags: ["Ebstar", "Forbes", "Media", "Recognition"],
   },
 ];
 
