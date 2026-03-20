@@ -415,7 +415,7 @@ export const releases: Release[] = [
   {
     slug: "with-love-ebstar",
     title: "With Love, Ebstar :)",
-    type: "album",
+    type: "ep",
     artistSlugs: ["ebstar", "xia", "swedish-dance-glory", "curiosity-killed-the-neko", "ratsbe"],
     artistNames: ["Ebstar", "\u590F Xi\u00E0", "Swedish Dance Glory", "Curiosity Killed The Neko", "RATSBE"],
     date: "2023-06-09",
