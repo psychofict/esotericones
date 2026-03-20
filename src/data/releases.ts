@@ -518,8 +518,8 @@ export const releases: Release[] = [
     date: "2021-11-29",
     year: 2021,
     genres: ["Dance-Pop", "Electronic"],
-    spotifyId: "5PjC5wYr0HhK7VlkKxYU2Y",
-    spotifyUri: "album/5PjC5wYr0HhK7VlkKxYU2Y",
+    spotifyId: "5c2sPkKqi2JpEL1fFz66BB",
+    spotifyUri: "album/5c2sPkKqi2JpEL1fFz66BB",
     tracklist: [
       { number: 1, title: "Forever Need You", feat: "G.Q" },
       { number: 2, title: "Heaven's Anthem 2021 (Avicii Tribute Anthem) - Extended Mix", feat: "Curiosity Killed The Neko" },
