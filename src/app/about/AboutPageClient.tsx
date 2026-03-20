@@ -214,7 +214,7 @@ export default function AboutPageClient() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {[
                 { src: "/images/gallery/festival-night.jpg", alt: "Festival performance" },
-                { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Forum" },
+                { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Youth Forum 2025" },
                 { src: "/images/gallery/han-river-seoul.jpg", alt: "Han River, Seoul" },
                 { src: "/images/gallery/cherry-blossoms.jpg", alt: "Cherry blossoms in Seoul" },
                 { src: "/images/gallery/southern-africa-tour-2024.jpg", alt: "Southern Africa Tour 2024" },
@@ -276,7 +276,7 @@ export default function AboutPageClient() {
                 { src: "/images/brands/korea-africa-summit.jpg", alt: "Korea-Africa Summit" },
                 { src: "/images/brands/korea-mofa.svg", alt: "Ministry of Foreign Affairs" },
                 { src: "/images/brands/korea-mcst.svg", alt: "Ministry of Culture" },
-                { src: "/images/brands/seoul-africa-festival.svg", alt: "Seoul Africa Festival" },
+                { src: "/images/brands/seoul-africa-festival.svg", alt: "EDC Korea" },
                 { src: "/images/brands/korea-national-assembly.png", alt: "National Assembly of Korea" },
                 { src: "/images/brands/undercover-korea.png", alt: "Undercover Korea" },
                 { src: "/images/brands/gyeonggi.svg", alt: "Gyeonggi Province" },

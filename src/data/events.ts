@@ -14,15 +14,15 @@ export interface LabelEvent {
 
 export const labelEvents: LabelEvent[] = [
   {
-    slug: "seoul-africa-festival-2025",
-    title: "Seoul Africa Festival 2025",
+    slug: "edc-korea-2025",
+    title: "EDC Korea 2025",
     date: "2025-09-20",
     venue: "Nodeul Island",
     city: "Seoul",
     country: "South Korea",
     artists: ["Ebstar"],
     status: "upcoming",
-    description: "The ESOTERIC Ones showcase at Seoul's biggest Africa-Korea cultural festival.",
+    description: "The ESOTERIC Ones showcase at EDC Korea.",
   },
   {
     slug: "esoteric-showcase-seoul-2025",
@@ -36,15 +36,15 @@ export const labelEvents: LabelEvent[] = [
     description: "An intimate label showcase featuring live performances and DJ sets from ESOTERIC artists.",
   },
   {
-    slug: "seoul-africa-festival-2024",
-    title: "Seoul Africa Festival 2024",
-    date: "2024-09-21",
+    slug: "edc-korea-2025-past",
+    title: "EDC Korea 2025",
+    date: "2025-09-21",
     venue: "Nodeul Island",
     city: "Seoul",
     country: "South Korea",
     artists: ["Ebstar"],
     status: "past",
-    description: "Ebstar performed a DJ set at the annual Seoul Africa Festival.",
+    description: "Ebstar performed a DJ set at EDC Korea.",
     image: "/images/gallery/festival-night.jpg",
   },
   {

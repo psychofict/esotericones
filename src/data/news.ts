@@ -68,17 +68,6 @@ export const newsPosts: NewsPost[] = [
     tags: ["Ebstar", "Album", "Piano House", "Dance-Pop"],
   },
   {
-    slug: "seoul-festa-performance",
-    title: "Ebstar Performs at Seoul Festa 2024",
-    excerpt: "A landmark performance at one of Seoul's biggest cultural festivals.",
-    content: `<p><strong>Ebstar</strong> took the stage at <strong>Seoul Festa 2024</strong>, delivering an electrifying set that showcased the best of The ESOTERIC Ones' sound to an international audience.</p>
-<p>The performance featured tracks from Echoes of Love and Maknaebe, bridging South African and Korean musical traditions on one of Seoul's biggest stages.</p>`,
-    date: "2024-09-21",
-    category: "event",
-    image: "/images/news/seoul-festa.jpg",
-    tags: ["Ebstar", "Seoul", "Live Performance", "Festival"],
-  },
-  {
     slug: "forbes-blk-feature",
     title: "Ebstar Featured in Forbes BLK",
     excerpt: "Label founder Ebstar recognized by Forbes BLK for his contributions to global music.",

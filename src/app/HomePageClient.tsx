@@ -301,7 +301,7 @@ export default function HomePageClient() {
             <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 { src: "/images/gallery/festival-night.jpg", alt: "Festival performance", span: "col-span-2 row-span-2" },
-                { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Forum", span: "" },
+                { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Youth Forum 2025", span: "" },
                 { src: "/images/gallery/cherry-blossoms.jpg", alt: "Cherry blossoms in Seoul", span: "" },
                 { src: "/images/gallery/seaside-laughing.jpg", alt: "On tour", span: "" },
                 { src: "/images/gallery/abu-dhabi-desert.jpg", alt: "Abu Dhabi desert", span: "" },
@@ -345,7 +345,7 @@ export default function HomePageClient() {
                 { src: "/images/brands/unesco-korea.png", alt: "UNESCO Korea" },
                 { src: "/images/brands/korea-africa-summit.jpg", alt: "Korea-Africa Summit" },
                 { src: "/images/brands/korea-mofa.svg", alt: "Ministry of Foreign Affairs" },
-                { src: "/images/brands/seoul-africa-festival.svg", alt: "Seoul Africa Festival" },
+                { src: "/images/brands/seoul-africa-festival.svg", alt: "EDC Korea" },
                 { src: "/images/brands/korea-mcst.svg", alt: "Ministry of Culture" },
                 { src: "/images/brands/korea-national-assembly.png", alt: "National Assembly of Korea" },
                 { src: "/images/brands/undercover-korea.png", alt: "Undercover Korea" },

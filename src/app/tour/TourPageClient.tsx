@@ -9,12 +9,12 @@ import { fadeUp, stagger } from "@/lib/animations";
 import { useTranslation } from "@/i18n/useTranslation";
 
 const pastEventPhotos = [
-  { src: "/images/gallery/festival-night.jpg", alt: "Festival performance", caption: "Seoul Africa Festival 2024" },
-  { src: "/images/gallery/four-seasons-speech.jpg", alt: "Speaking event", caption: "Four Seasons Seoul" },
-  { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Forum", caption: "Korea-Africa Youth Forum" },
+  { src: "/images/gallery/festival-night.jpg", alt: "EDC Korea 2025", caption: "EDC Korea 2025" },
+  { src: "/images/gallery/four-seasons-speech.jpg", alt: "Korea Africa Summit 2025", caption: "Korea Africa Summit 2025" },
+  { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Youth Forum 2025", caption: "Korea-Africa Youth Forum 2025" },
   { src: "/images/gallery/southern-africa-tour-2024.jpg", alt: "Southern Africa Tour", caption: "Southern Africa Tour 2024" },
-  { src: "/images/gallery/tripadvisor-seoul-event.jpg", alt: "Seoul event", caption: "TripAdvisor Seoul Event" },
-  { src: "/images/gallery/thailand-tour-poster.jpg", alt: "Thailand tour", caption: "Thailand Tour" },
+  { src: "/images/gallery/tripadvisor-seoul-event.jpg", alt: "Global Seoulmate 2025", caption: "Global Seoulmate 2025" },
+  { src: "/images/gallery/thailand-tour-poster.jpg", alt: "Thailand Tour 2024", caption: "Thailand Tour 2024" },
 ];
 
 export default function TourPageClient() {
