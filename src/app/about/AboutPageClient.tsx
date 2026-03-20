@@ -5,28 +5,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 import { label, labelTimeline, labelGenres, labelStats } from "@/data/label";
-import { ArrowRight, Users, Globe, Headphones, Disc3 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
 import type { TranslationKeys } from "@/i18n/types";
-
-const statKeys: Record<string, keyof TranslationKeys> = {
-  "Artists": "stats.artists",
-  "Total Streams": "stats.totalStreams",
-  "Countries": "stats.countries",
-  "Releases": "stats.releases",
-};
+import { statKeys, statIcons } from "@/lib/statConfig";
 
 const timelineKeys: Record<number, keyof TranslationKeys> = {
   2023: "about.timeline.2023",
   2024: "about.timeline.2024",
   2025: "about.timeline.2025",
-};
-
-const statIcons: Record<string, React.ReactNode> = {
-  users: <Users className="w-5 h-5" />,
-  headphones: <Headphones className="w-5 h-5" />,
-  globe: <Globe className="w-5 h-5" />,
-  disc: <Disc3 className="w-5 h-5" />,
 };
 
 export default function AboutPageClient() {
