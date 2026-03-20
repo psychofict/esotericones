@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navItems, labelSocials } from "@/data/label";
 import { useTranslation } from "@/i18n/useTranslation";
@@ -21,6 +21,155 @@ const navTranslationKeys: Record<string, keyof TranslationKeys> = {
   Merch: "nav.merch",
   About: "nav.about",
 };
+
+interface DropdownItem {
+  label: string;
+  href: string;
+}
+
+const dropdownItems: Record<string, DropdownItem[]> = {
+  Artists: [
+    { label: "All Artists", href: "/artists" },
+    { label: "Ebstar", href: "/artists/ebstar" },
+    { label: "RATSBE", href: "/artists/ratsbe" },
+    { label: "SkyDAWN", href: "/artists/skydawn" },
+    { label: "Piecemaker", href: "/artists/piecemaker" },
+  ],
+  Releases: [
+    { label: "All Releases", href: "/releases" },
+    { label: "Maknaebe", href: "/releases/maknaebe" },
+    { label: "ECHOES OF LOVE I", href: "/releases/echoes-of-love" },
+    { label: "KUZOKHANYA", href: "/releases/kuzokhanya" },
+    { label: "Life Is Beautiful", href: "/releases/life-is-beautiful" },
+  ],
+  About: [
+    { label: "About the Label", href: "/about" },
+    { label: "Contact", href: "/contact" },
+    { label: "Submit a Demo", href: "/demos" },
+  ],
+  Tour: [
+    { label: "Tour Dates", href: "/tour" },
+    { label: "Events", href: "/events" },
+  ],
+};
+
+function NavDropdown({ item, t }: { item: { name: string; href: string }; t: (key: keyof TranslationKeys) => string }) {
+  const [open, setOpen] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const items = dropdownItems[item.name];
+
+  const handleEnter = () => {
+    clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+
+  const handleLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  if (!items) {
+    return (
+      <li>
+        <Link
+          href={item.href}
+          className="relative px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground group"
+        >
+          {t(navTranslationKeys[item.name])}
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#E8385D] transition-all duration-300 group-hover:w-full" />
+        </Link>
+      </li>
+    );
+  }
+
+  return (
+    <li className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      <Link
+        href={item.href}
+        className="relative px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground group inline-flex items-center gap-1"
+      >
+        {t(navTranslationKeys[item.name])}
+        <ChevronDown size={12} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#E8385D] transition-all duration-300 group-hover:w-full" />
+      </Link>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full left-0 mt-1 min-w-[200px] rounded-xl bg-background/95 backdrop-blur-xl border border-border shadow-xl shadow-black/20 overflow-hidden z-50"
+          >
+            <div className="py-2">
+              {items.map((sub) => (
+                <Link
+                  key={sub.href}
+                  href={sub.href}
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-[#E8385D]/10 transition-colors"
+                >
+                  {sub.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
+
+function MobileDropdown({ item, t, onClose }: { item: { name: string; href: string }; t: (key: keyof TranslationKeys) => string; onClose: () => void }) {
+  const [expanded, setExpanded] = useState(false);
+  const items = dropdownItems[item.name];
+
+  if (!items) {
+    return (
+      <Link
+        href={item.href}
+        onClick={onClose}
+        className="text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center"
+      >
+        {t(navTranslationKeys[item.name])}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="flex flex-col items-center">
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center gap-2"
+      >
+        {t(navTranslationKeys[item.name])}
+        <ChevronDown size={20} className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
+      </button>
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden flex flex-col items-center gap-2 mt-2"
+          >
+            {items.map((sub) => (
+              <Link
+                key={sub.href}
+                href={sub.href}
+                onClick={onClose}
+                className="text-lg text-foreground/60 hover:text-[#E8385D] transition-colors min-h-[40px] inline-flex items-center"
+              >
+                {sub.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,15 +219,7 @@ export default function Navbar() {
           {/* Desktop nav */}
           <ul className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="relative px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground group"
-                >
-                  {t(navTranslationKeys[item.name])}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#E8385D] transition-all duration-300 group-hover:w-full" />
-                </Link>
-              </li>
+              <NavDropdown key={item.href} item={item} t={t} />
             ))}
             <li className="ml-2">
               <Link
@@ -152,13 +293,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.4 }}
                 >
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center"
-                  >
-                    {t(navTranslationKeys[item.name])}
-                  </Link>
+                  <MobileDropdown item={item} t={t} onClose={() => setMobileOpen(false)} />
                 </motion.li>
               ))}
               <motion.li
