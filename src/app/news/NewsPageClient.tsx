@@ -1,81 +1,158 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Newspaper, ArrowRight } from "lucide-react";
+import { fadeUp, stagger } from "@/lib/animations";
+import { newsPosts } from "@/data/news";
+import { ArrowRight, Newspaper } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
+
+const categoryColors: Record<string, string> = {
+  release: "bg-[#E8385D]/10 text-[#E8385D]",
+  label: "bg-blue-500/10 text-blue-400",
+  artist: "bg-purple-500/10 text-purple-400",
+  event: "bg-emerald-500/10 text-emerald-400",
+};
+
+const sortedPosts = [...newsPosts].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
 
 export default function NewsPageClient() {
   const { t } = useTranslation();
   return (
-    <main id="main-content" className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 hero-gradient" />
-      <div className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-[#E8385D]/5 blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-[10%] w-48 h-48 rounded-full bg-[#E8385D]/3 blur-3xl animate-float-slow" />
-
-      <motion.div
-        className="text-center px-6 max-w-lg relative z-10"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.div
-          className="mx-auto mb-6 w-16 h-16 rounded-2xl bg-[#E8385D]/10 flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          <Newspaper className="w-8 h-8 text-[#E8385D]" />
-        </motion.div>
-
-        <motion.p
-          className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          {t("common.comingSoon")}
-        </motion.p>
-
-        <motion.h1
-          className="text-5xl md:text-6xl font-bold text-foreground tracking-tight mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          {t("news.title")}
-        </motion.h1>
-
-        <motion.p
-          className="text-text-secondary text-lg mb-10 leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          {t("news.description")}
-        </motion.p>
-
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-        >
-          <Link
-            href="/"
-            className="px-8 py-3.5 border border-border text-foreground rounded-full font-semibold hover:bg-subtle/5 hover:border-subtle/20 transition-all"
+    <main id="main-content" className="min-h-screen bg-background">
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-6">
+        <div className="mx-auto max-w-7xl">
+          <motion.p
+            className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
-            {t("common.backToHome")}
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#E8385D] text-white rounded-full font-semibold hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/25 btn-glow"
+            {t("news.title")}
+          </motion.p>
+          <motion.h1
+            className="text-4xl md:text-6xl font-bold text-foreground mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
           >
-            {t("common.notifyMe")} <ArrowRight size={16} />
-          </Link>
-        </motion.div>
-      </motion.div>
+            {t("news.title")}
+          </motion.h1>
+          <motion.p
+            className="text-lg text-text-secondary max-w-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            {t("news.description")}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Featured Post */}
+      {sortedPosts[0] && (
+        <section className="px-6 pb-12">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <Link
+                href={`/news/${sortedPosts[0].slug}`}
+                className="group grid grid-cols-1 md:grid-cols-2 gap-6 glass-card rounded-2xl overflow-hidden card-hover"
+              >
+                {sortedPosts[0].image && (
+                  <div className="aspect-[16/10] md:aspect-auto relative overflow-hidden">
+                    <Image
+                      src={sortedPosts[0].image}
+                      alt={sortedPosts[0].title}
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <div className="p-6 md:p-8 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[sortedPosts[0].category]}`}>
+                      {sortedPosts[0].category}
+                    </span>
+                    <span className="text-xs text-muted">
+                      {new Date(sortedPosts[0].date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                    </span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground group-hover:text-[#E8385D] transition-colors mb-3">
+                    {sortedPosts[0].title}
+                  </h2>
+                  <p className="text-text-secondary line-clamp-3 mb-4">
+                    {sortedPosts[0].excerpt}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-sm text-[#E8385D] font-medium">
+                    Read more <ArrowRight size={14} />
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* News Grid */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={stagger(0.1)}
+            initial="hidden"
+            animate="visible"
+          >
+            {sortedPosts.slice(1).map((post) => (
+              <motion.div key={post.slug} variants={fadeUp}>
+                <Link
+                  href={`/news/${post.slug}`}
+                  className="group block glass-card rounded-2xl overflow-hidden card-hover h-full"
+                >
+                  {post.image ? (
+                    <div className="aspect-[16/10] relative overflow-hidden">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        width={400}
+                        height={250}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-[16/10] bg-gradient-to-br from-[#E8385D]/10 to-surface flex items-center justify-center">
+                      <Newspaper className="w-10 h-10 text-[#E8385D]/30" />
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${categoryColors[post.category]}`}>
+                        {post.category}
+                      </span>
+                      <span className="text-xs text-muted">
+                        {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-[#E8385D] transition-colors mb-2 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-text-secondary line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }

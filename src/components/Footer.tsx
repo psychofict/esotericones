@@ -7,6 +7,7 @@ import { Loader2 } from "lucide-react";
 import { labelSocials } from "@/data/label";
 import { useFormSubmit } from "@/lib/useFormSubmit";
 import { useTranslation } from "@/i18n/useTranslation";
+import { useTheme } from "@/components/ThemeProvider";
 
 const socialIcons: Record<string, React.ReactNode> = {
   spotify: (
@@ -30,6 +31,8 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const { loading, success, error, submitForm, reset } = useFormSubmit("/api/newsletter");
   const { t } = useTranslation();
+  const { theme } = useTheme();
+  const logoSrc = theme === "light" ? "/images/esoteric-white.jpg" : "/images/esoteric-blk.jpg";
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +50,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-10 h-10 overflow-hidden rounded-lg">
                 <Image
-                  src="/images/esoteric-blk.jpg"
+                  src={logoSrc}
                   alt="The ESOTERIC Ones"
                   width={40}
                   height={40}

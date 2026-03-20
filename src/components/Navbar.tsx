@@ -10,6 +10,7 @@ import { useTranslation } from "@/i18n/useTranslation";
 import type { TranslationKeys } from "@/i18n/types";
 import LanguageToggle from "@/components/LanguageToggle";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/components/ThemeProvider";
 
 const navTranslationKeys: Record<string, keyof TranslationKeys> = {
   Artists: "nav.artists",
@@ -42,6 +43,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { t } = useTranslation();
+  const { theme } = useTheme();
+  const logoSrc = theme === "light" ? "/images/esoteric-white.jpg" : "/images/esoteric-blk.jpg";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -68,7 +71,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 overflow-hidden rounded-lg">
               <Image
-                src="/images/esoteric-blk.jpg"
+                src={logoSrc}
                 alt="The ESOTERIC Ones"
                 width={40}
                 height={40}
@@ -150,7 +153,7 @@ export default function Navbar() {
             {/* Logo in mobile menu */}
             <div className="absolute top-6 left-6">
               <Image
-                src="/images/esoteric-blk.jpg"
+                src={logoSrc}
                 alt="The ESOTERIC Ones"
                 width={48}
                 height={48}

@@ -4,8 +4,18 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { fadeUp, stagger } from "@/lib/animations";
 import { useTranslation } from "@/i18n/useTranslation";
+
+const pastEventPhotos = [
+  { src: "/images/gallery/festival-night.jpg", alt: "Festival performance", caption: "Seoul Africa Festival 2024" },
+  { src: "/images/gallery/four-seasons-speech.jpg", alt: "Speaking event", caption: "Four Seasons Seoul" },
+  { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Forum", caption: "Korea-Africa Youth Forum" },
+  { src: "/images/gallery/southern-africa-tour-2024.jpg", alt: "Southern Africa Tour", caption: "Southern Africa Tour 2024" },
+  { src: "/images/gallery/tripadvisor-seoul-event.jpg", alt: "Seoul event", caption: "TripAdvisor Seoul Event" },
+  { src: "/images/gallery/thailand-tour-poster.jpg", alt: "Thailand tour", caption: "Thailand Tour" },
+];
 
 export default function TourPageClient() {
   const { t } = useTranslation();
@@ -103,6 +113,41 @@ export default function TourPageClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           />
+        </div>
+      </section>
+
+      {/* Past Events Gallery */}
+      <section className="px-6 pb-12">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl font-bold text-foreground mb-6">Past Events</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {pastEventPhotos.map((photo, i) => (
+                <motion.div
+                  key={photo.src}
+                  className="group relative aspect-[4/3] rounded-xl overflow-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <p className="absolute bottom-3 left-3 text-white text-sm font-medium">{photo.caption}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 

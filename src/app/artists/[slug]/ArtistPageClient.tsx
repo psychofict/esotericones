@@ -29,7 +29,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
           <div className="absolute inset-0">
             <Image
               src={artistImage}
-              alt=""
+              alt={`${artist.name} background`}
               width={1200}
               height={600}
               className="w-full h-full object-cover scale-110 blur-3xl opacity-20"
