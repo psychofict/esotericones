@@ -7,26 +7,12 @@ import Image from "next/image";
 import { fadeUp, stagger, scaleIn } from "@/lib/animations";
 import { labelStats } from "@/data/label";
 import { useTranslation } from "@/i18n/useTranslation";
-import type { TranslationKeys } from "@/i18n/types";
 import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 import { useFormSubmit } from "@/lib/useFormSubmit";
-import { Disc3, Users, Globe, Headphones, ArrowRight, Music, Loader2 } from "lucide-react";
-
-const statKeys: Record<string, keyof TranslationKeys> = {
-  "Artists": "stats.artists",
-  "Total Streams": "stats.totalStreams",
-  "Countries": "stats.countries",
-  "Releases": "stats.releases",
-};
-
-const statIcons: Record<string, React.ReactNode> = {
-  users: <Users className="w-6 h-6" />,
-  headphones: <Headphones className="w-6 h-6" />,
-  globe: <Globe className="w-6 h-6" />,
-  disc: <Disc3 className="w-6 h-6" />,
-};
+import { statKeys, statIcons } from "@/lib/statConfig";
+import { Disc3, ArrowRight, Music, Loader2 } from "lucide-react";
 
 const featuredArtists = getFeaturedArtists();
 const featuredReleases = getFeaturedReleases();
