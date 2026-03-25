@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
-import { label, labelTimeline, labelGenres, labelStats } from "@/data/label";
+import { label, labelTimeline, labelGenres } from "@/data/label";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
 import type { TranslationKeys } from "@/i18n/types";
-import { statKeys, statIcons } from "@/lib/statConfig";
+import StatsBar from "@/components/StatsBar";
 
 const timelineKeys: Record<number, keyof TranslationKeys> = {
   2023: "about.timeline.2023",
@@ -25,9 +25,11 @@ export default function AboutPageClient() {
         <div className="absolute inset-0">
           <Image
             src="/images/ebstar-hero.jpg"
-            alt="The ESOTERIC Ones background"
+            alt=""
             width={1920}
             height={600}
+            sizes="100vw"
+            loading="lazy"
             className="w-full h-full object-cover blur-2xl opacity-15 scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/90 to-background" />
@@ -86,27 +88,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-surface border-y border-border">
-        <div className="mx-auto max-w-7xl px-6">
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {labelStats.map((stat) => (
-              <motion.div key={stat.label} variants={fadeUp} className="text-center">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#E8385D]/10 text-[#E8385D] mb-3">
-                  {statIcons[stat.icon]}
-                </div>
-                <p className="text-2xl md:text-3xl font-bold text-gradient">{stat.value}</p>
-                <p className="text-sm text-muted mt-1 uppercase tracking-wider">{t(statKeys[stat.label])}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <StatsBar />
 
       {/* Timeline */}
       <section className="section-padding px-6">
@@ -121,8 +103,8 @@ export default function AboutPageClient() {
               {t("about.timeline")}
             </motion.h2>
             <div className="space-y-8 relative">
-              {/* Vertical line */}
-              <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border" />
+              {/* Vertical line — centered on the 40px (w-10) timeline nodes */}
+              <div className="absolute left-5 top-2 bottom-2 w-px bg-border" />
 
               {labelTimeline.map((item) => (
                 <motion.div
@@ -182,6 +164,7 @@ export default function AboutPageClient() {
                   alt="Ebstar speaking at an event"
                   width={600}
                   height={450}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -210,7 +193,7 @@ export default function AboutPageClient() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-6">Gallery</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">{t("about.gallery")}</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {[
                 { src: "/images/gallery/festival-night.jpg", alt: "Festival performance" },
@@ -247,6 +230,7 @@ export default function AboutPageClient() {
                     alt={photo.alt}
                     width={300}
                     height={300}
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
@@ -265,7 +249,7 @@ export default function AboutPageClient() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-6">Partners &amp; Collaborators</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">{t("about.partnersCollaborators")}</h2>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 items-center">
               {[
                 { src: "/images/brands/forbes-blk.png", alt: "Forbes BLK" },
@@ -293,7 +277,8 @@ export default function AboutPageClient() {
                     alt={brand.alt}
                     width={120}
                     height={60}
-                    className="w-full h-full object-contain opacity-60 hover:opacity-100 transition-opacity"
+                    loading="lazy"
+                    className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
                   />
                 </div>
               ))}

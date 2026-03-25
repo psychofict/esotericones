@@ -11,6 +11,12 @@ export type TranslationKeys = {
   "nav.submitDemo": string;
   "nav.openMenu": string;
   "nav.closeMenu": string;
+  "nav.allArtists": string;
+  "nav.allReleases": string;
+  "nav.aboutTheLabel": string;
+  "nav.tourDates": string;
+  "nav.events": string;
+  "nav.contact": string;
 
   // Common
   "common.viewAll": string;
@@ -30,6 +36,8 @@ export type TranslationKeys = {
   "common.single": string;
   "common.sending": string;
   "common.openInSpotify": string;
+  "common.resetFilters": string;
+  "common.showingResults": string;
 
   // Stats
   "stats.artists": string;
@@ -52,6 +60,9 @@ export type TranslationKeys = {
   "home.submitYourDemo": string;
   "home.submitDemoDesc": string;
   "home.submitADemo": string;
+  "home.behindTheScenes": string;
+  "home.lifeAtTheLabel": string;
+  "home.featuredInPartners": string;
 
   // About
   "about.ourStory": string;
@@ -68,6 +79,8 @@ export type TranslationKeys = {
   "about.lookingForArtists": string;
   "about.submitADemo": string;
   "about.getInTouch": string;
+  "about.gallery": string;
+  "about.partnersCollaborators": string;
 
   // About timeline
   "about.timeline.2023": string;
@@ -99,6 +112,20 @@ export type TranslationKeys = {
   "release.tracklist": string;
   "release.credits": string;
   "release.featuring": string;
+  "release.lyrics": string;
+  "release.trackOfTotal": string;
+
+  // Purchase / Download
+  "release.buyDigital": string;
+  "release.redirecting": string;
+  "download.title": string;
+  "download.success": string;
+  "download.downloadButton": string;
+  "download.emailSent": string;
+  "download.linkExpiry": string;
+  "download.backToReleases": string;
+  "download.expired": string;
+  "download.error": string;
 
   // Contact
   "contact.getInTouch": string;
@@ -167,6 +194,11 @@ export type TranslationKeys = {
   "news.description": string;
   "news.backToNews": string;
   "news.moreNews": string;
+  "news.readMore": string;
+  "news.category.release": string;
+  "news.category.label": string;
+  "news.category.artist": string;
+  "news.category.event": string;
 
   // Tour
   "tour.liveShows": string;
@@ -175,10 +207,12 @@ export type TranslationKeys = {
   "tour.bookNow": string;
   "tour.bookHeading": string;
   "tour.bookDescription": string;
+  "tour.pastEvents": string;
 
   // Merch
   "merch.title": string;
   "merch.description": string;
+  "merch.preview": string;
 
   // Events
   "events.title": string;

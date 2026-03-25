@@ -173,6 +173,44 @@ export function getReleaseSchema(releaseSlug: string) {
   };
 }
 
+export function getTrackSchema(releaseSlug: string, trackSlug: string) {
+  const release = releases.find((r) => r.slug === releaseSlug);
+  if (!release) return null;
+
+  const track = release.tracklist?.find((t) => t.slug === trackSlug);
+  if (!track) return null;
+
+  const byArtist = release.artistSlugs.map((slug, i) => {
+    const artist = artists.find((a) => a.slug === slug);
+    return {
+      "@type": "MusicGroup" as const,
+      name: release.artistNames[i],
+      ...(artist ? { url: `${BASE_URL}/artists/${slug}` } : {}),
+    };
+  });
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "MusicRecording",
+    name: track.title,
+    url: `${BASE_URL}/releases/${releaseSlug}/${trackSlug}`,
+    position: track.number,
+    ...(track.duration ? { duration: parseDuration(track.duration) } : {}),
+    ...(release.artwork ? { image: `${BASE_URL}${release.artwork}` } : {}),
+    byArtist,
+    inAlbum: {
+      "@type": "MusicAlbum",
+      name: release.title,
+      url: `${BASE_URL}/releases/${releaseSlug}`,
+    },
+    recordLabel: {
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#label`,
+      name: "The ESOTERIC Ones",
+    },
+  };
+}
+
 export function getNewsArticleSchema(post: NewsPost) {
   return {
     "@context": "https://schema.org",

@@ -7,6 +7,21 @@ import { fadeUp, stagger } from "@/lib/animations";
 import { newsPosts } from "@/data/news";
 import { ArrowRight, Newspaper } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
+import { useLocale } from "@/i18n";
+import type { TranslationKeys } from "@/i18n/types";
+
+const localeMap: Record<string, string> = {
+  en: "en-US",
+  ko: "ko-KR",
+  fr: "fr-FR",
+};
+
+const categoryTranslationKeys: Record<string, keyof TranslationKeys> = {
+  release: "news.category.release",
+  label: "news.category.label",
+  artist: "news.category.artist",
+  event: "news.category.event",
+};
 
 const categoryColors: Record<string, string> = {
   release: "bg-[#E8385D]/10 text-[#E8385D]",
@@ -21,6 +36,8 @@ const sortedPosts = [...newsPosts].sort(
 
 export default function NewsPageClient() {
   const { t } = useTranslation();
+  const { locale } = useLocale();
+  const dateLocale = localeMap[locale] || "en-US";
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
@@ -79,10 +96,10 @@ export default function NewsPageClient() {
                 <div className="p-6 md:p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-3">
                     <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[sortedPosts[0].category]}`}>
-                      {sortedPosts[0].category}
+                      {t(categoryTranslationKeys[sortedPosts[0].category])}
                     </span>
                     <span className="text-xs text-muted">
-                      {new Date(sortedPosts[0].date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                      {new Date(sortedPosts[0].date).toLocaleDateString(dateLocale, { year: "numeric", month: "long", day: "numeric" })}
                     </span>
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground group-hover:text-[#E8385D] transition-colors mb-3">
@@ -92,7 +109,7 @@ export default function NewsPageClient() {
                     {sortedPosts[0].excerpt}
                   </p>
                   <span className="inline-flex items-center gap-1 text-sm text-[#E8385D] font-medium">
-                    Read more <ArrowRight size={14} />
+                    {t("news.readMore")} <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>
@@ -134,10 +151,10 @@ export default function NewsPageClient() {
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-2">
                       <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${categoryColors[post.category]}`}>
-                        {post.category}
+                        {t(categoryTranslationKeys[post.category])}
                       </span>
                       <span className="text-xs text-muted">
-                        {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                        {new Date(post.date).toLocaleDateString(dateLocale, { year: "numeric", month: "short", day: "numeric" })}
                       </span>
                     </div>
                     <h3 className="text-lg font-bold text-foreground group-hover:text-[#E8385D] transition-colors mb-2 line-clamp-2">

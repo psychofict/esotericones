@@ -121,6 +121,7 @@ export default function ContactPageClient() {
                       key={item.value}
                       type="button"
                       onClick={() => setType(item.value)}
+                      aria-pressed={type === item.value}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                         type === item.value
                           ? "bg-[#E8385D] text-white"

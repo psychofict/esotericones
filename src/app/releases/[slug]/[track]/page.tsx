@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getReleaseBySlug, releases } from "@/data/releases";
-import { getBreadcrumbSchema } from "@/lib/structured-data";
+import { getBreadcrumbSchema, getTrackSchema } from "@/lib/structured-data";
 import JsonLd from "@/components/JsonLd";
 import TrackPageClient from "./TrackPageClient";
 
@@ -46,6 +46,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ? { images: [{ url: release.artwork, width: 600, height: 600, alt: release.title }] }
         : {}),
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${track.title} | ${release.title} | The ESOTERIC Ones`,
+      description,
+    },
     alternates: {
       canonical: `https://esotericones.com/releases/${slug}/${trackSlug}`,
     },
@@ -65,6 +70,7 @@ export default async function TrackPage({ params }: Props) {
     notFound();
   }
 
+  const trackSchema = getTrackSchema(slug, trackSlug);
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: "Home", url: "https://esotericones.com" },
     { name: "Releases", url: "https://esotericones.com/releases" },
@@ -74,6 +80,7 @@ export default async function TrackPage({ params }: Props) {
 
   return (
     <>
+      {trackSchema && <JsonLd data={trackSchema} />}
       <JsonLd data={breadcrumbSchema} />
       <TrackPageClient release={release} track={track} />
     </>

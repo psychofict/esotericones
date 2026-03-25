@@ -9,6 +9,7 @@ import type { Release } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 import { Music, MapPin, Calendar, ArrowLeft, ExternalLink, Disc3 } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
+import { socialIcons } from "@/lib/socialIcons";
 
 interface ArtistPageClientProps {
   artist: Artist;
@@ -29,9 +30,11 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
           <div className="absolute inset-0">
             <Image
               src={artistImage}
-              alt={`${artist.name} background`}
+              alt=""
               width={1200}
               height={600}
+              sizes="100vw"
+              loading="lazy"
               className="w-full h-full object-cover scale-110 blur-3xl opacity-20"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
@@ -116,18 +119,22 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  {artist.socials.map((social) => (
-                    <a
-                      key={social.platform}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-subtle/5 text-sm text-foreground/70 hover:text-[#E8385D] hover:bg-[#E8385D]/10 transition-all"
-                    >
-                      <ExternalLink size={14} />
-                      {social.platform}
-                    </a>
-                  ))}
+                  {artist.socials.map((social) => {
+                    const icon = socialIcons[social.platform.toLowerCase()];
+                    return (
+                      <a
+                        key={social.platform}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.platform}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-subtle/5 text-sm text-foreground/70 hover:text-[#E8385D] hover:bg-[#E8385D]/10 transition-all"
+                      >
+                        {icon || <ExternalLink size={14} />}
+                        {social.platform}
+                      </a>
+                    );
+                  })}
                 </motion.div>
               )}
             </div>

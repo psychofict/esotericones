@@ -1,33 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { fadeUp, stagger, scaleIn } from "@/lib/animations";
-import { labelStats } from "@/data/label";
+import { fadeUp, stagger } from "@/lib/animations";
+import StatsBar from "@/components/StatsBar";
 import { useTranslation } from "@/i18n/useTranslation";
 import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
-import { useFormSubmit } from "@/lib/useFormSubmit";
-import { statKeys, statIcons } from "@/lib/statConfig";
-import { Disc3, ArrowRight, Music, Loader2 } from "lucide-react";
+import { Disc3, ArrowRight, Music } from "lucide-react";
 
 const featuredArtists = getFeaturedArtists();
 const featuredReleases = getFeaturedReleases();
 
 export default function HomePageClient() {
   const { t } = useTranslation();
-  const [nlEmail, setNlEmail] = useState("");
-  const { loading: nlLoading, success: nlSuccess, error: nlError, submitForm: nlSubmit, reset: nlReset } = useFormSubmit("/api/newsletter");
-
-  const handleNewsletter = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!nlEmail) return;
-    await nlSubmit({ email: nlEmail });
-    if (!nlError) setNlEmail("");
-  };
 
   return (
     <main id="main-content">
@@ -146,6 +134,7 @@ export default function HomePageClient() {
                       alt={featuredReleases[0].title}
                       width={400}
                       height={400}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="w-full h-full object-cover"
                     />
                   ) : (
@@ -176,27 +165,7 @@ export default function HomePageClient() {
       )}
 
       {/* Stats Banner */}
-      <section className="py-16 bg-surface border-y border-border">
-        <div className="mx-auto max-w-7xl px-6">
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {labelStats.map((stat) => (
-              <motion.div key={stat.label} variants={scaleIn} className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#E8385D]/10 text-[#E8385D] mb-3">
-                  {statIcons[stat.icon]}
-                </div>
-                <p className="text-3xl md:text-4xl font-bold text-gradient">{stat.value}</p>
-                <p className="text-sm text-muted mt-1 uppercase tracking-wider">{t(statKeys[stat.label])}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <StatsBar />
 
       {/* Featured Artists */}
       <section className="section-padding bg-background">
@@ -285,10 +254,10 @@ export default function HomePageClient() {
             <motion.div variants={fadeUp} className="flex items-end justify-between mb-10">
               <div>
                 <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
-                  Behind the Scenes
+                  {t("home.behindTheScenes")}
                 </p>
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                  Life at the Label
+                  {t("home.lifeAtTheLabel")}
                 </h2>
               </div>
               <Link
@@ -315,6 +284,7 @@ export default function HomePageClient() {
                     alt={photo.alt}
                     width={photo.span ? 600 : 300}
                     height={photo.span ? 600 : 300}
+                    sizes={photo.span ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -334,7 +304,7 @@ export default function HomePageClient() {
             viewport={{ once: true }}
           >
             <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted mb-8">
-              Featured In &amp; Partnered With
+              {t("home.featuredInPartners")}
             </p>
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-8 items-center">
               {[
@@ -357,7 +327,7 @@ export default function HomePageClient() {
                     alt={brand.alt}
                     width={100}
                     height={50}
-                    className="w-full h-auto max-h-10 object-contain opacity-40 hover:opacity-80 transition-opacity"
+                    className="w-full h-auto max-h-10 object-contain opacity-60 hover:opacity-100 transition-opacity"
                   />
                 </div>
               ))}
@@ -366,11 +336,11 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Newsletter + Demo CTA */}
+      {/* News + Demo CTA */}
       <section className="section-padding bg-background">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Newsletter CTA */}
+            {/* News CTA */}
             <motion.div
               className="glass-card rounded-2xl p-5 md:p-10"
               initial={{ opacity: 0, y: 30 }}
@@ -386,24 +356,23 @@ export default function HomePageClient() {
               <p className="text-text-secondary mb-6">
                 {t("home.joinCircleDesc")}
               </p>
-              <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  value={nlEmail}
-                  onChange={(e) => { setNlEmail(e.target.value); if (nlError) nlReset(); }}
-                  placeholder="your@email.com"
-                  required
-                  className="flex-1 rounded-lg bg-subtle/5 border border-border px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-[#E8385D] transition-colors"
-                />
-                <button
-                  type="submit"
-                  disabled={nlLoading}
-                  className="rounded-lg bg-[#E8385D] px-6 py-3 text-sm font-semibold text-white hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/20 whitespace-nowrap disabled:opacity-50 flex items-center justify-center gap-2"
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/news"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#E8385D] text-sm font-semibold text-white hover:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/20"
                 >
-                  {nlLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                  {nlSuccess ? t("common.subscribed") : t("common.subscribe")}
-                </button>
-              </form>
+                  {t("news.title")} <ArrowRight size={14} />
+                </Link>
+                <a
+                  href="https://open.spotify.com/user/31ddejxhfzv5bf7hka2mfmdbmb5a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border text-sm font-semibold text-foreground hover:bg-subtle/5 transition-all"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                  {t("common.openInSpotify")}
+                </a>
+              </div>
             </motion.div>
 
             {/* Demo CTA */}

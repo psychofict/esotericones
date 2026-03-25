@@ -103,12 +103,6 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   alternates: {
     canonical: "https://esotericones.com",
-    languages: {
-      "en": "https://esotericones.com",
-      "ko": "https://esotericones.com",
-      "fr": "https://esotericones.com",
-      "x-default": "https://esotericones.com",
-    },
   },
   robots: {
     index: true,

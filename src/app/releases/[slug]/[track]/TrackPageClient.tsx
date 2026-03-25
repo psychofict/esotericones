@@ -53,7 +53,7 @@ export default function TrackPageClient({ release, track }: TrackPageClientProps
               </div>
 
               <p className="text-xs text-muted uppercase tracking-wider mb-1">
-                Track {track.number} of {release.tracklist?.length ?? 0}
+                {t("release.trackOfTotal").replace("{current}", String(track.number)).replace("{total}", String(release.tracklist?.length ?? 0))}
               </p>
               <p className="text-sm text-text-secondary">
                 {release.title} &middot; {release.year}
@@ -73,7 +73,7 @@ export default function TrackPageClient({ release, track }: TrackPageClientProps
                   <h3 className="text-xs text-muted uppercase tracking-wider mb-3">
                     {t("release.tracklist")}
                   </h3>
-                  <div className="space-y-1 max-h-64 overflow-y-auto scrollbar-hide">
+                  <div className="space-y-1 max-h-64 overflow-y-auto">
                     {release.tracklist.map((t2) => (
                       <div key={t2.number}>
                         {t2.slug && t2.lyrics ? (
@@ -123,7 +123,7 @@ export default function TrackPageClient({ release, track }: TrackPageClientProps
                 <div className="glass-card rounded-2xl p-6 md:p-8">
                   <div className="flex items-center gap-2 mb-6">
                     <Music size={16} className="text-[#E8385D]" />
-                    <span className="text-xs text-muted uppercase tracking-wider font-semibold">Lyrics</span>
+                    <span className="text-xs text-muted uppercase tracking-wider font-semibold">{t("release.lyrics")}</span>
                   </div>
                   <div className="text-text-secondary leading-relaxed whitespace-pre-line text-sm md:text-base">
                     {track.lyrics}

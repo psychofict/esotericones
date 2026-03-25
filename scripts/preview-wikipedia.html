@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebstar – Wikipedia Preview</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Linux Libertine','Georgia','Times',serif; font-size: 14px; line-height: 1.6; color: #202122; background: #f8f9fa; }
+.wiki-container { max-width: 960px; margin: 0 auto; background: #fff; border: 1px solid #a7d7f9; }
+.wiki-header { background: #fff; border-bottom: 1px solid #a7d7f9; padding: 0.4em 1.5em; display: flex; align-items: center; gap: 8px; }
+.wiki-header svg { flex-shrink: 0; }
+.wiki-header span { font-family: 'Linux Libertine',Georgia,serif; font-size: 16px; }
+.wiki-tabs { background: #fff; border-bottom: 1px solid #a7d7f9; padding: 0 1.5em; display: flex; }
+.wiki-tab { padding: 6px 12px; font-size: 12.8px; color: #0645ad; cursor: pointer; border: 1px solid transparent; border-bottom: none; font-family: sans-serif; }
+.wiki-tab.active { background: #fff; border: 1px solid #a7d7f9; border-bottom: 1px solid #fff; margin-bottom: -1px; color: #202122; }
+.preview-banner { background: #fef6e7; border-bottom: 2px solid #f0c674; padding: 8px 1.5em; font-family: sans-serif; font-size: 13px; color: #664d03; }
+.wiki-body { padding: 1em 1.5em 2em; }
+h1.page-title { font-family: 'Linux Libertine',Georgia,serif; font-size: 28.8px; font-weight: normal; border-bottom: 1px solid #a2a9b1; padding-bottom: 0.2em; margin-bottom: 0.5em; line-height: 1.2; }
+h2 { font-family: 'Linux Libertine',Georgia,serif; font-size: 21.28px; font-weight: normal; border-bottom: 1px solid #a2a9b1; padding-bottom: 0.2em; margin: 1em 0 0.5em; }
+h3 { font-family: 'Linux Libertine',Georgia,serif; font-size: 17.6px; font-weight: bold; margin: 0.8em 0 0.4em; }
+p { margin: 0.5em 0; }
+a { color: #0645ad; text-decoration: none; }
+a:hover { text-decoration: underline; }
+sup.ref { font-size: 11px; vertical-align: super; line-height: 0; }
+sup.ref a { color: #0645ad; }
+.infobox { float: right; clear: right; margin: 0 0 1em 1.4em; width: 22em; border: 1px solid #a2a9b1; background: #f8f9fa; font-size: 88%; line-height: 1.5; border-spacing: 0; border-collapse: collapse; }
+.infobox-title { background: #cee0f2; padding: 0.4em 0.6em; font-size: 125%; font-weight: bold; text-align: center; }
+.infobox-image { text-align: center; padding: 0.5em; }
+.infobox-caption { font-size: 90%; color: #555; padding: 0.2em 0.5em; text-align: center; }
+.infobox tr td { padding: 0.2em 0.6em; vertical-align: top; border-top: 1px solid #eaecf0; }
+.infobox .label { font-weight: bold; width: 7em; }
+.hlist ul { display: inline; list-style: none; padding: 0; }
+.hlist li { display: inline; }
+.hlist li + li::before { content: " · "; color: #555; }
+table.wikitable { border-collapse: collapse; margin: 1em 0; background: #f8f9fa; border: 1px solid #a2a9b1; }
+table.wikitable th { background: #eaecf0; border: 1px solid #a2a9b1; padding: 0.2em 0.4em; text-align: left; font-weight: bold; }
+table.wikitable td { border: 1px solid #a2a9b1; padding: 0.2em 0.4em; }
+.reflist { font-size: 90%; margin-top: 0.5em; }
+.reflist ol { margin: 0; padding-left: 2em; }
+.reflist li { margin: 0.3em 0; }
+ul.ext-links { margin: 0.5em 0; padding-left: 1.6em; }
+ul.ext-links li { margin: 0.2em 0; }
+.catlinks { background: #f8f9fa; border: 1px solid #a2a9b1; padding: 0.5em 0.8em; margin-top: 2em; font-size: 90%; }
+.toc { background: #f8f9fa; border: 1px solid #a2a9b1; padding: 0.5em 1em; display: inline-block; margin: 0.5em 0 1em; font-size: 95%; }
+.toc-title { font-weight: bold; text-align: center; margin-bottom: 0.3em; }
+.toc ul { list-style: none; padding-left: 1.2em; margin: 0; }
+.toc > ul { padding-left: 0; }
+.toc li { margin: 0.15em 0; }
+.toc a { color: #0645ad; }
+.tocnum { color: #202122; margin-right: 0.3em; }
+</style>
+</head>
+<body>
+<div class="wiki-container">
+  <div class="wiki-header">
+    <svg width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="14" fill="none" stroke="#000" stroke-width="1"/><text x="15" y="20" text-anchor="middle" font-size="18" font-family="Linux Libertine,Georgia,serif" fill="#000">W</text></svg>
+    <span>Wikipedia <small style="color:#555;font-size:12px">The Free Encyclopedia</small></span>
+  </div>
+  <div class="wiki-tabs">
+    <div class="wiki-tab active">Article</div>
+    <div class="wiki-tab">Talk</div>
+    <div class="wiki-tab">Read</div>
+    <div class="wiki-tab">Edit</div>
+    <div class="wiki-tab">View history</div>
+  </div>
+  <div class="preview-banner">This is a <strong>local preview</strong> of a Wikipedia draft. Not yet published.</div>
+
+  <div class="wiki-body">
+    <h1 class="page-title">Ebstar</h1>
+
+    <!-- Infobox -->
+    <table class="infobox">
+      <tr><td colspan="2" class="infobox-title">Ebstar</td></tr>
+      <tr><td colspan="2" class="infobox-image">
+        <div style="background:#e8e8e8;height:220px;display:flex;align-items:center;justify-content:center;color:#666;font-style:italic;font-size:13px;">[Ebstar-profile.jpg]</div>
+      </td></tr>
+      <tr><td colspan="2" class="infobox-caption">Ebstar in Busan, South Korea, 2024</td></tr>
+      <tr><td class="label">Birth name</td><td>Ebenezer Tarubinga</td></tr>
+      <tr><td class="label">Born</td><td>29 November 2001 (age&nbsp;24)<br><a href="#">Bulawayo</a>, <a href="#">Zimbabwe</a></td></tr>
+      <tr><td class="label">Origin</td><td><a href="#">Seoul</a>, <a href="#">South Korea</a></td></tr>
+      <tr><td class="label">Genres</td><td>
+        <span class="hlist"><ul>
+          <li><a href="#">Piano house</a></li><li><a href="#">Dance-pop</a></li><li><a href="#">Amapiano</a></li><li><a href="#">Deep house</a></li><li><a href="#">Progressive house</a></li><li><a href="#">Future bass</a></li>
+        </ul></span>
+      </td></tr>
+      <tr><td class="label">Occupations</td><td>
+        <span class="hlist"><ul><li>Music producer</li><li>AI researcher</li><li>Record label founder</li></ul></span>
+      </td></tr>
+      <tr><td class="label">Instruments</td><td><span class="hlist"><ul><li><a href="#">DAW</a></li><li>Keyboard</li></ul></span></td></tr>
+      <tr><td class="label">Years active</td><td>2021–present</td></tr>
+      <tr><td class="label">Labels</td><td>The ESØTËRIC Ones</td></tr>
+      <tr><td class="label">Website</td><td><a href="https://ebstar.co">ebstar.co</a></td></tr>
+      <tr><td class="label">Associated acts</td><td>RATSBE, Trigger Mufasa, GillianBlxck, Roline</td></tr>
+    </table>
+
+    <!-- Lead -->
+    <p><b>Ebstar</b> (born <b>Ebenezer Tarubinga</b>; 29 November 2001), known in Korean as <b>에벤</b>, is a Zimbabwean <a href="#">music producer</a> and <a href="#">artificial intelligence</a> researcher based in <a href="#">Seoul</a>, <a href="#">South Korea</a>. His <a href="#">electronic dance music</a> draws on <a href="#">piano house</a>, <a href="#">dance-pop</a>, <a href="#">amapiano</a>, and <a href="#">deep house</a>. Several of his singles have charted on <a href="#">Spotify</a>'s national daily charts in <a href="#">South Korea</a>, <a href="#">Estonia</a>, and <a href="#">Luxembourg</a>,<sup class="ref"><a href="#ref-kworb">[1]</a></sup> and his catalogue has accumulated over five million streams across platforms.<sup class="ref"><a href="#ref-yna">[2]</a></sup></p>
+
+    <p>Tarubinga graduated with a Master of Science in Artificial Intelligence from <a href="#">Korea University</a> in 2026, publishing peer-reviewed research in <a href="#">computer vision</a> as first author at the <a href="#">International Joint Conference on Neural Networks</a>.<sup class="ref"><a href="#ref-cwbass">[3]</a></sup> He founded The ESØTËRIC Ones, an independent record label in Seoul, in 2023.<sup class="ref"><a href="#ref-beatport">[4]</a></sup></p>
+
+    <!-- ToC -->
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ul>
+        <li><a href="#early"><span class="tocnum">1</span> Early life and education</a></li>
+        <li><a href="#music"><span class="tocnum">2</span> Music career</a>
+          <ul>
+            <li><a href="#m1"><span class="tocnum">2.1</span> 2021–2022: Early releases and <i>Life Is Beautiful</i></a></li>
+            <li><a href="#m2"><span class="tocnum">2.2</span> 2023: <i>With Love, Ebstar</i> and label founding</a></li>
+            <li><a href="#m3"><span class="tocnum">2.3</span> 2024–present: Chart entries and continued releases</a></li>
+            <li><a href="#m4"><span class="tocnum">2.4</span> Musical style</a></li>
+          </ul>
+        </li>
+        <li><a href="#research"><span class="tocnum">3</span> Academic research</a></li>
+        <li><a href="#public"><span class="tocnum">4</span> Public profile</a></li>
+        <li><a href="#disco"><span class="tocnum">5</span> Discography</a></li>
+        <li><a href="#refs"><span class="tocnum">6</span> References</a></li>
+        <li><a href="#ext"><span class="tocnum">7</span> External links</a></li>
+      </ul>
+    </div>
+
+    <!-- Early life -->
+    <h2 id="early">Early life and education</h2>
+    <p>Ebenezer Tarubinga was born on 29 November 2001 in <a href="#">Bulawayo</a>, <a href="#">Zimbabwe</a>.<sup class="ref"><a href="#ref-yna">[2]</a></sup> He received a <a href="#">Global Korea Scholarship</a> and relocated to South Korea in 2022, the only recipient from Zimbabwe that year. In an interview with <i><a href="#">Yonhap News Agency</a></i>, he recalled that "the interviewers seemed to highly value my major and my passion."<sup class="ref"><a href="#ref-yna">[2]</a></sup></p>
+    <p>He enrolled in the Master of Science programme in Artificial Intelligence at <a href="#">Korea University</a>, graduating in 2026. His research, conducted under <a href="#">IEEE Fellow</a> Professor <a href="#">Seong-Whan Lee</a> at the Pattern Recognition and Machine Learning Laboratory, focused on <a href="#">computer vision</a> and <a href="#">large language models</a>.<sup class="ref"><a href="#ref-yna">[2]</a></sup><sup class="ref"><a href="#ref-ku">[5]</a></sup><sup class="ref"><a href="#ref-scholar">[6]</a></sup></p>
+
+    <!-- Music career -->
+    <h2 id="music">Music career</h2>
+
+    <h3 id="m1">2021–2022: Early releases and <i>Life Is Beautiful</i></h3>
+    <p>Ebstar began producing music in 2021, citing <a href="#">Avicii</a> and <a href="#">David Guetta</a> as early influences.<sup class="ref"><a href="#ref-yna">[2]</a></sup> He collaborated with producers internationally through online platforms during the <a href="#">COVID-19 pandemic</a>, releasing remixes on SkioMusic of tracks by <a href="#">Guster</a>, <a href="#">Busta Rhymes</a>, <a href="#">Vic Mensa</a>, and <a href="#">Sia</a>. SkioMusic noted that within a year of his debut he was ranked 290th on its World Producer Chart.<sup class="ref"><a href="#ref-beatport">[4]</a></sup></p>
+    <p>His debut studio album, <i>Life Is Beautiful</i>, was released in 2022 and comprised ten tracks spanning <a href="#">deep house</a>, <a href="#">progressive house</a>, and <a href="#">future bass</a>.<sup class="ref"><a href="#ref-spotify">[7]</a></sup></p>
+
+    <h3 id="m2">2023: <i>With Love, Ebstar</i> and label founding</h3>
+    <p>In 2023, Ebstar released the EP <i>With Love, Ebstar :)</i>, which included the single "After The Storm, You'll See The Sun".<sup class="ref"><a href="#ref-spotify">[7]</a></sup> He founded The ESØTËRIC Ones, an independent record label based in Seoul, the same year; <i>Yonhap News</i> reported that the label had ten artists at the time of its profile.<sup class="ref"><a href="#ref-yna">[2]</a></sup><sup class="ref"><a href="#ref-beatport">[4]</a></sup></p>
+
+    <h3 id="m3">2024–present: Chart entries and continued releases</h3>
+    <p>In 2024, Ebstar released <i>ECHOES OF LOVE I (Deluxe Version)</i> and <i>Maknaebe (Deluxe Version)</i>, the latter a 23-track collaborative album with RATSBE.<sup class="ref"><a href="#ref-spotify">[7]</a></sup><sup class="ref"><a href="#ref-beatport">[4]</a></sup></p>
+    <p>Several singles charted on Spotify's national daily charts during this period: "sexual pt. I (ecstasy)" peaked at number 9 in <a href="#">Estonia</a>, "what does it mean to be happy?" reached number 37 in <a href="#">Luxembourg</a>, "The Breakup Anthem" reached number 45 in <a href="#">South Korea</a>, and "But....I DONT TRUST YOU" peaked at number 41 in Luxembourg.<sup class="ref"><a href="#ref-kworb">[1]</a></sup></p>
+    <p>In his Yonhap profile, Tarubinga said he was surprised his work had gained recognition in Korea without active domestic promotion. He described the ethos of his music: "Within my upbeat EDM, there are messages of love and hope — it comes from a wish for everyone to overcome their own adversities."<sup class="ref"><a href="#ref-yna">[2]</a></sup></p>
+
+    <h3 id="m4">Musical style</h3>
+    <p>Ebstar's production is rooted in <a href="#">house music</a>, particularly <a href="#">piano house</a>, incorporating elements of <a href="#">amapiano</a> and other African dance genres. In the Yonhap interview, he argued that African music should not be reduced to the umbrella term "<a href="#">Afrobeats</a>", highlighting the breadth of genres popular across the continent, among them <a href="#">amapiano</a>, <a href="#">Afropop</a>, and <a href="#">Congolese rumba</a>.<sup class="ref"><a href="#ref-yna">[2]</a></sup></p>
+
+    <!-- Research -->
+    <h2 id="research">Academic research</h2>
+    <p>Tarubinga's research at Korea University focused on <a href="#">semantic segmentation</a> and <a href="#">semi-supervised learning</a>. His paper "CW-BASS: Confidence-Weighted Boundary-Aware Learning for Semi-Supervised Semantic Segmentation", co-authored with Jenifer Kalafatovich Espinoza and <a href="#">Seong-Whan Lee</a>, was accepted at the <a href="#">IEEE International Joint Conference on Neural Networks</a> (IJCNN 2025).<sup class="ref"><a href="#ref-cwbass">[3]</a></sup></p>
+
+    <!-- Public profile -->
+    <h2 id="public">Public profile</h2>
+    <p><i>Yonhap News</i> reported that Tarubinga has over 160,000 <a href="#">Instagram</a> followers and has served as a foreign promotional ambassador, travelling across South Korea to promote cities and cultural sites.<sup class="ref"><a href="#ref-yna">[2]</a></sup> He has held several government-affiliated positions, including Global SeoulMate with the Seoul Tourism Organisation (2023–2025), Korea Allimi with the <a href="#">Ministry of Foreign Affairs</a> (2023), and Outlookie Cultural Influencer with KOFICE and the <a href="#">Ministry of Culture, Sports and Tourism</a> (2023).<sup class="ref"><a href="#ref-yna">[2]</a></sup></p>
+    <p>In 2025, he was appointed a GINCON Committee Member, a programme affiliated with the <a href="#">National Assembly of South Korea</a>. <i><a href="#">Money Today</a></i> reported that GINCON had recognised 158 influencer teams from 28 countries since 2020.<sup class="ref"><a href="#ref-moneytoday">[8]</a></sup></p>
+
+    <!-- Discography -->
+    <h2 id="disco">Discography</h2>
+
+    <h3>Studio albums</h3>
+    <table class="wikitable">
+      <tr><th>Year</th><th>Title</th><th>Notes</th></tr>
+      <tr><td>2022</td><td><i>Life Is Beautiful</i></td><td>10 tracks</td></tr>
+      <tr><td>2024</td><td><i>ECHOES OF LOVE I (Deluxe Version)</i></td><td></td></tr>
+      <tr><td>2024</td><td><i>Maknaebe (Deluxe Version)</i></td><td>23 tracks; with RATSBE</td></tr>
+    </table>
+
+    <h3>EPs</h3>
+    <table class="wikitable">
+      <tr><th>Year</th><th>Title</th></tr>
+      <tr><td>2023</td><td><i>With Love, Ebstar :)</i></td></tr>
+    </table>
+
+    <h3>Charted singles</h3>
+    <table class="wikitable">
+      <tr><th>Year</th><th>Title</th><th>Peak chart positions</th></tr>
+      <tr><td>2025</td><td>"When I Think of You (Summer)"</td><td><small><a href="#">LU</a>: #69</small><sup class="ref"><a href="#ref-kworb">[1]</a></sup></td></tr>
+      <tr><td>2024</td><td>"sexual pt. I (ecstasy)"</td><td><small><a href="#">EE</a>: #9</small><sup class="ref"><a href="#ref-kworb">[1]</a></sup></td></tr>
+      <tr><td>2024</td><td>"what does it mean to be happy?"</td><td><small><a href="#">LU</a>: #37</small><sup class="ref"><a href="#ref-kworb">[1]</a></sup></td></tr>
+      <tr><td>2024</td><td>"The Breakup Anthem"</td><td><small><a href="#">KR</a>: #45</small><sup class="ref"><a href="#ref-kworb">[1]</a></sup></td></tr>
+      <tr><td>2024</td><td>"But....I DONT TRUST YOU"</td><td><small><a href="#">LU</a>: #41</small><sup class="ref"><a href="#ref-kworb">[1]</a></sup></td></tr>
+      <tr><td>2024</td><td>"COMING BACK FOR MORE"</td><td><small><a href="#">KR</a>: #100</small><sup class="ref"><a href="#ref-kworb">[1]</a></sup></td></tr>
+    </table>
+
+    <!-- References -->
+    <h2 id="refs">References</h2>
+    <div class="reflist">
+      <ol>
+        <li id="ref-kworb"><a href="https://kworb.net/spotify/artist/4mH71Zjiq36Q3SI7IZIBQK.html">"Ebstar – Spotify Chart History"</a>. <i>Kworb</i>.</li>
+        <li id="ref-yna">Im Kyung-bin (2 October 2025). <a href="https://www.yna.co.kr/view/AKR20251002123900898">"[우리품의 아프리카인] ⑸'한국서 AI·음악 둘 다 잡을래요'"</a> [Africans in Our Embrace, Part 5: "I want to succeed in both AI and music in Korea"]. <i>Yonhap News Agency</i> (in Korean).</li>
+        <li id="ref-cwbass">Tarubinga, Ebenezer; Kalafatovich Espinoza, Jenifer; Lee, Seong-Whan. "CW-BASS: Confidence-Weighted Boundary-Aware Learning for Semi-Supervised Semantic Segmentation". <i>Proceedings of the IEEE IJCNN</i>. 2025. <a href="https://arxiv.org/abs/2502.15152">arXiv:2502.15152</a>.</li>
+        <li id="ref-beatport"><a href="https://www.beatport.com/artist/ebstar/1011858">"Ebstar"</a>. <i>Beatport</i>.</li>
+        <li id="ref-ku"><a href="https://xai.korea.ac.kr/">"Pattern Recognition & Machine Learning Lab"</a>. Korea University.</li>
+        <li id="ref-scholar"><a href="https://scholar.google.com/citations?user=W818y-gAAAAJ">"Ebenezer Tarubinga"</a>. <i>Google Scholar</i>.</li>
+        <li id="ref-spotify"><a href="https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK">"Ebstar on Spotify"</a>. <i>Spotify</i>.</li>
+        <li id="ref-moneytoday">"진콘, '1월 이달의 인플루언서' 시상식 개최" [GINCON holds January 'Influencer of the Month' awards ceremony]. <i>Money Today</i> (in Korean). 10 January 2025.</li>
+      </ol>
+    </div>
+
+    <!-- External links -->
+    <h2 id="ext">External links</h2>
+    <ul class="ext-links">
+      <li><a href="https://ebstar.co">Official website</a></li>
+      <li><a href="https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK">Ebstar</a> on <a href="#">Spotify</a></li>
+      <li><a href="https://scholar.google.com/citations?user=W818y-gAAAAJ">Ebenezer Tarubinga</a> on <a href="#">Google Scholar</a></li>
+    </ul>
+
+    <div class="catlinks">
+      <b>Categories:</b>
+      <a href="#">2001 births</a> · <a href="#">Living people</a> · <a href="#">People from Bulawayo</a> · <a href="#">Zimbabwean musicians</a> · <a href="#">Zimbabwean emigrants to South Korea</a> · <a href="#">Electronic dance music DJs</a> · <a href="#">Deep house musicians</a> · <a href="#">Amapiano musicians</a> · <a href="#">Artificial intelligence researchers</a> · <a href="#">Korea University alumni</a> · <a href="#">Global Korea Scholarship recipients</a> · <a href="#">Record label founders</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

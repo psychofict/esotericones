@@ -55,7 +55,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-11 h-11 rounded-full bg-subtle/5 flex items-center justify-center text-foreground/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
+                  className="w-11 h-11 rounded-full bg-subtle/5 flex items-center justify-center text-muted transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
                 >
                   {socialIcons[social.icon]}
                 </a>
@@ -79,7 +79,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground/50 transition-colors hover:text-foreground"
+                    className="text-sm text-text-secondary transition-colors hover:text-foreground"
                   >
                     {link.name}
                   </Link>
@@ -100,7 +100,7 @@ export default function Footer() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-foreground/50 transition-colors hover:text-foreground inline-flex items-center gap-2"
+                    className="text-sm text-text-secondary transition-colors hover:text-foreground inline-flex items-center gap-2"
                   >
                     <span className="text-[#E8385D]/60">{socialIcons[social.icon]}</span>
                     {social.name}
@@ -141,6 +141,7 @@ export default function Footer() {
                 onChange={(e) => { setEmail(e.target.value); if (error) reset(); }}
                 placeholder="your@email.com"
                 required
+                aria-label={t("contact.emailField")}
                 className="w-full rounded-lg bg-subtle/5 border border-border px-4 py-2.5 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-[#E8385D] focus:ring-1 focus:ring-[#E8385D] transition-colors"
               />
               <button
@@ -167,14 +168,14 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-6 py-6 sm:flex-row sm:justify-between">
-          <p className="text-xs text-foreground/30">
+          <p className="text-xs text-muted">
             &copy; {new Date().getFullYear()} The ES&Oslash;T&Euml;RIC Ones. {t("footer.allRights")}
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/contact" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors py-2">
+            <Link href="/contact" className="text-xs text-muted hover:text-foreground transition-colors py-2">
               {t("footer.contact")}
             </Link>
-            <Link href="/about" className="text-xs text-foreground/30 hover:text-foreground/50 transition-colors py-2">
+            <Link href="/about" className="text-xs text-muted hover:text-foreground transition-colors py-2">
               {t("nav.about")}
             </Link>
           </div>

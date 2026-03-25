@@ -22,41 +22,38 @@ const navTranslationKeys: Record<string, keyof TranslationKeys> = {
   About: "nav.about",
 };
 
-interface DropdownItem {
-  label: string;
-  href: string;
-}
+type DropdownConfig = { translationKey?: keyof TranslationKeys; label?: string; href: string };
 
-const dropdownItems: Record<string, DropdownItem[]> = {
+const dropdownConfig: Record<string, DropdownConfig[]> = {
   Artists: [
-    { label: "All Artists", href: "/artists" },
+    { translationKey: "nav.allArtists", href: "/artists" },
     { label: "Ebstar", href: "/artists/ebstar" },
     { label: "RATSBE", href: "/artists/ratsbe" },
     { label: "SkyDAWN", href: "/artists/skydawn" },
     { label: "Piecemaker", href: "/artists/piecemaker" },
   ],
   Releases: [
-    { label: "All Releases", href: "/releases" },
+    { translationKey: "nav.allReleases", href: "/releases" },
     { label: "Maknaebe", href: "/releases/maknaebe" },
     { label: "ECHOES OF LOVE I", href: "/releases/echoes-of-love" },
     { label: "KUZOKHANYA", href: "/releases/kuzokhanya" },
     { label: "Life Is Beautiful", href: "/releases/life-is-beautiful" },
   ],
   About: [
-    { label: "About the Label", href: "/about" },
-    { label: "Contact", href: "/contact" },
-    { label: "Submit a Demo", href: "/demos" },
+    { translationKey: "nav.aboutTheLabel", href: "/about" },
+    { translationKey: "nav.contact", href: "/contact" },
+    { translationKey: "nav.submitDemo", href: "/demos" },
   ],
   Tour: [
-    { label: "Tour Dates", href: "/tour" },
-    { label: "Events", href: "/events" },
+    { translationKey: "nav.tourDates", href: "/tour" },
+    { translationKey: "nav.events", href: "/events" },
   ],
 };
 
 function NavDropdown({ item, t }: { item: { name: string; href: string }; t: (key: keyof TranslationKeys) => string }) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const items = dropdownItems[item.name];
+  const items = dropdownConfig[item.name];
 
   const handleEnter = () => {
     clearTimeout(timeoutRef.current);
@@ -85,6 +82,8 @@ function NavDropdown({ item, t }: { item: { name: string; href: string }; t: (ke
     <li className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <Link
         href={item.href}
+        aria-expanded={open}
+        aria-haspopup="true"
         className="relative px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground group inline-flex items-center gap-1"
       >
         {t(navTranslationKeys[item.name])}
@@ -99,6 +98,7 @@ function NavDropdown({ item, t }: { item: { name: string; href: string }; t: (ke
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.15 }}
+            role="menu"
             className="absolute top-full left-0 mt-1 min-w-[200px] rounded-xl bg-background/95 backdrop-blur-xl border border-border shadow-xl shadow-black/20 overflow-hidden z-50"
           >
             <div className="py-2">
@@ -106,10 +106,11 @@ function NavDropdown({ item, t }: { item: { name: string; href: string }; t: (ke
                 <Link
                   key={sub.href}
                   href={sub.href}
+                  role="menuitem"
                   onClick={() => setOpen(false)}
                   className="block px-4 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-[#E8385D]/10 transition-colors"
                 >
-                  {sub.label}
+                  {sub.translationKey ? t(sub.translationKey) : sub.label}
                 </Link>
               ))}
             </div>
@@ -122,7 +123,7 @@ function NavDropdown({ item, t }: { item: { name: string; href: string }; t: (ke
 
 function MobileDropdown({ item, t, onClose }: { item: { name: string; href: string }; t: (key: keyof TranslationKeys) => string; onClose: () => void }) {
   const [expanded, setExpanded] = useState(false);
-  const items = dropdownItems[item.name];
+  const items = dropdownConfig[item.name];
 
   if (!items) {
     return (
@@ -140,6 +141,7 @@ function MobileDropdown({ item, t, onClose }: { item: { name: string; href: stri
     <div className="flex flex-col items-center">
       <button
         onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
         className="text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center gap-2"
       >
         {t(navTranslationKeys[item.name])}
@@ -161,7 +163,7 @@ function MobileDropdown({ item, t, onClose }: { item: { name: string; href: stri
                 onClick={onClose}
                 className="text-lg text-foreground/60 hover:text-[#E8385D] transition-colors min-h-[40px] inline-flex items-center"
               >
-                {sub.label}
+                {sub.translationKey ? t(sub.translationKey) : sub.label}
               </Link>
             ))}
           </motion.div>
@@ -187,6 +189,15 @@ export default function Navbar() {
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [mobileOpen]);
 
   return (
@@ -240,7 +251,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-foreground/40 transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-muted transition-all hover:text-[#E8385D] hover:bg-[#E8385D]/10"
               >
                 {socialIcons[social.icon]}
               </a>
@@ -321,7 +332,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-11 h-11 rounded-full bg-subtle/5 flex items-center justify-center text-foreground/50 transition-colors hover:text-[#E8385D] hover:bg-[#E8385D]/10"
+                  className="w-11 h-11 rounded-full bg-subtle/5 flex items-center justify-center text-muted transition-colors hover:text-[#E8385D] hover:bg-[#E8385D]/10"
                 >
                   {socialIcons[social.icon]}
                 </a>

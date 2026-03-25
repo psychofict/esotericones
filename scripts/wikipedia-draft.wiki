@@ -1,0 +1,138 @@
+{{Infobox musical artist
+| name            = Ebstar
+| image           = Ebstar-profile.jpg
+| caption         = Ebstar in Busan, South Korea, 2024
+| birth_name      = Ebenezer Tarubinga
+| birth_date      = {{Birth date and age|2001|11|29}}
+| birth_place     = [[Bulawayo]], [[Zimbabwe]]
+| origin          = [[Seoul]], [[South Korea]]
+| genre           = {{flatlist|
+* [[Piano house]]
+* [[Dance-pop]]
+* [[Amapiano]]
+* [[Deep house]]
+* [[Progressive house]]
+* [[Future bass]]
+}}
+| occupation      = {{flatlist|
+* Music producer
+* AI researcher
+* Record label founder
+}}
+| instruments     = {{flatlist|
+* [[Digital audio workstation]]
+* Keyboard
+}}
+| years_active    = 2021–present
+| label           = The ESØTËRIC Ones
+| website         = {{URL|ebstar.co}}
+| associated_acts = RATSBE, Trigger Mufasa, GillianBlxck, Roline
+}}
+
+'''Ebstar''' (born '''Ebenezer Tarubinga'''; 29 November 2001), known in Korean as '''에벤''', is a Zimbabwean [[music producer]] and [[artificial intelligence]] researcher based in [[Seoul]], [[South Korea]]. His [[electronic dance music]] draws on [[piano house]], [[dance-pop]], [[amapiano]], and [[deep house]]. Several of his singles have charted on [[Spotify]]'s national daily charts in [[South Korea]], [[Estonia]], and [[Luxembourg]],<ref name="kworb">{{cite web |url=https://kworb.net/spotify/artist/4mH71Zjiq36Q3SI7IZIBQK.html |title=Ebstar – Spotify Chart History |publisher=Kworb |access-date=2026-03-03}}</ref> and his catalogue has accumulated over five million streams across platforms.<ref name="yna">{{cite news |url=https://www.yna.co.kr/view/AKR20251002123900898 |title=[우리품의 아프리카인] ⑸"한국서 AI·음악 둘 다 잡을래요" |trans-title=[Africans in Our Embrace] Part 5: "I want to succeed in both AI and music in Korea" |publisher=[[Yonhap News Agency]] |author=Im Kyung-bin |date=2025-10-02 |language=ko |access-date=2026-03-03}}</ref>
+
+Tarubinga graduated with a Master of Science in Artificial Intelligence from [[Korea University]] in 2026, publishing peer-reviewed research in [[computer vision]] as first author at the [[International Joint Conference on Neural Networks]].<ref name="cwbass">{{cite journal |last1=Tarubinga |first1=Ebenezer |last2=Kalafatovich Espinoza |first2=Jenifer |last3=Lee |first3=Seong-Whan |title=CW-BASS: Confidence-Weighted Boundary-Aware Learning for Semi-Supervised Semantic Segmentation |journal=Proceedings of the IEEE International Joint Conference on Neural Networks (IJCNN) |year=2025 |arxiv=2502.15152}}</ref> He founded The ESØTËRIC Ones, an independent record label in Seoul, in 2023.<ref name="beatport">{{cite web |url=https://www.beatport.com/artist/ebstar/1011858 |title=Ebstar |publisher=[[Beatport]] |access-date=2026-03-03}}</ref>
+
+== Early life and education ==
+
+Ebenezer Tarubinga was born on 29 November 2001 in [[Bulawayo]], [[Zimbabwe]].<ref name="yna" /> He received a [[Global Korea Scholarship]] and relocated to South Korea in 2022, the only recipient from Zimbabwe that year. In an interview with ''[[Yonhap News Agency]]'', he recalled that "the interviewers seemed to highly value my major and my passion."<ref name="yna" />
+
+He enrolled in the Master of Science programme in Artificial Intelligence at [[Korea University]], graduating in 2026. His research, conducted under [[IEEE Fellow]] Professor [[Seong-Whan Lee]] at the Pattern Recognition and Machine Learning Laboratory, focused on [[computer vision]] and [[large language model]]s.<ref name="yna" /><ref name="ku-lab">{{cite web |url=https://xai.korea.ac.kr/ |title=Pattern Recognition & Machine Learning Lab |publisher=Korea University |access-date=2026-03-03}}</ref><ref name="scholar">{{cite web |url=https://scholar.google.com/citations?user=W818y-gAAAAJ |title=Ebenezer Tarubinga – Google Scholar |publisher=[[Google Scholar]] |access-date=2026-03-03}}</ref>
+
+== Music career ==
+
+=== 2021–2022: Early releases and ''Life Is Beautiful'' ===
+
+Ebstar began producing music in 2021, citing [[Avicii]] and [[David Guetta]] as early influences.<ref name="yna" /> He collaborated with producers internationally through online platforms during the [[COVID-19 pandemic]], releasing remixes on SkioMusic of tracks by [[Guster]], [[Busta Rhymes]], [[Vic Mensa]], and [[Sia]]. SkioMusic noted that within a year of his debut he was ranked 290th on its World Producer Chart.<ref name="beatport" />
+
+His debut studio album, ''Life Is Beautiful'', was released in 2022 and comprised ten tracks spanning [[deep house]], [[progressive house]], and [[future bass]].<ref name="spotify">{{cite web |url=https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK |title=Ebstar on Spotify |publisher=[[Spotify]] |access-date=2026-03-03}}</ref>
+
+=== 2023: ''With Love, Ebstar'' and label founding ===
+
+In 2023, Ebstar released the EP ''With Love, Ebstar :)'', which included the single "After The Storm, You'll See The Sun".<ref name="spotify" /> He founded The ESØTËRIC Ones, an independent record label based in Seoul, the same year; ''Yonhap News'' reported that the label had ten artists at the time of its profile.<ref name="yna" /><ref name="beatport" />
+
+=== 2024–present: Chart entries and continued releases ===
+
+In 2024, Ebstar released ''ECHOES OF LOVE I (Deluxe Version)'' and ''Maknaebe (Deluxe Version)'', the latter a 23-track collaborative album with RATSBE.<ref name="spotify" /><ref name="beatport" />
+
+Several singles charted on Spotify's national daily charts during this period: "sexual pt. I (ecstasy)" peaked at number 9 in [[Estonia]], "what does it mean to be happy?" reached number 37 in [[Luxembourg]], "The Breakup Anthem" reached number 45 in [[South Korea]], and "But....I DONT TRUST YOU" peaked at number 41 in Luxembourg.<ref name="kworb" />
+
+In his Yonhap profile, Tarubinga said he was surprised his work had gained recognition in Korea without active domestic promotion. He described the ethos of his music: "Within my upbeat EDM, there are messages of love and hope — it comes from a wish for everyone to overcome their own adversities."<ref name="yna" />
+
+=== Musical style ===
+
+Ebstar's production is rooted in [[house music]], particularly [[piano house]], incorporating elements of [[amapiano]] and other African dance genres. In the Yonhap interview, he argued that African music should not be reduced to the umbrella term "[[Afrobeats]]", highlighting the breadth of genres popular across the continent, among them [[amapiano]], [[Afropop]], and [[Congolese rumba]].<ref name="yna" />
+
+== Academic research ==
+
+Tarubinga's research at Korea University focused on [[semantic segmentation]] and [[semi-supervised learning]]. His paper "CW-BASS: Confidence-Weighted Boundary-Aware Learning for Semi-Supervised Semantic Segmentation", co-authored with Jenifer Kalafatovich Espinoza and [[Seong-Whan Lee]], was accepted at the [[International Joint Conference on Neural Networks|IEEE International Joint Conference on Neural Networks]] (IJCNN 2025).<ref name="cwbass" />
+
+== Public profile ==
+
+''Yonhap News'' reported that Tarubinga has over 160,000 [[Instagram]] followers and has served as a foreign promotional ambassador, travelling across South Korea to promote cities and cultural sites.<ref name="yna" /> He has held several government-affiliated positions, including Global SeoulMate with the Seoul Tourism Organisation (2023–2025), Korea Allimi with the [[Ministry of Foreign Affairs (South Korea)|Ministry of Foreign Affairs]] (2023), and Outlookie Cultural Influencer with KOFICE and the [[Ministry of Culture, Sports and Tourism]] (2023).<ref name="yna" />
+
+In 2025, he was appointed a GINCON Committee Member, a programme affiliated with the [[National Assembly (South Korea)|National Assembly of South Korea]]. ''[[Money Today]]'' reported that GINCON had recognised 158 influencer teams from 28 countries since 2020.<ref name="moneytoday">{{cite news |url=https://www.mt.co.kr/world/2025/01/10/2025011013013953802 |title=진콘, '1월 이달의 인플루언서' 시상식 개최 |trans-title=GINCON holds January 'Influencer of the Month' awards ceremony |publisher=[[Money Today]] |date=2025-01-10 |language=ko |access-date=2026-03-03}}</ref>
+
+== Discography ==
+
+=== Studio albums ===
+{| class="wikitable"
+|-
+! Year !! Title !! Notes
+|-
+| 2022 || ''Life Is Beautiful'' || 10 tracks
+|-
+| 2024 || ''ECHOES OF LOVE I (Deluxe Version)'' ||
+|-
+| 2024 || ''Maknaebe (Deluxe Version)'' || 23 tracks; with RATSBE
+|}
+
+=== EPs ===
+{| class="wikitable"
+|-
+! Year !! Title
+|-
+| 2023 || ''With Love, Ebstar :)''
+|}
+
+=== Charted singles ===
+{| class="wikitable plainrowheaders"
+|-
+! Year !! Title !! Peak chart positions
+|-
+| 2025 || "When I Think of You (Summer)" || {{small|[[Luxembourg|LU]]: #69}}<ref name="kworb" />
+|-
+| 2024 || "sexual pt. I (ecstasy)" || {{small|[[Estonia|EE]]: #9}}<ref name="kworb" />
+|-
+| 2024 || "what does it mean to be happy?" || {{small|[[Luxembourg|LU]]: #37}}<ref name="kworb" />
+|-
+| 2024 || "The Breakup Anthem" || {{small|[[South Korea|KR]]: #45}}<ref name="kworb" />
+|-
+| 2024 || "But....I DONT TRUST YOU" || {{small|[[Luxembourg|LU]]: #41}}<ref name="kworb" />
+|-
+| 2024 || "COMING BACK FOR MORE" || {{small|[[South Korea|KR]]: #100}}<ref name="kworb" />
+|}
+
+== References ==
+{{Reflist}}
+
+== External links ==
+* {{Official website|https://ebstar.co}}
+* [https://open.spotify.com/artist/4mH71Zjiq36Q3SI7IZIBQK Ebstar] on [[Spotify]]
+* [https://scholar.google.com/citations?user=W818y-gAAAAJ Ebenezer Tarubinga] on [[Google Scholar]]
+
+{{Authority control}}
+
+{{DEFAULTSORT:Tarubinga, Ebenezer}}
+[[Category:2001 births]]
+[[Category:Living people]]
+[[Category:People from Bulawayo]]
+[[Category:Zimbabwean musicians]]
+[[Category:Zimbabwean emigrants to South Korea]]
+[[Category:Electronic dance music DJs]]
+[[Category:Deep house musicians]]
+[[Category:Amapiano musicians]]
+[[Category:Artificial intelligence researchers]]
+[[Category:Korea University alumni]]
+[[Category:Global Korea Scholarship recipients]]
+[[Category:Record label founders]]

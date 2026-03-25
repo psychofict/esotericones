@@ -72,6 +72,7 @@ export default function ReleasesPageClient() {
               <button
                 key={type}
                 onClick={() => setFilterType(filterType === type ? null : type)}
+                aria-pressed={filterType === type}
                 className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   filterType === type
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
@@ -90,6 +91,7 @@ export default function ReleasesPageClient() {
               <button
                 key={year}
                 onClick={() => setFilterYear(filterYear === year ? null : year)}
+                aria-pressed={filterYear === year}
                 className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   filterYear === year
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
@@ -104,10 +106,11 @@ export default function ReleasesPageClient() {
           {/* Genre filters */}
           <div className="flex flex-wrap gap-2">
             <span className="text-xs text-muted uppercase tracking-wider self-center mr-2">{t("common.genre")}</span>
-            {genres.slice(0, 8).map((genre) => (
+            {genres.map((genre) => (
               <button
                 key={genre}
                 onClick={() => setFilterGenre(filterGenre === genre ? null : genre)}
+                aria-pressed={filterGenre === genre}
                 className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   filterGenre === genre
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
@@ -118,6 +121,21 @@ export default function ReleasesPageClient() {
               </button>
             ))}
           </div>
+
+          {/* Result count + Reset */}
+          {(filterType || filterYear || filterGenre) && (
+            <div className="flex items-center gap-4 pt-2">
+              <span className="text-sm text-text-secondary">
+                {t("common.showingResults").replace("{count}", String(filtered.length)).replace("{total}", String(releases.length))}
+              </span>
+              <button
+                onClick={() => { setFilterType(null); setFilterYear(null); setFilterGenre(null); }}
+                className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors font-medium"
+              >
+                {t("common.resetFilters")}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -145,6 +163,7 @@ export default function ReleasesPageClient() {
                           alt={release.title}
                           width={300}
                           height={300}
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (

@@ -11,6 +11,12 @@ export const ko: TranslationKeys = {
   "nav.submitDemo": "데모 제출",
   "nav.openMenu": "메뉴 열기",
   "nav.closeMenu": "메뉴 닫기",
+  "nav.allArtists": "전체 아티스트",
+  "nav.allReleases": "전체 발매",
+  "nav.aboutTheLabel": "레이블 소개",
+  "nav.tourDates": "투어 일정",
+  "nav.events": "이벤트",
+  "nav.contact": "연락처",
 
   // Common
   "common.viewAll": "전체 보기",
@@ -30,6 +36,8 @@ export const ko: TranslationKeys = {
   "common.single": "싱글",
   "common.sending": "전송 중...",
   "common.openInSpotify": "Spotify에서 열기",
+  "common.resetFilters": "초기화",
+  "common.showingResults": "{total}개 중 {count}개 표시",
 
   // Stats
   "stats.artists": "아티스트",
@@ -55,6 +63,9 @@ export const ko: TranslationKeys = {
   "home.submitDemoDesc":
     "로스터에 합류하고 싶으신가요? 당신의 음악이 대담하고, 감성적이며, 거침없다면 \u2014 보내주세요.",
   "home.submitADemo": "데모 제출하기",
+  "home.behindTheScenes": "비하인드 스토리",
+  "home.lifeAtTheLabel": "레이블의 일상",
+  "home.featuredInPartners": "미디어 & 파트너",
 
   // About
   "about.ourStory": "우리의 이야기",
@@ -75,6 +86,8 @@ export const ko: TranslationKeys = {
     "우리는 우리의 비전을 공유하는 아티스트, 협업자, 파트너를 항상 찾고 있습니다.",
   "about.submitADemo": "데모 제출하기",
   "about.getInTouch": "연락하기",
+  "about.gallery": "갤러리",
+  "about.partnersCollaborators": "파트너 & 협력사",
 
   // About timeline
   "about.timeline.2023":
@@ -111,6 +124,20 @@ export const ko: TranslationKeys = {
   "release.tracklist": "트랙리스트",
   "release.credits": "크레딧",
   "release.featuring": "feat.",
+  "release.lyrics": "가사",
+  "release.trackOfTotal": "트랙 {current} / {total}",
+
+  // Purchase / Download
+  "release.buyDigital": "디지털 구매",
+  "release.redirecting": "리디렉션 중...",
+  "download.title": "음악 다운로드",
+  "download.success": "결제가 완료되었습니다!",
+  "download.downloadButton": "다운로드",
+  "download.emailSent": "다운로드 링크가 이메일로도 전송되었습니다.",
+  "download.linkExpiry": "이 링크는 72시간 후에 만료됩니다.",
+  "download.backToReleases": "발매 목록으로",
+  "download.expired": "이 다운로드 링크가 만료되었습니다.",
+  "download.error": "문제가 발생했습니다. 문의해 주세요.",
 
   // Contact
   "contact.getInTouch": "문의하기",
@@ -187,6 +214,11 @@ export const ko: TranslationKeys = {
   "news.title": "뉴스",
   "news.backToNews": "뉴스로 돌아가기",
   "news.moreNews": "더 많은 뉴스",
+  "news.readMore": "자세히 보기",
+  "news.category.release": "발매",
+  "news.category.label": "레이블",
+  "news.category.artist": "아티스트",
+  "news.category.event": "이벤트",
   "news.description":
     "The ES\u00D8T\u00CBRIC Ones의 아티스트 발표, 발매 분석, 비하인드 스토리. 계속 지켜봐 주세요.",
 
@@ -199,11 +231,13 @@ export const ko: TranslationKeys = {
   "tour.bookHeading": "이벤트에 아티스트를 예약하세요",
   "tour.bookDescription":
     "우리의 아티스트는 콘서트, 페스티벌, 기업 행사, 개인 부킹에 전 세계 어디서든 참여할 수 있습니다.",
+  "tour.pastEvents": "지난 공연",
 
   // Merch
   "merch.title": "굿즈 스토어",
   "merch.description":
     "The ES\u00D8T\u00CBRIC Ones 공식 굿즈가 준비 중입니다. 독점 드롭을 기대해 주세요.",
+  "merch.preview": "미리보기",
 
   // Events
   "events.title": "이벤트",

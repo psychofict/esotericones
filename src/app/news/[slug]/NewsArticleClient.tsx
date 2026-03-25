@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 import type { NewsPost } from "@/data/news";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
+import type { TranslationKeys } from "@/i18n/types";
+
+const categoryTranslationKeys: Record<string, keyof TranslationKeys> = {
+  release: "news.category.release",
+  label: "news.category.label",
+  artist: "news.category.artist",
+  event: "news.category.event",
+};
 
 const localeMap: Record<string, string> = {
   en: "en-US",
@@ -36,7 +44,7 @@ export default function NewsArticleClient({ post, relatedPosts }: NewsArticleCli
             animate={{ opacity: 1, y: 0 }}
           >
             <span className="text-xs text-[#E8385D] uppercase tracking-wider font-semibold">
-              {post.category}
+              {t(categoryTranslationKeys[post.category])}
             </span>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
               {post.title}
@@ -84,7 +92,7 @@ export default function NewsArticleClient({ post, relatedPosts }: NewsArticleCli
                 >
                   <div>
                     <span className="text-xs text-[#E8385D] uppercase tracking-wider">
-                      {rp.category}
+                      {t(categoryTranslationKeys[rp.category])}
                     </span>
                     <h3 className="text-sm font-semibold text-foreground group-hover:text-[#E8385D] transition-colors mt-1">
                       {rp.title}

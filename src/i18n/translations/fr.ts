@@ -11,6 +11,12 @@ export const fr: TranslationKeys = {
   "nav.submitDemo": "Soumettre une d\u00E9mo",
   "nav.openMenu": "Ouvrir le menu",
   "nav.closeMenu": "Fermer le menu",
+  "nav.allArtists": "Tous les artistes",
+  "nav.allReleases": "Toutes les sorties",
+  "nav.aboutTheLabel": "\u00C0 propos du label",
+  "nav.tourDates": "Dates de tourn\u00E9e",
+  "nav.events": "\u00C9v\u00E9nements",
+  "nav.contact": "Contact",
 
   // Common
   "common.viewAll": "Voir tout",
@@ -30,6 +36,8 @@ export const fr: TranslationKeys = {
   "common.single": "Single",
   "common.sending": "Envoi en cours...",
   "common.openInSpotify": "Ouvrir dans Spotify",
+  "common.resetFilters": "R\u00E9initialiser",
+  "common.showingResults": "{count} sur {total}",
 
   // Stats
   "stats.artists": "Artistes",
@@ -55,6 +63,9 @@ export const fr: TranslationKeys = {
   "home.submitDemoDesc":
     "Vous pensez avoir votre place dans notre roster ? Si votre son est audacieux, \u00E9motionnel et sans compromis \u2014 on veut l'entendre.",
   "home.submitADemo": "Soumettre une d\u00E9mo",
+  "home.behindTheScenes": "Les coulisses",
+  "home.lifeAtTheLabel": "La vie au label",
+  "home.featuredInPartners": "M\u00E9dias & partenaires",
 
   // About
   "about.ourStory": "Notre histoire",
@@ -75,6 +86,8 @@ export const fr: TranslationKeys = {
     "Nous recherchons toujours des artistes, collaborateurs et partenaires qui partagent notre vision.",
   "about.submitADemo": "Soumettre une d\u00E9mo",
   "about.getInTouch": "Nous contacter",
+  "about.gallery": "Galerie",
+  "about.partnersCollaborators": "Partenaires & collaborateurs",
 
   // About timeline
   "about.timeline.2023":
@@ -111,6 +124,20 @@ export const fr: TranslationKeys = {
   "release.tracklist": "Liste des titres",
   "release.credits": "Cr\u00E9dits",
   "release.featuring": "feat.",
+  "release.lyrics": "Paroles",
+  "release.trackOfTotal": "Titre {current} sur {total}",
+
+  // Purchase / Download
+  "release.buyDigital": "Acheter en digital",
+  "release.redirecting": "Redirection...",
+  "download.title": "Téléchargez votre musique",
+  "download.success": "Paiement réussi !",
+  "download.downloadButton": "Télécharger",
+  "download.emailSent": "Un lien de téléchargement a également été envoyé à votre e-mail.",
+  "download.linkExpiry": "Ce lien expire dans 72 heures.",
+  "download.backToReleases": "Retour aux sorties",
+  "download.expired": "Ce lien de téléchargement a expiré.",
+  "download.error": "Une erreur est survenue. Veuillez nous contacter.",
 
   // Contact
   "contact.getInTouch": "Nous contacter",
@@ -194,6 +221,11 @@ export const fr: TranslationKeys = {
   "news.title": "Actualit\u00E9s",
   "news.backToNews": "Retour aux actualit\u00E9s",
   "news.moreNews": "Plus d'actualit\u00E9s",
+  "news.readMore": "Lire la suite",
+  "news.category.release": "Sortie",
+  "news.category.label": "Label",
+  "news.category.artist": "Artiste",
+  "news.category.event": "\u00C9v\u00E9nement",
   "news.description":
     "Annonces d'artistes, analyses de sorties et histoires des coulisses de The ES\u00D8T\u00CBRIC Ones. Restez \u00E0 l'\u00E9coute.",
 
@@ -206,11 +238,13 @@ export const fr: TranslationKeys = {
   "tour.bookHeading": "R\u00E9servez nos artistes pour votre \u00E9v\u00E9nement",
   "tour.bookDescription":
     "Nos artistes sont disponibles pour des concerts, festivals, \u00E9v\u00E9nements d'entreprise et r\u00E9servations priv\u00E9es dans le monde entier.",
+  "tour.pastEvents": "\u00C9v\u00E9nements pass\u00E9s",
 
   // Merch
   "merch.title": "Boutique",
   "merch.description":
     "Le merchandising officiel de The ES\u00D8T\u00CBRIC Ones arrive bient\u00F4t. Restez \u00E0 l'\u00E9coute pour des drops exclusifs.",
+  "merch.preview": "Aper\u00E7u",
 
   // Events
   "events.title": "\u00C9v\u00E9nements",

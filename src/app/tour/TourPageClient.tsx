@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, Loader2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { fadeUp, stagger } from "@/lib/animations";
@@ -20,9 +20,15 @@ const pastEventPhotos = [
 export default function TourPageClient() {
   const { t } = useTranslation();
   const widgetRef = useRef<HTMLDivElement>(null);
+  const [widgetLoaded, setWidgetLoaded] = useState(false);
+  const [widgetError, setWidgetError] = useState(false);
 
   useEffect(() => {
     if (!widgetRef.current) return;
+
+    const timeout = setTimeout(() => {
+      if (!widgetLoaded) setWidgetError(true);
+    }, 10000);
 
     const anchor = document.createElement("a");
     anchor.href = "https://www.songkick.com/artists/10171965";
@@ -49,9 +55,12 @@ export default function TourPageClient() {
     const script = document.createElement("script");
     script.src = "https://widget-app.songkick.com/injector/10171965";
     script.async = true;
+    script.onload = () => { setWidgetLoaded(true); clearTimeout(timeout); };
+    script.onerror = () => { setWidgetError(true); clearTimeout(timeout); };
     widgetRef.current.appendChild(script);
 
     return () => {
+      clearTimeout(timeout);
       if (widgetRef.current) {
         widgetRef.current.innerHTML = "";
       }
@@ -106,13 +115,34 @@ export default function TourPageClient() {
       <section className="section-padding px-6">
         <div className="mx-auto max-w-4xl">
           <motion.div
-            ref={widgetRef}
-            className="min-h-[200px] glass-card rounded-2xl p-4 md:p-8"
+            className="min-h-[200px] glass-card rounded-2xl p-4 md:p-8 relative"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-          />
+          >
+            {!widgetLoaded && !widgetError && (
+              <div className="flex flex-col items-center justify-center py-12 text-muted">
+                <Loader2 className="w-6 h-6 animate-spin text-[#E8385D] mb-3" />
+                <p className="text-sm">Loading tour dates...</p>
+              </div>
+            )}
+            {widgetError && !widgetLoaded && (
+              <div className="flex flex-col items-center justify-center py-12 text-center">
+                <MapPin className="w-8 h-8 text-muted mb-3" />
+                <p className="text-sm text-text-secondary mb-4">Tour dates are temporarily unavailable.</p>
+                <a
+                  href="https://www.songkick.com/artists/10171965"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors font-medium"
+                >
+                  View on Songkick &rarr;
+                </a>
+              </div>
+            )}
+            <div ref={widgetRef} />
+          </motion.div>
         </div>
       </section>
 
@@ -124,7 +154,7 @@ export default function TourPageClient() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-6">Past Events</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">{t("tour.pastEvents")}</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {pastEventPhotos.map((photo, i) => (
                 <motion.div

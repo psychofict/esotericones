@@ -240,6 +240,7 @@ export default function DemosPageClient() {
               <div key={i} className="glass-card rounded-xl overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
                   className="w-full flex items-center justify-between px-6 py-4 text-left"
                 >
                   <span className="text-sm font-medium text-foreground">{item.q}</span>

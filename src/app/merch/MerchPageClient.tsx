@@ -106,7 +106,7 @@ export default function MerchPageClient() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Preview
+            {t("merch.preview")}
           </motion.p>
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-4"
