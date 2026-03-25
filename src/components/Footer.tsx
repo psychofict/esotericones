@@ -68,7 +68,7 @@ export default function Footer() {
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E8385D]">
               {t("footer.navigate")}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {[
                 { name: t("footer.home"), href: "/" },
                 { name: t("nav.artists"), href: "/artists" },
@@ -79,7 +79,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-text-secondary transition-colors hover:text-foreground"
+                    className="text-sm text-text-secondary transition-colors hover:text-foreground inline-flex items-center min-h-[44px]"
                   >
                     {link.name}
                   </Link>
@@ -93,14 +93,14 @@ export default function Footer() {
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#E8385D]">
               {t("footer.connect")}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {labelSocials.map((social) => (
                 <li key={social.name}>
                   <a
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-text-secondary transition-colors hover:text-foreground inline-flex items-center gap-2"
+                    className="text-sm text-text-secondary transition-colors hover:text-foreground inline-flex items-center gap-2 min-h-[44px]"
                   >
                     <span className="text-[#E8385D]/60">{socialIcons[social.icon]}</span>
                     {social.name}
@@ -110,7 +110,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-foreground/50 transition-colors hover:text-foreground"
+                  className="text-sm text-foreground/50 transition-colors hover:text-foreground inline-flex items-center min-h-[44px]"
                 >
                   {t("footer.contact")}
                 </Link>
@@ -118,7 +118,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/demos"
-                  className="text-sm text-[#E8385D] transition-colors hover:text-[#FF4D73] font-medium"
+                  className="text-sm text-[#E8385D] transition-colors hover:text-[#FF4D73] font-medium inline-flex items-center min-h-[44px]"
                 >
                   {t("footer.submitADemo")}
                 </Link>
@@ -147,7 +147,7 @@ export default function Footer() {
               <button
                 type="submit"
                 disabled={loading}
-                className="rounded-lg bg-[#E8385D] px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-[#FF4D73] hover:shadow-lg hover:shadow-[#E8385D]/20 disabled:opacity-50 flex items-center justify-center gap-2 whitespace-nowrap"
+                className="rounded-lg bg-[#E8385D] px-5 py-3 text-sm font-medium text-white transition-all hover:bg-[#FF4D73] hover:shadow-lg hover:shadow-[#E8385D]/20 disabled:opacity-50 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
                 {success ? t("common.subscribed") : t("common.subscribe")}
@@ -172,10 +172,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} The ES&Oslash;T&Euml;RIC Ones. {t("footer.allRights")}
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/contact" className="text-xs text-muted hover:text-foreground transition-colors py-2">
+            <Link href="/contact" className="text-xs text-muted hover:text-foreground transition-colors py-3 px-1">
               {t("footer.contact")}
             </Link>
-            <Link href="/about" className="text-xs text-muted hover:text-foreground transition-colors py-2">
+            <Link href="/about" className="text-xs text-muted hover:text-foreground transition-colors py-3 px-1">
               {t("nav.about")}
             </Link>
           </div>

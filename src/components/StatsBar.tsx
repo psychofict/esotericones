@@ -23,7 +23,7 @@ export default function StatsBar() {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#E8385D]/10 text-[#E8385D] mb-3">
                 {statIcons[stat.icon]}
               </div>
-              <p className="text-3xl md:text-4xl font-bold text-gradient">{stat.value}</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">{stat.value}</p>
               <p className="text-sm text-muted mt-1 uppercase tracking-wider">{t(statKeys[stat.label])}</p>
             </motion.div>
           ))}

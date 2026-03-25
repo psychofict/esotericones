@@ -70,9 +70,10 @@ export default function ContactPageClient() {
       </section>
 
       <div className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          {/* Sidebar — renders after form on mobile */}
           <motion.div
+            className="order-2 lg:order-none"
             variants={stagger()}
             initial="hidden"
             animate="visible"
@@ -102,9 +103,9 @@ export default function ContactPageClient() {
             </motion.div>
           </motion.div>
 
-          {/* Form */}
+          {/* Form — renders first on mobile */}
           <motion.div
-            className="lg:col-span-2"
+            className="lg:col-span-2 order-1 lg:order-none"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -122,7 +123,7 @@ export default function ContactPageClient() {
                       type="button"
                       onClick={() => setType(item.value)}
                       aria-pressed={type === item.value}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors min-h-[44px] inline-flex items-center ${
                         type === item.value
                           ? "bg-[#E8385D] text-white"
                           : "bg-subtle/5 text-text-secondary hover:bg-subtle/10"

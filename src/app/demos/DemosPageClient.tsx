@@ -65,10 +65,10 @@ export default function DemosPageClient() {
       </section>
 
       <div className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Guidelines */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Guidelines — renders after form on mobile */}
           <motion.div
-            className="lg:col-span-2"
+            className="lg:col-span-2 order-2 lg:order-none"
             variants={stagger()}
             initial="hidden"
             animate="visible"
@@ -104,9 +104,9 @@ export default function DemosPageClient() {
             </motion.div>
           </motion.div>
 
-          {/* Form */}
+          {/* Form — renders first on mobile */}
           <motion.div
-            className="lg:col-span-3"
+            className="lg:col-span-3 order-1 lg:order-none"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}

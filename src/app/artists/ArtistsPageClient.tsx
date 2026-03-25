@@ -57,7 +57,7 @@ export default function ArtistsPageClient() {
             <button
               onClick={() => setActiveGenre(null)}
               aria-pressed={!activeGenre}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                 !activeGenre
                   ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                   : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -70,7 +70,7 @@ export default function ArtistsPageClient() {
                 key={genre}
                 onClick={() => setActiveGenre(genre === activeGenre ? null : genre)}
                 aria-pressed={activeGenre === genre}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   activeGenre === genre
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -87,7 +87,7 @@ export default function ArtistsPageClient() {
               </span>
               <button
                 onClick={() => setActiveGenre(null)}
-                className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors font-medium"
+                className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors font-medium py-2 px-1"
               >
                 {t("common.resetFilters")}
               </button>

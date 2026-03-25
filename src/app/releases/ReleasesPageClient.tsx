@@ -73,7 +73,7 @@ export default function ReleasesPageClient() {
                 key={type}
                 onClick={() => setFilterType(filterType === type ? null : type)}
                 aria-pressed={filterType === type}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   filterType === type
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -92,7 +92,7 @@ export default function ReleasesPageClient() {
                 key={year}
                 onClick={() => setFilterYear(filterYear === year ? null : year)}
                 aria-pressed={filterYear === year}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   filterYear === year
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -111,7 +111,7 @@ export default function ReleasesPageClient() {
                 key={genre}
                 onClick={() => setFilterGenre(filterGenre === genre ? null : genre)}
                 aria-pressed={filterGenre === genre}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   filterGenre === genre
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -130,7 +130,7 @@ export default function ReleasesPageClient() {
               </span>
               <button
                 onClick={() => { setFilterType(null); setFilterYear(null); setFilterGenre(null); }}
-                className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors font-medium"
+                className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors font-medium py-2 px-1"
               >
                 {t("common.resetFilters")}
               </button>

@@ -51,7 +51,7 @@ export default function HomePageClient() {
           </motion.div>
 
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -93,7 +93,7 @@ export default function HomePageClient() {
 
           {/* Scroll indicator */}
           <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
@@ -176,7 +176,7 @@ export default function HomePageClient() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.div variants={fadeUp} className="flex items-end justify-between mb-10">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
               <div>
                 <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
                   {t("home.ourRoster")}
@@ -187,7 +187,7 @@ export default function HomePageClient() {
               </div>
               <Link
                 href="/artists"
-                className="text-sm text-text-secondary hover:text-[#E8385D] transition-colors flex items-center gap-1"
+                className="text-sm text-text-secondary hover:text-[#E8385D] transition-colors flex items-center gap-1 py-2"
               >
                 {t("common.viewAll")} <ArrowRight size={14} />
               </Link>
@@ -251,7 +251,7 @@ export default function HomePageClient() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.div variants={fadeUp} className="flex items-end justify-between mb-10">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
               <div>
                 <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
                   {t("home.behindTheScenes")}
@@ -262,7 +262,7 @@ export default function HomePageClient() {
               </div>
               <Link
                 href="/about"
-                className="text-sm text-text-secondary hover:text-[#E8385D] transition-colors flex items-center gap-1"
+                className="text-sm text-text-secondary hover:text-[#E8385D] transition-colors flex items-center gap-1 py-2"
               >
                 {t("common.viewAll")} <ArrowRight size={14} />
               </Link>
@@ -306,7 +306,7 @@ export default function HomePageClient() {
             <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted mb-8">
               {t("home.featuredInPartners")}
             </p>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-8 items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center">
               {[
                 { src: "/images/brands/forbes-blk.png", alt: "Forbes BLK" },
                 { src: "/images/brands/seoul-tourism.svg", alt: "Seoul Tourism" },

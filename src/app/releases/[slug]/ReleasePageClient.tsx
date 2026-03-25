@@ -34,7 +34,7 @@ export default function ReleasePageClient({ release }: ReleasePageClientProps) {
             <ArrowLeft size={16} /> {t("release.backToReleases")}
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Artwork */}
             <motion.div
               className="aspect-square rounded-2xl overflow-hidden relative shadow-2xl shadow-[#E8385D]/10"
@@ -145,12 +145,12 @@ export default function ReleasePageClient({ release }: ReleasePageClientProps) {
                           {hasLyrics ? (
                             <Link
                               href={`/releases/${release.slug}/${track.slug}`}
-                              className="flex items-center gap-4 py-2.5 px-4 rounded-lg hover:bg-subtle/5 transition-colors group"
+                              className="flex items-center gap-3 sm:gap-4 py-3 px-4 rounded-lg hover:bg-subtle/5 transition-colors group min-h-[44px]"
                             >
                               {inner}
                             </Link>
                           ) : (
-                            <div className="flex items-center gap-4 py-2.5 px-4 rounded-lg group">
+                            <div className="flex items-center gap-3 sm:gap-4 py-3 px-4 rounded-lg group min-h-[44px]">
                               {inner}
                             </div>
                           )}
@@ -168,7 +168,7 @@ export default function ReleasePageClient({ release }: ReleasePageClientProps) {
                   <div className="space-y-2">
                     {release.credits.map((credit, i) => (
                       <div key={i} className="flex items-center gap-4">
-                        <span className="text-sm text-muted min-w-[80px]">{credit.role}</span>
+                        <span className="text-sm text-muted min-w-[60px] sm:min-w-[80px]">{credit.role}</span>
                         <span className="text-sm text-foreground">{credit.name}</span>
                       </div>
                     ))}
