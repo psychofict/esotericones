@@ -2,6 +2,7 @@ export type Locale = "en" | "ko" | "fr";
 
 export type TranslationKeys = {
   // Nav
+  "nav.home": string;
   "nav.artists": string;
   "nav.releases": string;
   "nav.news": string;

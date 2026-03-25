@@ -2,6 +2,7 @@ import type { TranslationKeys } from "../types";
 
 export const fr: TranslationKeys = {
   // Nav
+  "nav.home": "Accueil",
   "nav.artists": "Artistes",
   "nav.releases": "Sorties",
   "nav.news": "Actualit\u00E9s",

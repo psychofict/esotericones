@@ -14,6 +14,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import { socialIcons } from "@/lib/socialIcons";
 
 const navTranslationKeys: Record<string, keyof TranslationKeys> = {
+  Home: "nav.home",
   Artists: "nav.artists",
   Releases: "nav.releases",
   News: "nav.news",

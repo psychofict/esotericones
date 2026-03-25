@@ -40,6 +40,7 @@ export const labelGenres = [
 ];
 
 export const navItems = [
+  { name: "Home", href: "/" },
   { name: "Artists", href: "/artists" },
   { name: "Releases", href: "/releases" },
   { name: "News", href: "/news" },

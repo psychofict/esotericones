@@ -2,6 +2,7 @@ import type { TranslationKeys } from "../types";
 
 export const ko: TranslationKeys = {
   // Nav
+  "nav.home": "홈",
   "nav.artists": "아티스트",
   "nav.releases": "발매",
   "nav.news": "뉴스",
