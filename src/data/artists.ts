@@ -64,7 +64,7 @@ export const artists: Artist[] = [
     image: "/images/artists/piecemaker.jpg",
     bio: "PieceMaker is a Zimbabwean producer who moves fluidly between Amapiano, sgija, private school Amapiano, and 3-step house. His production style is eclectic and unpredictable, blending Southern African dance rhythms with experimental electronic textures. Featured on Maknaebe and the 2025 single \"KUZOKHANYA\" alongside Ebstar, Regina Ashie, and Roline.",
     shortBio: "Amapiano/sgija producer from Zimbabwe.",
-    genres: ["Hip-Hop", "Sgija", "Electronic"],
+    genres: ["Amapiano", "Sgija", "Electronic"],
     country: "Zimbabwe",
     joinedYear: 2023,
     featured: true,

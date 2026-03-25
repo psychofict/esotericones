@@ -22,17 +22,17 @@ export default function ArtistsPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-28 pb-8 md:pt-32 md:pb-16 px-6">
         <div className="mx-auto max-w-7xl">
           <motion.p
-            className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
+            className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
             {t("artists.ourRoster")}
           </motion.p>
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-foreground mb-4"
+            className="text-3xl md:text-6xl font-bold text-foreground mb-2 md:mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -40,7 +40,7 @@ export default function ArtistsPageClient() {
             {t("artists.title")}
           </motion.h1>
           <motion.p
-            className="text-lg text-text-secondary max-w-2xl"
+            className="text-base md:text-lg text-text-secondary max-w-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -51,7 +51,7 @@ export default function ArtistsPageClient() {
       </section>
 
       {/* Genre Filter */}
-      <section className="px-6 pb-8">
+      <section className="px-6 pb-6 md:pb-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-2">
             <button
@@ -100,7 +100,7 @@ export default function ArtistsPageClient() {
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-7xl">
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"
             variants={stagger(0.05)}
             initial="hidden"
             animate="visible"
@@ -110,7 +110,7 @@ export default function ArtistsPageClient() {
                 <motion.div key={artist.slug} variants={fadeUp}>
                   <Link
                     href={`/artists/${artist.slug}`}
-                    className="group block glass-card rounded-2xl overflow-hidden card-hover h-full"
+                    className="group block glass-card rounded-xl sm:rounded-2xl overflow-hidden card-hover h-full"
                   >
                     {/* Artist image */}
                     <div className="aspect-square overflow-hidden relative">
@@ -120,33 +120,33 @@ export default function ArtistsPageClient() {
                           alt={artist.name}
                           width={300}
                           height={300}
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#E8385D]/20 via-surface to-[#FF4D73]/10 flex items-center justify-center">
-                          <Music className="w-16 h-16 text-[#E8385D]/40" />
+                          <Music className="w-12 h-12 sm:w-16 sm:h-16 text-[#E8385D]/40" />
                         </div>
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-                      {/* Country badge */}
-                      <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-background/60 backdrop-blur-sm text-xs text-foreground/80">
-                        <MapPin size={10} />
-                        {Array.isArray(artist.country) ? artist.country.join(", ") : artist.country}
+                      {/* Country badge — hidden on small mobile to save space */}
+                      <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-background/60 backdrop-blur-sm text-[10px] sm:text-xs text-foreground/80">
+                        <MapPin size={10} className="hidden sm:block" />
+                        {Array.isArray(artist.country) ? artist.country[0] : artist.country}
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="text-lg font-bold text-foreground group-hover:text-[#E8385D] transition-colors">
+                    <div className="p-3 sm:p-4">
+                      <h3 className="text-sm sm:text-lg font-bold text-foreground group-hover:text-[#E8385D] transition-colors truncate">
                         {artist.name}
                       </h3>
-                      <p className="text-sm text-text-secondary mt-1 line-clamp-2">
+                      <p className="text-xs sm:text-sm text-text-secondary mt-0.5 sm:mt-1 line-clamp-1 sm:line-clamp-2">
                         {artist.shortBio}
                       </p>
-                      <div className="flex flex-wrap gap-1.5 mt-3">
+                      <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-2 sm:mt-3">
                         {artist.genres.slice(0, 2).map((genre) => (
                           <span
                             key={genre}
-                            className="text-xs px-2 py-0.5 rounded-full bg-[#E8385D]/10 text-[#E8385D]/80"
+                            className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full bg-[#E8385D]/10 text-[#E8385D]/80"
                           >
                             {genre}
                           </span>

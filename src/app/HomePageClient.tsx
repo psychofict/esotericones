@@ -114,7 +114,7 @@ export default function HomePageClient() {
 
       {/* Latest Release Spotlight */}
       {featuredReleases[0] && (
-        <section className="section-padding bg-background">
+        <section className="py-8 md:py-16 bg-background">
           <div className="mx-auto max-w-7xl px-6">
             <motion.div
               variants={stagger()}
