@@ -110,6 +110,7 @@ export const ko: TranslationKeys = {
   "artist.listen": "듣기",
   "artist.discography": "디스코그래피",
   "artist.relatedArtists": "관련 레이블 아티스트",
+  "artist.gallery": "갤러리",
 
   // Releases
   "releases.catalog": "카탈로그",

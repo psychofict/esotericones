@@ -242,59 +242,6 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Gallery Highlights */}
-      <section className="section-padding bg-background">
-        <div className="mx-auto max-w-7xl px-6">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-              <div>
-                <p className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
-                  {t("home.behindTheScenes")}
-                </p>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                  {t("home.lifeAtTheLabel")}
-                </h2>
-              </div>
-              <Link
-                href="/about"
-                className="text-sm text-text-secondary hover:text-[#E8385D] transition-colors flex items-center gap-1 py-2"
-              >
-                {t("common.viewAll")} <ArrowRight size={14} />
-              </Link>
-            </motion.div>
-            <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[
-                { src: "/images/gallery/festival-night.jpg", alt: "Festival performance", span: "col-span-2 row-span-2" },
-                { src: "/images/gallery/korea-africa-forum.jpg", alt: "Korea-Africa Youth Forum 2025", span: "" },
-                { src: "/images/gallery/cherry-blossoms.jpg", alt: "Cherry blossoms in Seoul", span: "" },
-                { src: "/images/gallery/seaside-laughing.jpg", alt: "On tour", span: "" },
-                { src: "/images/gallery/abu-dhabi-desert.jpg", alt: "Abu Dhabi desert", span: "" },
-              ].map((photo) => (
-                <div
-                  key={photo.src}
-                  className={`${photo.span} aspect-square rounded-xl overflow-hidden relative group`}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    width={photo.span ? 600 : 300}
-                    height={photo.span ? 600 : 300}
-                    sizes={photo.span ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Partners */}
       <section className="py-12 bg-surface border-y border-border">
         <div className="mx-auto max-w-7xl px-6">

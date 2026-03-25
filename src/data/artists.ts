@@ -10,6 +10,7 @@ export interface Artist {
   socials?: { platform: string; url: string }[];
   joinedYear: number;
   featured: boolean;
+  gallery?: { src: string; alt: string }[];
 }
 
 export const artists: Artist[] = [
@@ -28,6 +29,21 @@ export const artists: Artist[] = [
     ],
     joinedYear: 2023,
     featured: true,
+    gallery: [
+      { src: "/images/gallery/cherry-blossoms.jpg", alt: "Cherry blossoms in Seoul" },
+      { src: "/images/gallery/han-river-seoul.jpg", alt: "Han River, Seoul" },
+      { src: "/images/gallery/tokyo-night.jpg", alt: "Tokyo at night" },
+      { src: "/images/gallery/london-big-ben.jpg", alt: "London, Big Ben" },
+      { src: "/images/gallery/jeju-coast.jpg", alt: "Jeju Island coast" },
+      { src: "/images/gallery/maya-bay-thailand.jpg", alt: "Maya Bay, Thailand" },
+      { src: "/images/gallery/abu-dhabi-desert.jpg", alt: "Abu Dhabi desert" },
+      { src: "/images/gallery/seaside-laughing.jpg", alt: "On tour" },
+      { src: "/images/gallery/with-lion.jpg", alt: "With a lion" },
+      { src: "/images/gallery/graduation-portrait.jpg", alt: "Graduation portrait" },
+      { src: "/images/gallery/graduation-campus.jpg", alt: "Graduation campus" },
+      { src: "/images/gallery/street-portrait-korea.jpg", alt: "Street portrait, Korea" },
+      { src: "/images/gallery/spotify-wrapped.jpg", alt: "Spotify Wrapped highlights" },
+    ],
   },
   {
     slug: "skydawn",

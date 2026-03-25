@@ -211,6 +211,44 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
         </section>
       )}
 
+      {/* Photo Gallery */}
+      {artist.gallery && artist.gallery.length > 0 && (
+        <section className="px-6 pb-16">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-xl font-bold text-foreground mb-6">{t("artist.gallery")}</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {artist.gallery.map((photo, i) => (
+                  <motion.div
+                    key={photo.src}
+                    className="aspect-square rounded-xl overflow-hidden relative group"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={300}
+                      height={300}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* Related Artists */}
       {relatedArtists.length > 0 && (
         <section className="px-6 pb-24">

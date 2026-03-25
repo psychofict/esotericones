@@ -110,6 +110,7 @@ export const fr: TranslationKeys = {
   "artist.listen": "\u00C9couter",
   "artist.discography": "Discographie",
   "artist.relatedArtists": "Artistes associ\u00E9s du label",
+  "artist.gallery": "Galerie",
 
   // Releases
   "releases.catalog": "Catalogue",

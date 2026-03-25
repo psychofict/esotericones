@@ -99,6 +99,7 @@ export type TranslationKeys = {
   "artist.listen": string;
   "artist.discography": string;
   "artist.relatedArtists": string;
+  "artist.gallery": string;
 
   // Releases
   "releases.catalog": string;
