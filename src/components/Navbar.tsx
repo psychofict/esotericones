@@ -130,7 +130,7 @@ function MobileDropdown({ item, t, onClose }: { item: { name: string; href: stri
       <Link
         href={item.href}
         onClick={onClose}
-        className="text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center"
+        className="text-2xl sm:text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center"
       >
         {t(navTranslationKeys[item.name])}
       </Link>
@@ -142,7 +142,7 @@ function MobileDropdown({ item, t, onClose }: { item: { name: string; href: stri
       <button
         onClick={() => setExpanded(!expanded)}
         aria-expanded={expanded}
-        className="text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center gap-2"
+        className="text-2xl sm:text-4xl font-bold text-foreground transition-colors hover:text-[#E8385D] min-h-[48px] inline-flex items-center gap-2"
       >
         {t(navTranslationKeys[item.name])}
         <ChevronDown size={20} className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
@@ -315,7 +315,7 @@ export default function Navbar() {
                 <Link
                   href="/demos"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-2 inline-block rounded-full bg-[#E8385D] px-8 py-3 text-xl font-bold text-white transition-colors hover:bg-[#FF4D73]"
+                  className="mt-2 inline-block rounded-full bg-[#E8385D] px-6 py-2.5 sm:px-8 sm:py-3 text-base sm:text-xl font-bold text-white transition-colors hover:bg-[#FF4D73]"
                 >
                   {t("nav.submitDemo")}
                 </Link>
