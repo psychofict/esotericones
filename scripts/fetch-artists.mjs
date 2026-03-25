@@ -1,5 +1,10 @@
-const clientId = "REDACTED_SPOTIFY_CLIENT_ID";
-const clientSecret = "REDACTED_SPOTIFY_CLIENT_SECRET";
+const clientId = process.env.SPOTIFY_CLIENT_ID;
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+
+if (!clientId || !clientSecret) {
+  console.error("Error: SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET environment variables are required");
+  process.exit(1);
+}
 
 async function run() {
   const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
