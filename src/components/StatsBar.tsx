@@ -6,63 +6,20 @@ import { labelStats } from "@/data/label";
 import { useTranslation } from "@/i18n/useTranslation";
 import { statKeys, statIcons } from "@/lib/statConfig";
 
-// Dot-matrix world map: 70 cols × 28 rows, '#' = land
-const mapGrid = [
-  "......................................................................",
-  "......................................................................",
-  "..........####..................................##########..........",
-  ".........#######...##..........................############.........",
-  "........##########.###........................##############........",
-  ".......############.##...........#...........################.......",
-  ".......##############.#..........##.........##################......",
-  ".......###############...........##........###################.##...",
-  ".......################..........###......######################.#..",
-  "........###############..........####....########.###.##########....",
-  ".........#############...........####...#######...##...#########....",
-  "..........###########............####...######....###...########....",
-  "...........#########..............###...#####.....####...#######....",
-  "............#######...............###....####.....####....######....",
-  ".............#####................###....####.....####.....#####....",
-  "..............####.....#..........###.....###......###......####....",
-  "..............###......##.........####....###.......##......####....",
-  "...............#.......###........####.....##........#.......###....",
-  "....................#..####........###......#.................##.....",
-  "....................#..#####.......###......#..........................",
-  ".....................#.#####........##.....#..........####...........",
-  "......................######........##.....#.........######..........",
-  "......................#####..........#....#..........######..........",
-  ".......................####..........#...............#####...........",
-  ".......................####...........#...............####...........",
-  "........................###..............................##.........",
-  "........................##..............................................",
-  "......................................................................",
-];
-
-// Country markers positioned on the 70×28 grid (col, row)
+// Country marker positions as % of map width/height (equirectangular projection)
 const countryMarkers = [
-  { name: "South Korea", col: 61, row: 9 },
-  { name: "Japan", col: 64, row: 9 },
-  { name: "Zimbabwe", col: 41, row: 21 },
-  { name: "South Africa", col: 40, row: 24 },
-  { name: "India", col: 51, row: 13 },
-  { name: "Mexico", col: 13, row: 13 },
-  { name: "Sweden", col: 36, row: 4 },
-  { name: "China", col: 57, row: 10 },
+  { name: "South Korea", x: 77.5, y: 37 },
+  { name: "Japan", x: 80, y: 38 },
+  { name: "Zimbabwe", x: 53.5, y: 68 },
+  { name: "South Africa", x: 53, y: 76 },
+  { name: "India", x: 67, y: 48 },
+  { name: "Mexico", x: 20, y: 48 },
+  { name: "Sweden", x: 52, y: 22 },
+  { name: "China", x: 73, y: 38 },
 ];
 
 export default function StatsBar() {
   const { t } = useTranslation();
-
-  // Parse grid into dot positions
-  const dots: { x: number; y: number }[] = [];
-  mapGrid.forEach((row, ry) => {
-    for (let cx = 0; cx < row.length; cx++) {
-      if (row[cx] === "#") {
-        dots.push({ x: (cx / 70) * 100, y: (ry / 28) * 100 });
-      }
-    }
-  });
-
   return (
     <section className="py-10 md:py-16 bg-surface border-y border-border">
       <div className="mx-auto max-w-7xl px-6">
@@ -92,47 +49,44 @@ export default function StatsBar() {
         {/* Global reach map */}
         <motion.div
           className="mt-8 md:mt-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
           <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted mb-4">
             Global Reach
           </p>
-          <div className="relative mx-auto max-w-2xl">
-            <svg viewBox="0 0 100 40" className="w-full h-auto">
-              {/* Land mass dots */}
-              {dots.map((d, i) => (
-                <circle
-                  key={i}
-                  cx={d.x}
-                  cy={d.y}
-                  r="0.55"
-                  className="fill-muted/30"
-                />
-              ))}
-              {/* Country markers */}
-              {countryMarkers.map((m) => {
-                const cx = (m.col / 70) * 100;
-                const cy = (m.row / 28) * 100;
-                return (
-                  <g key={m.name}>
-                    <circle cx={cx} cy={cy} r="1.6" className="fill-[#E8385D]/20" />
-                    <circle cx={cx} cy={cy} r="0.8" className="fill-[#E8385D]" />
-                    <text
-                      x={cx}
-                      y={cy - 2.5}
-                      textAnchor="middle"
-                      className="fill-muted text-[2px] sm:text-[2.2px]"
-                      fontWeight="600"
-                    >
-                      {m.name}
-                    </text>
-                  </g>
-                );
-              })}
-            </svg>
+          <div className="relative mx-auto max-w-3xl">
+            {/* Real world map SVG as background */}
+            <img
+              src="/images/world-map.svg"
+              alt=""
+              className="w-full h-auto opacity-15"
+              draggable={false}
+            />
+
+            {/* Country markers overlaid on map */}
+            {countryMarkers.map((marker, i) => (
+              <motion.div
+                key={marker.name}
+                className="absolute group"
+                style={{ left: `${marker.x}%`, top: `${marker.y}%`, transform: "translate(-50%, -50%)" }}
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.08, type: "spring", stiffness: 300 }}
+              >
+                {/* Pulse ring */}
+                <span className="absolute inset-0 -m-1.5 sm:-m-2 rounded-full bg-[#E8385D]/20 animate-ping" style={{ animationDuration: `${2.5 + i * 0.3}s` }} />
+                {/* Dot */}
+                <span className="relative block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#E8385D] shadow-lg shadow-[#E8385D]/40" />
+                {/* Label */}
+                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] font-semibold bg-background/90 text-foreground whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-border shadow-sm">
+                  {marker.name}
+                </span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
