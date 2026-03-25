@@ -10,12 +10,15 @@ import { getFeaturedArtists } from "@/data/artists";
 import { getFeaturedReleases } from "@/data/releases";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 import { Disc3, ArrowRight, Music } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 
 const featuredArtists = getFeaturedArtists();
 const featuredReleases = getFeaturedReleases();
 
 export default function HomePageClient() {
   const { t } = useTranslation();
+  const { theme } = useTheme();
+  const logoSrc = theme === "light" ? "/images/esoteric-white.jpg" : "/images/esoteric-blk.jpg";
 
   return (
     <main id="main-content">
@@ -39,7 +42,7 @@ export default function HomePageClient() {
           >
             <div className="relative mx-auto w-40 h-40 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-2xl shadow-[#E8385D]/10">
               <Image
-                src="/images/esoteric-blk.jpg"
+                src={logoSrc}
                 alt="The ESOTERIC Ones"
                 width={224}
                 height={224}
