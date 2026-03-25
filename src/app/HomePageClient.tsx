@@ -122,19 +122,51 @@ export default function HomePageClient() {
               <motion.p variants={fadeUp} className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3">
                 {t("home.latestRelease")}
               </motion.p>
-              <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-                {featuredReleases[0].title}
-              </motion.h2>
+              <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6 md:mb-8 md:block">
+                {/* Artwork — small inline on mobile, large block on desktop */}
+                <div className="w-24 h-24 md:hidden rounded-xl overflow-hidden relative flex-shrink-0">
+                  {featuredReleases[0].artwork ? (
+                    <Image
+                      src={featuredReleases[0].artwork}
+                      alt={featuredReleases[0].title}
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#E8385D]/20 via-surface to-[#FF4D73]/10 flex items-center justify-center">
+                      <Disc3 className="w-8 h-8 text-[#E8385D]/30" />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 ring-1 ring-inset ring-subtle/10 rounded-xl" />
+                </div>
+                <div>
+                  <h2 className="text-2xl md:text-4xl font-bold text-foreground">
+                    {featuredReleases[0].title}
+                  </h2>
+                  <div className="mt-1 flex items-center gap-4">
+                    <span className="text-sm text-text-secondary">
+                      {featuredReleases[0].artistNames.join(", ")}
+                    </span>
+                    <Link
+                      href={`/releases/${featuredReleases[0].slug}`}
+                      className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors flex items-center gap-1"
+                    >
+                      {t("home.viewDetails")} <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
               <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                {/* Album artwork */}
-                <div className="aspect-square rounded-2xl overflow-hidden relative max-w-md">
+                {/* Large artwork — desktop only */}
+                <div className="hidden md:block aspect-square rounded-2xl overflow-hidden relative max-w-md">
                   {featuredReleases[0].artwork ? (
                     <Image
                       src={featuredReleases[0].artwork}
                       alt={featuredReleases[0].title}
                       width={400}
                       height={400}
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="50vw"
                       className="w-full h-full object-cover"
                     />
                   ) : (
@@ -146,17 +178,6 @@ export default function HomePageClient() {
                 </div>
                 <div>
                   <SpotifyEmbed uri={featuredReleases[0].spotifyUri} theme="dark" />
-                  <div className="mt-4 flex items-center gap-4">
-                    <span className="text-sm text-text-secondary">
-                      {featuredReleases[0].artistNames.join(", ")}
-                    </span>
-                    <Link
-                      href={`/releases/${featuredReleases[0].slug}`}
-                      className="text-sm text-[#E8385D] hover:text-[#FF4D73] transition-colors flex items-center gap-1"
-                    >
-                      {t("home.viewDetails")} <ArrowRight size={14} />
-                    </Link>
-                  </div>
                 </div>
               </motion.div>
             </motion.div>

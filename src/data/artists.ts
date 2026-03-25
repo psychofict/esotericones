@@ -67,7 +67,7 @@ export const artists: Artist[] = [
     genres: ["Hip-Hop", "Sgija", "Electronic"],
     country: "Zimbabwe",
     joinedYear: 2023,
-    featured: false,
+    featured: true,
   },
   {
     slug: "ratsbe",
@@ -79,7 +79,7 @@ export const artists: Artist[] = [
     genres: ["UK House", "Piano House", "Dance-Pop", "House", "Deep House"],
     country: ["South Korea", "Zimbabwe", "South Africa"],
     joinedYear: 2023,
-    featured: true,
+    featured: false,
   },
   {
     slug: "team-g",

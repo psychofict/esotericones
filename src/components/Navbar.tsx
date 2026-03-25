@@ -29,9 +29,8 @@ const dropdownConfig: Record<string, DropdownConfig[]> = {
   Artists: [
     { translationKey: "nav.allArtists", href: "/artists" },
     { label: "Ebstar", href: "/artists/ebstar" },
-    { label: "RATSBE", href: "/artists/ratsbe" },
     { label: "SkyDAWN", href: "/artists/skydawn" },
-    { label: "Piecemaker", href: "/artists/piecemaker" },
+    { label: "PieceMaker", href: "/artists/piecemaker" },
   ],
   Releases: [
     { translationKey: "nav.allReleases", href: "/releases" },
