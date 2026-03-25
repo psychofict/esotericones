@@ -283,7 +283,7 @@ export default function Navbar() {
             animate={{ clipPath: "circle(150% at calc(100% - 2rem) 2rem)" }}
             exit={{ clipPath: "circle(0% at calc(100% - 2rem) 2rem)" }}
             transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-background"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-background overflow-y-auto py-20"
           >
             {/* Logo in mobile menu */}
             <div className="absolute top-6 left-6">
@@ -296,7 +296,7 @@ export default function Navbar() {
               />
             </div>
 
-            <ul className="flex flex-col items-center gap-6">
+            <ul className="flex flex-col items-center gap-3 sm:gap-6">
               {navItems.map((item, i) => (
                 <motion.li
                   key={item.href}
@@ -322,7 +322,7 @@ export default function Navbar() {
               </motion.li>
             </ul>
 
-            <div className="mt-10 mb-6 w-24 h-px bg-gradient-to-r from-transparent via-[#E8385D]/30 to-transparent" />
+            <div className="mt-6 mb-4 sm:mt-10 sm:mb-6 w-24 h-px bg-gradient-to-r from-transparent via-[#E8385D]/30 to-transparent" />
 
             <div className="flex items-center gap-4">
               {labelSocials.map((social) => (
