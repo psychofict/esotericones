@@ -8,7 +8,6 @@ import { label, labelTimeline, labelGenres } from "@/data/label";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/i18n/useTranslation";
 import type { TranslationKeys } from "@/i18n/types";
-import StatsBar from "@/components/StatsBar";
 
 const timelineKeys: Record<number, keyof TranslationKeys> = {
   2023: "about.timeline.2023",
@@ -87,9 +86,6 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      {/* Stats */}
-      <StatsBar />
-
       {/* Timeline */}
       <section className="section-padding px-4 sm:px-6">
         <div className="mx-auto max-w-7xl">
@@ -160,8 +156,8 @@ export default function AboutPageClient() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
               <div className="relative aspect-[4/3] md:aspect-auto">
                 <Image
-                  src="/images/gallery/four-seasons-speech.jpg"
-                  alt="Ebstar speaking at an event"
+                  src="/images/artists/ebstar.jpg"
+                  alt="Ebstar"
                   width={600}
                   height={450}
                   sizes="(max-width: 768px) 100vw, 50vw"
