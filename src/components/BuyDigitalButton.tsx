@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Download, Loader2 } from "lucide-react";
 import type { Release } from "@/data/releases";
 import { useTranslation } from "@/i18n/useTranslation";
@@ -14,6 +14,14 @@ export default function BuyDigitalButton({ release }: BuyDigitalButtonProps) {
   const [showFormats, setShowFormats] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) setLoading(false);
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
 
   const handleBuy = async (format: "wav" | "mp3") => {
     setLoading(true);
