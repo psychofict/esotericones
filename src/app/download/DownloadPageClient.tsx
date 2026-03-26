@@ -106,7 +106,6 @@ export default function DownloadPageClient({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <p className="text-sm text-text-secondary">{t("download.emailSent")}</p>
           <p className="text-xs text-muted">{t("download.linkExpiry")}</p>
         </motion.div>
 
