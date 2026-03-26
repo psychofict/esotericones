@@ -7,13 +7,11 @@ import { fadeUp, stagger } from "@/lib/animations";
 import StatsBar from "@/components/StatsBar";
 import { useTranslation } from "@/i18n/useTranslation";
 import { getFeaturedArtists, artists } from "@/data/artists";
-import { getFeaturedReleases, releases } from "@/data/releases";
-import SpotifyEmbed from "@/components/SpotifyEmbed";
+import { releases } from "@/data/releases";
 import { ArrowRight } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
 const featuredArtists = getFeaturedArtists();
-const featuredReleases = getFeaturedReleases();
 const artistsWithImages = artists.filter((a) => a.image);
 const releasesWithArtwork = releases.filter((r) => r.artwork).slice(0, 12);
 
@@ -161,7 +159,7 @@ export default function HomePageClient() {
 
           {/* CTAs — stacked on mobile, side-by-side on sm+ */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 md:mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55 }}
@@ -178,26 +176,6 @@ export default function HomePageClient() {
             >
               {t("home.hero.browseReleases")}
             </Link>
-          </motion.div>
-
-          {/* Quick stats — tighter gap on mobile, numbers slightly smaller */}
-          <motion.div
-            className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 md:gap-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            {[
-              { num: "24+", label: "Artists" },
-              { num: "5M+", label: "Streams" },
-              { num: "6",   label: "Countries" },
-              { num: "88+", label: "Releases" },
-            ].map(({ num, label }) => (
-              <div key={label} className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl font-black text-foreground">{num}</div>
-                <div className="text-[9px] sm:text-[10px] text-muted uppercase tracking-widest mt-0.5">{label}</div>
-              </div>
-            ))}
           </motion.div>
         </div>
 
@@ -333,61 +311,6 @@ export default function HomePageClient() {
           </motion.div>
         </div>
       </section>
-
-      {/* ─── LATEST RELEASE SPOTLIGHT ──────────────────────────── */}
-      {featuredReleases[0] && (
-        <section className="py-10 md:py-24 bg-surface border-y border-border">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <motion.div
-              variants={stagger()}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.p variants={fadeUp} className="text-[#E8385D] text-xs font-bold uppercase tracking-[0.3em] mb-5 md:mb-6">
-                {t("home.latestRelease")}
-              </motion.p>
-              <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-                <div>
-                  {/* Artwork thumbnail — mobile only, centered */}
-                  {featuredReleases[0].artwork && (
-                    <div className="md:hidden relative aspect-square rounded-xl overflow-hidden mb-5 w-48 mx-auto">
-                      <Image
-                        src={featuredReleases[0].artwork}
-                        alt={featuredReleases[0].title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                  <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-foreground leading-none mb-3">
-                    {featuredReleases[0].title}
-                  </h2>
-                  <p className="text-text-secondary text-sm md:text-base mb-4">
-                    {featuredReleases[0].artistNames.join(", ")}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {featuredReleases[0].genres.slice(0, 3).map((g) => (
-                      <span key={g} className="text-xs px-3 py-1 rounded-full bg-[#E8385D]/10 text-[#E8385D] font-semibold">
-                        {g}
-                      </span>
-                    ))}
-                  </div>
-                  <Link
-                    href={`/releases/${featuredReleases[0].slug}`}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#E8385D] text-white rounded-full font-bold text-sm hover:bg-[#FF4D73] active:bg-[#FF4D73] transition-all hover:shadow-lg hover:shadow-[#E8385D]/25 btn-glow"
-                  >
-                    View Full Release <ArrowRight size={14} />
-                  </Link>
-                </div>
-                <div>
-                  <SpotifyEmbed uri={featuredReleases[0].spotifyUri} theme="dark" />
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-      )}
 
       {/* ─── STATS ─────────────────────────────────────────────── */}
       <StatsBar />
