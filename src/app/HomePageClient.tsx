@@ -61,7 +61,7 @@ export default function HomePageClient() {
       `}</style>
 
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative md:min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
 
@@ -102,7 +102,7 @@ export default function HomePageClient() {
         {/* ── Center content ──
             pt-24 pb-20 keeps logo below fixed navbar on short phones (e.g. iPhone SE 667px)
             and the scroll indicator visible. md:py-0 restores centered layout on larger screens. */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24 pb-20 md:py-0">
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24 pb-10 md:py-0">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -198,9 +198,9 @@ export default function HomePageClient() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — desktop only */}
         <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+          className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3 }}
