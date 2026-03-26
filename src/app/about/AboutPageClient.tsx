@@ -237,8 +237,8 @@ export default function AboutPageClient() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-6">{t("about.partnersCollaborators")}</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
+            <h2 className="text-xl font-bold text-foreground mb-4">{t("about.partnersCollaborators")}</h2>
+            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-9 gap-2 items-center">
               {[
                 { src: "/images/brands/forbes-blk.png", alt: "Forbes BLK" },
                 { src: "/images/brands/seoul-tourism.svg", alt: "Seoul Tourism" },
@@ -259,14 +259,14 @@ export default function AboutPageClient() {
                 { src: "/images/brands/gumi-city.png", alt: "Gumi City" },
                 { src: "/images/brands/samcheok-city.png", alt: "Samcheok City" },
               ].map((brand) => (
-                <div key={brand.alt} className="flex items-center justify-center p-3 rounded-xl bg-subtle/5 aspect-[3/2]">
+                <div key={brand.alt} className="flex items-center justify-center p-1.5 rounded-lg bg-subtle/5 aspect-[3/2]">
                   <Image
                     src={brand.src}
                     alt={brand.alt}
-                    width={120}
-                    height={60}
+                    width={80}
+                    height={40}
                     loading="lazy"
-                    className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+                    className="w-full h-full object-contain opacity-60 hover:opacity-100 transition-opacity"
                   />
                 </div>
               ))}
