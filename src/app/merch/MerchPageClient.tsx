@@ -19,13 +19,13 @@ export default function MerchPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-32 pb-12 px-6 relative overflow-hidden">
+      <section className="pt-24 md:pt-32 pb-8 md:pb-12 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-[#E8385D]/5 blur-3xl animate-float" />
 
         <div className="relative z-10 mx-auto max-w-7xl text-center">
           <motion.div
-            className="mx-auto mb-8 w-24 h-24 rounded-2xl overflow-hidden shadow-2xl shadow-[#E8385D]/10"
+            className="mx-auto mb-4 md:mb-8 w-24 h-24 rounded-2xl overflow-hidden shadow-2xl shadow-[#E8385D]/10"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -40,7 +40,7 @@ export default function MerchPageClient() {
           </motion.div>
 
           <motion.div
-            className="mx-auto mb-6 w-16 h-16 rounded-2xl bg-[#E8385D]/10 flex items-center justify-center"
+            className="mx-auto mb-3 md:mb-6 w-16 h-16 rounded-2xl bg-[#E8385D]/10 flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -58,7 +58,7 @@ export default function MerchPageClient() {
           </motion.p>
 
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-tight mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-tight mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
@@ -67,7 +67,7 @@ export default function MerchPageClient() {
           </motion.h1>
 
           <motion.p
-            className="text-text-secondary text-lg mb-10 leading-relaxed max-w-lg mx-auto"
+            className="text-text-secondary text-base md:text-lg mb-8 md:mb-10 leading-relaxed max-w-lg mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -98,7 +98,7 @@ export default function MerchPageClient() {
       </section>
 
       {/* Merch Preview Grid */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="mx-auto max-w-5xl">
           <motion.p
             className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted mb-8"

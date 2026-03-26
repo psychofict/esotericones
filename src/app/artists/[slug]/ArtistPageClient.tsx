@@ -24,7 +24,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero with background blur */}
-      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6 overflow-hidden">
         {/* Blurred background image */}
         {artistImage && (
           <div className="absolute inset-0">
@@ -73,7 +73,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
 
             <div>
               <motion.h1
-                className="text-4xl md:text-5xl font-bold text-foreground mb-3"
+                className="text-3xl md:text-5xl font-bold text-foreground mb-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -144,7 +144,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
 
       {/* Spotify Embed */}
       {artist.spotifyId && (
-        <section className="px-6 pb-16">
+        <section className="px-4 sm:px-6 pb-16">
           <div className="mx-auto max-w-7xl">
             <motion.div
               className="max-w-2xl"
@@ -161,7 +161,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
 
       {/* Discography */}
       {artistReleases.length > 0 && (
-        <section className="px-6 pb-16">
+        <section className="px-4 sm:px-6 pb-16">
           <div className="mx-auto max-w-7xl">
             <motion.div
               variants={stagger()}
@@ -213,7 +213,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
 
       {/* Photo Gallery */}
       {artist.gallery && artist.gallery.length > 0 && (
-        <section className="px-6 pb-16">
+        <section className="px-4 sm:px-6 pb-16">
           <div className="mx-auto max-w-7xl">
             <motion.div
               initial={{ opacity: 0 }}
@@ -251,7 +251,7 @@ export default function ArtistPageClient({ artist, artistReleases, relatedArtist
 
       {/* Related Artists */}
       {relatedArtists.length > 0 && (
-        <section className="px-6 pb-24">
+        <section className="px-4 sm:px-6 pb-24">
           <div className="mx-auto max-w-7xl">
             <motion.div
               variants={stagger()}

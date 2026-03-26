@@ -34,7 +34,7 @@ export default function ReleasesPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <motion.p
             className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
@@ -44,7 +44,7 @@ export default function ReleasesPageClient() {
             {t("releases.catalog")}
           </motion.p>
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-foreground mb-4"
+            className="text-3xl md:text-6xl font-bold text-foreground mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -52,7 +52,7 @@ export default function ReleasesPageClient() {
             {t("releases.title")}
           </motion.h1>
           <motion.p
-            className="text-lg text-text-secondary max-w-2xl"
+            className="text-base md:text-lg text-text-secondary max-w-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -63,17 +63,17 @@ export default function ReleasesPageClient() {
       </section>
 
       {/* Filters */}
-      <section className="px-6 pb-8">
-        <div className="mx-auto max-w-7xl space-y-4">
+      <section className="px-4 sm:px-6 pb-8">
+        <div className="mx-auto max-w-7xl space-y-3">
           {/* Type filters */}
-          <div className="flex flex-wrap gap-2">
-            <span className="text-xs text-muted uppercase tracking-wider self-center mr-2">{t("common.type")}</span>
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-0.5">
+            <span className="text-xs text-muted uppercase tracking-wider self-center mr-2 flex-shrink-0">{t("common.type")}</span>
             {["album", "ep", "single"].map((type) => (
               <button
                 key={type}
                 onClick={() => setFilterType(filterType === type ? null : type)}
                 aria-pressed={filterType === type}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
+                className={`flex-shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   filterType === type
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -85,14 +85,14 @@ export default function ReleasesPageClient() {
           </div>
 
           {/* Year filters */}
-          <div className="flex flex-wrap gap-2">
-            <span className="text-xs text-muted uppercase tracking-wider self-center mr-2">{t("common.year")}</span>
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-0.5">
+            <span className="text-xs text-muted uppercase tracking-wider self-center mr-2 flex-shrink-0">{t("common.year")}</span>
             {years.map((year) => (
               <button
                 key={year}
                 onClick={() => setFilterYear(filterYear === year ? null : year)}
                 aria-pressed={filterYear === year}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
+                className={`flex-shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   filterYear === year
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -104,14 +104,14 @@ export default function ReleasesPageClient() {
           </div>
 
           {/* Genre filters */}
-          <div className="flex flex-wrap gap-2">
-            <span className="text-xs text-muted uppercase tracking-wider self-center mr-2">{t("common.genre")}</span>
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-0.5">
+            <span className="text-xs text-muted uppercase tracking-wider self-center mr-2 flex-shrink-0">{t("common.genre")}</span>
             {genres.map((genre) => (
               <button
                 key={genre}
                 onClick={() => setFilterGenre(filterGenre === genre ? null : genre)}
                 aria-pressed={filterGenre === genre}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
+                className={`flex-shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   filterGenre === genre
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -140,7 +140,7 @@ export default function ReleasesPageClient() {
       </section>
 
       {/* Release Grid */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"

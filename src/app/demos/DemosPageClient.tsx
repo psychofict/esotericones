@@ -36,7 +36,7 @@ export default function DemosPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <motion.p
             className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
@@ -46,7 +46,7 @@ export default function DemosPageClient() {
             {t("demos.joinRoster")}
           </motion.p>
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-foreground mb-4"
+            className="text-3xl md:text-6xl font-bold text-foreground mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -54,7 +54,7 @@ export default function DemosPageClient() {
             {t("demos.title")}
           </motion.h1>
           <motion.p
-            className="text-lg text-text-secondary max-w-2xl"
+            className="text-base md:text-lg text-text-secondary max-w-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -64,7 +64,7 @@ export default function DemosPageClient() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-6 pb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Guidelines — renders after form on mobile */}
           <motion.div

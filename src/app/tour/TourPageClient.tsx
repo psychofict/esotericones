@@ -70,7 +70,7 @@ export default function TourPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-16 px-6">
+      <section className="relative overflow-hidden pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6">
         <div className="absolute inset-0 hero-gradient" />
         <div className="absolute top-1/3 left-[15%] w-64 h-64 rounded-full bg-[#E8385D]/5 blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-[10%] w-48 h-48 rounded-full bg-[#E8385D]/3 blur-3xl animate-float-slow" />
@@ -82,7 +82,7 @@ export default function TourPageClient() {
           animate="visible"
         >
           <motion.div
-            className="mb-6 w-16 h-16 rounded-2xl bg-[#E8385D]/10 flex items-center justify-center"
+            className="mb-3 md:mb-6 w-16 h-16 rounded-2xl bg-[#E8385D]/10 flex items-center justify-center"
             variants={fadeUp}
           >
             <MapPin className="w-8 h-8 text-[#E8385D]" />
@@ -96,14 +96,14 @@ export default function TourPageClient() {
           </motion.p>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-foreground mb-4"
+            className="text-3xl md:text-6xl font-bold text-foreground mb-4"
             variants={fadeUp}
           >
             {t("tour.title")}
           </motion.h1>
 
           <motion.p
-            className="text-lg text-text-secondary max-w-2xl"
+            className="text-base md:text-lg text-text-secondary max-w-2xl"
             variants={fadeUp}
           >
             {t("tour.description")}
@@ -112,7 +112,7 @@ export default function TourPageClient() {
       </section>
 
       {/* Songkick Widget */}
-      <section className="section-padding px-6">
+      <section className="section-padding px-4 sm:px-6">
         <div className="mx-auto max-w-4xl">
           <motion.div
             className="min-h-[200px] glass-card rounded-2xl p-4 md:p-8 relative"
@@ -147,7 +147,7 @@ export default function TourPageClient() {
       </section>
 
       {/* Past Events Gallery */}
-      <section className="px-6 pb-12">
+      <section className="px-4 sm:px-6 pb-12">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -173,7 +173,7 @@ export default function TourPageClient() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <p className="absolute bottom-3 left-3 text-white text-sm font-medium">{photo.caption}</p>
+                  <p className="absolute bottom-3 left-3 text-white text-xs sm:text-sm font-medium">{photo.caption}</p>
                 </motion.div>
               ))}
             </div>
@@ -182,7 +182,7 @@ export default function TourPageClient() {
       </section>
 
       {/* Book CTA */}
-      <section className="section-padding px-6">
+      <section className="section-padding px-4 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="glass-card rounded-2xl p-5 md:p-12 border border-[#E8385D]/20 text-center relative overflow-hidden"

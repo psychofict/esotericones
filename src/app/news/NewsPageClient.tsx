@@ -41,7 +41,7 @@ export default function NewsPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <motion.p
             className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-3"
@@ -51,7 +51,7 @@ export default function NewsPageClient() {
             {t("news.title")}
           </motion.p>
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-foreground mb-4"
+            className="text-3xl md:text-6xl font-bold text-foreground mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -59,7 +59,7 @@ export default function NewsPageClient() {
             {t("news.title")}
           </motion.h1>
           <motion.p
-            className="text-lg text-text-secondary max-w-2xl"
+            className="text-base md:text-lg text-text-secondary max-w-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -71,7 +71,7 @@ export default function NewsPageClient() {
 
       {/* Featured Post */}
       {sortedPosts[0] && (
-        <section className="px-6 pb-12">
+        <section className="px-4 sm:px-6 pb-8 md:pb-12">
           <div className="mx-auto max-w-7xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -119,7 +119,7 @@ export default function NewsPageClient() {
       )}
 
       {/* News Grid */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"

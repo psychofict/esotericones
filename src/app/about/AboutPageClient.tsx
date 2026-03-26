@@ -21,7 +21,7 @@ export default function AboutPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-10 md:pb-16 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/ebstar-hero.jpg"
@@ -43,7 +43,7 @@ export default function AboutPageClient() {
             {t("about.ourStory")}
           </motion.p>
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+            className="text-3xl md:text-6xl font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -51,7 +51,7 @@ export default function AboutPageClient() {
             {t("about.aboutTheLabel")}
           </motion.h1>
           <motion.p
-            className="text-lg text-text-secondary max-w-3xl leading-relaxed"
+            className="text-base md:text-lg text-text-secondary max-w-3xl leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -62,7 +62,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* Mission */}
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="glass-card rounded-2xl p-5 md:p-12 border border-[#E8385D]/10"
@@ -91,7 +91,7 @@ export default function AboutPageClient() {
       <StatsBar />
 
       {/* Timeline */}
-      <section className="section-padding px-6">
+      <section className="section-padding px-4 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <motion.div
             variants={stagger()}
@@ -126,7 +126,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* Genres */}
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -149,7 +149,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* Founder Spotlight */}
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="glass-card rounded-2xl overflow-hidden"
@@ -186,7 +186,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* Photo Gallery */}
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -230,7 +230,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* Partners & Collaborators */}
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -276,7 +276,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="mx-auto max-w-7xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

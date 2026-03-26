@@ -22,7 +22,7 @@ export default function ArtistsPageClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-28 pb-8 md:pt-32 md:pb-16 px-6">
+      <section className="pt-28 pb-8 md:pt-32 md:pb-16 px-4 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <motion.p
             className="text-[#E8385D] text-xs font-semibold uppercase tracking-[0.3em] mb-2"
@@ -51,13 +51,13 @@ export default function ArtistsPageClient() {
       </section>
 
       {/* Genre Filter */}
-      <section className="px-6 pb-6 md:pb-8">
+      <section className="px-4 sm:px-6 pb-6 md:pb-8">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-0.5">
             <button
               onClick={() => setActiveGenre(null)}
               aria-pressed={!activeGenre}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
+              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                 !activeGenre
                   ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                   : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -70,7 +70,7 @@ export default function ArtistsPageClient() {
                 key={genre}
                 onClick={() => setActiveGenre(genre === activeGenre ? null : genre)}
                 aria-pressed={activeGenre === genre}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
+                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] inline-flex items-center ${
                   activeGenre === genre
                     ? "bg-[#E8385D] text-white shadow-lg shadow-[#E8385D]/20"
                     : "bg-subtle/5 text-text-secondary hover:bg-subtle/10 hover:text-foreground"
@@ -97,7 +97,7 @@ export default function ArtistsPageClient() {
       </section>
 
       {/* Artist Grid */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"
