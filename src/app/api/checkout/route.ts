@@ -100,7 +100,11 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: session.url });
   } catch (error) {
-    console.error("Checkout error:", error);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Checkout error:", message);
+    if (!process.env.STRIPE_SECRET_KEY) {
+      return NextResponse.json({ error: "Stripe is not configured." }, { status: 500 });
+    }
     return NextResponse.json(
       { error: "Failed to create checkout session" },
       { status: 500 }
