@@ -108,7 +108,7 @@ export async function POST(req: NextRequest) {
     try {
       await resend.emails.send({
         from: "The ESOTERIC Ones <noreply@esotericones.com>",
-        to: "contact@esotericones.com",
+        to: "contact@ebstar.co",
         subject: `New Sale: ${release.title} (${format.toUpperCase()})`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
