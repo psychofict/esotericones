@@ -37,7 +37,7 @@ export default function ReleasePageClient({ release }: ReleasePageClientProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Artwork */}
             <motion.div
-              className="aspect-square rounded-2xl overflow-hidden relative shadow-2xl shadow-[#E8385D]/10"
+              className="aspect-square rounded-2xl overflow-hidden relative shadow-2xl shadow-[#E8385D]/10 lg:max-w-[80%] lg:mx-auto w-full"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
             >
