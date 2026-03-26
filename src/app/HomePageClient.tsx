@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { fadeUp, stagger } from "@/lib/animations";
-import StatsBar from "@/components/StatsBar";
 import { useTranslation } from "@/i18n/useTranslation";
 import { getFeaturedArtists, artists } from "@/data/artists";
 import { releases } from "@/data/releases";
@@ -62,7 +61,7 @@ export default function HomePageClient() {
       `}</style>
 
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
 
@@ -159,7 +158,7 @@ export default function HomePageClient() {
 
           {/* CTAs — stacked on mobile, side-by-side on sm+ */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 md:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55 }}
@@ -176,6 +175,26 @@ export default function HomePageClient() {
             >
               {t("home.hero.browseReleases")}
             </Link>
+          </motion.div>
+
+          {/* Stats row */}
+          <motion.div
+            className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 md:gap-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            {[
+              { num: "24+", label: "Artists" },
+              { num: "5M+", label: "Streams" },
+              { num: "6",   label: "Countries" },
+              { num: "88+", label: "Releases" },
+            ].map(({ num, label }) => (
+              <div key={label} className="text-center">
+                <div className="text-xl sm:text-2xl md:text-3xl font-black text-foreground">{num}</div>
+                <div className="text-[9px] sm:text-[10px] text-muted uppercase tracking-widest mt-0.5">{label}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
 
@@ -196,14 +215,20 @@ export default function HomePageClient() {
         </motion.div>
       </section>
 
-      {/* ─── ARTIST NAME MARQUEE ───────────────────────────────── */}
+      {/* ─── ARTIST NAME MARQUEE — all artists ─────────────────── */}
       <div className="bg-[#E8385D] py-3.5 overflow-hidden">
         <div className="flex items-center anim-marquee">
-          {[...artistsWithImages, ...artistsWithImages].map((artist, i) => (
+          {[...artists, ...artists].map((artist, i) => (
             <div key={i} className="flex-shrink-0 inline-flex items-center gap-3 px-5">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden relative ring-2 ring-white/30 flex-shrink-0">
-                <Image src={artist.image!} alt={artist.name} fill className="object-cover" sizes="32px" />
-              </div>
+              {artist.image ? (
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden relative ring-2 ring-white/30 flex-shrink-0">
+                  <Image src={artist.image} alt={artist.name} fill className="object-cover" sizes="32px" />
+                </div>
+              ) : (
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full ring-2 ring-white/30 flex-shrink-0 bg-white/20 flex items-center justify-center">
+                  <span className="text-white font-black text-xs leading-none">{artist.name[0]}</span>
+                </div>
+              )}
               <span className="text-white font-bold text-xs sm:text-sm uppercase tracking-widest whitespace-nowrap">
                 {artist.name}
               </span>
@@ -312,8 +337,6 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* ─── STATS ─────────────────────────────────────────────── */}
-      <StatsBar />
 
       {/* ─── FEATURED ARTISTS (full-bleed portrait cards) ──────── */}
       <section className="py-10 md:py-24 bg-background">

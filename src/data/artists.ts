@@ -115,7 +115,7 @@ export const artists: Artist[] = [
     genres: ["Amapiano"],
     country: "Zimbabwe",
     joinedYear: 2024,
-    featured: false,
+    featured: true,
   },
   {
     slug: "illversemusic",
