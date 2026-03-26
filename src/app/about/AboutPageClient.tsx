@@ -165,7 +165,7 @@ export default function AboutPageClient() {
                   width={600}
                   height={450}
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <div className="p-8 md:p-10 flex flex-col justify-center">
