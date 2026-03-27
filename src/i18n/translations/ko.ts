@@ -91,12 +91,14 @@ export const ko: TranslationKeys = {
   "about.partnersCollaborators": "파트너 & 협력사",
 
   // About timeline
-  "about.timeline.2023":
-    "Ebstar에 의해 설립. 3개국에 걸쳐 첫 번째 아티스트 그룹 계약. Life Is Beautiful과 With Love, Ebstar :) 등 데뷔 발매로 카탈로그를 시작.",
+  "about.timeline.2021":
+    "The ES\u00D8T\u00CBRIC Ones의 첫 번째 카탈로그 \u2014 TWENTY: Something Special EP \u2014 Ebstar의 20번째 생일인 2021년 11월 29일에 발매. Life Is Beautiful이 2022년 3월에 발매되며 Swedish Dance Glory와 SkyDAWN을 세상에 소개.",
+  "about.timeline.2022":
+    "로스터가 자리를 잡기 시작. SkyDAWN, KARLOST, illversemusic, Tribal Muziq, CJ Melzy, PieceMaker가 레이블 데뷔. With Love, Ebstar :) (2023)가 ES\u00D8T\u00CBRIC 사운드를 정의 \u2014 피아노 하우스, 댄스팝, 글로벌 협업을 담은 10트랙 EP.",
   "about.timeline.2024":
-    "6개국 15명 이상의 아티스트로 로스터 확대. 대표 발매 ECHOES OF LOVE I과 Maknaebe 발매. 200만 스트리밍을 돌파하고 아마피아노와 일렉트로닉 음악 씬에서 입지를 다짐.",
+    "12개의 새 발매. Team G 결성 및 세 개의 싱글 발표. ECHOES OF LOVE I (Deluxe Version) \u2014 40트랙 컴필레이션 \u2014 레이블의 가장 야심찬 작품이 됨. Maknaebe (Deluxe Version)이 11월에 발매. 총 스트리밍 500만 돌파.",
   "about.timeline.2025":
-    "24명 이상의 아티스트 로스터. 500만+ 총 스트리밍. 남부 아프리카와 아시아에서 새로운 계약 체결. 아마피아노, 힙합, 일렉트로닉 음악 전반에서 지속 성장.",
+    "레이블의 남부 아프리카 뿌리가 깊어짐. PieceMaker가 세 개의 새로운 아마피아노 프로덕션을 이끌며 Loxion TXI, Makhathini, Mfanakithi, ThatGirlVee, Regina Ashie, Roline을 카탈로그에 소개. READY TO BE LOVED와 KUZOKHANYA가 다음을 예고.",
 
   // Artists
   "artists.ourRoster": "로스터",

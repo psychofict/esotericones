@@ -48,7 +48,7 @@ export const en: TranslationKeys = {
 
   // Home
   "home.hero.description":
-    "A global record label operating across South Africa, Zimbabwe, and South Korea. Home to 24+ artists across 6 countries, pushing the boundaries of electronic, house, Amapiano, hip-hop, and pop.",
+    "A global record label rooted in Bulawayo and built in Seoul. Home to 24 artists across 6 countries \u2014 electronic, house, Amapiano, hip-hop, and everything the genre tags don\u2019t cover.",
   "home.hero.meetArtists": "Meet Our Artists",
   "home.hero.browseReleases": "Browse Releases",
   "home.latestRelease": "Latest Release",
@@ -56,13 +56,13 @@ export const en: TranslationKeys = {
   "home.ourRoster": "Our Roster",
   "home.featuredArtists": "Featured Artists",
   "home.stayConnected": "Stay Connected",
-  "home.joinCircle": "Join the ESOTERIC Circle",
+  "home.joinCircle": "Join the Circle",
   "home.joinCircleDesc":
-    "Be the first to hear about new releases, artist signings, and exclusive content.",
-  "home.gotMusic": "Got Music?",
+    "New releases, artist signings, and exclusive content \u2014 delivered before anyone else hears it.",
+  "home.gotMusic": "Got Music That Doesn\u2019t Fit Anywhere?",
   "home.submitYourDemo": "Submit Your Demo",
   "home.submitDemoDesc":
-    "Think you belong on the roster? If your sound is bold, emotional, and unapologetic \u2014 we want to hear it.",
+    "Submit your demo. Bold, original, emotionally honest \u2014 that\u2019s the only brief. The ES\u00D8T\u00CBRIC Ones was built for exactly this.",
   "home.submitADemo": "Submit a Demo",
   "home.behindTheScenes": "Behind the Scenes",
   "home.lifeAtTheLabel": "Life at the Label",
@@ -72,37 +72,39 @@ export const en: TranslationKeys = {
   "about.ourStory": "Our Story",
   "about.aboutTheLabel": "About The Label",
   "about.aboutDesc":
-    "{displayName} is a global record label founded in {founded} by {founder} ({founderRealName}), operating across South Africa, Zimbabwe, and South Korea. We exist to give bold, genre-defying artists a home \u2014 and a platform to release music entirely on their own terms.",
+    "{displayName} is a global independent record label founded in {founded} by {founder} ({founderRealName}) \u2014 a Zimbabwean producer and AI researcher based in Seoul \u2014 with a single conviction: the most interesting music comes from artists who exist between worlds.",
   "about.ourMission": "Our Mission",
   "about.missionText":
-    "We believe music shouldn\u2019t be confined by borders, genres, or gatekeepers. Our roster spans 6 countries \u2014 from South Africa to Sweden, Zimbabwe to South Korea, India to China \u2014 united by a commitment to quality, authenticity, and emotional resonance. Electronic, house, Amapiano, hip-hop, pop \u2014 if it moves people, it belongs here.",
+    "Music has no borders. Neither do we. Our roster spans 6 countries \u2014 Zimbabwe, South Africa, South Korea, India, China, Sweden \u2014 united not by genre, but by a shared commitment to quality, authenticity, and emotional weight. Electronic, house, Amapiano, hip-hop, pop \u2014 if it moves people, it belongs here. We believe a Zimbabwean producer working in Seoul, an Indian rapper writing in Hindi and English, a South African Amapiano collective, and a Swedish production crew all belong on the same label. Because they do. And because the music they make together is better than anything that could come from a room full of people who all sound the same.",
   "about.timeline": "Timeline",
   "about.ourSound": "Our Sound",
   "about.theFounder": "The Founder",
   "about.founderBio":
-    "Ebstar (Ebenezer Tarubinga) is a Zimbabwean-born, Seoul-based DJ and music producer with 5M+ streams, an MSc in AI from Korea University, and 50+ brand collaborations under his belt. He founded {displayName} in {founded} with a clear vision: build a home for artists who don\u2019t fit neatly into boxes \u2014 and give them the platform to prove that\u2019s exactly where the best music comes from.",
+    "Ebstar was born Ebenezer Tarubinga in Bulawayo, Zimbabwe, on November 29, 2001, and built his career in Seoul \u2014 a distance of about 10,000 kilometres that became the defining tension in everything he makes. A self-taught producer who placed 290th on SkioMusic\u2019s World Producer Chart within a single year, he has accumulated 5M+ streams, 50+ brand collaborations, and 100,000+ followers across platforms. He founded {displayName} in {founded} as a platform for artists who share the same fundamental disregard for category. Alongside music, he is an active machine learning researcher at Korea University with published papers in semantic segmentation. His Spotify catalog has charted in South Korea, Luxembourg, and Estonia.",
   "about.viewArtistProfile": "View Artist Profile",
-  "about.wantToBePart": "Want to be part of the story?",
+  "about.wantToBePart": "Want to be part of what we\u2019re building?",
   "about.lookingForArtists":
-    "We\u2019re always looking for artists, collaborators, and partners who share our vision.",
+    "We\u2019re always looking for artists, collaborators, and partners who share our vision. If that sounds like you \u2014 let\u2019s talk.",
   "about.submitADemo": "Submit a Demo",
   "about.getInTouch": "Get in Touch",
   "about.gallery": "Gallery",
   "about.partnersCollaborators": "Partners & Collaborators",
 
   // About timeline
-  "about.timeline.2023":
-    "Founded by Ebstar. First wave of artists signed across 3 countries. Debut releases including Life Is Beautiful and With Love, Ebstar :) launch the catalog.",
+  "about.timeline.2021":
+    "The ES\u00D8T\u00CBRIC Ones releases its first catalog entry \u2014 the TWENTY: Something Special EP \u2014 on Ebstar\u2019s 20th birthday, November 29, 2021. Life Is Beautiful follows in March 2022, introducing Swedish Dance Glory and SkyDAWN to the world.",
+  "about.timeline.2022":
+    "The roster takes shape. SkyDAWN, KARLOST, illversemusic, Tribal Muziq, CJ Melzy, and PieceMaker all make their label debuts. With Love, Ebstar :) (2023) crystallises the ES\u00D8T\u00CBRIC sound \u2014 piano house, dance-pop, and global collaboration in one 10-track EP.",
   "about.timeline.2024":
-    "Roster expands to 15+ artists spanning 6 countries. Landmark releases ECHOES OF LOVE I and Maknaebe drop. The label surpasses 2M streams and establishes itself in the Amapiano and electronic music space.",
+    "Twelve new releases. Team G forms and drops three singles. ECHOES OF LOVE I (Deluxe Version) \u2014 a 40-track compilation \u2014 becomes the label\u2019s most ambitious statement. Maknaebe (Deluxe Version) follows in November with a 23-track electronic and pop journey. Ebstar\u2019s tracks chart in South Korea, Luxembourg, and Estonia. Total streams cross 5M.",
   "about.timeline.2025":
-    "24+ artists on the roster. 5M+ total streams. New signings from Southern Africa and Asia. The label continues to grow across Amapiano, hip-hop, and electronic music.",
+    "The Southern African roots of the label go deepest yet. PieceMaker leads three new Amapiano productions, bringing Loxion TXI, Makhathini, Mfanakithi, ThatGirlVee, Regina Ashie, and Roline into the catalog for the first time. READY TO BE LOVED and KUZOKHANYA signal what\u2019s next.",
 
   // Artists
   "artists.ourRoster": "Our Roster",
   "artists.title": "Artists",
   "artists.description":
-    "24+ artists across 6 countries. Electronic, house, Amapiano, hip-hop \u2014 meet the roster behind the ESOTERIC sound.",
+    "24 artists. 6 countries. Amapiano, electronic, hip-hop, pop, and the spaces between. Meet the roster.",
   "artists.noResults": "No artists found for this genre.",
 
   // Artist detail
@@ -117,7 +119,7 @@ export const en: TranslationKeys = {
   "releases.catalog": "Catalog",
   "releases.title": "Releases",
   "releases.description":
-    "Every album, EP, and single from The ES\u00D8T\u00CBRIC Ones \u2014 from house anthems to Amapiano crossovers.",
+    "Every album, EP, and single from The ES\u00D8T\u00CBRIC Ones \u2014 from piano house anthems to Amapiano four-ways, underground Indian hip-hop to Korean club edits. The full catalog, in one place.",
   "releases.noResults": "No releases match your filters.",
 
   // Release detail
@@ -145,7 +147,7 @@ export const en: TranslationKeys = {
   "contact.getInTouch": "Get in Touch",
   "contact.title": "Contact",
   "contact.description":
-    "Licensing, press, partnerships, or booking \u2014 let\u2019s talk.",
+    "Licensing, press, partnerships, and bookings \u2014 we want to hear from the right people. Get in touch.",
   "contact.email": "Email",
   "contact.location": "Location",
   "contact.inquiryType": "Inquiry Type",
@@ -169,18 +171,18 @@ export const en: TranslationKeys = {
   "demos.joinRoster": "Join the Roster",
   "demos.title": "Submit Your Demo",
   "demos.description":
-    "We\u2019re always listening. If your sound is bold, emotional, and unapologetic \u2014 send it over.",
+    "We\u2019re always listening. If you make music that doesn\u2019t fit anywhere else \u2014 this is where it belongs.",
   "demos.whatWeLookFor": "What We Look For",
-  "demos.lookFor1": "High production quality \u2014 your mix matters.",
-  "demos.lookFor2": "Originality and a distinct artistic voice.",
-  "demos.lookFor3": "Emotional depth \u2014 music that moves people.",
-  "demos.lookFor4": "Artists who are serious about building a career.",
+  "demos.lookFor1": "Production quality that commands attention \u2014 your mix is your first impression.",
+  "demos.lookFor2": "A distinct artistic voice that couldn\u2019t belong to anyone else.",
+  "demos.lookFor3": "Emotional depth \u2014 music that earns its feeling.",
+  "demos.lookFor4": "Artists who are serious about their career, not just their current single.",
   "demos.howItWorks": "How It Works",
   "demos.step1": "Fill out the form with your details and demo links.",
-  "demos.step2": "Our A&R team reviews every submission.",
+  "demos.step2": "Our A&R team listens to every submission \u2014 personally.",
   "demos.step3":
-    "If we like what we hear, we\u2019ll be in touch within 2\u20134 weeks.",
-  "demos.step4": "We discuss release plans, distribution, and next steps.",
+    "If the music moves us, we\u2019ll reach out within 2\u20134 weeks.",
+  "demos.step4": "We discuss fit, release plans, distribution, and what comes next.",
   "demos.artistName": "Artist / Project Name",
   "demos.artistNamePlaceholder": "Your artist name",
   "demos.emailField": "Email",
@@ -201,16 +203,16 @@ export const en: TranslationKeys = {
   "demos.faq": "Frequently Asked Questions",
   "demos.faq1q": "What genres does the label accept?",
   "demos.faq1a":
-    "We're primarily focused on electronic, house, Amapiano, hip-hop, pop, R&B, and dance music \u2014 but we're open to any genre if the quality is there.",
+    "Our core focus is electronic, house, Amapiano, hip-hop, pop, R&B, and dance music. But genre is never the deciding factor \u2014 quality and conviction are. If you make something that genuinely moves people, we want to hear it.",
   "demos.faq2q": "How long does it take to hear back?",
   "demos.faq2a":
-    "We review all submissions within 2-4 weeks. If we're interested, we'll reach out via email.",
-  "demos.faq3q": "Do I need to be signed exclusively?",
+    "We review all submissions within 2\u20134 weeks. If we\u2019re interested, we\u2019ll reach out directly by email.",
+  "demos.faq3q": "Does signing with you mean exclusivity?",
   "demos.faq3a":
-    "Not necessarily. We offer both exclusive and non-exclusive agreements depending on the project.",
-  "demos.faq4q": "What should I include in my demo?",
+    "Not automatically. We offer both exclusive and non-exclusive agreements depending on the project and where you are in your career. We\u2019d rather find the right structure than force the wrong one.",
+  "demos.faq4q": "What should I include with my demo?",
   "demos.faq4a":
-    "At minimum: 1-3 tracks (links to streaming or private SoundCloud), a short bio, and your social media links.",
+    "At minimum: 1\u20133 tracks (streaming links or private SoundCloud), a short bio, and your active social handles. Anything else that helps us understand who you are as an artist is welcome.",
 
   // News
   "news.title": "News",
@@ -222,34 +224,34 @@ export const en: TranslationKeys = {
   "news.category.artist": "Artist",
   "news.category.event": "Event",
   "news.description":
-    "Artist announcements, release breakdowns, and behind-the-scenes stories from The ES\u00D8T\u00CBRIC Ones. Stay tuned.",
+    "Artist signings, release breakdowns, milestones, and the stories behind the music. Everything happening at The ES\u00D8T\u00CBRIC Ones \u2014 here first.",
 
   // Tour
   "tour.liveShows": "Live Shows",
   "tour.title": "Tour Dates",
   "tour.description":
-    "Catch The ES\u00D8T\u00CBRIC Ones roster live. Concerts, festivals, and DJ sets worldwide.",
+    "The ES\u00D8T\u00CBRIC Ones roster live \u2014 concerts, festivals, and DJ sets across continents. Catch them.",
   "tour.bookNow": "Book Now",
-  "tour.bookHeading": "Book Our Artists for Your Event",
+  "tour.bookHeading": "Book Our Artists",
   "tour.bookDescription":
-    "Our artists are available for concerts, festivals, corporate events, and private bookings worldwide.",
+    "Available for concerts, festivals, club nights, corporate events, and private bookings worldwide. Our artists travel. Our sound translates. Let\u2019s talk.",
   "tour.pastEvents": "Past Events",
 
   // Merch
   "merch.title": "Merch Store",
   "merch.description":
-    "Official The ES\u00D8T\u00CBRIC Ones merchandise is on the way. Stay tuned for exclusive drops.",
+    "Official ES\u00D8T\u00CBRIC merchandise is coming. Limited drops. No compromises. Stay close.",
   "merch.preview": "Preview",
 
   // Events
   "events.title": "Events",
   "events.description":
-    "Label showcases, festival sets, and live performances are in the works. Check back soon for dates and tickets.",
+    "Label showcases, festival appearances, and live performances are in motion. Dates and tickets coming soon.",
   "events.bookAnArtist": "Book an Artist",
 
   // Footer
   "footer.description":
-    "Global record label. South Africa, Zimbabwe & South Korea. 24+ artists across 6 countries. 5M+ streams and counting.",
+    "Independent record label. South Africa, Zimbabwe & South Korea. 24 artists across 6 countries. 5M+ streams and counting.",
   "footer.navigate": "Navigate",
   "footer.connect": "Connect",
   "footer.home": "Home",
@@ -257,6 +259,6 @@ export const en: TranslationKeys = {
   "footer.submitADemo": "Submit a Demo",
   "footer.newsletter": "Newsletter",
   "footer.newsletterDesc":
-    "New releases, artist spotlights, and label updates.",
+    "New releases, artist signings, and exclusive content.",
   "footer.allRights": "All rights reserved.",
 };

@@ -10,7 +10,8 @@ import { useTranslation } from "@/i18n/useTranslation";
 import type { TranslationKeys } from "@/i18n/types";
 
 const timelineKeys: Record<number, keyof TranslationKeys> = {
-  2023: "about.timeline.2023",
+  2021: "about.timeline.2021",
+  2022: "about.timeline.2022",
   2024: "about.timeline.2024",
   2025: "about.timeline.2025",
 };

@@ -91,12 +91,14 @@ export const fr: TranslationKeys = {
   "about.partnersCollaborators": "Partenaires & collaborateurs",
 
   // About timeline
-  "about.timeline.2023":
-    "Fond\u00E9 par Ebstar. Premi\u00E8re vague d'artistes sign\u00E9s dans 3 pays. Les premi\u00E8res sorties dont Life Is Beautiful et With Love, Ebstar :) lancent le catalogue.",
+  "about.timeline.2021":
+    "The ES\u00D8T\u00CBRIC Ones publie son premier catalogue \u2014 l\u2019EP TWENTY: Something Special \u2014 le 29 novembre 2021. Life Is Beautiful suit en mars 2022, pr\u00E9sentant Swedish Dance Glory et SkyDAWN au monde.",
+  "about.timeline.2022":
+    "Le roster prend forme. SkyDAWN, KARLOST, illversemusic, Tribal Muziq, CJ Melzy et PieceMaker font leurs d\u00E9buts sur le label. With Love, Ebstar :) (2023) cristallise le son ES\u00D8T\u00CBRIC \u2014 piano house, dance-pop et collaboration mondiale en un EP de 10 titres.",
   "about.timeline.2024":
-    "Le roster s'\u00E9tend \u00E0 plus de 15 artistes dans 6 pays. Les sorties phares ECHOES OF LOVE I et Maknaebe sont publi\u00E9es. Le label d\u00E9passe les 2M de streams et s'\u00E9tablit dans l'espace Amapiano et musique \u00E9lectronique.",
+    "Douze nouvelles sorties. Team G se forme et sort trois singles. ECHOES OF LOVE I (Deluxe Version) \u2014 une compilation de 40 titres \u2014 devient la d\u00E9claration la plus ambitieuse du label. Maknaebe (Deluxe Version) suit en novembre. Les streams totaux d\u00E9passent 5M.",
   "about.timeline.2025":
-    "Plus de 24 artistes au roster. 5M+ de streams totaux. Nouvelles signatures d'Afrique australe et d'Asie. Le label continue de cro\u00EEtre dans l'Amapiano, le hip-hop et la musique \u00E9lectronique.",
+    "Les racines sud-africaines du label s\u2019affirment. PieceMaker m\u00E8ne trois nouvelles productions Amapiano, introduisant Loxion TXI, Makhathini, Mfanakithi, ThatGirlVee, Regina Ashie et Roline au catalogue. READY TO BE LOVED et KUZOKHANYA annoncent la suite.",
 
   // Artists
   "artists.ourRoster": "Notre roster",

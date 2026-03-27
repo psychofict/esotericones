@@ -1,9 +1,9 @@
 export const label = {
   name: "The ESOTERIC Ones",
   displayName: "The ES\u00D8T\u00CBRIC Ones",
-  tagline: "Where Sound Meets Vision",
+  tagline: "Sound Without Borders.",
   description:
-    "A global record label operating across South Africa, Zimbabwe, and South Korea. Home to 24+ artists across 6 countries, pushing the boundaries of electronic, house, Amapiano, hip-hop, and pop.",
+    "The ES\u00D8T\u00CBRIC Ones is an independent record label operating across South Africa, Zimbabwe, and South Korea \u2014 built at the intersection of two continents that rarely appear on the same music map. Founded in 2023 by Zimbabwean-born, Seoul-based producer and AI researcher Ebstar, the label exists to give bold, genre-defying artists a platform entirely on their own terms. Twenty-four artists. Six countries. Thirty releases and counting. Electronic, house, Amapiano, hip-hop, pop \u2014 and everything the categories don\u2019t have names for yet.",
   founded: 2023,
   founder: "Ebstar",
   founderRealName: "Ebenezer Tarubinga",
@@ -29,9 +29,10 @@ export const labelSocials = [
 ];
 
 export const labelTimeline = [
-  { year: 2023, event: "Founded by Ebstar. First wave of artists signed across 3 countries. Debut releases including Life Is Beautiful and With Love, Ebstar :) launch the catalog." },
-  { year: 2024, event: "Roster expands to 15+ artists spanning 6 countries. Landmark releases ECHOES OF LOVE I and Maknaebe drop. The label surpasses 2M streams and establishes itself in the Amapiano and electronic music space." },
-  { year: 2025, event: "24+ artists on the roster. 5M+ total streams. New signings from Southern Africa and Asia. The label continues to grow across Amapiano, hip-hop, and electronic music." },
+  { year: 2021, event: "The ESOTERIC Ones releases its first catalog entry \u2014 the TWENTY: Something Special EP \u2014 on Ebstar\u2019s 20th birthday, November 29, 2021. Life Is Beautiful follows in March 2022, introducing Swedish Dance Glory and SkyDAWN to the world." },
+  { year: 2022, event: "The roster takes shape. SkyDAWN, KARLOST, illversemusic, Tribal Muziq, CJ Melzy, and PieceMaker all make their label debuts. With Love, Ebstar :) (2023) crystallises the ES\u00D8T\u00CBRIC sound \u2014 piano house, dance-pop, and global collaboration in one 10-track EP." },
+  { year: 2024, event: "Twelve new releases. Team G forms and drops three singles. ECHOES OF LOVE I (Deluxe Version) \u2014 a 40-track compilation \u2014 becomes the label\u2019s most ambitious statement. Maknaebe (Deluxe Version) follows in November with a 23-track electronic and pop journey. Ebstar\u2019s tracks chart in South Korea, Luxembourg, and Estonia. Total streams cross 5M." },
+  { year: 2025, event: "The Southern African roots of the label go deepest yet. PieceMaker leads three new Amapiano productions, bringing Loxion TXI, Makhathini, Mfanakithi, ThatGirlVee, Regina Ashie, and Roline into the catalog for the first time. READY TO BE LOVED and KUZOKHANYA signal what\u2019s next." },
 ];
 
 export const labelGenres = [

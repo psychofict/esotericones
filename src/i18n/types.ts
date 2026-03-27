@@ -84,7 +84,8 @@ export type TranslationKeys = {
   "about.partnersCollaborators": string;
 
   // About timeline
-  "about.timeline.2023": string;
+  "about.timeline.2021": string;
+  "about.timeline.2022": string;
   "about.timeline.2024": string;
   "about.timeline.2025": string;
 
