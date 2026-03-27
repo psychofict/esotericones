@@ -3,7 +3,7 @@ export const label = {
   displayName: "The ES\u00D8T\u00CBRIC Ones",
   tagline: "Sound Without Borders.",
   description:
-    "The ES\u00D8T\u00CBRIC Ones is an independent record label operating across South Africa, Zimbabwe, and South Korea \u2014 built at the intersection of two continents that rarely appear on the same music map. Founded in 2023 by Zimbabwean-born, Seoul-based producer and AI researcher Ebstar, the label exists to give bold, genre-defying artists a platform entirely on their own terms. Twenty-four artists. Six countries. Thirty releases and counting. Electronic, house, Amapiano, hip-hop, pop \u2014 and everything the categories don\u2019t have names for yet.",
+    "The ES\u00D8T\u00CBRIC Ones is an independent record label operating across South Africa, Zimbabwe, and South Korea \u2014 built at the intersection of two continents that rarely appear on the same music map. Founded in 2023 by Zimbabwean-born, Korea-based producer and AI researcher Ebstar, the label exists to give bold, genre-defying artists a platform entirely on their own terms. Twenty-four artists. Six countries. Thirty releases and counting. Electronic, house, Amapiano, hip-hop, pop \u2014 and everything the categories don\u2019t have names for yet.",
   founded: 2023,
   founder: "Ebstar",
   founderRealName: "Ebenezer Tarubinga",

@@ -48,7 +48,7 @@ export const en: TranslationKeys = {
 
   // Home
   "home.hero.description":
-    "A global record label rooted in Bulawayo and built in Seoul. Home to 24 artists across 6 countries \u2014 electronic, house, Amapiano, hip-hop, and everything the genre tags don\u2019t cover.",
+    "A global independent record label. Home to 24 artists across 6 countries \u2014 electronic, house, Amapiano, hip-hop, and everything the genre tags don\u2019t cover.",
   "home.hero.meetArtists": "Meet Our Artists",
   "home.hero.browseReleases": "Browse Releases",
   "home.latestRelease": "Latest Release",
@@ -72,15 +72,15 @@ export const en: TranslationKeys = {
   "about.ourStory": "Our Story",
   "about.aboutTheLabel": "About The Label",
   "about.aboutDesc":
-    "{displayName} is a global independent record label founded in {founded} by {founder} ({founderRealName}) \u2014 a Zimbabwean producer and AI researcher based in Seoul \u2014 with a single conviction: the most interesting music comes from artists who exist between worlds.",
+    "{displayName} is a global independent record label founded in {founded} by {founder} ({founderRealName}) \u2014 a Zimbabwean producer and AI researcher based in Korea \u2014 with a single conviction: the most interesting music comes from artists who exist between worlds.",
   "about.ourMission": "Our Mission",
   "about.missionText":
-    "Music has no borders. Neither do we. Our roster spans 6 countries \u2014 Zimbabwe, South Africa, South Korea, India, China, Sweden \u2014 united not by genre, but by a shared commitment to quality, authenticity, and emotional weight. Electronic, house, Amapiano, hip-hop, pop \u2014 if it moves people, it belongs here. We believe a Zimbabwean producer working in Seoul, an Indian rapper writing in Hindi and English, a South African Amapiano collective, and a Swedish production crew all belong on the same label. Because they do. And because the music they make together is better than anything that could come from a room full of people who all sound the same.",
+    "Music has no borders. Neither do we. Our roster spans 6 countries \u2014 Zimbabwe, South Africa, South Korea, India, China, Sweden \u2014 united not by genre, but by a shared commitment to quality, authenticity, and emotional weight. Electronic, house, Amapiano, hip-hop, pop \u2014 if it moves people, it belongs here. We believe a Zimbabwean producer working in Korea, an Indian rapper writing in Hindi and English, a South African Amapiano collective, and a Swedish production crew all belong on the same label. Because they do. And because the music they make together is better than anything that could come from a room full of people who all sound the same.",
   "about.timeline": "Timeline",
   "about.ourSound": "Our Sound",
   "about.theFounder": "The Founder",
   "about.founderBio":
-    "Ebstar was born Ebenezer Tarubinga in Bulawayo, Zimbabwe, on November 29, 2001, and built his career in Seoul \u2014 a distance of about 10,000 kilometres that became the defining tension in everything he makes. A self-taught producer who placed 290th on SkioMusic\u2019s World Producer Chart within a single year, he has accumulated 5M+ streams, 50+ brand collaborations, and 100,000+ followers across platforms. He founded {displayName} in {founded} as a platform for artists who share the same fundamental disregard for category. Alongside music, he is an active machine learning researcher at Korea University with published papers in semantic segmentation. His Spotify catalog has charted in South Korea, Luxembourg, and Estonia.",
+    "Ebstar was born Ebenezer Tarubinga in Bulawayo, Zimbabwe, on November 29, 2001, and built his career in Korea \u2014 a distance of about 10,000 kilometres that became the defining tension in everything he makes. A self-taught producer who placed 290th on SkioMusic\u2019s World Producer Chart within a single year, he has accumulated 5M+ streams, 50+ brand collaborations, and 100,000+ followers across platforms. He founded {displayName} in {founded} as a platform for artists who share the same fundamental disregard for category. Alongside music, he is an active machine learning researcher at Korea University with published papers in semantic segmentation. His Spotify catalog has charted in South Korea, Luxembourg, and Estonia.",
   "about.viewArtistProfile": "View Artist Profile",
   "about.wantToBePart": "Want to be part of what we\u2019re building?",
   "about.lookingForArtists":

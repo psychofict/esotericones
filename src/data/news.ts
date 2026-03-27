@@ -47,8 +47,8 @@ export const newsPosts: NewsPost[] = [
   {
     slug: "label-hits-5m-streams",
     title: "The ESOTERIC Ones Surpasses 5 Million Streams",
-    excerpt: "From Bulawayo to 5 million streams across 6 countries \u2014 a milestone that belongs to every artist, collaborator, and early listener who was part of the journey.",
-    content: `<p>The ES\u00D8T\u00CBRIC Ones has officially crossed 5 million streams across all platforms. A label founded in Seoul by a self-taught Zimbabwean producer, with no major backing and no industry blueprint, built a 24-artist collective spanning 6 countries and 30+ releases through music alone.</p>
+    excerpt: "An independent label, no major backing, 6 countries, 30+ releases \u2014 and now 5 million streams. A milestone that belongs to every artist, collaborator, and early listener who was part of the journey.",
+    content: `<p>The ES\u00D8T\u00CBRIC Ones has officially crossed 5 million streams across all platforms. A label founded in Korea by a self-taught Zimbabwean producer, with no major backing and no industry blueprint, built a 24-artist collective spanning 6 countries and 30+ releases through music alone.</p>
 <p>The catalog has charted in South Korea, Luxembourg, and Estonia. This milestone belongs to every artist on the roster, every collaborator who took a chance, and every listener who found something in these records that felt made for them.</p>
 <p>More music, more artists, more borders to ignore.</p>`,
     date: "2025-02-01",
@@ -84,7 +84,7 @@ export const newsPosts: NewsPost[] = [
     slug: "forbes-blk-feature",
     title: "Ebstar Featured in Forbes BLK",
     excerpt: "The ES\u00D8T\u00CBRIC Ones founder gets his moment in Forbes BLK \u2014 and uses it to talk about what comes next.",
-    content: `<p>Label founder Ebstar has been featured in <strong>Forbes BLK</strong>, recognised for his work building The ES\u00D8T\u00CBRIC Ones into a global independent label from Seoul, South Korea.</p>
+    content: `<p>Label founder Ebstar has been featured in <strong>Forbes BLK</strong>, recognised for his work building The ES\u00D8T\u00CBRIC Ones into a global independent label from Korea.</p>
 <p>The feature covers his journey from Bulawayo, Zimbabwe to Korea, his parallel career in AI research at Korea University, and the vision that has taken the label from a founding idea to 24 artists across 6 countries and 5 million streams.</p>
 <p>More than a profile \u2014 a blueprint for what independent music can look like when you stop waiting for permission.</p>`,
     date: "2024-11-15",
